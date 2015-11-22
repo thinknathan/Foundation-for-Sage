@@ -12,7 +12,7 @@
   "overrides": {
     "foundation-sites": {
       "main": [
-        "./scss/foundation.scss"
+        "./foundation-sites.scss"
       ]
     }
   }
