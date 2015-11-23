@@ -1,10 +1,13 @@
 // Grid system
+.content {
+  @include grid-row;
+}
 .main {
-  // @include make-sm-column($main-sm-columns);
+  @include grid-column($main-sm-columns);
   .sidebar-primary & {
-    // @include make-sm-column($main-sm-columns - $sidebar-sm-columns);
+    @include grid-column($main-sm-columns - $sidebar-sm-columns);
   }
 }
 .sidebar {
-  // @include make-sm-column($sidebar-sm-columns);
+  @include grid-column($sidebar-sm-columns);
 }
