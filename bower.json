@@ -13,7 +13,7 @@
     "foundation-sites": {
       "main": [
 
-        "./foundation-sites.scss",
+        "./scss/foundation.scss",
 
         "./js/foundation.core.js",
         "./js/foundation.util.*.js",
