@@ -5,6 +5,8 @@
 @import "../../bower_components/foundation-sites/scss/foundation.scss";
 // endbower
 
+@include foundation-everything;
+
 @import "common/global";
 @import "components/buttons";
 @import "components/comments";
