@@ -6,8 +6,14 @@
   @include grid-column($main-sm-columns);
   .sidebar-primary & {
     @include grid-column($main-sm-columns - $sidebar-sm-columns);
+    @include breakpoint(medium down) {
+      @include grid-column($main-sm-columns);
+    }
   }
 }
 .sidebar {
   @include grid-column($sidebar-sm-columns);
+  @include breakpoint(medium down) {
+    @include grid-column($main-sm-columns);
+  }
 }
