@@ -33,8 +33,8 @@ function excerpt_more() {
 add_filter('excerpt_more', __NAMESPACE__ . '\\excerpt_more');
 
 class Foundation_Nav_Menu extends \Walker_Nav_Menu {
-  function start_lvl(&$output, $depth) {
-    $indent = str_repeat("\t", $depth);
-    $output .= "\n$indent<ul class=\"menu\">\n";
-  }
+    function start_lvl(&$output, $depth = 0, $args = Array() ) {
+        $indent = str_repeat("\t", $depth);
+        $output .= "\n$indent<ul class=\"menu\">\n";
+    }
 }
