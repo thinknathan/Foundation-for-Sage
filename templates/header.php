@@ -6,7 +6,7 @@
   <div class="top-bar" id="top-menu">
     <div class="top-bar-left">
         <ul class="menu">
-          <li class="menu-text"><?php bloginfo('name'); ?></li>
+          <li class="home"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo('name'); ?></a></li>
         </ul>
     </div>
     <div class="top-bar-right">
