@@ -7,17 +7,6 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "foundation-sites": "6.2.3"
-  },
-  "overrides": {
-    "foundation-sites": {
-      "main": [
-
-        "./scss/foundation.scss",
-
-        "./dist/foundation.js"
-
-      ]
-    }
+    "foundation-sites": "6.3.1"
   }
 }
