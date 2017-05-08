@@ -7,6 +7,15 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "foundation-sites": "6.3.1"
+    "foundation-sites": "6.3.1",
+    "slick.js": "~1",  
+    "lazysizes": "~2",  
+    "jquery-match-height": "latest",  
+    "aos": "~2",  
+    "geoffgraham.animate.scss": "~3",  
+    "rellax": "~1",  
+    "magnific-popup": "~1",  
+    "sisyphus": "~1",  
+    "vidbg": "~1"
   }
 }
