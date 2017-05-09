@@ -29,6 +29,10 @@ msgstr ""
 msgid "Primary Navigation"
 msgstr ""
 
+#: lib/setup.php:31
+msgid "Mobile Navigation"
+msgstr ""
+
 #: lib/setup.php:57
 msgid "Primary"
 msgstr ""
