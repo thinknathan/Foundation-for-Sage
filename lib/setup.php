@@ -53,6 +53,7 @@ add_action('after_setup_theme', __NAMESPACE__ . '\\setup');
 /**
  * Register sidebars
  */
+/*
 function widgets_init() {
   register_sidebar([
     'name'          => __('Primary', 'sage'),
@@ -73,10 +74,12 @@ function widgets_init() {
   ]);
 }
 add_action('widgets_init', __NAMESPACE__ . '\\widgets_init');
+*/
 
 /**
  * Determine which pages should NOT display the sidebar
  */
+/*
 function display_sidebar() {
   static $display;
 
@@ -90,6 +93,7 @@ function display_sidebar() {
 
   return apply_filters('sage/display_sidebar', $display);
 }
+*/
 
 /**
  * Theme assets
