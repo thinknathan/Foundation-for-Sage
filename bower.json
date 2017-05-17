@@ -17,6 +17,41 @@
     "sisyphus": "~1",
     "vidbg": "latest"
   },
+  "overrides": {
+    "foundation-sites": {
+      "main": [
+        "./scss/foundation.scss",
+        "./dist/js/plugins/foundation.core.js",
+        "./dist/js/plugins/foundation.abide.js",
+        "./dist/js/plugins/foundation.accordion.js",
+        "./dist/js/plugins/foundation.accordionMenu.js",
+        "./dist/js/plugins/foundation.drilldown.js",
+        "./dist/js/plugins/foundation.dropdown.js",
+        "./dist/js/plugins/foundation.dropdownMenu.js",
+        "./dist/js/plugins/foundation.equalizer.js",
+        "./dist/js/plugins/foundation.interchange.js",
+        "./dist/js/plugins/foundation.magellan.js",
+        "./dist/js/plugins/foundation.offcanvas.js",
+        "./dist/js/plugins/foundation.orbit.js",
+        "./dist/js/plugins/foundation.responsiveMenu.js",
+        "./dist/js/plugins/foundation.responsiveToggle.js",
+        "./dist/js/plugins/foundation.reveal.js",
+        "./dist/js/plugins/foundation.slider.js",
+        "./dist/js/plugins/foundation.sticky.js",
+        "./dist/js/plugins/foundation.tabs.js",
+        "./dist/js/plugins/foundation.toggler.js",
+        "./dist/js/plugins/foundation.tooltip.js",
+        "./dist/js/plugins/foundation.util.box.js",
+        "./dist/js/plugins/foundation.util.keyboard.js",
+        "./dist/js/plugins/foundation.util.mediaQuery.js",
+        "./dist/js/plugins/foundation.util.motion.js",
+        "./dist/js/plugins/foundation.util.nest.js",
+        "./dist/js/plugins/foundation.util.timerAndImageLoader.js",
+        "./dist/js/plugins/foundation.util.touch.js",
+        "./dist/js/plugins/foundation.util.triggers.js"
+      ]
+    }
+  },
   "resolutions": {
     "jquery": ">= 2.2.0"
   }

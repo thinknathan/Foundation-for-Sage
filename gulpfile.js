@@ -88,7 +88,7 @@ var cssTasks = function(filename) {
       return gulpif('*.scss', sass({
         outputStyle: 'nested', // libsass doesn't support expanded yet
         precision: 10,
-        includePaths: ['.', './bower_components/foundation-sites/scss/'],
+        includePaths: ['.'],
         errLogToConsole: !enabled.failStyleTask
       }));
     })
