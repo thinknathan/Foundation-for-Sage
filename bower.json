@@ -7,15 +7,20 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
+    "jquery": "~2",
     "foundation-sites": "6.3.1",
     "slick.js": "~1",
     "lazysizes": "~2",
+    "pace": "~0.7",
     "jquery-match-height": "latest",
     "aos": "~2",
     "rellax": "latest",
     "magnific-popup": "~1",
     "sisyphus": "~1",
-    "vidbg": "latest"
+    "vidbg": "latest",
+    "respond": "latest",
+    "selectivizr2": "latest",
+    "oldie": "git@github.com:ianmcgregor/oldie.git#master"
   },
   "overrides": {
     "foundation-sites": {
@@ -51,8 +56,5 @@
         "./dist/js/plugins/foundation.util.triggers.js"
       ]
     }
-  },
-  "resolutions": {
-    "jquery": ">= 2.2.0"
   }
 }

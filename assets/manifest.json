@@ -19,9 +19,18 @@
     },
     "jquery.js": {
       "bower": ["jquery"]
+    },
+    "head.js": {
+      "bower": ["lazysizes", "pace"]
+    },
+    "head-ie.js": {
+      "bower": ["oldie"]
+    },
+    "ie.js": {
+      "bower": ["respond", "selectivizr2"]
     }
   },
   "config": {
-    "devUrl": "http://example.dev"
+    "devUrl": "http://localhost/x/site/web"
   }
 }
