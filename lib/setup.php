@@ -54,7 +54,6 @@ add_action('after_setup_theme', __NAMESPACE__ . '\\setup');
 /**
  * Register sidebars
  */
-/*
 function widgets_init() {
   register_sidebar([
     'name'          => __('Primary', 'sage'),
@@ -65,6 +64,7 @@ function widgets_init() {
     'after_title'   => '</h3>'
   ]);
 
+/*
   register_sidebar([
     'name'          => __('Footer', 'sage'),
     'id'            => 'sidebar-footer',
@@ -73,19 +73,19 @@ function widgets_init() {
     'before_title'  => '<h3>',
     'after_title'   => '</h3>'
   ]);
+*/
 }
 add_action('widgets_init', __NAMESPACE__ . '\\widgets_init');
-*/
 
 /**
  * Determine which pages should NOT display the sidebar
  */
-/*
+
 function display_sidebar() {
   static $display;
 
-  isset($display) || $display = !in_array(true, [
-    // The sidebar will NOT be displayed if ANY of the following return true.
+  isset($display) || $display = in_array(true, [
+    // The sidebar will ONLY be displayed if ANY of the following return true.
     // @link https://codex.wordpress.org/Conditional_Tags
     is_404(),
     is_front_page(),
@@ -94,7 +94,6 @@ function display_sidebar() {
 
   return apply_filters('sage/display_sidebar', $display);
 }
-*/
 
 /**
  * Theme assets
@@ -107,18 +106,22 @@ function assets() {
   }
 
   // Internet Explorer JS and HTML polyfill 
-  wp_enqueue_script('oldie', Assets\asset_path('scripts/ie/oldie.js'), array(), '0.0.1', true);
-  wp_script_add_data('oldie', 'conditional', 'IE');
+  wp_enqueue_script('sage/headie', Assets\asset_path('scripts/head-ie.js'), array(), null, false);
+  wp_script_add_data('sage/headie', 'conditional', 'IE');
+  
+  // Head script
+  wp_enqueue_script('sage/head', Assets\asset_path('scripts/head.js'), array(), null, false);
+  
+  // jQuery
+  wp_deregister_script('jquery');
+  wp_enqueue_script('jquery', Assets\asset_path('scripts/jquery.js'), array(), null, true);
   
   // Theme script
   wp_enqueue_script('sage/js', Assets\asset_path('scripts/main.js'), ['jquery'], null, true);
   
-  // Internet Explorer CSS3 polyfill
-  wp_enqueue_script('selectivizr2', Assets\asset_path('scripts/ie/selectivizr2.js'), ['jquery'], '1.0.9', true);
-  wp_script_add_data('selectivizr2', 'conditional', 'lt IE 9');
+  // Internet Explorer CSS3 & Media Query polyfills
+  wp_enqueue_script('sage/ie', Assets\asset_path('scripts/ie.js'), ['jquery'], null, true);
+  wp_script_add_data('sage/ie', 'conditional', 'lt IE 9');
 
-  // Internet Explorer Media Query polyfill
-  wp_enqueue_script('respond', Assets\asset_path('scripts/ie/respond.js'), ['selectivizr2'], '1.4.2', true);
-  wp_script_add_data('respond', 'conditional', 'lt IE 9');
 }
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\assets', 100);
