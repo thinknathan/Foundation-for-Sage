@@ -31,6 +31,6 @@
     }
   },
   "config": {
-    "devUrl": "http://localhost/x/site/public_html"
+    "devUrl": "http://localhost/x/public_html"
   }
 }
