@@ -6,11 +6,32 @@
       ],
       "main": true
     },
+    "footer-inline.js": {
+      "files": [
+        "scripts/footer-inline.js"
+      ]
+    },
+    "head-inline.js": {
+      "bower": ["loadcss", "fontfaceobserver", "nutil"],
+      "files": [
+        "scripts/head-inline.js"
+      ]
+    },
     "main.css": {
       "files": [
         "styles/main.scss"
       ],
       "main": true
+    },
+    "head-inline.css": {
+      "files": [
+        "styles/head-inline.scss"
+      ]
+    },
+    "login.css": {
+      "files": [
+        "styles/login.scss"
+      ]
     },
     "customizer.js": {
       "files": [
@@ -21,7 +42,7 @@
       "bower": ["jquery"]
     },
     "head.js": {
-      "bower": ["lazysizes", "pace"]
+      "bower": ["pace", "lazysizes"]
     },
     "head-ie.js": {
       "bower": ["oldie"]
@@ -31,6 +52,38 @@
     }
   },
   "config": {
-    "devUrl": "http://localhost/x/public_html"
+    "devUrl": "http://localhost/x/public_html",
+    "criticalCssFileName": "head-critical",
+    "criticalCssUrls": [
+      "http://localhost/x/public_html"
+    ],
+    "criticalCssSizes": [
+      {
+        "width": 320,
+        "height": 568
+      },
+      {
+        "width": 720,
+        "height": 1024
+      },
+      {
+        "width": 1366,
+        "height": 700 
+      },
+      {
+        "width": 1920,
+        "height": 1000
+      }
+    ],
+    "forceIncludeSelectors": [
+      ".lazyload",
+      ".lazyloading",
+      ".lazyloaded",
+      ".sticky",
+      ".wf-loading",
+      ".wf-active",
+      ".wf-inactive"
+    ],
+    "gFonts": ""
   }
 }
