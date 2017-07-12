@@ -6,7 +6,7 @@ use Roots\Sage\Wrapper;
 ?>
 
 <!doctype html>
-<html <?php language_attributes(); ?> class="no-js">
+<html <?php language_attributes(); ?> class="no-js no-fonts">
   <?php get_template_part('templates/head'); ?>
   <body <?php body_class(); ?>>
     <div class="off-canvas-wrapper">
@@ -24,6 +24,11 @@ use Roots\Sage\Wrapper;
           ?>
           <div class="wrap container" role="document">
             <div class="content">
+              <?php
+                if (Setup\display_breadcrumbs()) :
+                  get_template_part('templates/breadcrumbs');
+                endif;
+              ?>
               <main class="main">
                 <?php include Wrapper\template_path(); ?>
               </main><!-- /.main -->
