@@ -1,8 +1,7 @@
 // WordPress Generated Classes
 // http://codex.wordpress.org/CSS#WordPress_Generated_Classes
-
 body.sticky,
-article.sticky{
+article.sticky {
   position: static;
 }
 
@@ -13,39 +12,43 @@ article.sticky{
   max-width: 100%;
   height: auto;
 }
+
 .aligncenter {
   display: block;
-  // margin: ($line-height-computed / 2) auto;
+  margin: $global-margin auto;
   height: auto;
 }
+
 .alignleft,
 .alignright {
-  // margin-bottom: ($line-height-computed / 2);
+  margin-bottom: $global-margin;
   height: auto;
 }
-@media (small) {
+
+@include breakpoint(medium) {
   // Only float if not on an extra small device
   .alignleft {
     float: left;
-    // margin-right: ($line-height-computed / 2);
+    margin-right: $global-margin;
   }
   .alignright {
     float: right;
-    // margin-left: ($line-height-computed / 2);
+    margin-left: $global-margin;
   }
 }
 
 // Captions
 .wp-caption {
-  @extend .thumbnail;
+  //@extend .thumbnail;
   line-height: normal;
 }
+
 .wp-caption-text {
-  // padding: $thumbnail-caption-padding;
+  padding: $global-padding;
 }
 
 // Text meant only for screen readers
 .screen-reader-text {
-  // @extend .sr-only;
-  // @extend .sr-only-focusable;
+  @extend .show-for-sr;
+  @extend .show-on-focus;
 }

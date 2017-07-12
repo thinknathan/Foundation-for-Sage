@@ -1,0 +1,32 @@
+// Grid settings
+$main-sm-columns: 12;
+$sidebar-sm-columns: 4;
+
+.wrap {
+  padding: $global-padding * 2 $global-padding;
+  @include breakpoint(medium) {
+    padding: $global-padding * 3;
+  }
+}
+
+// Grid system
+.content {
+  @include flex-grid-row;
+}
+
+.main {
+  @include flex-grid-column($main-sm-columns);
+  .sidebar-primary & {
+    @include flex-grid-column($main-sm-columns - $sidebar-sm-columns);
+    @include breakpoint(medium down) {
+      @include flex-grid-column($main-sm-columns);
+    }
+  }
+}
+
+.sidebar {
+  @include flex-grid-column($sidebar-sm-columns);
+  @include breakpoint(medium down) {
+    display: none;
+  }
+}

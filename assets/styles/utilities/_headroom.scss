@@ -1,0 +1,17 @@
+.sticky.headroom,
+.headroom {
+  will-change: transform;
+  transition: transform 200ms linear;
+}
+
+.sticky.headroom--pinned,
+.headroom--pinned {
+  transform: translateY(0%);
+}
+
+.sticky.headroom--unpinned,
+.headroom--unpinned {
+  @include breakpoint(medium down) {
+    transform: translateY(-100%);
+  }
+}

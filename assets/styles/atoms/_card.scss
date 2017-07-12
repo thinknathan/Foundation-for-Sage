@@ -1,0 +1,97 @@
+//@include foundation-card;
+$card-post-bg: $card-background;
+$card-post-text-color: $body-font-color;
+
+/* Divider Options */
+
+//$card-post-divider-style: 'forward';
+$card-post-divider-style: 'back';
+//$card-post-divider-style: 'peak';
+//$card-post-divider-style: 'valley';
+//$card-post-divider-style: 'split';
+//$card-post-divider-style: 'round';
+//$card-post-divider-style: 'serrated';
+$card-post-divider-position: 'top-outside';
+$card-post-divider-height: 10;
+
+/* Hover Options */
+
+$card-hover-type: 'square';
+$card-hover-icon: 'chevron-right';
+$card-hover-icon-colour: '#fff';
+$card-hover-transition: 'fade';
+
+.card {
+  @include card-container($card-post-bg, $card-post-text-color, 2rem, $global-radius);
+  @include breakpoint(medium) {
+    margin-bottom: $global-margin * 3;
+  }
+}
+
+.card-divider {
+  @include card-divider;
+}
+
+.card-section {
+  @include card-section;
+}
+
+.card-post {
+  z-index: 0;
+  @include card-container($card-post-bg, $card-post-text-color, 2rem, $global-radius);
+  /*
+  &:hover {
+    .card-post-img {
+      opacity: 1;
+    }
+  }
+  */
+}
+
+.card-post-content {
+  position: relative;
+  //@include divider($card-post-divider-style, $card-post-divider-height, $card-post-bg, $card-post-divider-position);
+}
+
+.card-post-actions {
+  @include card-divider;
+  background: $card-post-bg;
+  display: flex;
+  padding-top: 0;
+}
+
+.card-post-avatar {
+  position: absolute;
+  bottom: 100%;
+  left: 1rem;
+  z-index: 2;
+  max-width: rem-calc(90);
+  img {
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba($black, 0.2);
+  }
+}
+
+.card-post-name {
+  margin-bottom: $global-margin / 2;
+  font-size: 1.5rem;
+  line-height: $header-lineheight;
+}
+
+.card-post-button {
+  margin-bottom: 0;
+  flex: 1 0 0;
+  +.card-post-button {
+    margin-left: 1rem;
+  }
+}
+
+.card-post-info {
+  font-size: 0.875rem;
+  letter-spacing: 1px;
+  color: lighten($card-post-text-color, 20%);
+}
+
+.card-post-img {
+  @include hover-transition($card-hover-type, $card-hover-transition, .66, $primary-color, $card-hover-icon, $card-hover-icon-colour, 30, $primary-color);
+}

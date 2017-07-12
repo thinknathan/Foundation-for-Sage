@@ -1,19 +1,17 @@
 .comment-list {
   list-style: none;
+  ol {
+    list-style: none;
+  }
 }
-.comment-list ol {
-  list-style: none;
-}
-.comment-form p {
-  // @extend .form-group;
-}
+
+.comment-form p {}
+
 .comment-form input[type="text"],
 .comment-form input[type="email"],
 .comment-form input[type="url"],
-.comment-form textarea {
-  // @extend .form-control;
-}
+.comment-form textarea {}
+
 .comment-form input[type="submit"] {
   @extend .button;
-  // @extend .btn-primary;
 }

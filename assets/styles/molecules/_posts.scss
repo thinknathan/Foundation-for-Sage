@@ -1,0 +1,43 @@
+// Hover for Linked Images
+$image-hover-type: 'square';
+$image-hover-icon: 'image';
+$image-hover-icon-colour: '#fff';
+$image-hover-transition: 'fade';
+
+.post {
+  @extend .card;
+  .entry-content,
+  .entry-summary,
+  .entry-header,
+  .entry-footer {
+    @extend .card-section;
+  }
+  .entry-header {
+    padding-bottom: 0;
+  }
+  .entry-footer {
+    @extend .card-divider;
+    font-size: 0.85rem;
+    .meta + .meta {
+      padding-left: 1rem;
+    }
+  }
+  a:link .intrinsic-ratio-box {
+    @include hover-transition($image-hover-type, $image-hover-transition, .66, $primary-color, $image-hover-icon, $image-hover-icon-colour, 30, $primary-color);
+  }
+}
+
+// Grid system
+.related-posts {
+  @include flex-grid-row(nest);
+  &>a {
+    @include flex-grid-column(12);
+    @include breakpoint(medium) {
+      @include flex-grid-column(6);
+    }
+  }
+}
+
+.related-post {
+  @extend .card-post;
+}

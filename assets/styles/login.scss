@@ -1,0 +1,23 @@
+ @import 'settings/settings';
+ @import "../../bower_components/foundation-sites/scss/foundation.scss";
+
+ body {
+   background: $primary-color;
+ }
+
+ .login #nav,
+ .login #backtoblog {
+   text-align: center;
+   a:link,
+   a:visited {
+     color: $white;
+   }
+   a:focus,
+   a:active,
+   a:hover {
+     color: $white;
+   }
+ }
+
+ @include foundation-forms;
+ @include foundation-typography;

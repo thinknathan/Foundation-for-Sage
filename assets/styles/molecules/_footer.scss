@@ -1,0 +1,14 @@
+$footer-cols: 12;
+.content-info {
+  background: $primary-color;
+  color: $white;
+  .container {
+    @include flex-grid-row;
+    padding: $global-padding * 3;
+  }
+  .copyright {
+    @include flex-grid-column($footer-cols);
+    text-align: center;
+    margin-bottom: 0;
+  }
+}

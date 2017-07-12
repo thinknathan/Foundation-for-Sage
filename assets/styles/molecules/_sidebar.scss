@@ -1,0 +1,27 @@
+.search-submit{
+  @include button;
+}
+
+.widget{
+  ul{
+    list-style: none;
+    margin-left: 0;
+  }
+}
+
+.sidebar {
+  &>div {
+    margin-bottom: $global-margin;
+  }
+}
+
+.widget ul {
+  @extend .menu;
+  @extend .menu.vertical;
+  &>li>a {
+    padding-left: 0;
+    padding-top: .8rem;
+    padding-bottom: .8rem;
+    line-height: $header-lineheight;
+  }
+}

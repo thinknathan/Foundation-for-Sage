@@ -1,0 +1,30 @@
+@include foundation-off-canvas;
+.off-canvas {
+  .no-js & {
+    transition-delay: 0s;
+  }
+  .close-button {
+    top: 1rem;
+    right: 2rem;
+    @include breakpoint(medium) {
+      top: 1.5rem;
+      right: 2.5rem;
+    }
+  }
+  .masthead {
+    background-color: $primary-color;
+    color: $white;
+    margin-bottom: 0;
+    a {
+      color: $white;
+    }
+  }
+  .off-canvas-inner {
+    padding: $global-padding * 2;
+    background-color: $secondary-color;
+  }
+}
+
+.js-off-canvas-overlay.is-overlay-fixed {
+  z-index: $offcanvas-overlap-zindex - 1;
+}

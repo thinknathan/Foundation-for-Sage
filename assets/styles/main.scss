@@ -1,59 +1,117 @@
-@import "common/_variables";
-@import "settings/_settings";
+/* Structure based on Robert Rendle's The “Other” Interface: Atomic Design With Sass */
 
-// Automatically injected Bower dependencies via wiredep (never manually edit this block)
+
+/* ==========================================================================
+ * Utilities
+ * system-wide styles
+ * the basic plumbing of the website
+ * global classes, mixins and styles that can be used anywhere and at any time
+   ========================================================================== */
+
+@import "settings/settings";
 // bower:scss
 @import "../../bower_components/foundation-sites/scss/foundation.scss";
 // endbower
+@import "utilities/global";
+//@import "utilities/flex-classes";
+@import "utilities/visibility-classes";
+//@import "utilities/float-classes";
+@import "utilities/wp-classes";
+@import "utilities/lazyload";
+@import "utilities/font-face";
+@import "utilities/string-replace";
+@import "utilities/url-encode";
+@import "utilities/inline-svg-function";
+@import "utilities/ripple";
+@import "utilities/divider";
+@import "utilities/inline-icon";
+@import "utilities/hover-transition";
 
-@include foundation-global-styles;
-//@include foundation-grid;
-@include foundation-flex-classes;
-@include foundation-flex-grid;
-@include foundation-typography;
-@include foundation-forms;
-@include foundation-button;
-@include foundation-visibility-classes;
-@include foundation-float-classes;
-@include foundation-accordion;
-@include foundation-accordion-menu;
-@include foundation-badge;
-@include foundation-breadcrumbs;
-@include foundation-button-group;
-@include foundation-callout;
-@include foundation-close-button;
-@include foundation-drilldown-menu;
-@include foundation-dropdown;
-@include foundation-dropdown-menu;
-@include foundation-flex-video;
-@include foundation-label;
-@include foundation-media-object;
-@include foundation-menu;
-@include foundation-menu-icon;
-@include foundation-off-canvas;
-@include foundation-orbit;
-@include foundation-pagination;
-@include foundation-progress-bar;
-@include foundation-slider;
-@include foundation-sticky;
-@include foundation-reveal;
-@include foundation-switch;
-@include foundation-table;
-@include foundation-tabs;
-@include foundation-thumbnail;
-@include foundation-title-bar;
-@include foundation-tooltip;
-@include foundation-top-bar;
+/* Foundation - Plugins */
 
-@import "common/global";
-@import "components/buttons";
-@import "components/comments";
-@import "components/forms";
-@import "components/grid";
-@import "components/wp-classes";
-@import "layouts/header";
-@import "layouts/sidebar";
-@import "layouts/footer";
-@import "layouts/pages";
-@import "layouts/posts";
-@import "layouts/tinymce";
+@import "utilities/headroom";
+@import "utilities/sticky";
+//@import "utilities/reveal";
+
+/* ==========================================================================
+ * Quarks
+ * basic building blocks: classless HTML elements
+ * paragraphs, tables, images and links
+ * think globally and don't styling for any particular section of the design
+   ========================================================================== */
+
+@import "quarks/images";
+@import "quarks/forms";
+@import "quarks/typography";
+//@import "quarks/table";
+
+/* ==========================================================================
+ * Atoms
+ * universal abstractions: media or flag
+ * should almost never be attached to an HTML element itself
+   ========================================================================== */
+
+
+/* Custom */
+
+@import "atoms/masthead";
+@import "atoms/inline-icon";
+
+/* Foundation - Grid */
+
+//@import "atoms/grid";
+
+/* Foundation - Controls */
+
+@import "atoms/buttons";
+//@import "atoms/slider";
+//@import "atoms/switch";
+
+/* Foundation - Navigation */
+
+@import "atoms/menu";
+@import "atoms/menu-icon";
+//@import "atoms/dropdown-menu";
+@import "atoms/drilldown-menu";
+//@import "atoms/accordion-menu";
+@import "atoms/pagination";
+@import "atoms/breadcrumbs";
+
+/* Foundation - Containers */
+
+//@import "atoms/accordion";
+//@import "atoms/callout";
+@import "atoms/card";
+//@import "atoms/dropdown";
+//@import "atoms/media-object";
+//@import "atoms/tabs";
+
+/* Foundation - Media */
+
+//@import "atoms/badge";
+//@import "atoms/responsive-embed";
+//@import "atoms/label";
+//@import "atoms/tooltip";
+//@import "atoms/progress-bar";
+//@import "atoms/thumbnail";
+
+/* ==========================================================================
+ * Molecules
+ * one-off structures: banner, navigation element, footer
+ * don’t intend to replicate
+ * extend, modify and combine other styles and modules
+   ========================================================================== */
+
+//@import "molecules/comments";
+@import "molecules/main";
+@import "molecules/search";
+@import "molecules/header";
+@import "molecules/content";
+@import "molecules/sidebar";
+@import "molecules/footer";
+//@import "molecules/mobile-bottom-bar";
+@import "molecules/pages";
+@import "molecules/off-canvas";
+@import "molecules/posts";
+//@import "molecules/magnific-popup";
+//@import "molecules/tinymce";
