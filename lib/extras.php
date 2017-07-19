@@ -595,3 +595,27 @@ function login_logo() { ?>
   </style>
 <?php }
 add_action( 'login_enqueue_scripts', __NAMESPACE__ . '\\login_logo' );
+
+/**
+* Move Gravity Forms code to the footer
+* Credit: https://gist.github.com/eriteric/5d6ca5969a662339c4b3
+*/
+add_filter( 'gform_init_scripts_footer', '__return_true' );
+
+function wrap_gform_cdata_open( $content = '' ) {
+  if ( ( defined('DOING_AJAX') && DOING_AJAX ) || isset( $_POST['gform_ajax'] ) ) {
+      return $content;
+  }
+  $content = 'document.addEventListener( "DOMContentLoaded", function() { ';
+  return $content;
+}
+add_filter( 'gform_cdata_open', 'wrap_gform_cdata_open', 1 );
+
+function wrap_gform_cdata_close( $content = '' ) {
+  if ( ( defined('DOING_AJAX') && DOING_AJAX ) || isset( $_POST['gform_ajax'] ) ) {
+    return $content;
+  }
+  $content = ' }, false );';
+  return $content;
+}
+add_filter( 'gform_cdata_close', 'wrap_gform_cdata_close', 99 );
