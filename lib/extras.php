@@ -619,3 +619,8 @@ function wrap_gform_cdata_close( $content = '' ) {
   return $content;
 }
 add_filter( 'gform_cdata_close', __NAMESPACE__ . '\\wrap_gform_cdata_close', 99 );
+
+/**
+* Turn off Gravity Forms CSS
+*/
+add_filter( 'pre_option_rg_gforms_disable_css', '__return_true' );
