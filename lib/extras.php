@@ -582,6 +582,14 @@ function login_logo_url() {
 add_filter( 'login_headerurl', __NAMESPACE__ . '\\login_logo_url' );
 
 /**
+* Login page logo title text to website title
+*/
+function login_logo_title() {
+    return get_bloginfo('name');
+}
+add_filter( 'login_headertitle', __NAMESPACE__ . '\\login_logo_title' );
+
+/**
 * Login page custom logo
 */
 function login_logo() { ?>
