@@ -1,0 +1,26 @@
+/**
+ * Gravity Forms Styles
+ *
+ * Version: 1.0.0
+ * License: MIT - http://wpsitecare.mit-license.org/
+ */
+
+.gform_wrapper {
+
+	.hidden_label {
+
+		.gfield_label {
+			clip: rect( 1px, 1px, 1px, 1px );
+			height: 1px;
+			overflow: hidden;
+			position: absolute;
+			width: 1px;
+		}
+	}
+
+	.gform_validation_container {
+		display: none;
+		left: -9000px;
+		position: absolute;
+	}
+}

@@ -1,0 +1,116 @@
+/**
+ * Gravity Forms Styles
+ *
+ * Version: 1.0.0
+ * License: MIT - http://wpsitecare.mit-license.org/
+ */
+
+.gform_wrapper {
+
+	.gf_progressbar_wrapper {
+		flex: flex-grid-column(100%);
+
+		border-bottom: 1px dotted $gravity-light-gray;
+		margin: 0 0 $gravity-margin-small;
+		padding: 0 0 $gravity-margin-small;
+
+		@include breakpoint(large) {
+			margin-bottom: $gravity-margin-medium;
+			padding-bottom: $gravity-margin-medium;
+		}
+
+		.gf_progressbar_title {
+			font-size: $gravity-medium-font-size;
+			font-weight: normal;
+		}
+	}
+
+	.gf_progressbar {
+		background: $gravity-light-gray;
+		border: 1px solid $gravity-medium-fog;
+		height: 20px;
+		line-height: 20px;
+		overflow: hidden;
+	}
+
+	.gf_progressbar_percentage {
+		font-size: $gravity-medium-font-size;
+		height: 20px;
+		text-align: right;
+		text-shadow: 0 1px 1px rgba( $gravity-off-black, 0.5 );
+
+		span {
+			display: block;
+			float: right;
+			margin: 0 5px;
+			width: auto;
+		}
+
+		&.percentbar_0 span {
+			color: $gravity-light-gray;
+			text-shadow: none;
+		}
+	}
+
+	.percentbar_blue {
+		background-color: $gravity-blue;
+		color: $gravity-white;
+	}
+
+	.percentbar_gray {
+		background-color: $gravity-gray;
+		color: $gravity-white;
+	}
+
+	.percentbar_green {
+		background-color: $gravity-green;
+		color: $gravity-white;
+	}
+
+	.percentbar_orange {
+		background-color: $gravity-orange;
+		color: $gravity-white;
+	}
+
+	.percentbar_red {
+		background-color: $gravity-red;
+		color: $gravity-white;
+	}
+
+	.gf_page_steps {
+		flex: flex-grid-column(100%);
+
+		border-bottom: 1px dotted $gravity-light-gray;
+		margin: 0 0 $gravity-margin-small;
+		padding: 0 0 $gravity-margin-small;
+
+		@include breakpoint(large) {
+			margin-bottom: $gravity-margin-medium;
+			padding-bottom: $gravity-margin-medium;
+		}
+	}
+
+	.gf_step {
+		display: inline-block;
+		height: $gravity-title-font-size;
+		line-height: 1.25;
+		margin: 0 16px 10px 0;
+		opacity: 0.2;
+
+		span {
+			vertical-align: top;
+		}
+	}
+
+	.gf_step_active {
+		opacity: 1;
+	}
+
+	.gf_step_number {
+		font-size: $gravity-title-font-size;
+	}
+
+	.gf_step_clear {
+		flex: flex-grid-column(100%);
+	}
+}

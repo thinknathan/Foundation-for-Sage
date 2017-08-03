@@ -1,0 +1,33 @@
+/**
+ * Gravity Forms Styles
+ *
+ * Version: 1.0.0
+ * License: MIT - http://wpsitecare.mit-license.org/
+ */
+
+.gform_wrapper {
+
+	.ginput_container {
+
+		textarea {
+			resize: none;
+
+			&.small,
+			&.medium {
+				width: 100%;
+			}
+
+			&.small {
+				height: 5em;
+			}
+
+			&.medium {
+				height: 9.375em;
+			}
+
+			&.large {
+				height: 15.625em;
+			}
+		}
+	}
+}

@@ -1,0 +1,25 @@
+/**
+ * Gravity Forms Styles
+ *
+ * Version: 1.0.0
+ * License: MIT - http://wpsitecare.mit-license.org/
+ */
+
+.gform_wrapper {
+
+	select {
+		padding: 10px;
+	}
+
+	.ginput_container_multiselect {
+
+		select {
+			background: $gravity-white;
+			padding: 0;
+
+			option {
+				padding: $gravity-form-input-padding / 2;
+			}
+		}
+	}
+}

@@ -1,0 +1,29 @@
+/**
+ * Gravity Forms Styles
+ *
+ * Version: 1.0.0
+ * License: MIT - http://wpsitecare.mit-license.org/
+ */
+
+.gform_wrapper {
+
+	table {
+
+		border: 0 none;
+		margin: 0;
+
+		td {
+			border: 0 none;
+			padding: 0;
+		}
+	}
+
+	tbody {
+		border: 0 none;
+	}
+
+	.gfield_list_icons {
+		padding-left: 10px;
+	}
+
+}

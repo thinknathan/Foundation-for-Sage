@@ -1,0 +1,48 @@
+/**
+ * Gravity Forms Styles
+ *
+ * Version: 1.0.0
+ * License: MIT - http://wpsitecare.mit-license.org/
+ */
+
+.gform_wrapper {
+
+	.ginput_complex {
+		display: flex;
+
+		&.ginput_container_address {
+			flex-wrap: wrap;
+		}
+
+		span {
+			flex-grow: 1;
+			flex-shrink: 1;
+			margin-right: 1.6949152542%;
+
+			&:last-of-type {
+				margin-right: 0;
+			}
+		}
+
+		.name_prefix_select {
+			flex-grow: 0;
+			flex-shrink: 0;
+		}
+
+		.ginput_full {
+			flex-shrink: 0;
+			margin-right: 0;
+			width: 100%;
+		}
+
+		.ginput_left {
+			@include flex-grid-column(6);
+			flex-shrink: 0;
+		}
+
+		.ginput_right {
+			@include flex-grid-column(6); // Should be right-aligned
+			flex-shrink: 0;
+		}
+	}
+}
