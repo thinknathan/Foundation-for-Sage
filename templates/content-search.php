@@ -7,7 +7,7 @@
     </h2>
   </header>
   <div class="entry-summary">
-    <?= Roots\Sage\Extras\Snip(get_the_content(), '20', 'words'); ?>
+    <?= Roots\Sage\Extras\snip(get_the_content(), '20', 'words'); ?>
   </div>
   <?php if (get_post_type() === 'post'): ?>
     <footer class="entry-footer">
