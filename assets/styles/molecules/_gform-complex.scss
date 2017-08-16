@@ -6,43 +6,39 @@
  */
 
 .gform_wrapper {
-
-	.ginput_complex {
-		display: flex;
-
-		&.ginput_container_address {
-			flex-wrap: wrap;
-		}
-
-		span {
-			flex-grow: 1;
-			flex-shrink: 1;
-			margin-right: 1.6949152542%;
-
-			&:last-of-type {
-				margin-right: 0;
-			}
-		}
-
-		.name_prefix_select {
-			flex-grow: 0;
-			flex-shrink: 0;
-		}
-
-		.ginput_full {
-			flex-shrink: 0;
-			margin-right: 0;
-			width: 100%;
-		}
-
-		.ginput_left {
-			@include flex-grid-column(6);
-			flex-shrink: 0;
-		}
-
-		.ginput_right {
-			@include flex-grid-column(6); // Should be right-aligned
-			flex-shrink: 0;
-		}
-	}
+  .ginput_complex {
+    @include breakpoint(medium) {
+      @include flex-grid-row();
+    }
+    /*
+    &.ginput_container_address {
+      flex-wrap: wrap;
+    }
+    .name_prefix_select {
+      flex-grow: 0;
+      flex-shrink: 0;
+    }
+    */
+    .ginput_full {
+      @include breakpoint(medium) {
+        @include flex-grid-column(12);
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+    .name_first,
+    .ginput_left {
+      @include breakpoint(medium) {
+        @include flex-grid-column(6);
+        padding-left: 0;
+      }
+    }
+    .name_last,
+    .ginput_right {
+      @include breakpoint(medium) {
+        @include flex-grid-column(6); // Should be right-aligned
+        padding-right: 0;
+      }
+    }
+  }
 }

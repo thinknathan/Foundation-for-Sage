@@ -6,116 +6,92 @@
  */
 
 .gform_wrapper {
-
-	.gfield_creditcard_warning {
-		background: $gravity-white;
-		border-left: 5px solid $gravity-red;
-		padding: 15px 15px 10px;
-
-		.gfield_creditcard_warning_message {
-			color: $gravity-red;
-		}
-	}
-
-	.ginput_container_creditcard {
-		flex-wrap: wrap;
-
-		.ginput_full {
-			margin-top: $gravity-margin;
-		}
-	}
-
-	.gform_card_icon_container {
-		margin-bottom: $gravity-margin;
-	}
-
-	.gform_card_icon,
-	.ginput_card_security_code_icon {
-		background-repeat: no-repeat;
-		background-size: contain;
-		display: inline-block;
-		height: auto;
-		margin-right: 10px;
-		text-indent: -100%;
-		width: 52px;
-	}
-
-	.gform_card_icon_amex {
-		background-image: url( "../images/cards/amex.svg" );
-	}
-
-	.gform_card_icon_discover {
-		background-image: url( "../images/cards/discover.svg" );
-	}
-
-	.gform_card_icon_mastercard {
-		background-image: url( "../images/cards/mastercard.svg" );
-	}
-
-	.gform_card_icon_visa {
-		background-image: url( "../images/cards/visa.svg" );
-	}
-
-	.gform_card_icon_jcb {
-		background-image: url( "../images/cards/jcb.svg" );
-	}
-
-	.gform_card_icon_maestro {
-		background-image: url( "../images/cards/maestro.svg" );
-	}
-
-	.ginput_card_security_code_icon {
-		background-image: url( "../images/cards/security-code.svg" );
-	}
-
-	.ginput_card_expiration_container {
-		select {
-			@include flex-grid-column(6);
-			flex-shrink: 0;
-
-			&:last-of-type {
-				@include flex-grid-column(6); // Should be right-aligned
-			}
-		}
-	}
-
-	.ginput_complex .ginput_cardinfo_left {
-		@include flex-grid-column(6);
-		flex-shrink: 0;
-	}
-
-	.ginput_complex .ginput_cardinfo_right {
-		@include flex-grid-column(6); // Should be right-aligned
-		flex-shrink: 0;
-	}
-
-	.ginput_card_security_code {
-		@include flex-grid-column(10);
-	}
-
-	.ginput_card_security_code_icon {
-		@include flex-grid-column(2); // Should be right-aligned
-	}
-
-	.gfield_price {
-
-		.ginput_container {
-			align-items: center;
-			display: flex;
-			flex-wrap: nowrap;
-
-			input {
-				flex-shrink: 1;
-				width: auto;
-			}
-
-			span {
-				margin-right: 1.6949152542%;
-			}
-		}
-	}
-
-	.ginput_product_price {
-		color: $gravity-green;
-	}
+  .gfield_creditcard_warning {
+    background: $gravity-white;
+    border-left: 5px solid $gravity-red;
+    padding: 15px 15px 10px;
+    .gfield_creditcard_warning_message {
+      color: $gravity-red;
+    }
+  }
+  .ginput_container_creditcard {
+    flex-wrap: wrap;
+    .ginput_full {
+      margin-top: $gravity-margin;
+    }
+  }
+  .gform_card_icon_container {
+    margin-bottom: $gravity-margin;
+  }
+  .gform_card_icon,
+  .ginput_card_security_code_icon {
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: inline-block;
+    height: auto;
+    margin-right: 10px;
+    text-indent: -100%;
+    width: 52px;
+  }
+  .gform_card_icon_amex {
+    background-image: url("../images/cards/amex.svg");
+  }
+  .gform_card_icon_discover {
+    background-image: url("../images/cards/discover.svg");
+  }
+  .gform_card_icon_mastercard {
+    background-image: url("../images/cards/mastercard.svg");
+  }
+  .gform_card_icon_visa {
+    background-image: url("../images/cards/visa.svg");
+  }
+  .gform_card_icon_jcb {
+    background-image: url("../images/cards/jcb.svg");
+  }
+  .gform_card_icon_maestro {
+    background-image: url("../images/cards/maestro.svg");
+  }
+  .ginput_card_security_code_icon {
+    background-image: url("../images/cards/security-code.svg");
+  }
+  .ginput_card_expiration_container {
+    select {
+      @include flex-grid-column(6);
+      flex-shrink: 0;
+      &:last-of-type {
+        @include flex-grid-column(6); // Should be right-aligned
+      }
+    }
+  }
+  .ginput_complex .ginput_cardinfo_left {
+    @include flex-grid-column(6);
+    flex-shrink: 0;
+  }
+  .ginput_complex .ginput_cardinfo_right {
+    @include flex-grid-column(6); // Should be right-aligned
+    flex-shrink: 0;
+  }
+  .ginput_card_security_code {
+    @include flex-grid-column(10);
+  }
+  .ginput_card_security_code_icon {
+    @include flex-grid-column(2); // Should be right-aligned
+  }
+  .gfield_price {
+    .ginput_container {
+      align-items: center;
+      display: flex;
+      flex-wrap: nowrap;
+      input {
+        flex-shrink: 1;
+        width: auto;
+      }
+      span {
+        margin-right: 1.6949152542%;
+      }
+    }
+  }
+  .ginput_product_price {
+    color: $gravity-green;
+  }
 }

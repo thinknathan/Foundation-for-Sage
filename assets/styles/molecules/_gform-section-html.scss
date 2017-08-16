@@ -6,22 +6,18 @@
  */
 
 .gform_wrapper {
-
-	.gfield_html,
-	.gsection {
-		flex: flex-grid-column(100%);
-
-		border-bottom: 1px dotted $gravity-light-gray;
-		margin: 0 0 $gravity-margin-small;
-		padding: 0 0 $gravity-margin-small;
-
-		@include breakpoint(large) {
-			margin-bottom: $gravity-margin-medium;
-			padding-bottom: $gravity-margin-medium;
-		}
-	}
-
-	.gfield_html {
-		border-bottom: 0 none;
-	}
+  .gfield_html,
+  .gsection {
+    //flex: flex-grid-column(12);
+    //border-bottom: 1px dotted $gravity-light-gray;
+    margin: $gravity-margin 0 $gravity-margin-small;
+    padding: 0 0 $gravity-margin-small;
+    @include breakpoint(large) {
+      margin-bottom: $gravity-margin-medium;
+      padding-bottom: $gravity-margin-medium;
+    }
+  }
+  .gfield_html {
+    //border-bottom: 0 none;
+  }
 }

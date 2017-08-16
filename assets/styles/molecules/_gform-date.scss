@@ -6,21 +6,24 @@
  */
 
 .gform_wrapper {
-
-	.datepicker_with_icon {
-		margin-right: 10px;
-	}
-
-	.clear-multi {
-		display: flex;
-
-		div {
-			flex-grow: 1;
-			margin-right: 1.6949152542%;
-
-			&:last-child {
-				margin-right: 0;
-			}
-		}
-	}
+  // Let the datepicker icon float next to input
+  .datepicker_with_icon {
+    display: inline-block;
+    margin-right: 10px;
+    max-width: 85%;
+  }
+  // Remove the seconds separator completely
+  .gfield_time_hour > input + i {
+    display: none;
+  }
+  .clear-multi {
+    display: flex;
+    div {
+      flex-grow: 1;
+      margin-right: 1.6949152542%;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
 }

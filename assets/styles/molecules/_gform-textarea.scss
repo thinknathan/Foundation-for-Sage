@@ -6,28 +6,22 @@
  */
 
 .gform_wrapper {
-
-	.ginput_container {
-
-		textarea {
-			resize: none;
-
-			&.small,
-			&.medium {
-				width: 100%;
-			}
-
-			&.small {
-				height: 5em;
-			}
-
-			&.medium {
-				height: 9.375em;
-			}
-
-			&.large {
-				height: 15.625em;
-			}
-		}
-	}
+  .ginput_container {
+    textarea {
+      resize: none;
+      &.small,
+      &.medium {
+        width: 100%;
+      }
+      &.small {
+        height: 5em;
+      }
+      &.medium {
+        height: 9.375em;
+      }
+      &.large {
+        height: 15.625em;
+      }
+    }
+  }
 }

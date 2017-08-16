@@ -6,40 +6,36 @@
  */
 
 .gform_wrapper {
-
-	.gfield_error {
-		background: $gravity-white;
-		border-left: 5px solid $gravity-red;
-		padding: 15px 15px 10px;
-
-		> label {
-			color: $gravity-red;
-		}
-
-		input[type="color"],
-		input[type="date"],
-		input[type="datetime"],
-		input[type="datetime-local"],
-		input[type="email"],
-		input[type="month"],
-		input[type="number"],
-		input[type="password"],
-		input[type="search"],
-		input[type="tel"],
-		input[type="text"],
-		input[type="time"],
-		input[type="url"],
-		input[type="week"],
-		input,
-		select,
-		textarea {
-			border-color: $gravity-red;
-
-			&::placeholder {
-				color: $gravity-red;
-				opacity: 0.7;
-			}
-		}
-	}
-
+  .gfield_error {
+    background: $gravity-white;
+    border-left: 5px solid $gravity-red;
+    padding: 15px 15px 10px;
+    .validation_message,
+    >label {
+      color: $gravity-red;
+    }
+    input[type="color"],
+    input[type="date"],
+    input[type="datetime"],
+    input[type="datetime-local"],
+    input[type="email"],
+    input[type="month"],
+    input[type="number"],
+    input[type="password"],
+    input[type="search"],
+    input[type="tel"],
+    input[type="text"],
+    input[type="time"],
+    input[type="url"],
+    input[type="week"],
+    input,
+    select,
+    textarea {
+      border-color: $gravity-red;
+      &::placeholder {
+        color: $gravity-red;
+        opacity: 0.7;
+      }
+    }
+  }
 }

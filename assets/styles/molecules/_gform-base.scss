@@ -6,77 +6,65 @@
  */
 
 .gform_wrapper {
-	text-align: left;
-
-	ul {
-		margin-left: 0;
-
-		li {
-			list-style-type: none;
-			margin: $gravity-margin 0 0;
-		}
-	}
-
-	.gform_title,
-	.gsection_title {
-		font-size: $gravity-title-font-size;
-	}
-
-	.gform_fields {
-		padding: 0;
-	}
-
-	.gfield {
-		clear: both;
-	}
-
-	.gfield_label {
-		clear: both;
-		display: inline-block;
-		font-weight: 600;
-		margin: $gravity-margin-small 0;
-
-		@include breakpoint(large) {
-			margin-top: $gravity-margin-medium;
-		}
-	}
-
-	.gfield_description {
-		font-size: $gravity-medium-font-size;
-	}
-
-	.gfield_required {
-		color: $gravity-red;
-		padding-left: 2px;
-	}
-
-	.field_description_above {
-
-		.gfield_description {
-			margin-bottom: $gravity-margin-small;
-
-			@include breakpoint(large) {
-				margin-bottom: $gravity-margin-medium;
-			}
-		}
-	}
-
-	.ginput_container {
-
-		.small {
-			width: 25%;
-		}
-
-		.medium {
-			width: 50%;
-		}
-
-		.large {
-			width: 100%;
-		}
-	}
-
-	.gform_footer {
-		margin-top: $gravity-margin;
-	}
+  text-align: left;
+  ul {
+    margin-left: 0;
+    li {
+      list-style-type: none;
+      margin: $gravity-margin 0 0;
+    }
+  }
+  input,select {
+    margin-bottom: 0;
+  }
+  .gform_title,
+  .gsection_title {
+    font-size: $gravity-title-font-size;
+  }
+  .gform_fields {
+    padding: 0;
+  }
+  .gfield {
+    clear: both;
+  }
+  .gfield_label {
+    clear: both;
+    display: inline-block;
+    font-weight: 700;
+    margin: $gravity-margin-small 0;
+    @include breakpoint(large) {
+      margin-top: $gravity-margin-medium;
+    }
+  }
+  .gfield_description {
+    font-size: $gravity-medium-font-size;
+  }
+  .gfield_required {
+    color: $gravity-red;
+    padding-left: 2px;
+  }
+  .field_description_above {
+    .gfield_description {
+      margin-bottom: $gravity-margin-small;
+      @include breakpoint(large) {
+        margin-bottom: $gravity-margin-medium;
+      }
+    }
+  }
+  .ginput_container {
+    @include breakpoint(medium) {
+      .small {
+        width: 25%;
+      }
+      .medium {
+        width: 50%;
+      }
+      .large {
+        width: 100%;
+      }
+    }
+  }
+  .gform_footer {
+    margin-top: $gravity-margin;
+  }
 }
