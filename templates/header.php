@@ -38,7 +38,7 @@
   <div data-sticky-container>
     <nav class="site-nav" data-sticky data-sticky-on="large" data-stick-to="top" data-margin-top="0" data-anchor="document">
       <div class="container">
-        <?php Roots\Sage\Extras\top_nav(); ?>
+        <?php Roots\Sage\Setup\top_nav(); ?>
       </div>
     </nav>
   </div>

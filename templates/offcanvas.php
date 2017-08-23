@@ -10,7 +10,7 @@
   <div class="off-canvas-inner">
     <?php get_search_form(); ?>
     <?php if (has_nav_menu('primary_navigation')): ?>
-      <?php Roots\Sage\Extras\off_canvas_nav(); ?>
+      <?php Roots\Sage\Setup\off_canvas_nav(); ?>
     <?php endif; ?>
   </div>
 </div>
