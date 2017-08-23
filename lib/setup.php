@@ -13,8 +13,9 @@ function setup() {
   add_theme_support('soil-clean-up');
   add_theme_support('soil-nav-walker');
   add_theme_support('soil-nice-search');
-  //add_theme_support('soil-jquery-cdn');
   add_theme_support('soil-relative-urls');
+  add_theme_support('soil-js-to-footer');
+  add_theme_support('soil-disable-trackbacks');
 
   // Make theme available for translation
   // Community translations can be found at https://github.com/roots/sage-translations
@@ -55,6 +56,14 @@ function setup() {
   // Use main stylesheet for visual editor
   // To add custom styles edit /assets/styles/layouts/_tinymce.scss
   //add_editor_style(Assets\asset_path('styles/main.css'));
+  
+  // ACF Options Page
+  if( function_exists('acf_add_options_page') ) {
+    acf_add_options_page();
+  }
+  
+  // Support Yoast SEO Breadcrumbs
+  add_theme_support('yoast-seo-breadcrumbs');
 }
 add_action('after_setup_theme', __NAMESPACE__ . '\\setup');
 
