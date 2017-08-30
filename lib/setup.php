@@ -18,6 +18,9 @@ function setup() {
   add_theme_support('soil-disable-asset-versioning');
   //add_theme_support('soil-google-analytics', 'UA-XXXXX-Y');
 
+  // Custom logo support
+  //add_theme_support( 'custom-logo' );
+
   // Make theme available for translation
   // Community translations can be found at https://github.com/roots/sage-translations
   load_theme_textdomain('sage', get_template_directory() . '/lang');
