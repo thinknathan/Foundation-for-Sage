@@ -194,12 +194,13 @@ function _add_class( $htmlString = '', $newClass ) {
 }
 
 // Run this later, so other content filters have run, including image_add_wh on WP.com
-add_filter('the_content', __NAMESPACE__ . '\\filter_images', 200 );
+add_filter('the_content',         __NAMESPACE__ . '\\filter_images', 200 );
+add_filter('get_custom_logo',     __NAMESPACE__ . '\\filter_images', 200 );
 add_filter('post_thumbnail_html', __NAMESPACE__ . '\\filter_images', 200 );
-add_filter('widget_text', __NAMESPACE__ . '\\filter_images', 200 );
-add_filter('oembed_result', __NAMESPACE__ . '\\filter_iframes', 200 );
-add_filter('embed_oembed_html', __NAMESPACE__ . '\\filter_iframes', 200 );
-add_filter('get_avatar', __NAMESPACE__ . '\\filter_avatar', 200 );
+add_filter('widget_text',         __NAMESPACE__ . '\\filter_images', 200 );
+add_filter('oembed_result',       __NAMESPACE__ . '\\filter_iframes', 200 );
+add_filter('embed_oembed_html',   __NAMESPACE__ . '\\filter_iframes', 200 );
+add_filter('get_avatar',          __NAMESPACE__ . '\\filter_avatar', 200 );
 
 
 /**
