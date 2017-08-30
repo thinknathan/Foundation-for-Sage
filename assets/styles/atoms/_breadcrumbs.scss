@@ -1,18 +1,1 @@
-//@include foundation-breadcrumbs;
-
-// Yoast SEO breadcrumbs
-
-$breadcrumbs-cols: 12;
-
-.breadcrumbs {
-  @include flex-grid-column($breadcrumbs-cols);
-  font-size: .85rem;
-  &,
-  a:visited,
-  a:link {
-    color: $dark-gray;
-  }
-  .breadcrumb_last {
-    color: $black;
-  }
-}
+@include foundation-breadcrumbs;

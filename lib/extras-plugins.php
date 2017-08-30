@@ -6,12 +6,58 @@ use Roots\Sage\Setup;
 
 
 /**
- * Adds screen-reader content to Yoast breadcrumbs
+ * Relevanssi & Yoast SEO compatibility
+ */
+function rlv_remove_meta_query( $query ) { 
+  $query->query_vars['meta_query'] = null; 
+  $query->meta_query = null; 
+  return $query; 
+}
+add_filter( 'relevanssi_modify_wp_query', __NAMESPACE__ . '\\rlv_remove_meta_query', 999 ); 
+
+
+**
+ * Converts Yoast breadcrumbs to Foundation 6 breadcrumbs
  */
 function custom_wpseo_breadcrumb_output( $output ){
-  $from = '<span class="breadcrumb_last">'; 
-  $to     = '<span class="breadcrumb_last"><span class="show-for-sr">Current: </span>';
+  // Kill span closing tags
+  $from = '</span>'; 
+  $to     = '';
   $output = str_replace( $from, $to, $output );
+  
+  // Kill the wrapper
+  $from = '<span xmlns:v="http://rdf.data-vocabulary.org/#">'; 
+  $to     = '';
+  $output = str_replace( $from, $to, $output );
+  
+  // Kill the individual items
+  $from = '<span typeof="v:Breadcrumb">'; 
+  $to     = '';
+  $output = str_replace( $from, $to, $output );
+  
+  // Change the remaining span into a list item
+  $from = '<span'; 
+  $to     = '<li';
+  $output = str_replace( $from, $to, $output );
+  
+  // Wrap the anchors with list items
+  $from = '<a'; 
+  $to     = '<li typeof="v:Breadcrumb"><a';
+  $output = str_replace( $from, $to, $output );
+  $from = '</a'; 
+  $to     = '</li></a';
+  $output = str_replace( $from, $to, $output );
+  
+  // Remove separators
+  $from = '&raquo;'; 
+  $to     = '';
+  $output = str_replace( $from, $to, $output );
+  
+  // Screen reader text
+  $from = '<li class="breadcrumb_last">'; 
+  $to     = '<li class="last"><span class="show-for-sr">Current: </span>';
+  $output = str_replace( $from, $to, $output );
+  
   return $output;
 }
 if ( function_exists('yoast_breadcrumb') ) {
@@ -55,11 +101,6 @@ add_filter( 'pre_option_rg_gforms_disable_css', '__return_true' );
 * Turn on Gravity Forms HTML5 output
 */
 add_filter('pre_option_rg_gforms_enable_html5', '__return_true' );
-
-/**
-* Turn on Gravity Forms no-conflict mode
-*/
-//add_filter('pre_option_gform_enable_noconflict', '__return_true' );
 
 /**
 * Prevents scripts from Gravity Forms shortcodes from being printed, and instead enqueues the scripts.

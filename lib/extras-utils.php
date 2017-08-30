@@ -225,3 +225,15 @@ function is_paginated_post() {
 	global $multipage;
 	return 0 !== $multipage;
 }
+
+/**
+ * Yoast SEO breadcrumbs
+ */
+function breadcrumbs() {
+	if ( function_exists('yoast_breadcrumb') ) {
+    yoast_breadcrumb(
+      '<nav aria-label="You are here:" role="navigation" xmlns:v="http://rdf.data-vocabulary.org/#"><ul class="breadcrumbs">',
+      '</ul></nav>'
+    );
+  }
+}
