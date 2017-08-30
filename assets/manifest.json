@@ -80,6 +80,7 @@
       ".lazyloading",
       ".lazyloaded",
       ".sticky",
+      ".relevanssi-query-term",
       ".wf-loading",
       ".wf-active",
       ".wf-inactive"
