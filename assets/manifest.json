@@ -83,7 +83,8 @@
       ".relevanssi-query-term",
       ".wf-loading",
       ".wf-active",
-      ".wf-inactive"
+      ".wf-inactive",
+      ".is-active"
     ],
     "gFonts": ""
   }
