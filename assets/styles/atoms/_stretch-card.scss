@@ -1,0 +1,70 @@
+/**
+* Stretch Card
+* These cards will stretch their images to fill extraneous whitespace
+* This is only relevant in a grid layout with multiple cards in a row
+*/
+
+.container {
+  @include xy-grid-container;
+  .row {
+    @include xy-grid;
+    @include flex-align($x: center, $y: stretch);
+    .column {
+      @include xy-cell();
+      @include xy-gutters($gutter-position: bottom top);
+      //@include flex-align($x: center, $y: stretch);
+      background-color: white;
+      .vert-container {
+        height: 100%;
+        .vert-row {
+          @include xy-grid($direction: vertical, $wrap: false);
+          height: 100%;
+          .image-holder {
+            margin: 0;
+            @include xy-cell($size: auto, $gutters: 0, $vertical: true);
+            >a {
+              display: block;
+              position: relative;
+              height: 100%;
+              .intrinsic-ratio-box {
+                height: 100%;
+              }
+              img {
+                object-fit: cover;
+              }
+            }
+          }
+          .text-holder {
+            background: red;
+            padding: 1rem;
+            margin: 0;
+            position: relative;
+            @include xy-cell($size: shrink, $gutters: 0, $vertical: true);
+          }
+        }
+      }
+      // 2-up grid for medium
+      @include breakpoint(medium) {
+        @include xy-cell(1 of 2);
+      }
+      // The last item will always fill the available space
+      @include breakpoint(medium up) {
+        //&:nth-last-child(2),
+        &:last-child {
+          @include xy-cell(auto);
+          background: yellow;
+        }
+      }
+      // 3-up grid for large
+      @include breakpoint(large) {
+        @include xy-cell(1 of 3);
+      }
+      @include breakpoint(xlarge) {
+        // Items 4 through 8 will be 4-up
+        &:nth-child(n+4):nth-child(-n+7) {
+          @include xy-cell(1 of 4);
+        }
+      }
+    }
+  }
+}
