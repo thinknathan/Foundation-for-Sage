@@ -335,6 +335,7 @@ add_filter( 'the_content', __NAMESPACE__ . '\\auto_id_headings' );
 /**
  * Force the visual editor to strip extra formatting when pasting
  * Credit: https://jonathannicol.com/blog/2015/02/19/clean-pasted-text-in-wordpress/
+ * Also setup default toolbars and formats
  */
 function configure_tinymce( $in ) {
   $in['paste_preprocess'] = "function(plugin, args){
@@ -351,6 +352,9 @@ function configure_tinymce( $in ) {
     // Return the clean HTML
     args.content = stripped.html();
   }";
+  $in['toolbar1'] = 'formatselect,bold,italic,strikethrough,bullist,numlist,blockquote,hr,alignleft,aligncenter,alignright,link,unlink,removeformat,wp_more,wp_fullscreen ';
+	$in['toolbar2'] = '';
+  $in['block_formats'] = 'Paragraph=p;Main Heading=h1;Heading 2=h2;Heading 3=h3;Heading 4=h4'
   return $in;
 }
 add_filter('tiny_mce_before_init', __NAMESPACE__ . '\\configure_tinymce');
