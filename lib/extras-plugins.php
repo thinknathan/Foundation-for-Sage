@@ -4,22 +4,37 @@ namespace Roots\Sage\Extras;
 
 use Roots\Sage\Setup;
 
+/**
+ *  Remove Yoast SEO columns from admin post tables
+ */
+function yoast_remove_columns( $columns ) {
+	// remove the Yoast SEO columns
+	unset( $columns['wpseo-score'] );
+	unset( $columns['wpseo-title'] );
+	unset( $columns['wpseo-metadesc'] );
+	unset( $columns['wpseo-focuskw'] );
+  unset( $columns['wpseo-score-readability'] );
+	return $columns;
+}
+add_filter ( 'manage_edit-post_columns', __NAMESPACE__ . '\\yoast_remove_columns' );
+add_filter ( 'manage_edit-page_columns', __NAMESPACE__ . '\\yoast_remove_columns' );
+
 
 /**
  * Relevanssi & Yoast SEO compatibility
  */
-function rlv_remove_meta_query( $query ) { 
+function relevanssi_remove_meta_query( $query ) { 
   $query->query_vars['meta_query'] = null; 
   $query->meta_query = null; 
   return $query; 
 }
-add_filter( 'relevanssi_modify_wp_query', __NAMESPACE__ . '\\rlv_remove_meta_query', 999 ); 
+add_filter( 'relevanssi_modify_wp_query', __NAMESPACE__ . '\\relevanssi_remove_meta_query', 999 ); 
 
 
-**
+/**
  * Converts Yoast breadcrumbs to Foundation 6 breadcrumbs
  */
-function custom_wpseo_breadcrumb_output( $output ){
+function foundation_yoast_breadcrumb_output( $output ){
   // Kill span closing tags
   $from = '</span>'; 
   $to     = '';
@@ -61,7 +76,7 @@ function custom_wpseo_breadcrumb_output( $output ){
   return $output;
 }
 if ( function_exists('yoast_breadcrumb') ) {
-  add_filter( 'wpseo_breadcrumb_output', __NAMESPACE__ . '\\custom_wpseo_breadcrumb_output' );
+  add_filter( 'wpseo_breadcrumb_output', __NAMESPACE__ . '\\foundation_yoast_breadcrumb_output' );
 }
 
 
