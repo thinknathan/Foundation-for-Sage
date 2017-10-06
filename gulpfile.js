@@ -72,7 +72,7 @@ var enabled = {
 var revManifest = path.dist + 'assets.json';
 
 // Error checking; produce an error rather than crashing.
-var onError = function(err) {
+var onError = function (err) {
   console.log(err.toString());
   this.emit('end');
 };
@@ -207,7 +207,9 @@ gulp.task('styles', ['wiredep'], function () {
     merged.add(gulp.src(dep.globs, {
         base: 'styles'
       })
-      .pipe(plumber({errorHandler: onError}))
+      .pipe(plumber({
+        errorHandler: onError
+      }))
       .pipe(cssTasksInstance));
   });
   return merged
@@ -359,7 +361,9 @@ gulp.task('scripts', ['jshint'], function () {
       gulp.src(dep.globs, {
         base: 'scripts'
       })
-      .pipe(plumber({errorHandler: onError}))
+      .pipe(plumber({
+        errorHandler: onError
+      }))
       .pipe(jsTasks(dep.name))
     );
   });
@@ -372,7 +376,9 @@ gulp.task('scripts', ['jshint'], function () {
 // Specify the fonts to download in `manifest.config.gFonts`
 gulp.task('gfonts', ['gfontsdl'], function () {
   var gFontList = manifest.config.gFonts;
-  if (!gFontList) { return; }
+  if (!gFontList) {
+    return;
+  }
   return gulp.src('./dist/fonts/fonts.css')
     .pipe(minifyCss({
       advanced: true
@@ -383,7 +389,9 @@ gulp.task('gfonts', ['gfontsdl'], function () {
 gulp.task('gfontsdl', function () {
   // Grab actual font list from manifest config
   var gFontList = manifest.config.gFonts;
-  if (!gFontList) { return; }
+  if (!gFontList) {
+    return;
+  }
   // Function to create a phantom file, since gulp-google-webfonts requires it
   function string_src(filename, string) {
     var src = require('stream').Readable({
@@ -422,9 +430,19 @@ gulp.task('fonts', ['gfonts'], function () {
 gulp.task('images', function () {
   return gulp.src(globs.images)
     .pipe(imagemin([
-      imagemin.jpegtran({progressive: true}),
-      imagemin.gifsicle({interlaced: true}),
-      imagemin.svgo({plugins: [{removeUnknownsAndDefaults: false}, {cleanupIDs: false}]})
+      imagemin.jpegtran({
+        progressive: true
+      }),
+      imagemin.gifsicle({
+        interlaced: true
+      }),
+      imagemin.svgo({
+        plugins: [{
+          removeUnknownsAndDefaults: false
+        }, {
+          cleanupIDs: false
+        }]
+      })
     ]))
     .pipe(gulp.dest(path.dist + 'images'))
     .pipe(browserSync.stream());
