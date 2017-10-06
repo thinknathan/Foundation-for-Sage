@@ -209,79 +209,79 @@ add_filter('get_avatar',          __NAMESPACE__ . '\\filter_avatar', 200 );
  * Activates each time a post is saved.
  */
 function create_sitemap() {
-  if (WP_ENV === 'development') {
-    $urls = array();
+  $urls = array();
 
-    // get all public post types
-    // see: https://codex.wordpress.org/Function_Reference/get_post_types
-    $post_types = get_post_types(array(
-      'public' => true
-    ), 'objects');
-    // get all posts ordered by
-    // descrending last modification date
-    // // see: https://codex.wordpress.org/Function_Reference/get_posts
-    $posts = get_posts(array(
-      'numberposts' => -1,
-      'post_type'   => array_keys($post_types),
-      'orderby'     => 'modified',
-      'order'       => 'DESC'
-    ));
-    // get all public taxonomies
-    // see: https://codex.wordpress.org/Function_Reference/get_taxonomies
-    $taxonomies = get_taxonomies(array(
-      'public' => true
-    ));
-    // get all terms in public taxonomies
-    // see: https://developer.wordpress.org/reference/functions/get_terms/
-    $terms = get_terms(array(
-      'taxonomy' => array_keys($taxonomies)
-    ));
-    // get all author users (user level greater than 0)
-    // see: https://codex.wordpress.org/Function_Reference/get_users
-    $users = get_users(array(
-      // 'role' => '?',
-      'orderby' => 'post_count',
-      'order' => 'DESC',
-      'who' => 'authors'
-    ));
-    
-    // add home page location
-    $urls[] = esc_url( home_url( '/' ) );
-    
-    // add 404 page
-    $urls[] = esc_url( home_url( '/' ) . '404' );
-    
-    // add search page
-    $urls[] = esc_url( home_url( '/' ) . 'search/new/' );
+  // get all public post types
+  // see: https://codex.wordpress.org/Function_Reference/get_post_types
+  $post_types = get_post_types(array(
+    'public' => true
+  ), 'objects');
+  // get all posts ordered by
+  // descrending last modification date
+  // // see: https://codex.wordpress.org/Function_Reference/get_posts
+  $posts = get_posts(array(
+    'numberposts' => -1,
+    'post_type'   => array_keys($post_types),
+    'orderby'     => 'modified',
+    'order'       => 'DESC'
+  ));
+  // get all public taxonomies
+  // see: https://codex.wordpress.org/Function_Reference/get_taxonomies
+  $taxonomies = get_taxonomies(array(
+    'public' => true
+  ));
+  // get all terms in public taxonomies
+  // see: https://developer.wordpress.org/reference/functions/get_terms/
+  $terms = get_terms(array(
+    'taxonomy' => array_keys($taxonomies)
+  ));
+  // get all author users (user level greater than 0)
+  // see: https://codex.wordpress.org/Function_Reference/get_users
+  $users = get_users(array(
+    // 'role' => '?',
+    'orderby' => 'post_count',
+    'order' => 'DESC',
+    'who' => 'authors'
+  ));
 
-    // add all pages for public post types
-    foreach( $posts as $post ) {
-      $urls[] = get_permalink( $post->ID );
-    }
-    // add archive pages
-    foreach ( $post_types as $post_type ) {
-      if( $post_type->has_archive ) {
-        $urls[] = get_post_type_archive_link($post_type->name);
-      }
-    }
-    // add public terms pages
-    foreach ( $terms as $term ) {
-      $urls[] = get_term_link($term->term_id);
-    }
-    // finally add author pages
-    foreach ( $users as $user ) {
-      $urls[] = get_author_posts_url( $user->ID );
-    }
+  // add home page location
+  $urls[] = esc_url( home_url( '/' ) );
 
-    $json = json_encode($urls);
-    $fp = fopen( get_stylesheet_directory() . '/sitemap.json', 'w' );
-    if ($fp) {
-      fwrite( $fp, $json );
-      fclose( $fp );
+  // add 404 page
+  $urls[] = esc_url( home_url( '/' ) . '404' );
+
+  // add search page
+  $urls[] = esc_url( home_url( '/' ) . 'search/new/' );
+
+  // add all pages for public post types
+  foreach( $posts as $post ) {
+    $urls[] = get_permalink( $post->ID );
+  }
+  // add archive pages
+  foreach ( $post_types as $post_type ) {
+    if( $post_type->has_archive ) {
+      $urls[] = get_post_type_archive_link($post_type->name);
     }
   }
+  // add public terms pages
+  foreach ( $terms as $term ) {
+    $urls[] = get_term_link($term->term_id);
+  }
+  // finally add author pages
+  foreach ( $users as $user ) {
+    $urls[] = get_author_posts_url( $user->ID );
+  }
+
+  $json = json_encode($urls);
+  $fp = fopen( get_stylesheet_directory() . '/sitemap.json', 'w' );
+  if ($fp) {
+    fwrite( $fp, $json );
+    fclose( $fp );
+  }
 }
-add_action('save_post', __NAMESPACE__ . '\\create_sitemap');
+if (WP_ENV === 'development') {
+  add_action('save_post', __NAMESPACE__ . '\\create_sitemap');
+}
 
 
 /**
@@ -333,28 +333,61 @@ add_filter( 'the_content', __NAMESPACE__ . '\\auto_id_headings' );
 
 
 /**
- * Force the visual editor to strip extra formatting when pasting
- * Credit: https://jonathannicol.com/blog/2015/02/19/clean-pasted-text-in-wordpress/
- * Also setup default toolbars and formats
+ * TinyMCE - Setup default toolbars and formats
  */
 function configure_tinymce( $in ) {
-  $in['paste_preprocess'] = "function(plugin, args){
-    // Strip all HTML tags except those we have whitelisted
-    var whitelist = 'br,p,span,b,strong,i,em,a,h1,h2,h3,h4,h5,h6,ul,li,ol';
-    var stripped = jQuery('<div>' + args.content + '</div>');
-    var els = stripped.find('*').not(whitelist);
-    for (var i = els.length - 1; i >= 0; i--) {
-      var e = els[i];
-      jQuery(e).replaceWith(e.innerHTML);
-    }
-    // Strip all class and id attributes
-    stripped.find('*').removeAttr('id').removeAttr('class').removeAttr('style');
-    // Return the clean HTML
-    args.content = stripped.html();
-  }";
   $in['toolbar1'] = 'formatselect,bold,italic,strikethrough,bullist,numlist,blockquote,hr,alignleft,aligncenter,alignright,link,unlink,removeformat,wp_more,wp_fullscreen ';
 	$in['toolbar2'] = '';
   $in['block_formats'] = 'Paragraph=p;Main Heading=h1;Heading 2=h2;Heading 3=h3;Heading 4=h4'
   return $in;
 }
 add_filter('tiny_mce_before_init', __NAMESPACE__ . '\\configure_tinymce');
+
+
+/**
+ * Converts Yoast breadcrumbs to Foundation 6 breadcrumbs
+ */
+function foundation_yoast_breadcrumb_output( $output ){
+  // Kill span closing tags
+  $from = '</span>'; 
+  $to     = '';
+  $output = str_replace( $from, $to, $output );
+  
+  // Kill the wrapper
+  $from = '<span xmlns:v="http://rdf.data-vocabulary.org/#">'; 
+  $to     = '';
+  $output = str_replace( $from, $to, $output );
+  
+  // Kill the individual items
+  $from = '<span typeof="v:Breadcrumb">'; 
+  $to     = '';
+  $output = str_replace( $from, $to, $output );
+  
+  // Change the remaining span into a list item
+  $from = '<span'; 
+  $to     = '<li';
+  $output = str_replace( $from, $to, $output );
+  
+  // Wrap the anchors with list items
+  $from = '<a'; 
+  $to     = '<li typeof="v:Breadcrumb"><a';
+  $output = str_replace( $from, $to, $output );
+  $from = '</a'; 
+  $to     = '</li></a';
+  $output = str_replace( $from, $to, $output );
+  
+  // Remove separators
+  $from = '&raquo;'; 
+  $to     = '';
+  $output = str_replace( $from, $to, $output );
+  
+  // Screen reader text
+  $from = '<li class="breadcrumb_last">'; 
+  $to     = '<li class="last"><span class="show-for-sr">Current: </span>';
+  $output = str_replace( $from, $to, $output );
+  
+  return $output;
+}
+if ( function_exists('yoast_breadcrumb') ) {
+  add_filter( 'wpseo_breadcrumb_output', __NAMESPACE__ . '\\foundation_yoast_breadcrumb_output' );
+}
