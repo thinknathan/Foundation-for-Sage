@@ -1,0 +1,10 @@
+a:link,
+a:visited {
+  color: $black;
+}
+
+a:focus,
+a:active,
+a:hover {
+  color: $dark-gray;
+}

@@ -1,1 +1,12 @@
 @include foundation-typography;
+@include breakpoint(xlarge) {
+  body {
+    font-size: 110%;
+  }
+}
+
+@include breakpoint(jumbo) {
+  body {
+    font-size: 120%;
+  }
+}
