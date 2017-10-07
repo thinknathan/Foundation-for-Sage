@@ -112,7 +112,7 @@ var cssTasks = function (filename) {
       ]
     })
     .pipe(mmq, {
-      log: true
+      log: false
     })
     .pipe(cssNano, {
       safe: true
@@ -245,11 +245,11 @@ gulp.task('critical', function () {
   return merged
     .pipe(concat(outputName + '.css'))
     .pipe(mmq({
-      log: true
+      log: false
     }))
-    .pipe(cssNano, {
+    .pipe(cssNano({
       safe: true
-    })
+    }))
     .pipe(gulp.dest(path.dist + 'styles'));
 });
 
