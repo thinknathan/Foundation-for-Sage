@@ -74,7 +74,6 @@ $foundation-palette: (
   success: #3adb76,
   warning: #ffae00,
   alert: #cc4b37,
-  body: #ffe996,
 );
 $light-gray: #e6e6e6;
 $medium-gray: #cacaca;
@@ -96,6 +95,7 @@ $global-menu-nested-margin: 1rem;
 $global-text-direction: ltr;
 $global-flexbox: true;
 $global-prototype-breakpoints: false;
+$global-button-cursor: auto;
 $global-color-pick-contrast-tolerance: 0;
 $global-transition-curve: cubic-bezier(0.4, 0, 0.2, 1);
 $print-transparent-backgrounds: true;
@@ -490,6 +490,7 @@ $menu-icon-spacing: 0.25rem;
 $menu-item-background-hover: $light-gray;
 $menu-state-back-compat: true;
 $menu-centered-back-compat: true;
+$menu-icons-back-compat: true;
 
 // 24. Meter
 // ---------
@@ -504,8 +505,12 @@ $meter-fill-bad: $alert-color;
 // 25. Off-canvas
 // --------------
 
-$offcanvas-size: 320px;
-$offcanvas-vertical-size: 250px;
+$offcanvas-sizes: (
+  small: 250px,
+);
+$offcanvas-vertical-sizes: (
+  small: 250px,
+);
 $offcanvas-background: $white;
 $offcanvas-shadow: 0 2px 8px rgba($black, 0.2);
 $offcanvas-inner-shadow-size: 20px;
@@ -872,7 +877,7 @@ $grid-margin-gutters: (
 $grid-padding-gutters: $grid-margin-gutters;
 $grid-container-padding: $grid-padding-gutters;
 $grid-container-max: $global-width;
-$block-grid-max: 8;
+$xy-block-grid-max: 8;
 
 // Gravity Forms Colors
 // -----------
