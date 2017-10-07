@@ -52,6 +52,7 @@
         "./dist/js/plugins/foundation.magellan.min.js",
         "./dist/js/plugins/foundation.offcanvas.min.js",
         "./dist/js/plugins/foundation.orbit.min.js",
+        "./dist/js/plugins/foundation.responsiveAccordionTabs.min.js",
         "./dist/js/plugins/foundation.responsiveMenu.min.js",
         "./dist/js/plugins/foundation.responsiveToggle.min.js",
         "./dist/js/plugins/foundation.reveal.min.js",
@@ -60,8 +61,7 @@
         "./dist/js/plugins/foundation.sticky.min.js",
         "./dist/js/plugins/foundation.tabs.min.js",
         "./dist/js/plugins/foundation.toggler.min.js",
-        "./dist/js/plugins/foundation.tooltip.min.js",
-        "./dist/js/plugins/foundation.zf.responsiveAccordionTabs.min.js"
+        "./dist/js/plugins/foundation.tooltip.min.js"
       ]
     }
   },
