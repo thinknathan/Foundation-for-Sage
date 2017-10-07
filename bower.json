@@ -18,12 +18,10 @@
     "headroom-js-jquery": "https://unpkg.com/headroom.js/dist/jQuery.headroom.js",
     "nutil": "https://github.com/thinknathan/nutil.js.git#master",
     "fastclick": "~1",
-    "jquery-match-height": "latest",
     "aos": "~2",
     "rellax": "latest",
     "magnific-popup": "~1",
     "sisyphus": "~1",
-    "vidbg": "latest",
     "respond": "latest",
     "selectivizr2": "latest",
     "oldie": "https://github.com/ianmcgregor/oldie.git#master"
