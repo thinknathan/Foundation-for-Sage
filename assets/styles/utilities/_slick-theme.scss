@@ -1,4 +1,7 @@
-@charset "UTF-8";
+/**
+ * Theme for Slick Slider
+ */
+
 // Default Variables
 // Slick icon entity codes outputs the following
 // "\2190" outputs ascii character "←"
@@ -45,8 +48,7 @@ $slick-transition: $button-transition;
 }
 
 
-/* Slider */
-
+// Slider
 .slick-list {
   .slick-loading & {
     background: #fff slick-image-url("ajax-loader.gif") center center no-repeat;
@@ -54,8 +56,7 @@ $slick-transition: $button-transition;
 }
 
 
-/* Icons */
-
+// Icons
 @if $slick-font-family=="slick" {
   @font-face {
     font-family: "slick";
@@ -67,8 +68,7 @@ $slick-transition: $button-transition;
 }
 
 
-/* Arrows */
-
+// Arrows
 .slick-prev,
 .slick-next {
   // For some reason, the default z-index lets this button get stacked under other elements
@@ -151,8 +151,7 @@ $slick-transition: $button-transition;
 
 
 
-/* Dots */
-
+// Dots
 .slick-dotted.slick-slider {
   margin-bottom: 30px;
 }

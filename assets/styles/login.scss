@@ -1,23 +1,24 @@
- @import 'settings/settings';
- @import "../../bower_components/foundation-sites/scss/foundation.scss";
+/**
+ * Login screen styles
+ */
 
- body {
-   background: $primary-color;
- }
+@import 'settings/settings';
+@import "../../bower_components/foundation-sites/scss/foundation.scss";
 
- .login #nav,
- .login #backtoblog {
-   text-align: center;
-   a:link,
-   a:visited {
-     color: $white;
-   }
-   a:focus,
-   a:active,
-   a:hover {
-     color: $white;
-   }
- }
+body {
+  background: $primary-color;
+}
 
- @include foundation-forms;
- @include foundation-typography;
+.login #nav,
+.login #backtoblog {
+  text-align: center;
+  a:link,
+  a:visited {
+    color: $white;
+  }
+  a:focus,
+  a:active,
+  a:hover {
+    color: $white;
+  }
+}

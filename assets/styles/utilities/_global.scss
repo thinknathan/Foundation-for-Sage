@@ -1,8 +1,1 @@
 @include foundation-global-styles;
-
-// Only use this if paired with FontFaceObserver javascript
-.no-fonts {
-  ul, ol, div, span, p, h1, h2, h3, h4, h5 {
-    font-family: sans-serif !important;
-  }
-}

@@ -1,16 +1,30 @@
-//@include foundation-card;
+/**
+ * Foundation Cards
+ * + integration with Divider Mixin
+ */
+
 $card-post-bg: $card-background;
 $card-post-text-color: $body-font-color;
 
-/* Divider Options */
+/** Divider options:
+ * forward
+ * back
+ * peak
+ * valley
+ * split
+ * round
+ * serrated
+ */
 
-//$card-post-divider-style: 'forward';
 $card-post-divider-style: 'back';
-//$card-post-divider-style: 'peak';
-//$card-post-divider-style: 'valley';
-//$card-post-divider-style: 'split';
-//$card-post-divider-style: 'round';
-//$card-post-divider-style: 'serrated';
+
+/** Position options:
+ * top-outside
+ * top-inside
+ * bottom-outside
+ * bottom-inside
+ */
+
 $card-post-divider-position: 'top-outside';
 $card-post-divider-height: 10;
 
@@ -49,8 +63,7 @@ $card-hover-transition: 'fade';
 }
 
 .card-post-content {
-  position: relative;
-  //@include divider($card-post-divider-style, $card-post-divider-height, $card-post-bg, $card-post-divider-position);
+  position: relative; //@include divider($card-post-divider-style, $card-post-divider-height, $card-post-bg, $card-post-divider-position);
 }
 
 .card-post-actions {
@@ -66,10 +79,11 @@ $card-hover-transition: 'fade';
   left: 1rem;
   z-index: 2;
   max-width: rem-calc(90);
-  img {
-    border-radius: 50%;
-    box-shadow: 0 2px 8px rgba($black, 0.2);
-  }
+}
+
+.card-post-avatar-img {
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba($black, 0.2);
 }
 
 .card-post-name {
@@ -81,7 +95,7 @@ $card-hover-transition: 'fade';
 .card-post-button {
   margin-bottom: 0;
   flex: 1 0 0;
-  +.card-post-button {
+  + .card-post-button {
     margin-left: 1rem;
   }
 }

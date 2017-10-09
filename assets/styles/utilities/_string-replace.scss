@@ -1,7 +1,7 @@
-/* ==========================================================================
+/**
  * Replaces letters
  * Credit: Many places on the internets
-   ========================================================================== */
+ */
 
 // Replace letters
 @function str-replace($string, $search, $replace: '') {

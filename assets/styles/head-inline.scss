@@ -1,36 +1,37 @@
- @import 'settings/settings';
-
- .pace {
-   pointer-events: none;
-   user-select: none;
-   position: fixed;
-   z-index: 2000;
-   top: 0;
-   left: 0;
-   width: 100%;
-   height: 4px;
-   .pace-progress {
-     height: 4px;
-     background: $secondary-color;
-     transition: width .2s cubic-bezier(.4, 0, .2, 1);
-   }
-   &.pace-inactive {
-     display: none;
-   }
- }
- 
- // Stripy theme for pace
- /*
- .pace .pace-progress {
-   
-  background-image: linear-gradient(45deg, darken($primary-color, 10%) 25%, $primary-color 25%, $primary-color 50%, darken($primary-color, 10%) 50%, darken($primary-color, 10%) 75%, $primary-color 75%, $primary-color);
-  background-size: 10px 10px;
-  background-repeat: repeat-x;
-  animation: progress-bar-stripes 3s linear infinite;
-  
- }
+/**
+ * CSS file to be inlined in the head
  */
- /*
+
+@import 'settings/settings';
+
+.pace {
+  pointer-events: none;
+  user-select: none;
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  .pace-progress {
+    height: 4px;
+    background: $secondary-color;
+    transition: width .2s $global-transition-curve;
+  }
+  &.pace-inactive {
+    display: none;
+  }
+}
+
+// Stripy theme for pace
+/*
+.pace .pace-progress {
+background-image: linear-gradient(45deg, darken($primary-color, 10%) 25%, $primary-color 25%, $primary-color 50%, darken($primary-color, 10%) 50%, darken($primary-color, 10%) 75%, $primary-color 75%, $primary-color);
+background-size: 10px 10px;
+background-repeat: repeat-x;
+animation: progress-bar-stripes 3s linear infinite;
+}
+
 @keyframes progress-bar-stripes {
   0% {
     background-position: 40px 0;
@@ -39,47 +40,45 @@
     background-position: 0 0;
   }
 }
-*/
- /*
- .pace .pace-progress-inner {
-   display: block;
-   position: absolute;
-   right: 0px;
-   width: 100px;
-   height: 100%;
-   box-shadow: 0 0 10px #fcd25a, 0 0 5px #fcd25a;
-   opacity: 1.0;
-   -webkit-transform: rotate(3deg) translate(0px, -4px);
-   -moz-transform: rotate(3deg) translate(0px, -4px);
-   -ms-transform: rotate(3deg) translate(0px, -4px);
-   -o-transform: rotate(3deg) translate(0px, -4px);
-   transform: rotate(3deg) translate(0px, -4px);
- }
 
- .pace .pace-activity {
-   display: block;
-   position: fixed;
-   z-index: 2000;
-   top: 20px;
-   right: 20px;
-   width: 19px;
-   height: 19px;
-   border: solid 2px transparent;
-   border-top-color: #fcd25a;
-   border-left-color: #fcd25a;
-   border-radius: 10px;
+.pace .pace-progress-inner {
+ display: block;
+ position: absolute;
+ right: 0px;
+ width: 100px;
+ height: 100%;
+ box-shadow: 0 0 10px #fcd25a, 0 0 5px #fcd25a;
+ opacity: 1.0;
+ -webkit-transform: rotate(3deg) translate(0px, -4px);
+ -moz-transform: rotate(3deg) translate(0px, -4px);
+ -ms-transform: rotate(3deg) translate(0px, -4px);
+ -o-transform: rotate(3deg) translate(0px, -4px);
+ transform: rotate(3deg) translate(0px, -4px);
+}
 
-   animation: pace-spinner 400ms linear infinite;
- }
+.pace .pace-activity {
+ display: block;
+ position: fixed;
+ z-index: 2000;
+ top: 20px;
+ right: 20px;
+ width: 19px;
+ height: 19px;
+ border: solid 2px transparent;
+ border-top-color: #fcd25a;
+ border-left-color: #fcd25a;
+ border-radius: 10px;
+ animation: pace-spinner 400ms linear infinite;
+}
 
- @keyframes pace-spinner {
-   0% {
-     transform: rotate(0deg);
-     transform: rotate(0deg);
-   }
-   100% {
-     transform: rotate(360deg);
-     transform: rotate(360deg);
-   }
+@keyframes pace-spinner {
+ 0% {
+   transform: rotate(0deg);
+   transform: rotate(0deg);
  }
+ 100% {
+   transform: rotate(360deg);
+   transform: rotate(360deg);
+ }
+}
 */

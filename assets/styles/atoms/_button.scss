@@ -1,0 +1,5 @@
+@include foundation-button;
+
+.button {
+  @include ripple;
+}

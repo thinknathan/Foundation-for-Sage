@@ -1,7 +1,0 @@
-@include foundation-button;
-@include foundation-button-group;
-@include foundation-close-button;
-
-.button {
-  @extend %ripple;
-}

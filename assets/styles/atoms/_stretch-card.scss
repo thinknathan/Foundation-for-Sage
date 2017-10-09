@@ -10,9 +10,7 @@
     @include xy-grid;
     @include flex-align($x: center, $y: stretch);
     .column {
-      @include xy-cell();
-      @include xy-gutters($gutter-position: bottom top);
-      //@include flex-align($x: center, $y: stretch);
+      @include xy-cell($gutter-position: bottom top);
       background-color: white;
       .vert-container {
         height: 100%;
@@ -22,7 +20,7 @@
           .image-holder {
             margin: 0;
             @include xy-cell($size: auto, $gutters: 0, $vertical: true);
-            >a {
+            & > a {
               display: block;
               position: relative;
               height: 100%;

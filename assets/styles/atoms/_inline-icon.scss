@@ -1,4 +1,9 @@
-%inline-icon {
+/**
+ * Inline Icons
+ * Use with the inline-icon mixin
+ */
+
+.inline-icon {
   &::before {
     content: '';
     display: inline-block;
@@ -8,3 +13,12 @@
     vertical-align: middle;
   }
 }
+
+//Example usage:
+/*
+.inline-icon-calendar {
+  &::before {
+    background-image: inline-icon(calendar, $primary-color);
+  }
+}
+*/

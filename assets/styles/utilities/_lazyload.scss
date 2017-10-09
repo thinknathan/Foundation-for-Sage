@@ -1,8 +1,12 @@
+/**
+ * Styles for lazysizes
+ */
+
 .intrinsic-ratio-box {
   position: relative;
   display: block;
   width: 100%;
-  /* padding-bottom is calculated and rendered in to HTML */
+  /* padding-bottom is calculated and rendered into HTML */
   img,
   iframe,
   video {
@@ -19,7 +23,7 @@
 }
 
 .lazyloading {
-  transition: background-size .2s cubic-bezier(.4, 0, .2, 1);
+  transition: background-size .2s $global-transition-curve;
   animation: progress-indeterminate 2s linear infinite;
   background-color: $light-gray;
   background-image: linear-gradient(90deg, $primary-color 0%, $primary-color 100%);

@@ -1,3 +1,7 @@
+/**
+ * Posts
+ */
+
 // Hover for Linked Images
 $image-hover-type: 'square';
 $image-hover-icon: 'image';
@@ -30,7 +34,7 @@ $image-hover-transition: 'fade';
 // Grid system
 .related-posts {
   @include flex-grid-row(nest);
-  &>a {
+  & > a {
     @include flex-grid-column(12);
     @include breakpoint(medium) {
       @include flex-grid-column(6);

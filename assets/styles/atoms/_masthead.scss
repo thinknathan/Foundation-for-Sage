@@ -1,10 +1,17 @@
+/**
+ * Masthead
+ * A container with text aligned to the bottom
+ */
+
 .masthead {
   display: flex;
   align-items: flex-end;
   padding: $global-padding;
   margin-bottom: $global-margin;
-  height: 14rem;
+  min-height: 14rem;
   p,
+  ul,
+  ol,
   h1,
   h2,
   h3,

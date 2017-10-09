@@ -1,24 +1,24 @@
-.search-submit{
-  @include button;
-}
+/**
+ * Sidebar and widgets
+ */
 
-.widget{
-  ul{
-    list-style: none;
-    margin-left: 0;
+.sidebar {
+  & > div {
+    margin-bottom: $global-margin;
   }
 }
 
-.sidebar {
-  &>div {
-    margin-bottom: $global-margin;
+.widget {
+  ul {
+    list-style: none;
+    margin-left: 0;
   }
 }
 
 .widget ul {
   @extend .menu;
   @extend .menu.vertical;
-  &>li>a {
+  & > li > a {
     padding-left: 0;
     padding-top: .8rem;
     padding-bottom: .8rem;
