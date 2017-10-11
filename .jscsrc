@@ -83,7 +83,5 @@
   "jsDoc": {
     "checkParamNames": true,
     "requireParamTypes": true
-  },
-  "disallowMultipleLineBreaks": true,
-  "disallowNewlineBeforeBlockStatements": true
+  }
 }

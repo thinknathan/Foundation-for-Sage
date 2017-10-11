@@ -172,14 +172,14 @@ var writeToManifest = function (directory) {
 };
 
 // ### Extracts critical CSS
-var criticalCssTasks = function (penthouseUrl, penthouseWidth, penthouseHeight) {
+var criticalCssTasks = function (criticalUrl, criticalWidth, criticalHeight) {
   //var forceIncludeSelectors = manifest.config.forceIncludeSelectors || [];
   return lazypipe()
     .pipe(
       criticalCss, {
-        url: penthouseUrl,
-        width: penthouseWidth, // viewport width
-        height: penthouseWidth, // viewport height
+        url: criticalUrl,
+        width: criticalWidth, // viewport width
+        height: criticalHeight, // viewport height
         //forceInclude: forceIncludeSelectors,
         blockJSRequests: false // set to false to load (external) JS (default: true)
       }
@@ -227,7 +227,7 @@ gulp.task('critical', function () {
   // Finds Main css file, depending on if --production was used
   //if (fs.existsSync(revManifestJson)) {
   var revManifestPaths = require(revManifestJson);
-  var css = path.dist + 'styles/' + revManifestPaths["main.css"];
+  var css = path.dist + 'styles/' + revManifestPaths['main.css'];
   //} else {
   //  css = path.dist + 'styles/main.css';
   //}
@@ -235,11 +235,11 @@ gulp.task('critical', function () {
   var merged = merge();
   criticalCssSizes.forEach(function (size) {
     criticalCssUrls.forEach(function (url) {
-      var criticalCssTasksInstance = criticalCssTasks(url, size.width, size.height);
+      var critCssInstance = criticalCssTasks(url, size.width, size.height);
       merged.add(gulp.src(css, {
           base: './'
         })
-        .pipe(criticalCssTasksInstance));
+        .pipe(critCssInstance));
     });
   });
   return merged
@@ -269,7 +269,7 @@ gulp.task('criticaldev', function () {
 gulp.task('uncss', function () {
   var revManifestJson = './' + revManifest;
   var revManifestPaths = require(revManifestJson);
-  var css = path.dist + 'styles/' + revManifestPaths["main.css"];
+  var css = path.dist + 'styles/' + revManifestPaths['main.css'];
   var forceIncludeSelectors = manifest.config.forceIncludeSelectors || [];
   var alwaysIgnore = [
     // Foundation-specific
@@ -391,14 +391,14 @@ gulp.task('gfontsdl', function () {
     return;
   }
   // Function to create a phantom file, since gulp-google-webfonts requires it
-  function string_src(filename, string) {
+  function stringSrc(filename, string) {
     var src = require('stream').Readable({
       objectMode: true
     });
     src._read = function () {
       this.push(new gutil.File({
-        cwd: "",
-        base: "",
+        cwd: '',
+        base: '',
         path: filename,
         contents: new Buffer(string)
       }));
@@ -406,7 +406,7 @@ gulp.task('gfontsdl', function () {
     };
     return src;
   }
-  return string_src('font.list', gFontList)
+  return stringSrc('font.list', gFontList)
     .pipe(googleWebFonts({
       format: 'woff'
     }))
@@ -471,7 +471,7 @@ gulp.task('watch', function () {
   browserSync.init({
     files: ['{lib,templates}/**/*.php', '*.php'],
     proxy: config.devUrl,
-    browser: "Google Chrome",
+    browser: 'Google Chrome',
     snippetOptions: {
       whitelist: ['/wp-admin/admin-ajax.php'],
       blacklist: ['/wp-admin/**']

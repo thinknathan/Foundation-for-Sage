@@ -11,13 +11,13 @@
 
 (function (document, window) {
   // Store HTML element
-  var htmlTag = document.getElementsByTagName("html")[0];
+  var htmlTag = document.getElementsByTagName('html')[0];
 
   // Name of a webfont you want to track loading progress
   var customFont = '';
 
   // Remove .no-js class from HTML tag
-  htmlTag.classList.remove("no-js");
+  htmlTag.classList.remove('no-js');
 
   // Use FontFaceObserver to see when font is loaded
   if (customFont) {
@@ -26,7 +26,7 @@
       .load()
       .then(function () {
         // Remove .no-fonts class from HTML tag
-        htmlTag.classList.remove("no-fonts");
+        htmlTag.classList.remove('no-fonts');
       });
   }
 
