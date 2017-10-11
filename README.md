@@ -1,4 +1,6 @@
 # Foundation for Sage
+[![Build Status](https://travis-ci.org/thinknathan/Foundation-for-Sage.svg)](https://travis-ci.org/thinknathan/Foundation-for-Sage)
+[![devDependency Status](https://david-dm.org/thinknathan/Foundation-for-Sage/dev-status.svg)](https://david-dm.org/thinknathan/Foundation-for-Sage#info=devDependencies)
 
 Forked from Foundation-for-Sage.
 
@@ -15,7 +17,7 @@ Sage is a WordPress starter theme based on HTML5 Boilerplate, gulp, Bower, and Z
 
 | Prerequisite    | How to check | How to install
 | --------------- | ------------ | ------------- |
-| PHP >= 5.4.x    | `php -v`     | [php.net](http://php.net/manual/en/install.php) |
+| PHP >= 5.6.x    | `php -v`     | [php.net](http://php.net/manual/en/install.php) |
 | Node.js 0.12.x  | `node -v`    | [nodejs.org](http://nodejs.org/) |
 | gulp >= 3.8.10  | `gulp -v`    | `npm install -g gulp` |
 | Bower >= 1.3.12 | `bower -v`   | `npm install -g bower` |
@@ -47,7 +49,7 @@ See a complete working example in the [roots-example-project.com repo](https://g
 
 ## Theme installation
 
-Clone the git repo - `git clone https://github.com/roots/sage.git` and then rename the directory to the name of your theme or website.
+Clone the git repo - `git clone https://github.com/thinknathan/Foundation-for-Sage.git` and then rename the directory to the name of your theme or website.
 
 ## Theme setup
 
@@ -100,15 +102,20 @@ If your local development URL looks like `http://localhost:8888/project-name/` y
 
 Sage documentation is available at [https://roots.io/sage/docs/](https://roots.io/sage/docs/).
 
-## Contributing
+## New Additions
 
-Contributions are welcome from everyone. We have [contributing guidelines](CONTRIBUTING.md) to help you get started.
-
-## Community
-
-Keep track of development and community news.
-
-* Participate on the [Roots Discourse](https://discourse.roots.io/)
-* Follow [@rootswp on Twitter](https://twitter.com/rootswp)
-* Read and subscribe to the [Roots Blog](https://roots.io/blog/)
-* Subscribe to the [Roots Newsletter](https://roots.io/subscribe/)
+* Based on Zurb's Foundation
+* Custom SASS organization following Atomic Design principles
+* `gulp --production` will strip unused CSS
+* `gulp --production` will add inline critical CSS to the header
+* CSS is loaded async with loadCSS
+* Small blocks of CSS can be inlined in the header
+* Open-source icons included as embedded SVG
+* Include Google Fonts in `assets/manifest.json` to auto download and include them
+* Uses webfont observer to show system fonts until webfonts are loaded
+* Small blocks of JS can be inlined in the footer and header
+* Custom login page styles
+* Support Yoast SEO Breadcrumbs & formats them to be Foundation-compatible
+* Auto-output images with srcset and lazyloading with Lazysizes
+* Simpler default tinyMCE
+* Gravity Forms integration and SASS
