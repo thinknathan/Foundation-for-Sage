@@ -17,6 +17,21 @@ function setup() {
   add_theme_support('soil-disable-trackbacks');
   add_theme_support('soil-disable-asset-versioning');
   add_theme_support('soil-google-analytics', 'UA-XXXXX-Y');
+  
+  // Enable features from Abettor plugin
+  // https://github.com/thinknathan/wp-abettor
+  add_theme_support('abet-clean-admin-dashboard');
+  add_theme_support('abet-demarcate-development');
+  add_theme_support('abet-disable-admin-bar');
+  add_theme_support('abet-disable-comments');
+  add_theme_support('abet-disable-yoast-admin-columns');
+  add_theme_support('abet-gravity-forms-setup');
+  add_theme_support('abet-gravity-forms-to-footer');
+  add_theme_support('abet-tinymce-clean-paste');
+  //add_theme_support('abet-default-setup');
+  //add_theme_support('abet-install-premium-keys');
+  //add_theme_support('abet-limit-revisions');
+  //add_theme_support('abet-relevanssi-remove-meta');
 
   // Custom logo support
   //add_theme_support( 'custom-logo' );
