@@ -71,61 +71,36 @@ function setup() {
 add_action('after_setup_theme', __NAMESPACE__ . '\\setup');
 
 /**
- * Top menu - Credit to chuckn246 + JointsWP Menu Code (https://github.com/JeremyEnglert/JointsWP)
+ * Top menu
+ * Credit to chuckn246 + JointsWP Menu Code (https://github.com/JeremyEnglert/JointsWP)
  */
 function top_nav() {
   wp_nav_menu([
+    'theme_location' => 'primary_navigation',       // Where it's located in the theme
     'container' => false,                           // Remove nav container
     'menu_class' => 'dropdown menu',                // Adding custom nav class
-    'items_wrap' => '<ul id="%1$s" class="%2$s" data-dropdown-menu role="navigation">%3$s</ul>',
-    'theme_location' => 'primary_navigation',       // Where it's located in the theme
-    'depth' => 5,                                   // Limit the depth of the nav
+    'items_wrap' => '<ul class="%2$s" data-dropdown-menu role="menubar">%3$s</ul>',
+    'depth' => 3,                                   // Limit the depth of the nav
     'fallback_cb' => false,                         // Fallback function (see below)
-    'walker' => new Topbar_Menu_Walker()
+    'walker' => new \Roots\Sage\Extras\top_nav_walker()
   ]);
 }
 
-// Credit: Brett Mason (https://github.com/brettsmason)
-class Topbar_Menu_Walker extends \Walker_Nav_Menu {
-  function start_lvl(&$output, $depth = 0, $args = Array() ) {
-    $indent = str_repeat("\t", $depth);
-    $output .= "\n$indent<ul class=\"dropdown menu\">\n";
-  }
-}
-
 /**
- * Off-Canvas menu - Credit to chuckn246 + JointsWP Menu Code (https://github.com/JeremyEnglert/JointsWP)
+ * Off-Canvas menu
  */
 function off_canvas_nav() {
   wp_nav_menu([
+    'theme_location' => 'mobile_navigation',        // Where it's located in the theme
     'container' => false,                           // Remove nav container
     'menu_class' => 'vertical menu',                // Adding custom nav class
-    'items_wrap' => '<ul id="%1$s" class="%2$s" data-drilldown>%3$s</ul>',
-    'theme_location' => 'mobile_navigation',        // Where it's located in the theme
+    'items_wrap' => '<ul class="%2$s" data-drilldown>%3$s</ul>',
     'depth' => 5,                                   // Limit the depth of the nav
     'fallback_cb' => false,                         // Fallback function (see below)
-    'walker' => new Off_Canvas_Menu_Walker()
+    'walker' => new \Roots\Sage\Extras\off_canvas_nav_walker()
   ]);
 }
 
-// Credit: Brett Mason (https://github.com/brettsmason)
-class Off_Canvas_Menu_Walker extends \Walker_Nav_Menu {
-  function start_lvl(&$output, $depth = 0, $args = Array() ) {
-    $indent = str_repeat("\t", $depth);
-    $output .= "\n$indent<ul class=\"vertical menu\">\n";
-  }
-}
-
-/**
- * Add Foundation active class to menu
- */
-function required_active_nav_class( $classes, $item ) {
-  if ( $item->current == 1 || $item->current_item_ancestor == true ) {
-    $classes[] = 'active';
-  }
-  return $classes;
-}
-add_filter('nav_menu_css_class', __NAMESPACE__ . '\\required_active_nav_class', 10, 2);
 
 /**
  * Register sidebars

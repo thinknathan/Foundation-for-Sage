@@ -5,6 +5,53 @@ namespace Roots\Sage\Extras;
 use Roots\Sage\Setup;
 
 
+/** 
+ * Top Nav Menu Walker - uses correct class for submenus
+ * Credit: Brett Mason (https://github.com/brettsmason)
+ */
+class top_nav_walker extends \Walker_Nav_Menu {
+  function start_lvl(&$output, $depth = 0, $args = Array() ) {
+    $indent = str_repeat("\t", $depth);
+    $output .= "\n$indent<ul class=\"menu\">\n";
+  }
+}
+
+/** 
+ * Off-Canvas Menu Walker - uses correct class for submenus
+ */
+class off_canvas_nav_walker extends \Walker_Nav_Menu {
+  function start_lvl(&$output, $depth = 0, $args = Array() ) {
+    $indent = str_repeat("\t", $depth);
+    $output .= "\n$indent<ul class=\"menu vertical nested\">\n";
+  }
+}
+
+/**
+ * Remove IDs from nav menus
+ */
+add_filter('nav_menu_item_id', '__return_null');
+
+/**
+ * Removes clutter of classes on menu items
+ * Add Foundation active class to menu
+ */
+function clean_nav_class($classes, $item) {
+  $slug = sanitize_title($item->title);
+  // Remove most core classes
+  $classes = preg_replace('/(current(-menu-|[-_]page[-_])(item|parent|ancestor))/', 'active', $classes);
+  $classes = preg_replace('/^((menu|page)[-_\w+]+)+/', '', $classes);
+  // Re-add core `menu-item` class
+  $classes[] = 'menu-item';
+  // Add `menu-<slug>` class
+  $classes[] = 'menu-' . $slug;
+  // Formatting cleanup
+  $classes = array_unique($classes);
+  $classes = array_map('trim', $classes);
+  return array_filter($classes);
+}
+add_filter('nav_menu_css_class', __NAMESPACE__ . '\\clean_nav_class', 10, 2);
+
+
 /**
  * Add <body> classes
  */
