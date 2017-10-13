@@ -391,3 +391,17 @@ function foundation_yoast_breadcrumb_output( $output ){
 if ( function_exists('yoast_breadcrumb') ) {
   add_filter( 'wpseo_breadcrumb_output', __NAMESPACE__ . '\\foundation_yoast_breadcrumb_output' );
 }
+
+
+/**
+ * Change .sticky class for sticky posts.
+ * Credit: https://github.com/brettsmason/croft/blob/master/inc/utility.php
+ */
+function sticky_post_class( $classes ) {
+	if ( ( $key = array_search( 'sticky', $classes ) ) !== false ) {
+		unset( $classes[$key] );
+		$classes[] = 'sticky-post';
+	}
+	return $classes;
+}
+add_filter( 'post_class', __NAMESPACE__ . '\\sticky_post_class', 20 );
