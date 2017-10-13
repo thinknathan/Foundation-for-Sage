@@ -16,7 +16,7 @@ function setup() {
   add_theme_support('soil-relative-urls');
   add_theme_support('soil-disable-trackbacks');
   add_theme_support('soil-disable-asset-versioning');
-  //add_theme_support('soil-google-analytics', 'UA-XXXXX-Y');
+  add_theme_support('soil-google-analytics', 'UA-XXXXX-Y');
 
   // Custom logo support
   //add_theme_support( 'custom-logo' );
