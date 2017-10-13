@@ -4,12 +4,12 @@
       <span aria-hidden="true">&times;</span>
     </button>
     <p><strong>
-      <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo('name'); ?></a>
+      <a href="<?= esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo('name'); ?></a>
     </strong></p>
   </div>
   <div class="off-canvas-inner">
     <?php get_search_form(); ?>
-    <?php if (has_nav_menu('primary_navigation')): ?>
+    <?php if (has_nav_menu('mobile_navigation')): ?>
       <?php Roots\Sage\Setup\off_canvas_nav(); ?>
     <?php endif; ?>
   </div>
