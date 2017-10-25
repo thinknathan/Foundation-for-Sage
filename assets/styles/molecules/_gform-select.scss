@@ -8,11 +8,7 @@
 .gform_wrapper {
   .ginput_container_multiselect {
     select {
-      //background: $gravity-white;
-      //padding: 0;
-      option {
-        //padding: $gravity-form-input-padding / 2;
-      }
+      option {}
     }
   }
 }

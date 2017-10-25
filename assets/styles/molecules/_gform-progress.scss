@@ -7,8 +7,6 @@
 
 .gform_wrapper {
   .gf_progressbar_wrapper {
-    //flex: flex-grid-column(12);
-    //border-bottom: 1px dotted $gravity-light-gray;
     margin: 0 0 $gravity-margin-small;
     padding: 0 0 $gravity-margin-small;
     @include breakpoint(large) {
@@ -64,7 +62,6 @@
     color: $gravity-white;
   }
   .gf_page_steps {
-    //flex: flex-grid-column(12);
     border-bottom: 1px dotted $gravity-light-gray;
     margin: 0 0 $gravity-margin-small;
     padding: 0 0 $gravity-margin-small;
@@ -88,8 +85,5 @@
   }
   .gf_step_number {
     font-size: $gravity-title-font-size;
-  }
-  .gf_step_clear {
-    //flex: flex-grid-column(12);
   }
 }

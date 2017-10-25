@@ -9,12 +9,13 @@
   text-align: left;
   ul {
     margin-left: 0;
-    li {
+    & > li {
       list-style-type: none;
       margin: $gravity-margin 0 0;
     }
   }
-  input,select {
+  input,
+  select {
     margin-bottom: 0;
   }
   .gform_title,
@@ -54,13 +55,13 @@
   .ginput_container {
     @include breakpoint(medium) {
       .small {
-        width: 25%;
+        @include xy-cell($size: 25%, $gutters: 0);
       }
       .medium {
-        width: 50%;
+        @include xy-cell($size: 50%, $gutter-position: right);
       }
       .large {
-        width: 100%;
+        @include xy-cell($gutters: 0);
       }
     }
   }
