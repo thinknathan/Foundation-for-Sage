@@ -1,3 +1,5 @@
+<?php use Roots\Sage\Setup ?>
+
 <header class="site-header">
 
   <div data-sticky-container>
@@ -38,7 +40,7 @@
   <div data-sticky-container>
     <nav class="site-nav" data-sticky data-sticky-on="large" data-stick-to="top" data-margin-top="0" data-anchor="document">
       <div class="container">
-        <?php Roots\Sage\Setup\top_nav(); ?>
+        <?php Setup\top_nav(); ?>
       </div>
     </nav>
   </div>

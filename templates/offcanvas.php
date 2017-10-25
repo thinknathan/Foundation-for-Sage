@@ -1,3 +1,5 @@
+<?php use Roots\Sage\Setup ?>
+
 <div class="off-canvas position-right" id="offCanvas" data-off-canvas data-transition="overlap">
   <div class="masthead">
     <button class="close-button" aria-label="Close menu" type="button" data-close>
@@ -10,7 +12,7 @@
   <div class="off-canvas-inner">
     <?php get_search_form(); ?>
     <?php if (has_nav_menu('mobile_navigation')): ?>
-      <?php Roots\Sage\Setup\off_canvas_nav(); ?>
+      <?php Setup\off_canvas_nav(); ?>
     <?php endif; ?>
   </div>
 </div>

@@ -1,3 +1,5 @@
+<?php use Roots\Sage\Extras ?>
+
 <?php while (have_posts()) : the_post(); ?>
 <article <?php post_class(); ?>>
   <header class="entry-header">
@@ -11,7 +13,7 @@
   <footer class="entry-footer">
     <?php get_template_part('templates/entry-meta'); ?>
   </footer>
-  <?php if ( Roots\Sage\Extras\is_paginated_post() ): ?>
+  <?php if ( Extras\is_paginated_post() ): ?>
     <footer>
       <?php wp_link_pages(['before' => '<nav class="page-nav"><p>' . __('Pages:', 'sage'), 'after' => '</p></nav>']); ?>
     </footer>

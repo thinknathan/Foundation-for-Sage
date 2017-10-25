@@ -1,3 +1,5 @@
+<?php use Roots\Sage\Extras ?>
+
 <a href="<?php the_permalink() ?>">
   <div class="related-post card-post" data-equalizer-watch>
 
@@ -10,7 +12,7 @@
         <?php echo get_avatar( get_the_author_meta( 'ID' ) , 32 ); ?>
       </div>
       <p class="card-post-name">
-        <?= Roots\Sage\Extras\snip(get_the_title(), '9', 'words'); ?>
+        <?= Extras\snip(get_the_title(), '9', 'words'); ?>
       </p>
       <p class="card-post-status hide">
         By <?php the_author() ?>
@@ -22,7 +24,7 @@
         Modified <time datetime="<?= get_the_modified_date('c'); ?>"><?= get_the_modified_date('F j, Y'); ?></time>
       </p>
       <p class="card-post-info">
-        <?= Roots\Sage\Extras\snip(get_the_content(), '15', 'words'); ?>
+        <?= Extras\snip(get_the_content(), '15', 'words'); ?>
       </p>
     </div>
 
