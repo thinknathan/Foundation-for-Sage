@@ -378,9 +378,9 @@ gulp.task('gfonts', ['gfontsdl'], function () {
     return;
   }
   return gulp.src('./dist/fonts/fonts.css')
-    .pipe(cssNano, {
+    .pipe(cssNano({
       safe: true
-    })
+    }))
     .pipe(gulp.dest('dist/fonts'));
 });
 
