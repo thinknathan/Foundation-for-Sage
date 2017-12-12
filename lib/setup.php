@@ -3,6 +3,7 @@
 namespace Roots\Sage\Setup;
 
 use Roots\Sage\Assets;
+use Roots\Sage\Extras;
 
 /**
  * Theme setup
@@ -29,8 +30,7 @@ function setup() {
   add_theme_support('abet-gravity-forms-to-footer');
   add_theme_support('abet-tinymce-clean-paste');
   //add_theme_support('abet-default-setup');
-  //add_theme_support('abet-install-premium-keys');
-  //add_theme_support('abet-limit-revisions');
+  add_theme_support('abet-limit-revisions');
   //add_theme_support('abet-relevanssi-remove-meta');
 
   // Custom logo support
@@ -98,7 +98,7 @@ function top_nav() {
     'items_wrap' => '<ul class="%2$s" data-dropdown-menu role="menubar">%3$s</ul>',
     'depth' => 3,                                   // Limit the depth of the nav
     'fallback_cb' => false,                         // Fallback function (see below)
-    'walker' => new \Roots\Sage\Extras\top_nav_walker()
+    'walker' => new Extras\top_nav_walker()
   ]);
 }
 
@@ -113,7 +113,7 @@ function off_canvas_nav() {
     'items_wrap' => '<ul class="%2$s" data-drilldown>%3$s</ul>',
     'depth' => 5,                                   // Limit the depth of the nav
     'fallback_cb' => false,                         // Fallback function (see below)
-    'walker' => new \Roots\Sage\Extras\off_canvas_nav_walker()
+    'walker' => new Extras\off_canvas_nav_walker()
   ]);
 }
 
