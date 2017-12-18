@@ -34,7 +34,7 @@
       ]
     },
     "jquery.js": {
-      "bower": ["jquery"]
+      "bower": ["jquery", "jquery-migrate-official"]
     },
     "head.js": {
       "bower": ["pace", "lazysizes", "lazysizes-bgset"]
