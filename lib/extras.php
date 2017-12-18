@@ -122,8 +122,8 @@ function style_loadCSS($html, $handle) {
 		return $html;
 	}
   $originalHTML = $html;
-  $html = str_replace('stylesheet','preload', $html);
-  $html = str_replace(' href',' as="style" onload="this.rel=\'stylesheet\'" href', $html);
+  $html = str_replace('stylesheet', 'preload', $html);
+  $html = str_replace(' href', ' as="style" onload="this.onload=null;this.rel=\'stylesheet\'" href', $html);
   $html = $html . '<noscript>' . $originalHTML . '</noscript>';
 	return $html;
 }
