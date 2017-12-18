@@ -452,3 +452,13 @@ function sticky_post_class( $classes ) {
 	return $classes;
 }
 add_filter( 'post_class', __NAMESPACE__ . '\\sticky_post_class', 20 );
+
+
+/**
+ * Fix WooCommerce compatiblity with theme
+ */
+// Remove broken sidebar
+//remove_all_actions('woocommerce_sidebar');
+
+// Remove breadcrumbs
+//remove_action( 'woocommerce_before_main_content','woocommerce_breadcrumb', 20, 0);
