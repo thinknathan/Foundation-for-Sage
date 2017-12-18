@@ -30,6 +30,7 @@
       });
   }
 
+  /*
   // Google Analytics additional setup
   // Requires Google Analytics and User ID Utility (nutil.js)
   if (window.ga && window.nUtil) {
@@ -62,5 +63,6 @@
   // Uncomment if using Remarketing, Demographics and Interest Reporting
   //ga('require', 'displayfeatures');
   ga('send', 'pageview');
+  */
 
 })(document, window);
