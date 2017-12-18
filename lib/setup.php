@@ -29,7 +29,7 @@ function setup() {
   add_theme_support('abet-gravity-forms-setup');
   add_theme_support('abet-gravity-forms-to-footer');
   add_theme_support('abet-tinymce-clean-paste');
-  add_theme_support('abet-limit-revisions');
+  //add_theme_support('abet-limit-revisions');
   //add_theme_support('abet-relevanssi-remove-meta');
 
   // Indicate support for WooCommerce
