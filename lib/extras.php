@@ -404,9 +404,9 @@ function foundation_yoast_breadcrumb_output( $output ){
   $from = '<span xmlns:v="http://rdf.data-vocabulary.org/#">'; 
   $to     = '';
   $output = str_replace( $from, $to, $output );
-  
-  // Kill the individual items
-  $from = '<span typeof="v:Breadcrumb">'; 
+
+  // Remove separators
+  $from = '&raquo;'; 
   $to     = '';
   $output = str_replace( $from, $to, $output );
   
@@ -415,23 +415,18 @@ function foundation_yoast_breadcrumb_output( $output ){
   $to     = '<li';
   $output = str_replace( $from, $to, $output );
   
-  // Wrap the anchors with list items
-  $from = '<a'; 
-  $to     = '<li typeof="v:Breadcrumb"><a';
+  // Close list items after links
+  $from = '</a>'; 
+  $to     = '</a></li>';
   $output = str_replace( $from, $to, $output );
-  $from = '</a'; 
-  $to     = '</li></a';
-  $output = str_replace( $from, $to, $output );
-  
-  // Remove separators
-  $from = '&raquo;'; 
-  $to     = '';
-  $output = str_replace( $from, $to, $output );
-  
+
   // Screen reader text
   $from = '<li class="breadcrumb_last">'; 
   $to     = '<li class="last"><span class="show-for-sr">Current: </span>';
   $output = str_replace( $from, $to, $output );
+  
+  // Close final item
+  $output = $output . '</li>';
   
   return $output;
 }
