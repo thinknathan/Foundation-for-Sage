@@ -22,18 +22,6 @@
 
         $(document).foundation(); // Foundation JavaScript
 
-        // Runs queued jQuery functions
-        // From: https://stackoverflow.com/questions/8298430/handling-code-which-relies-on-jquery-before-jquery-is-loaded
-        /*
-        $(function () {
-          $.each(window.jQueryQ || [], function (i, a) {
-            setTimeout(function () {
-              $.apply(this, a);
-            }, 0);
-          });
-        });
-        */
-
       },
       finalize: function () {
         // JavaScript to be fired on all pages, after page specific JS is fired
