@@ -10,6 +10,7 @@
     "jquery": "~3",
     "jquery-migrate-official": "~3",
     "foundation-sites": "6.4.3",
+    "nutil": "https://github.com/thinknathan/nutil.js.git#master",
     "slick.js": "~1",
     "lazysizes": "~4",
     "lazysizes-bgset": "https://unpkg.com/lazysizes/plugins/bgset/ls.bgset.js",
