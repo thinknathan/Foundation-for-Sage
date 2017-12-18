@@ -12,7 +12,6 @@ function setup() {
   // Enable features from Soil when plugin is activated
   // https://roots.io/plugins/soil/
   add_theme_support('soil-clean-up');
-  add_theme_support('soil-nav-walker');
   add_theme_support('soil-nice-search');
   add_theme_support('soil-relative-urls');
   add_theme_support('soil-disable-trackbacks');
@@ -24,15 +23,18 @@ function setup() {
   add_theme_support('abet-clean-admin-dashboard');
   add_theme_support('abet-demarcate-development');
   add_theme_support('abet-disable-admin-bar');
+  add_theme_support('abet-disable-backend-admin-bar');
   add_theme_support('abet-disable-comments');
   add_theme_support('abet-disable-yoast-admin-columns');
   add_theme_support('abet-gravity-forms-setup');
   add_theme_support('abet-gravity-forms-to-footer');
   add_theme_support('abet-tinymce-clean-paste');
-  //add_theme_support('abet-default-setup');
   add_theme_support('abet-limit-revisions');
   //add_theme_support('abet-relevanssi-remove-meta');
 
+  // Indicate support for WooCommerce
+  //add_theme_support( 'woocommerce' );
+  
   // Custom logo support
   //add_theme_support( 'custom-logo' );
 
@@ -83,6 +85,24 @@ function setup() {
     'mobile_navigation' => __('Mobile Navigation', 'sage')
   ]);
   
+  // Custom Post Types
+  /*
+  register_post_type( 'cpt_xxx',
+      array(
+          'labels' => array(
+              'name' => __( 'xxx' ),
+              'singular_name' => __( 'xxx' )
+          ),
+          'public' => true,
+          'rewrite' => array( 'slug' => 'xxx', 'with_front' => false ),
+          'has_archive' => true,
+          'hierarchical' => true,
+          'capability_type'    => 'page',
+          'supports' => array( 'title', 'editor', 'page-attributes', 'thumbnail'),
+      )
+  );
+  */
+  
 }
 add_action('after_setup_theme', __NAMESPACE__ . '\\setup');
 
@@ -96,7 +116,7 @@ function top_nav() {
     'container' => false,                           // Remove nav container
     'menu_class' => 'dropdown menu',                // Adding custom nav class
     'items_wrap' => '<ul class="%2$s" data-dropdown-menu role="menubar">%3$s</ul>',
-    'depth' => 3,                                   // Limit the depth of the nav
+    'depth' => 2,                                   // Limit the depth of the nav
     'fallback_cb' => false,                         // Fallback function (see below)
     'walker' => new Extras\top_nav_walker()
   ]);
@@ -111,7 +131,7 @@ function off_canvas_nav() {
     'container' => false,                           // Remove nav container
     'menu_class' => 'vertical menu',                // Adding custom nav class
     'items_wrap' => '<ul class="%2$s" data-drilldown>%3$s</ul>',
-    'depth' => 5,                                   // Limit the depth of the nav
+    'depth' => 2,                                   // Limit the depth of the nav
     'fallback_cb' => false,                         // Fallback function (see below)
     'walker' => new Extras\off_canvas_nav_walker()
   ]);
@@ -177,8 +197,8 @@ function assets() {
   wp_enqueue_script('jquery', Assets\asset_path('scripts/jquery.js'), array(), null, true);
   
   // Queues jQuery functions until jQuery is loaded
-  //$jquery_queue = '(function(a){a.jQuery||(a.jQueryQ=a.jQueryQ||[],a.$=a.jQuery=function(){a.jQueryQ.push(arguments)})})(window);';
-  //wp_add_inline_script('jquery', $jquery_queue);
+  $jquery_queue = 'if(!window.jQuery){window.jQueryQ=window.jQueryQ||[];window.jQuery=function(){return new jQueryQueue};var jQueryQueue=function(){return this};window.jQuery.fn=jQueryQueue.prototype;window.jQuery.fn.each=function(b){for(var a=0;a<this.length;a++){var c=b.call(this,a,this[a]);if(!0===c)return!0;if(!1===c)return!1}return this};window.jQuery.fn.ready=function(){window.jQueryQ.push(arguments)};document.addEventListener("DOMContentLoaded",function(){jQuery(function(){jQuery.each(window.jQueryQ||[],function(b,a){setTimeout(function(){jQuery.apply(this,a)},0)})})},!1)};';
+  wp_add_inline_script('jquery', $jquery_queue);
   
   // Theme script
   wp_enqueue_script('sage/js', Assets\asset_path('scripts/main.js'), ['jquery'], null, true);
@@ -222,20 +242,6 @@ function inline_assets_head_after() {
   }
 }
 add_action('wp_head', __NAMESPACE__ . '\\inline_assets_head_after', 101);
-
-/**
- * Inline assets - Footer - Before other scripts/styles have been queued
- */
-function inline_assets_footer_before() {
-  $fileToInline = get_template_directory() . '/dist/scripts/' . basename(Assets\asset_path('scripts/footer-inline.js'));
-  
-  if ( file_exists($fileToInline) && filesize($fileToInline) > 0 ) {
-    echo '<script>';
-    readfile($fileToInline);
-    echo '</script>';
-  }
-}
-add_action('wp_footer', __NAMESPACE__ . '\\inline_assets_footer_before', 1);
 
 /**
  * Login page assets
