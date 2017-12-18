@@ -10,14 +10,13 @@
     "jquery": "~3",
     "foundation-sites": "6.4.3",
     "slick.js": "~1",
-    "lazysizes": "~3",
+    "lazysizes": "~4",
+    "lazysizes-bgset": "https://unpkg.com/lazysizes/plugins/bgset/ls.bgset.js",
     "pace": "~0.7",
-    "loadcss": "~1",
+    "loadcss": "~2",
     "fontfaceobserver": "~2",
     "headroom-js": "https://unpkg.com/headroom.js/dist/headroom.min.js",
     "headroom-js-jquery": "https://unpkg.com/headroom.js/dist/jQuery.headroom.js",
-    "nutil": "https://github.com/thinknathan/nutil.js.git#master",
-    "fastclick": "~1",
     "aos": "~2",
     "rellax": "latest",
     "magnific-popup": "~1",
@@ -27,6 +26,11 @@
     "oldie": "https://github.com/ianmcgregor/oldie.git#master"
   },
   "overrides": {
+    "loadcss": {
+      "main": [
+        "./src/cssrelpreload.js"
+      ]
+    },
     "foundation-sites": {
       "main": [
         "./scss/foundation.scss",

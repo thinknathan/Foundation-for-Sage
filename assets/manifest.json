@@ -6,13 +6,8 @@
       ],
       "main": true
     },
-    "footer-inline.js": {
-      "files": [
-        "scripts/footer-inline.js"
-      ]
-    },
     "head-inline.js": {
-      "bower": ["loadcss", "fontfaceobserver", "nutil"],
+      "bower": ["loadcss", "fontfaceobserver"],
       "files": [
         "scripts/head-inline.js"
       ]
@@ -42,7 +37,7 @@
       "bower": ["jquery"]
     },
     "head.js": {
-      "bower": ["pace", "lazysizes"]
+      "bower": ["pace", "lazysizes", "lazysizes-bgset"]
     },
     "head-ie.js": {
       "bower": ["oldie"]
