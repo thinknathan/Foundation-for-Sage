@@ -70,7 +70,7 @@ $global-width: rem-calc(1200);
 $global-lineheight: 1.6;
 $foundation-palette: (
   primary: #3c7fcf,
-  secondary: #ffe996,
+  secondary: #f100bc,
   success: #3adb76,
   warning: #ffae00,
   alert: #cc4b37,
@@ -80,7 +80,7 @@ $medium-gray: #cacaca;
 $dark-gray: #8a8a8a;
 $black: #3f453a;
 $white: #fefefe;
-$body-background: #ffe996;
+$body-background: $white;
 $body-font-color: $black;
 $body-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 $body-antialiased: true;
@@ -511,7 +511,7 @@ $offcanvas-sizes: (
 $offcanvas-vertical-sizes: (
   small: 286px,
 );
-$offcanvas-background: $white;
+$offcanvas-background: $primary-color;
 $offcanvas-shadow: 0 2px 8px rgba($black, 0.2);
 $offcanvas-inner-shadow-size: 20px;
 $offcanvas-inner-shadow-color: rgba($black, 0.25);
@@ -522,7 +522,7 @@ $offcanvas-reveal-zindex: 12;
 $offcanvas-transition-length: 0.5s;
 $offcanvas-transition-timing: $global-transition-curve;
 $offcanvas-fixed-reveal: true;
-$offcanvas-exit-background: rgba($black, 0.8);
+$offcanvas-exit-background: rgba($primary-color, 0.75);
 $maincontent-class: 'off-canvas-content';
 
 // 26. Orbit
