@@ -123,16 +123,12 @@
  * extend, modify and combine other styles and modules
    ========================================================================== */
 
-@import "molecules/comments";
-@import "molecules/main";
-@import "molecules/search";
-@import "molecules/site-header";
+@import "molecules/base";
 @import "molecules/sidebar";
+@import "molecules/site-header";
 @import "molecules/site-footer";
-@import "molecules/mobile-bottom-bar";
-@import "molecules/pages";
+@import "molecules/site-bottom-bar";
 @import "molecules/off-canvas";
-@import "molecules/posts";
 @import "molecules/tinymce";
 
 /* Gravity Forms Styles */

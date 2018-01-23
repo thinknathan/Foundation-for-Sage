@@ -1,7 +1,7 @@
 <?php use Roots\Sage\Extras ?>
 
 <a href="<?php the_permalink() ?>">
-  <div class="related-post card-post" data-equalizer-watch>
+  <div class="related-post card-post">
 
     <div class="card-post-img">
       <?php the_post_thumbnail('post-thumbnail', ['class' => 'card-post-img']); ?>

@@ -4,12 +4,12 @@
 
 $footer-cols: 12;
 
-.content-info {
+.site-footer {
   background: $primary-color;
   color: $white;
-  .container {
+  .site-footer-inner {
     @include flex-grid-row;
-    padding: $global-padding * 3;
+    padding: $global-padding;
   }
   .copyright {
     @include flex-grid-column($footer-cols);

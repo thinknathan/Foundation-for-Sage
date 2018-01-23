@@ -5,7 +5,4 @@
   <div class="entry-content">
     <?php the_content(); ?>
   </div>
-  <footer class="entry-footer">
-    <?php get_template_part('templates/entry-meta'); ?>
-  </footer>
 </article>

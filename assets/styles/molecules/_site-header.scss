@@ -2,9 +2,9 @@
  * Website header
  */
 
-$hide-bar-breakpoint: 'large';
-$show-hero-breakpoint: 'large';
-$show-nav-breakpoint: 'large';
+// Switches between narrow title bar and full navigation
+$alt-nav-style-breakpoint: 'large';
+
 .site-header {
   .no-js & {
     .menu-icon {
@@ -14,73 +14,64 @@ $show-nav-breakpoint: 'large';
   a {
     color: $white;
   }
-  .title-bar-small {
-    @include hide-for($hide-bar-breakpoint);
-    width: 100%;
-    background-color: $primary-color;
-    .title-bar-left {
-      @include flex-grid-column();
-    }
-    .title-bar-right {
-      @include flex-grid-column('shrink');
-    }
-    .container {
-      padding: $global-padding $global-padding * 2;
-      @include breakpoint(medium) {
-        padding: $global-padding * 2 $global-padding * 2 $global-padding * 3;
-      }
-      @include breakpoint(large) {
-        padding: $global-padding * 3 $global-padding * 3;
-      }
-    }
-  }
-  .column {
-    @include flex-grid-column();
-    height: 100%;
-    text-align: center;
-  }
-  .site-hero {
-    @include show-for($show-hero-breakpoint);
-    width: 100%;
-    background-color: $primary-color;
-    .container {
-      min-height: 20vh;
-    }
-  }
-  .site-nav {
-    @include show-for($show-nav-breakpoint);
-    width: 100%;
-    background-color: darken($primary-color, 10%);
-    text-align: center;
-    z-index: 10;
-    .menu {
-      margin: auto;
-      justify-content: center;
-    }
-  }
-  .container {
-    @include flex-grid-row;
-    @include flex-align(null, 'middle');
-    height: 100%;
-  }
   .site-title {
     margin-bottom: 0;
     color: $white;
   }
-  .site-description {
-    @extend .site-title;
-    display: none;
-    @include breakpoint(medium) {
-      display: block;
-      line-height: $header-lineheight;
+
+  /* Title Bar for small screens */
+  .site-title-bar-small {
+    @include hide-for($alt-nav-style-breakpoint);
+    width: 100%;
+    background-color: $primary-color;
+    .site-title-bar-small-inner {
+      @include flex-grid-row;
+      @include flex-align($y: middle);
+      padding: $global-padding;
+      @include breakpoint(medium) {
+        padding: $global-padding * 1.5;
+      }
+      .site-title-bar-left {
+        @include flex-grid-column();
+      }
+      .site-title-bar-right {
+        @include flex-grid-column('shrink');
+        .menu-button {
+          color: $white;
+          .menu-icon {
+            margin-left: $global-margin * 0.5;
+          }
+        }
+      }
     }
+  }
+
+  /* Full Navigation for larger screens */
+  .site-navigation-full {
+    @include show-for($alt-nav-style-breakpoint);
+    width: 100%;
+    background-color: $primary-color;
+    .site-navigation-full-inner {
+      @include flex-grid-row;
+      @include flex-align($y: middle);
+      height: 100%;
+      .site-logo-section {
+        @include flex-grid-column();
+      }
+      .site-links-section {
+        @include flex-grid-column('shrink');
+        justify-content: flex-end;
+      }
+    }
+    /*
+    &.is-stuck {
+      animation: 'slideIn' $offcanvas-transition-length $offcanvas-transition-timing;
+    }
+    */
   }
 }
 
-.site-nav.is-stuck {
-  animation: 'slideIn' $offcanvas-transition-length $offcanvas-transition-timing;
-}
-
+/*
 @keyframes slideIn {
   0% {
     transform: translateY(-100%);
@@ -89,3 +80,4 @@ $show-nav-breakpoint: 'large';
     transform: translateY(0);
   }
 }
+*/
