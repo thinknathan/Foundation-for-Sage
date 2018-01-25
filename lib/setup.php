@@ -25,10 +25,10 @@ function setup() {
   add_theme_support('abet-disable-admin-bar');
   add_theme_support('abet-disable-backend-admin-bar');
   add_theme_support('abet-disable-comments');
-  add_theme_support('abet-disable-yoast-admin-columns');
   add_theme_support('abet-gravity-forms-setup');
   add_theme_support('abet-gravity-forms-to-footer');
   add_theme_support('abet-tinymce-clean-paste');
+  //add_theme_support('abet-disable-yoast-admin-columns');
   //add_theme_support('abet-limit-revisions');
   //add_theme_support('abet-relevanssi-remove-meta');
 
@@ -88,18 +88,19 @@ function setup() {
   // Custom Post Types
   /*
   register_post_type( 'cpt_xxx',
-      array(
-          'labels' => array(
-              'name' => __( 'xxx' ),
-              'singular_name' => __( 'xxx' )
-          ),
-          'public' => true,
-          'rewrite' => array( 'slug' => 'xxx', 'with_front' => false ),
-          'has_archive' => true,
-          'hierarchical' => true,
-          'capability_type'    => 'page',
-          'supports' => array( 'title', 'editor', 'page-attributes', 'thumbnail'),
-      )
+    [
+      'labels' => [
+        'name'          => __( 'xxx' ),
+        'singular_name' => __( 'xxx' )
+      ],
+      'public'            => true,
+      'rewrite'           => [ 'slug' => 'xxx', 'with_front' => false ],
+      'has_archive'       => true,
+      'hierarchical'      => true,
+      'menu_icon'         => 'dashicons-heart',
+      'capability_type'   => 'page',
+      'supports'          => [ 'title', 'editor', 'page-attributes', 'thumbnail' ],
+    ]
   );
   */
   
