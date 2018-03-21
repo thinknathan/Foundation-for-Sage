@@ -21,7 +21,7 @@ use Roots\Sage\Extras;
           <![endif]-->
           <?php
             do_action('get_header');
-            get_template_part('templates/header');
+            get_template_part('templates/site-header');
           ?>
           <div class="wrap container" role="document">
             <div class="content">
@@ -42,7 +42,7 @@ use Roots\Sage\Extras;
           </div><!-- /.wrap -->
           <?php
             do_action('get_footer');
-            get_template_part('templates/footer');
+            get_template_part('templates/site-footer');
             wp_footer();
           ?>
         </div><!-- /.off-canvas-content -->
