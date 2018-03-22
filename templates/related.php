@@ -28,7 +28,7 @@ if ( $related_posts->have_posts() && $related_posts->found_posts > 2 ) : ?>
     while ( $related_posts->have_posts() ): $related_posts->the_post();
     ?>
 
-      <?php get_template_part('templates/card-article'); ?>
+      <?php get_template_part('templates/card', get_post_type()); ?>
 
     <?php endwhile; wp_reset_query(); ?>
   </aside>

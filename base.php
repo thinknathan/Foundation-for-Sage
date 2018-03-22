@@ -12,7 +12,7 @@ use Roots\Sage\Extras;
   <body <?php body_class(); ?>>
     <div class="off-canvas-wrapper">
       <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
-        <?php get_template_part('templates/offcanvas'); ?>
+        <?php get_template_part('templates/off-canvas'); ?>
         <div class="off-canvas-content" data-off-canvas-content>
           <!--[if IE]>
             <div class="alert alert-warning">
@@ -21,7 +21,7 @@ use Roots\Sage\Extras;
           <![endif]-->
           <?php
             do_action('get_header');
-            get_template_part('templates/site-header');
+            get_template_part('templates/header', 'site');
           ?>
           <div class="wrap container" role="document">
             <div class="content">
@@ -42,7 +42,7 @@ use Roots\Sage\Extras;
           </div><!-- /.wrap -->
           <?php
             do_action('get_footer');
-            get_template_part('templates/site-footer');
+            get_template_part('templates/footer', 'site');
             wp_footer();
           ?>
         </div><!-- /.off-canvas-content -->
