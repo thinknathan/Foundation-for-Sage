@@ -3,12 +3,6 @@
  * Warning: jQuery is not yet loaded
  * ======================================================================== */
 
-// Insert tracking codes here
-
-
-
-// Anonymous function where the rest of the setup happens
-
 (function (document, window) {
   // Store HTML element
   var htmlTag = document.getElementsByTagName('html')[0];
@@ -29,6 +23,39 @@
         htmlTag.classList.remove('no-fonts');
       });
   }
+
+  // Creates a temporary jQuery object
+  // that runs queued jQ commands after the real jQ loads
+  if (!window.jQuery) {
+    window.jQueryQ = window.jQueryQ || [];
+    window.jQuery = function () {
+      return new jQueryQueue
+    };
+    var jQueryQueue = function () {
+      return this
+    };
+    window.jQuery.fn = jQueryQueue.prototype;
+    window.jQuery.fn.each = function (b) {
+      for (var a = 0; a < this.length; a++) {
+        var c = b.call(this, a, this[a]);
+        if (!0 === c) return !0;
+        if (!1 === c) return !1
+      }
+      return this
+    };
+    window.jQuery.fn.ready = function () {
+      window.jQueryQ.push(arguments)
+    };
+    document.addEventListener("DOMContentLoaded", function () {
+      jQuery(function () {
+        jQuery.each(window.jQueryQ || [], function (b, a) {
+          setTimeout(function () {
+            jQuery.apply(this, a)
+          }, 0)
+        })
+      })
+    }, !1)
+  };
 
   /*
   // Google Analytics additional setup

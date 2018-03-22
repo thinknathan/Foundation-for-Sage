@@ -196,11 +196,7 @@ function assets() {
   // jQuery
   wp_deregister_script('jquery');
   wp_enqueue_script('jquery', Assets\asset_path('scripts/jquery.js'), array(), null, true);
-  
-  // Queues jQuery functions until jQuery is loaded
-  $jquery_queue = 'if(!window.jQuery){window.jQueryQ=window.jQueryQ||[];window.jQuery=function(){return new jQueryQueue};var jQueryQueue=function(){return this};window.jQuery.fn=jQueryQueue.prototype;window.jQuery.fn.each=function(b){for(var a=0;a<this.length;a++){var c=b.call(this,a,this[a]);if(!0===c)return!0;if(!1===c)return!1}return this};window.jQuery.fn.ready=function(){window.jQueryQ.push(arguments)};document.addEventListener("DOMContentLoaded",function(){jQuery(function(){jQuery.each(window.jQueryQ||[],function(b,a){setTimeout(function(){jQuery.apply(this,a)},0)})})},!1)};';
-  wp_add_inline_script('jquery', $jquery_queue);
-  
+
   // Theme script
   wp_enqueue_script('sage/js', Assets\asset_path('scripts/main.js'), ['jquery'], null, true);
 
