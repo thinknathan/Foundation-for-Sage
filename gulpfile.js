@@ -15,12 +15,13 @@ var imagemin = require('gulp-imagemin');
 var jshint = require('gulp-jshint');
 var lazypipe = require('lazypipe');
 var merge = require('merge-stream');
-var mmq = require('gulp-merge-media-queries');
+var mqpacker = require('css-mqpacker');
 var postcss = require('gulp-postcss');
 var plumber = require('gulp-plumber');
 var rev = require('gulp-rev');
 var runSequence = require('run-sequence');
 var sass = require('gulp-sass');
+var sortCSSmq = require('sort-css-media-queries');
 var sourcemaps = require('gulp-sourcemaps');
 var uglify = require('gulp-uglify');
 var unCss = require('gulp-uncss');
@@ -57,6 +58,7 @@ var project = manifest.getProjectGlobs();
 
 // postCSS Plugins
 var postCssPlugins = [
+  // Add vendor prefixes as needed
   autoprefixer({
     browsers: [
       'last 2 versions',
@@ -64,6 +66,11 @@ var postCssPlugins = [
       'opera 12'
     ]
   }),
+  // Merge media queries in mobile-first order
+  mqpacker({
+    sort: sortCSSmq
+  }),
+  // Apply a variety of optimizations
   cssnano({
     safe: true
   })
@@ -119,9 +126,6 @@ var cssTasks = function (filename) {
       }));
     })
     .pipe(concat, filename)
-    .pipe(mmq, {
-      log: false
-    })
     .pipe(postcss, postCssPlugins)
     .pipe(function () {
       return gulpif(enabled.rev, rev());
@@ -244,9 +248,6 @@ gulp.task('critical', ['uncss'], function () {
   });
   return merged
     .pipe(concat(outputName + '.css'))
-    .pipe(mmq({
-      log: false
-    }))
     .pipe(postcss(postCssPlugins))
     .pipe(gulp.dest(path.dist + 'styles'));
 });
