@@ -9,6 +9,7 @@
 *   split
 *   round
 *   serrated
+*   wave
 *
 * $divider-height is a number in pixels
 *
@@ -119,7 +120,15 @@
         background-position: left top;
       }
     }
+    @else if $divider-style=='wave' {
+      background-size: 100% rem-calc($divider-height);
+      background-image: inline-svg('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 50" preserveAspectRatio="none"><path d="M100,30 Q70,40 50,30 T0,30 v20 h100Z" style="fill:#{$divider-bg};"/></svg>');
+      @if $divider-top=='false' {
+        transform: rotate(180deg);
+      }
+    }
   }
+  
   /* After */
   @if $divider-style=='split' or $divider-style=='peak' {
     &::after {
