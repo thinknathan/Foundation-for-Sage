@@ -9,7 +9,6 @@
   "dependencies": {
     "loadcss": "~2",
     "fontfaceobserver": "~2",
-    "nutil": "https://github.com/thinknathan/nutil.js.git#master",
     "lazysizes": "~4",
     "lazysizes-bgset": "https://unpkg.com/lazysizes@~4/plugins/bgset/ls.bgset.js",
     "lazysizes-respimg": "https://unpkg.com/lazysizes@~4/plugins/respimg/ls.respimg.js",
@@ -22,11 +21,7 @@
     "headroom-js-jquery": "https://unpkg.com/headroom.js/dist/jQuery.headroom.js",
     "aos": "~2",
     "rellax": "latest",
-    "magnific-popup": "~1",
-    "sisyphus": "~1",
-    "respond": "latest",
-    "selectivizr2": "latest",
-    "oldie": "https://github.com/ianmcgregor/oldie.git#master"
+    "magnific-popup": "~1"
   },
   "overrides": {
     "loadcss": {

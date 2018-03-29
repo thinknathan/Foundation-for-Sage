@@ -7,7 +7,7 @@
       "main": true
     },
     "head-inline.js": {
-      "bower": ["loadcss", "fontfaceobserver", "nutil"],
+      "bower": ["loadcss", "fontfaceobserver"],
       "files": [
         "scripts/head-inline.js"
       ]
@@ -28,22 +28,11 @@
         "styles/login.scss"
       ]
     },
-    "customizer.js": {
-      "files": [
-        "scripts/customizer.js"
-      ]
-    },
     "jquery.js": {
       "bower": ["jquery", "jquery-migrate-official"]
     },
     "head.js": {
       "bower": ["pace", "lazysizes", "lazysizes-bgset", "lazysizes-respimg"]
-    },
-    "head-ie.js": {
-      "bower": ["oldie"]
-    },
-    "ie.js": {
-      "bower": ["respond", "selectivizr2"]
     }
   },
   "config": {

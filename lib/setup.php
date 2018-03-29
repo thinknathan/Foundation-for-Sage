@@ -178,17 +178,23 @@ function display_breadcrumbs() {
  * Theme assets
  */
 function assets() {
+  // Optional font file: delete if unused
   wp_enqueue_style('sage/fonts', Assets\asset_path('fonts/fonts.css'), false, null);
   
+  // Main CSS file
   wp_enqueue_style('sage/css', Assets\asset_path('styles/main.css'), false, null);
 
   if (is_single() && comments_open() && get_option('thread_comments')) {
     wp_enqueue_script('comment-reply');
   }
 
-  // Internet Explorer JS and HTML polyfill 
-  wp_enqueue_script('sage/headie', Assets\asset_path('scripts/head-ie.js'), array(), null, false);
-  wp_script_add_data('sage/headie', 'conditional', 'IE');
+  // Internet Explorer min/max-width media query polyfill
+  wp_enqueue_script('sage/respond', 'https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js', array(), null, false);
+  wp_script_add_data('sage/respond', 'conditional', 'IE');
+  
+  // Internet Explorer JS-focused polyfill
+  wp_enqueue_script('sage/polyfill', 'https://cdn.polyfill.io/v2/polyfill.min.js', array(), null, false);
+  wp_script_add_data('sage/polyfill', 'conditional', 'IE');
   
   // Head script
   wp_enqueue_script('sage/head', Assets\asset_path('scripts/head.js'), array(), null, false);
@@ -201,8 +207,8 @@ function assets() {
   wp_enqueue_script('sage/js', Assets\asset_path('scripts/main.js'), ['jquery'], null, true);
 
   // Internet Explorer CSS3 & Media Query polyfills
-  wp_enqueue_script('sage/ie', Assets\asset_path('scripts/ie.js'), ['jquery'], null, true);
-  wp_script_add_data('sage/ie', 'conditional', 'lt IE 9');
+  wp_enqueue_script('sage/selectivizr2', 'https://cdnjs.cloudflare.com/ajax/libs/corysimmons-selectivizr2/1.0.9/selectivizr2.min.js', ['jquery'], null, true);
+  wp_script_add_data('sage/selectivizr2', 'conditional', 'lt IE 9');
 }
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\assets', 100);
 
