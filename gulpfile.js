@@ -1,11 +1,11 @@
 // ## Globals
 var argv = require('minimist')(process.argv.slice(2));
-var autoprefixer = require('gulp-autoprefixer');
+var autoprefixer = require('autoprefixer');
 var browserSync = require('browser-sync').create();
 var changed = require('gulp-changed');
 var concat = require('gulp-concat');
 var criticalCss = require('gulp-penthouse');
-var cssNano = require('gulp-cssnano');
+var cssnano = require('cssnano');
 var flatten = require('gulp-flatten');
 var googleWebFonts = require('gulp-google-webfonts');
 var gulp = require('gulp');
@@ -16,6 +16,7 @@ var jshint = require('gulp-jshint');
 var lazypipe = require('lazypipe');
 var merge = require('merge-stream');
 var mmq = require('gulp-merge-media-queries');
+var postcss = require('gulp-postcss');
 var plumber = require('gulp-plumber');
 var rev = require('gulp-rev');
 var runSequence = require('run-sequence');
@@ -53,6 +54,20 @@ var globs = manifest.globs;
 // - `project.js` - Array of first-party JS assets.
 // - `project.css` - Array of first-party CSS assets.
 var project = manifest.getProjectGlobs();
+
+// postCSS Plugins
+var postCssPlugins = [
+  autoprefixer({
+    browsers: [
+      'last 2 versions',
+      'android 4',
+      'opera 12'
+    ]
+  }),
+  cssnano({
+    safe: true
+  })
+];
 
 // CLI options
 var enabled = {
@@ -104,19 +119,10 @@ var cssTasks = function (filename) {
       }));
     })
     .pipe(concat, filename)
-    .pipe(autoprefixer, {
-      browsers: [
-        'last 2 versions',
-        'android 4',
-        'opera 12'
-      ]
-    })
     .pipe(mmq, {
       log: false
     })
-    .pipe(cssNano, {
-      safe: true
-    })
+    .pipe(postcss, postCssPlugins)
     .pipe(function () {
       return gulpif(enabled.rev, rev());
     })
@@ -181,7 +187,7 @@ var criticalCssTasks = function (criticalUrl, criticalWidth, criticalHeight) {
         width: criticalWidth, // viewport width
         height: criticalHeight, // viewport height
         //forceInclude: forceIncludeSelectors,
-        blockJSRequests: false // set to false to load (external) JS (default: true)
+        blockJSRequests: true // set to false to load (external) JS (default: true)
       }
     )();
 };
@@ -213,25 +219,19 @@ gulp.task('styles', ['wiredep'], function () {
   });
   return merged
     .pipe(writeToManifest('styles'));
+  
 });
 
 // ### Critical CSS
 // `gulp critical` - Extracts critical CSS and outputs it to a CSS file.
 // Run only after `gulp --production`
-gulp.task('critical', function () {
+gulp.task('critical', ['uncss'], function () {
   var criticalCssUrls = manifest.config.criticalCssUrls;
   var criticalCssSizes = manifest.config.criticalCssSizes;
   var outputName = manifest.config.criticalCssFileName;
   var revManifestJson = './' + revManifest;
-
-  // Finds Main css file, depending on if --production was used
-  //if (fs.existsSync(revManifestJson)) {
   var revManifestPaths = require(revManifestJson);
   var css = path.dist + 'styles/' + revManifestPaths['main.css'];
-  //} else {
-  //  css = path.dist + 'styles/main.css';
-  //}
-
   var merged = merge();
   criticalCssSizes.forEach(function (size) {
     criticalCssUrls.forEach(function (url) {
@@ -247,19 +247,8 @@ gulp.task('critical', function () {
     .pipe(mmq({
       log: false
     }))
-    .pipe(cssNano({
-      safe: true
-    }))
+    .pipe(postcss(postCssPlugins))
     .pipe(gulp.dest(path.dist + 'styles'));
-});
-
-// ### Critical CSS Dev
-// `gulp criticaldev` - Runs critical only with `gulp --production`.
-gulp.task('criticaldev', function () {
-  if (!argv.production) {
-    return;
-  }
-  return gulp.start('critical');
 });
 
 // ### UnCSS
@@ -268,7 +257,12 @@ gulp.task('criticaldev', function () {
 // Run only after `gulp --production`
 gulp.task('uncss', function () {
   var revManifestJson = './' + revManifest;
-  var revManifestPaths = require(revManifestJson);
+  var revManifestPaths;
+  try {
+    revManifestPaths = require(revManifestJson);
+  } catch(err) {
+    return;
+  }
   var css = path.dist + 'styles/' + revManifestPaths['main.css'];
   var forceIncludeSelectors = manifest.config.forceIncludeSelectors || [];
   var alwaysIgnore = [
@@ -340,15 +334,6 @@ gulp.task('uncss', function () {
     .pipe(gulp.dest(path.dist + 'styles'));
 });
 
-// ### UnCss Dev
-// `gulp uncssdev` - Runs uncss only with `gulp --production`.
-gulp.task('uncssdev', function () {
-  if (!argv.production) {
-    return;
-  }
-  return gulp.start('uncss');
-});
-
 // ### Scripts
 // `gulp scripts` - Runs JSHint then compiles, combines, and optimizes Bower JS
 // and project JS.
@@ -378,9 +363,7 @@ gulp.task('gfonts', ['gfontsdl'], function () {
     return;
   }
   return gulp.src('./dist/fonts/fonts.css')
-    .pipe(cssNano({
-      safe: true
-    }))
+    .pipe(postcss(postCssPlugins))
     .pipe(gulp.dest('dist/fonts'));
 });
 
@@ -488,8 +471,7 @@ gulp.task('watch', function () {
 // `gulp build` - Run all the build tasks but don't clean up beforehand.
 // Generally you should be running `gulp` instead of `gulp build`.
 gulp.task('build', function (callback) {
-  runSequence('styles', 'uncssdev', 'criticaldev',
-    'scripts', ['fonts', 'images'],
+  runSequence('styles', 'scripts', ['fonts', 'images'],
     callback);
 });
 
