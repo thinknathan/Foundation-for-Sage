@@ -8,11 +8,12 @@ use Roots\Sage\Setup;
 /** 
  * Top Nav Menu Walker - uses correct class for submenus
  * Credit: Brett Mason (https://github.com/brettsmason)
+ * Added is-dropdown-submenu to prevent FOUC, but might cause other issues if JS is disabled?
  */
 class top_nav_walker extends \Walker_Nav_Menu {
   function start_lvl(&$output, $depth = 0, $args = Array() ) {
     $indent = str_repeat("\t", $depth);
-    $output .= "\n$indent<ul class=\"menu\">\n";
+    $output .= "\n$indent<ul class=\"menu vertical submenu is-dropdown-submenu\">\n";
   }
 }
 
