@@ -20,6 +20,9 @@ function setup() {
   
   // Enable features from Abettor plugin
   // https://github.com/thinknathan/wp-abettor
+  //add_theme_support('abet-limit-revisions');
+  //add_theme_support('abet-disable-revisions');
+  //add_theme_support('abet-relevanssi-remove-meta');
   add_theme_support('abet-clean-admin-dashboard');
   add_theme_support('abet-demarcate-development');
   add_theme_support('abet-disable-admin-bar');
@@ -28,9 +31,7 @@ function setup() {
   add_theme_support('abet-gravity-forms-setup');
   add_theme_support('abet-gravity-forms-to-footer');
   add_theme_support('abet-tinymce-clean-paste');
-  //add_theme_support('abet-disable-yoast-admin-columns');
-  //add_theme_support('abet-limit-revisions');
-  //add_theme_support('abet-relevanssi-remove-meta');
+  add_theme_support('abet-add-logout-link');
 
   // Indicate support for WooCommerce
   //add_theme_support( 'woocommerce' );
@@ -53,11 +54,11 @@ function setup() {
   add_theme_support('post-thumbnails');
   
   remove_image_size('medium');
-  set_post_thumbnail_size( 426, 265, true );
-  add_image_size( 'tiny', 320, 380, false );
-  add_image_size( 'small', 480, 480, false );
-  add_image_size( 'medium', 640, 640, false );
-  add_image_size( 'xlarge', 1200, 820, false );
+  set_post_thumbnail_size( 480, 270, true );
+  add_image_size( 'small', 480, 270, false );
+  add_image_size( 'medium', 640, 360, false );
+  add_image_size( 'large', 1280, 720, false );
+  add_image_size( 'xlarge', 1920, 1080, false );
 
   // Enable HTML5 markup support
   // http://codex.wordpress.org/Function_Reference/add_theme_support#HTML5
