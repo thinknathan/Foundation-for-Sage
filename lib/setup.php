@@ -108,6 +108,18 @@ function setup() {
 }
 add_action('after_setup_theme', __NAMESPACE__ . '\\setup');
 
+
+/**
+ * Google Maps API key for Advanced Custom Fields Pro
+ */
+/*
+function my_acf_init() {
+	acf_update_setting('google_api_key', 'XXXXX');
+}
+add_action('acf/init', __NAMESPACE__ . '\\my_acf_init');
+*/
+
+
 /**
  * Top menu
  * Credit to chuckn246 + JointsWP Menu Code (https://github.com/JeremyEnglert/JointsWP)
@@ -174,6 +186,7 @@ function display_breadcrumbs() {
   
   return apply_filters('sage/display_breadcrumbs', $display);
 }
+
 
 /**
  * Theme assets
