@@ -327,7 +327,7 @@ function create_sitemap() {
     fclose( $fp );
   }
 }
-if (WP_ENV === 'development') {
+if (defined('WP_ENV') && WP_ENV === 'development') {
   add_action('save_post', __NAMESPACE__ . '\\create_sitemap');
 }
 
