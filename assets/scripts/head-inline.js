@@ -26,6 +26,7 @@
 
   // Creates a temporary jQuery object
   // that runs queued jQ commands after the real jQ loads
+  /* jshint -W018 */
   if (!window.jQuery) {
     window.jQueryQ = window.jQueryQ || [];
     window.jQuery = function () {
