@@ -237,3 +237,16 @@ function breadcrumbs() {
     );
   }
 }
+
+/**
+ * Lazysize Background Image
+ */
+function lazysizes_bgset($attachment_id, $size) {
+  $bgset = wp_get_attachment_image_srcset($attachment_id, $size);
+  // Sometimes wp_get_attachment_image_srcset silently fails
+  // So here is a manual fallback to wp_get_attachment_image_src
+  if ($bgset === false) {
+    $bgset = wp_get_attachment_image_src($attachment_id, $size)[0];
+  }
+  return ' data-bgset="' . $bgset . '" data-sizes="auto" ';
+}
