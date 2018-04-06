@@ -371,7 +371,7 @@ add_action( 'login_enqueue_scripts', __NAMESPACE__ . '\\login_logo' );
 function auto_id_headings( $content ) {
 	$content = preg_replace_callback( '/(\<h[1-6](.*?))\>(.*)(<\/h[1-6]>)/i', function( $matches ) {
 		if ( ! stripos( $matches[0], 'id=' ) ) :
-			$matches[0] = $matches[1] . $matches[2] . ' id="h-' . sanitize_html_class( $matches[3] ) . '">' . $matches[3] . $matches[4];
+			$matches[0] = $matches[1] . $matches[2] . ' id="h-' . sanitize_html_class( strip_tags($matches[3]) ) . '">' . $matches[3] . $matches[4];
 		endif;
 		return $matches[0];
 	}, $content );
