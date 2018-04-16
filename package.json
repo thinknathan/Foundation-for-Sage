@@ -18,7 +18,7 @@
     }
   ],
   "scripts": {
-    "build": "bower install && gulp",
+    "build": "npm install && bower install && gulp",
     "production": "gulp --production && gulp critical",
     "jshint": "gulp jshint",
     "jscs": "jscs gulpfile.js assets/scripts/*.js"
@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "asset-builder": "^1.1.0",
-    "autoprefixer": "^8.2.0",
+    "autoprefixer": "^8.3.0",
     "browser-sync": "^2.23.6",
     "css-mqpacker": "^6.0.2",
     "cssnano": "^3.10.0",
@@ -37,7 +37,7 @@
     "gulp": "^3.9.0",
     "gulp-changed": "^3.1.1",
     "gulp-concat": "^2.6.0",
-    "gulp-flatten": "^0.3.1",
+    "gulp-flatten": "^0.4.0",
     "gulp-google-webfonts": "^1.0.0",
     "gulp-if": "^2.0.2",
     "gulp-imagemin": "^4.0.0",
