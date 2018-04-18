@@ -5,7 +5,7 @@
   <div data-sticky-container>
     
     <!-- Title Bar for small screens -->
-    <div class="site-title-bar-small headroom" data-sticky data-sticky-on="small" data-options="marginTop:0;" data-headroom data-tolerance="5" data-offset="200">
+    <div class="site-title-bar-small headroom" data-sticky data-stick-to="top" data-sticky-on="small" data-options="marginTop:0;" data-headroom data-tolerance="5" data-offset="200">
       <div class="site-title-bar-small-inner">
         
         <div class="site-title-bar-left">
@@ -22,9 +22,13 @@
         
       </div> <!-- /.site-title-bar-small-inner -->
     </div> <!-- /.site-title-bar-small -->
+    
+  </div> <!-- /data-sticky-container -->
+  
+  <div data-sticky-container>
  
     <!-- Full Navigation for large screens -->
-    <div class="site-navigation-full" data-sticky data-options="marginTop:0;" data-top-anchor="100">
+    <div class="site-navigation-full" data-sticky data-stick-to="top" data-options="marginTop:0;" data-top-anchor="100">
       <div class="site-navigation-full-inner">
 
         <div class="site-logo-section">
