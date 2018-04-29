@@ -24,6 +24,11 @@
     "magnific-popup": "~1"
   },
   "overrides": {
+    "fontfaceobserver": {
+      "main": [
+        "fontfaceobserver.js"
+      ]
+    },
     "loadcss": {
       "main": [
         "./src/cssrelpreload.js"
