@@ -10,7 +10,7 @@ var flatten = require('gulp-flatten');
 var googleWebFonts = require('gulp-google-webfonts');
 var gulp = require('gulp');
 var gulpif = require('gulp-if');
-var gutil = require('gulp-util');
+var vinyl = require('vinyl');
 var imagemin = require('gulp-imagemin');
 var jshint = require('gulp-jshint');
 var lazypipe = require('lazypipe');
@@ -24,7 +24,7 @@ var sass = require('gulp-sass');
 var sortCSSmq = require('sort-css-media-queries');
 var sourcemaps = require('gulp-sourcemaps');
 var uglify = require('gulp-uglify');
-var unCss = require('gulp-uncss');
+var postUncss = require('postcss-uncss');
 
 // See https://github.com/austinpray/asset-builder
 var manifest = require('asset-builder')('./assets/manifest.json');
@@ -183,14 +183,13 @@ var writeToManifest = function (directory) {
 
 // ### Extracts critical CSS
 var criticalCssTasks = function (criticalUrl, criticalWidth, criticalHeight) {
-  //var forceIncludeSelectors = manifest.config.forceIncludeSelectors || [];
   return lazypipe()
     .pipe(
       criticalCss, {
         url: criticalUrl,
         width: criticalWidth, // viewport width
         height: criticalHeight, // viewport height
-        //forceInclude: forceIncludeSelectors,
+        timeout: 60000,
         blockJSRequests: true // set to false to load (external) JS (default: true)
       }
     )();
@@ -223,13 +222,13 @@ gulp.task('styles', ['wiredep'], function () {
   });
   return merged
     .pipe(writeToManifest('styles'));
-  
+
 });
 
 // ### Critical CSS
 // `gulp critical` - Extracts critical CSS and outputs it to a CSS file.
 // Run only after `gulp --production`
-gulp.task('critical', ['uncss'], function () {
+gulp.task('critical', function () {
   var criticalCssUrls = manifest.config.criticalCssUrls;
   var criticalCssSizes = manifest.config.criticalCssSizes;
   var outputName = manifest.config.criticalCssFileName;
@@ -261,7 +260,7 @@ gulp.task('uncss', function () {
   var revManifestPaths;
   try {
     revManifestPaths = require(revManifestJson);
-  } catch(err) {
+  } catch (err) {
     return;
   }
   var css = path.dist + 'styles/' + revManifestPaths['main.css'];
@@ -328,10 +327,12 @@ gulp.task('uncss', function () {
   ];
   forceIncludeSelectors = alwaysIgnore.concat(forceIncludeSelectors);
   return gulp.src(css)
-    .pipe(unCss({
-      html: require('./sitemap.json'),
-      ignore: forceIncludeSelectors
-    }))
+    .pipe(postcss([
+      postUncss({
+        html: require('./sitemap.json'),
+        ignore: forceIncludeSelectors
+      })
+    ]))
     .pipe(gulp.dest(path.dist + 'styles'));
 });
 
@@ -380,7 +381,7 @@ gulp.task('gfontsdl', function () {
       objectMode: true
     });
     src._read = function () {
-      this.push(new gutil.File({
+      this.push(new vinyl.File({
         cwd: '',
         base: '',
         path: filename,
