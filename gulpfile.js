@@ -381,9 +381,9 @@ gulp.task('gfontsdl', function () {
       objectMode: true
     });
     src._read = function () {
-      this.push(new vinyl.File({
+      this.push(new vinyl({
         cwd: '',
-        base: '',
+        base: null,
         path: filename,
         contents: new Buffer(string)
       }));
