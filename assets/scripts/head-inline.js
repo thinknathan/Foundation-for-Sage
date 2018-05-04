@@ -15,8 +15,8 @@
 
   // Use FontFaceObserver to see when font is loaded
   if (customFont) {
-    var fontA = new FontFaceObserver(customFont);
-    fontA
+    var FontA = new FontFaceObserver(customFont);
+    FontA
       .load()
       .then(function () {
         // Remove .no-fonts class from HTML tag
@@ -29,25 +29,29 @@
   /* jshint -W018 */
   if (!window.jQuery) {
     window.jQueryQ = window.jQueryQ || [];
-    window.jQuery = function () {
-      return new jQueryQueue();
-    };
     var jQueryQueue = function () {
       return this;
+    };
+    window.jQuery = function () {
+      return new jQueryQueue();
     };
     window.jQuery.fn = jQueryQueue.prototype;
     window.jQuery.fn.each = function (b) {
       for (var a = 0; a < this.length; a++) {
         var c = b.call(this, a, this[a]);
-        if (!0 === c) return !0;
-        if (!1 === c) return !1;
+        if (!0 === c) {
+          return !0;
+        }
+        if (!1 === c) {
+          return !1;
+        }
       }
       return this;
     };
     window.jQuery.fn.ready = function () {
       window.jQueryQ.push(arguments);
     };
-    document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener('DOMContentLoaded', function () {
       jQuery(function () {
         jQuery.each(window.jQueryQ || [], function (b, a) {
           setTimeout(function () {
