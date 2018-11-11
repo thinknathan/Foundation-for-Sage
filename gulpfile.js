@@ -424,6 +424,8 @@ gulp.task('images', function () {
           removeUnknownsAndDefaults: false
         }, {
           cleanupIDs: false
+        }, {
+          removeViewBox: false
         }]
       })
     ]))
