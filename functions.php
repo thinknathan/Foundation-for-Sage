@@ -13,7 +13,7 @@ $sage_includes = [
   'lib/assets.php',       // Scripts and stylesheets
   'lib/automation.php',   // Functions for use with task runners
   'lib/extras.php',       // Custom functions
-  'lib/extras-utils.php', // Utilities
+  'lib/util.php',         // Utilities
   'lib/setup.php',        // Theme setup
   'lib/titles.php',       // Page titles
   'lib/wrapper.php'       // Theme wrapper class
