@@ -6,8 +6,10 @@ use Roots\Sage\Setup;
 
 
 /** 
- * Top Nav Menu Walker - uses correct class for submenus
- * Credit: Brett Mason (https://github.com/brettsmason)
+ * Top nav menu walker
+ * Adds Zurb Foundation class to submenus
+ * @credit Brett Mason (https://github.com/brettsmason)
+ *
  * Added is-dropdown-submenu to prevent FOUC, but might cause other issues if JS is disabled?
  */
 class top_nav_walker extends \Walker_Nav_Menu {
@@ -18,7 +20,8 @@ class top_nav_walker extends \Walker_Nav_Menu {
 }
 
 /** 
- * Off-Canvas Menu Walker - uses correct class for submenus
+ * Off-Canvas menu walker
+ * Adds Zurb Foundation classes to submenus
  */
 class off_canvas_nav_walker extends \Walker_Nav_Menu {
   function start_lvl(&$output, $depth = 0, $args = Array() ) {
@@ -27,14 +30,38 @@ class off_canvas_nav_walker extends \Walker_Nav_Menu {
   }
 }
 
+/** 
+ * Adds .is-dropdown-submenu-parent class to parent menu items
+ * Only works with dropdown menus and not drilldown menus
+ * @credit https://stackoverflow.com/questions/8448978/wordpress-how-do-i-know-if-a-menu-item-has-children
+ */
+function menu_set_dropdown( $sorted_menu_items, $args ) {
+  // Stop unless it's the main dropdown menu
+  if ($args->theme_location !== 'primary_navigation') {
+    return $sorted_menu_items;
+  }
+  $last_top = 0;
+  foreach ( $sorted_menu_items as $key => $obj ) {
+    // it is a top lv item?
+    if ( 0 == $obj->menu_item_parent ) {
+      // set the key of the parent
+      $last_top = $key;
+    } else {
+      $sorted_menu_items[$last_top]->classes['is-dropdown-submenu-parent'] = 'is-dropdown-submenu-parent';
+    }
+  }
+  return $sorted_menu_items;
+}
+add_filter( 'wp_nav_menu_objects', __NAMESPACE__ . '\\menu_set_dropdown', 10, 2 );
+
 /**
- * Remove IDs from nav menus
+ * Removes ID attributes from navigation menu items
  */
 add_filter('nav_menu_item_id', '__return_null');
 
 /**
- * Removes clutter of classes on menu items
- * Add Foundation active class to menu
+ * Removes classes from navigation menu items
+ * Adds Zurb Foundation active class to menu items
  */
 function clean_nav_class($classes, $item) {
   $slug = sanitize_title($item->title);
@@ -54,7 +81,8 @@ add_filter('nav_menu_css_class', __NAMESPACE__ . '\\clean_nav_class', 10, 2);
 
 
 /**
- * Add <body> classes
+ * Adds post slug as a class to the <body>
+ * Also adds class if sidebar is active
  */
 function body_class($classes) {
   // Add page slug if it doesn't exist
@@ -63,19 +91,16 @@ function body_class($classes) {
       $classes[] = basename(get_permalink());
     }
   }
-
-  // Add class if sidebar is active
   if (Setup\display_sidebar()) {
     $classes[] = 'sidebar-primary';
   }
-
   return $classes;
 }
 add_filter('body_class', __NAMESPACE__ . '\\body_class');
 
 
 /**
- * Clean up the_excerpt()
+ * Cleans up the_excerpt()
  */
 function excerpt_more() {
   return ' &hellip; <a href="' . get_permalink() . '">' . __('Continued', 'sage') . '</a>';
@@ -84,21 +109,22 @@ add_filter('excerpt_more', __NAMESPACE__ . '\\excerpt_more');
 
 
 /**
- * Add aria labels to the pagination
+ * Adds aria labels to the pagination
  */
-add_filter('previous_posts_link_attributes', __NAMESPACE__ . '\\prev_posts_link_attributes');
 function prev_posts_link_attributes() {
   return 'aria-label="Previous page"';
 }
+add_filter('previous_posts_link_attributes', __NAMESPACE__ . '\\prev_posts_link_attributes');
 
-add_filter('next_posts_link_attributes', __NAMESPACE__ . '\\next_posts_link_attributes');
 function next_posts_link_attributes() {
   return 'aria-label="Next page"';
 }
+add_filter('next_posts_link_attributes', __NAMESPACE__ . '\\next_posts_link_attributes');
 
 
 /**
- * Add defer and async attributes to enqueued scripts.
+ * Adds defer and async attributes to enqueued scripts
+ * @credit David Tiong
  * https://www.davidtiong.com/using-defer-or-async-with-scripts-in-wordpress/
  */
 function script_tag_defer($tag, $handle) {
@@ -116,9 +142,11 @@ function script_tag_defer($tag, $handle) {
 add_filter('script_loader_tag', __NAMESPACE__ . '\\script_tag_defer', 10, 2);
 
 /**
- * Change styles to use preload syntax ala loadCSS
+ * Adds preload syntax to enqueued stylesheets
+ * Follows loadCSS setup
+ * https://github.com/filamentgroup/loadCSS
  */
-function style_loadCSS($html, $handle) {
+function style_loadcss($html, $handle) {
 	if (is_admin() || $GLOBALS['pagenow'] === 'wp-login.php') {
 		return $html;
 	}
@@ -128,11 +156,14 @@ function style_loadCSS($html, $handle) {
   $html = $html . '<noscript>' . $originalHTML . '</noscript>';
 	return $html;
 }
-add_filter('style_loader_tag', __NAMESPACE__ . '\\style_loadCSS', 20, 2);
+add_filter('style_loader_tag', __NAMESPACE__ . '\\style_loadcss', 20, 2);
 
 
 /**
- * WP LazySizes * https://github.com/aFarkas/wp-lazysizes * Alexander Farkas * GPL-2.0+
+ * Adds lazyloading syntax to images and iframes
+ * https://github.com/aFarkas/wp-lazysizes
+ * @credit Alexander Farkas
+ * @license GPL-2.0+
  */
 function filter_avatar( $content ) {
   if ( is_admin() || ( function_exists('is_amp_endpoint') && is_amp_endpoint() ) ) {
@@ -240,8 +271,6 @@ function _add_class( $htmlString = '', $newClass ) {
 
   return $htmlString;
 }
-
-// Run this later, so other content filters have run, including image_add_wh on WP.com
 add_filter('the_content',         __NAMESPACE__ . '\\filter_images', 200 );
 add_filter('get_custom_logo',     __NAMESPACE__ . '\\filter_images', 200 );
 add_filter('post_thumbnail_html', __NAMESPACE__ . '\\filter_images', 200 );
@@ -249,151 +278,40 @@ add_filter('widget_text',         __NAMESPACE__ . '\\filter_images', 200 );
 add_filter('oembed_result',       __NAMESPACE__ . '\\filter_iframes', 200 );
 add_filter('embed_oembed_html',   __NAMESPACE__ . '\\filter_iframes', 200 );
 add_filter('get_avatar',          __NAMESPACE__ . '\\filter_avatar', 200 );
+add_filter('acf_the_content',      __NAMESPACE__ . '\\filter_images', 200 );
 
 
 /**
- * Creates a sitemap for gulp tasks to parse.
- * Only active in development environments.
- * Activates each time a post is saved.
- */
-function create_sitemap() {
-  $urls = array();
-
-  // get all public post types
-  // see: https://codex.wordpress.org/Function_Reference/get_post_types
-  $post_types = get_post_types(array(
-    'public' => true
-  ), 'objects');
-  // get all posts ordered by
-  // descrending last modification date
-  // // see: https://codex.wordpress.org/Function_Reference/get_posts
-  $posts = get_posts(array(
-    'numberposts' => -1,
-    'post_type'   => array_keys($post_types),
-    'orderby'     => 'modified',
-    'order'       => 'DESC'
-  ));
-  // get all public taxonomies
-  // see: https://codex.wordpress.org/Function_Reference/get_taxonomies
-  $taxonomies = get_taxonomies(array(
-    'public' => true
-  ));
-  // get all terms in public taxonomies
-  // see: https://developer.wordpress.org/reference/functions/get_terms/
-  $terms = get_terms(array(
-    'taxonomy' => array_keys($taxonomies)
-  ));
-  // get all author users (user level greater than 0)
-  // see: https://codex.wordpress.org/Function_Reference/get_users
-  $users = get_users(array(
-    // 'role' => '?',
-    'orderby' => 'post_count',
-    'order' => 'DESC',
-    'who' => 'authors'
-  ));
-
-  // add home page location
-  $urls[] = esc_url( home_url( '/' ) );
-
-  // add 404 page
-  $urls[] = esc_url( home_url( '/' ) . '404' );
-
-  // add search page
-  $urls[] = esc_url( home_url( '/' ) . 'search/new/' );
-
-  // add all pages for public post types
-  foreach( $posts as $post ) {
-    $urls[] = get_permalink( $post->ID );
-  }
-  // add archive pages
-  foreach ( $post_types as $post_type ) {
-    if( $post_type->has_archive ) {
-      $urls[] = get_post_type_archive_link($post_type->name);
-    }
-  }
-  // add public terms pages
-  foreach ( $terms as $term ) {
-    $urls[] = get_term_link($term->term_id);
-  }
-  // finally add author pages
-  foreach ( $users as $user ) {
-    $urls[] = get_author_posts_url( $user->ID );
-  }
-
-  $json = json_encode($urls);
-  $fp = fopen( get_stylesheet_directory() . '/sitemap.json', 'w' );
-  if ($fp) {
-    fwrite( $fp, $json );
-    fclose( $fp );
-  }
-}
-if (defined('WP_ENV') && WP_ENV === 'development') {
-  add_action('save_post', __NAMESPACE__ . '\\create_sitemap');
-}
-
-
-/**
-* Login page logo link to homepage instead of WP
-*/
-function login_logo_url() {
-    return home_url();
-}
-add_filter( 'login_headerurl', __NAMESPACE__ . '\\login_logo_url' );
-
-/**
-* Login page logo title text to website title
-*/
-function login_logo_title() {
-    return get_bloginfo('name');
-}
-add_filter( 'login_headertitle', __NAMESPACE__ . '\\login_logo_title' );
-
-/**
-* Login page custom logo
-*/
-function login_logo() { ?>
-  <style>
-    #login h1 a, .login h1 a {
-      background-image: url(<?= get_stylesheet_directory_uri(); ?>/dist/images/logo.svg);
-      width: 320px;
-      height: 80px;
-      background-size: 320px 80px;
-    }
-  </style>
-<?php }
-add_action( 'login_enqueue_scripts', __NAMESPACE__ . '\\login_logo' );
-
-
-/**
- * Automatically add IDs to headings such as <h2></h2>
- * Credit: http://jeroensormani.com/
- */
-function auto_id_headings( $content ) {
-	$content = preg_replace_callback( '/(\<h[1-6](.*?))\>(.*)(<\/h[1-6]>)/i', function( $matches ) {
-		if ( ! stripos( $matches[0], 'id=' ) ) :
-			$matches[0] = $matches[1] . $matches[2] . ' id="h-' . sanitize_html_class( strip_tags($matches[3]) ) . '">' . $matches[3] . $matches[4];
-		endif;
-		return $matches[0];
-	}, $content );
-    return $content;
-}
-add_filter( 'the_content', __NAMESPACE__ . '\\auto_id_headings' );
-
-
-/**
- * TinyMCE - Setup default toolbars and formats
+ * Simplifies toolbar options in the TinyMCE editor
+ * Also specifies text formats
  */
 function configure_tinymce( $in ) {
-  $in['toolbar1'] = 'formatselect,bold,italic,strikethrough,bullist,numlist,blockquote,hr,alignleft,aligncenter,alignright,link,unlink,removeformat,wp_more,wp_fullscreen ';
+  $in['toolbar1'] = 'formatselect,bold,italic,bullist,numlist,blockquote,alignleft,aligncenter,alignright,link,unlink,removeformat,wp_fullscreen ';
 	$in['toolbar2'] = '';
-  $in['block_formats'] = 'Paragraph=p;Main Heading=h1;Heading 2=h2;Heading 3=h3;Heading 4=h4';
+  $in['block_formats'] = 'Paragraph=p;Heading 2=h2;Heading 3=h3;Heading 4=h4';
   return $in;
 }
-add_filter('tiny_mce_before_init', __NAMESPACE__ . '\\configure_tinymce');
+add_filter( 'tiny_mce_before_init', __NAMESPACE__ . '\\configure_tinymce' );
+
+/**
+ * Simplifies toolbar options in the TinyMCE editor
+ * Applies to WYSIWYG editor in Advanced Custom Fields
+ */
+function configure_tinymce_acf( $toolbars ) {
+  $toolbars['Custom'] = array();
+  $toolbars['Custom'][1] = array('formatselect', 'bold', 'italic', 'bullist', 'numlist', 'blockquote', 'alignleft', 'aligncenter', 'alignright', 'link', 'unlink', 'removeformat', 'wp_fullscreen' );
+  // remove the 'Basic' toolbar completely
+  unset( $toolbars['Basic' ] );
+  // remove the 'Full' toolbar completely
+  unset( $toolbars['Full' ] );
+  // return $toolbars
+  return $toolbars;
+}
+add_filter( 'acf/fields/wysiwyg/toolbars', __NAMESPACE__ . '\\configure_tinymce_acf' );
 
 
 /**
- * Converts Yoast breadcrumbs to Foundation 6 breadcrumbs
+ * Converts Yoast SEO breadcrumbs to Zurb Foundation 6 breadcrumbs
  */
 function foundation_yoast_breadcrumb_output( $output ){
   // Kill span closing tags
@@ -431,14 +349,13 @@ function foundation_yoast_breadcrumb_output( $output ){
   
   return $output;
 }
-if ( function_exists('yoast_breadcrumb') ) {
-  add_filter( 'wpseo_breadcrumb_output', __NAMESPACE__ . '\\foundation_yoast_breadcrumb_output' );
-}
+add_filter( 'wpseo_breadcrumb_output', __NAMESPACE__ . '\\foundation_yoast_breadcrumb_output' );
 
 
 /**
- * Change .sticky class for sticky posts.
- * Credit: https://github.com/brettsmason/croft/blob/master/inc/utility.php
+ * Changes .sticky class to .sticky-post for sticky posts
+ * Zurb Foundation uses the .sticky class in its Sticky plugin
+ * @credit https://github.com/brettsmason/croft/blob/master/inc/utility.php
  */
 function sticky_post_class( $classes ) {
 	if ( ( $key = array_search( 'sticky', $classes ) ) !== false ) {
@@ -451,10 +368,32 @@ add_filter( 'post_class', __NAMESPACE__ . '\\sticky_post_class', 20 );
 
 
 /**
- * Fix WooCommerce compatiblity with theme
+ * Adds convenient titles for ACF Flexible Content
+ * 'acf_section_title' is used as the title
  */
-// Remove broken sidebar
-//remove_all_actions('woocommerce_sidebar');
+function acf_flex_title( $title, $field, $layout, $i ) {
+	if($value = get_sub_field('acf_section_title')) {
+      $return_value = $title . ': ' . '<strong>' . $value . '</strong>';
+      return $return_value;
+	} else {
+		foreach($layout['sub_fields'] as $sub) {
+			if($sub['name'] == 'acf_section_title') {
+				$key = $sub['key'];
+				if(array_key_exists($i, $field['value']) && $value = $field['value'][$i][$key])
+					return $value;
+			}
+		}
+	}
+	return $title;
+}
+add_filter( 'acf/fields/flexible_content/layout_title', __NAMESPACE__ . '\\acf_flex_title', 10, 4);
 
-// Remove breadcrumbs
-//remove_action( 'woocommerce_before_main_content','woocommerce_breadcrumb', 20, 0);
+
+/**
+ * Fixes WooCommerce compatiblity with theme
+ */
+// Removes broken sidebar
+remove_all_actions('woocommerce_sidebar');
+
+// Removes breadcrumbs
+remove_action( 'woocommerce_before_main_content','woocommerce_breadcrumb', 20, 0);

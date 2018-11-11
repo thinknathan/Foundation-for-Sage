@@ -9,6 +9,14 @@ body {
   background: $primary-color;
 }
 
+#login h1 a,
+.login h1 a {
+  background-image: url('../images/logo.svg');
+  width: 320px;
+  height: 80px;
+  background-size: 320px 80px;
+}
+
 .login #nav,
 .login #backtoblog {
   text-align: center;
@@ -20,5 +28,6 @@ body {
   a:active,
   a:hover {
     color: $white;
+    opacity: .9;
   }
 }

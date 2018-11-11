@@ -6,9 +6,11 @@ use Roots\Sage\Setup;
 
 
 /**
- * Numeric Page Navi - Credit to chuckn246 + JointsWP Code (https://github.com/JeremyEnglert/JointsWP)
+ * Displays pagination for archives and paginated posts
+ * @credit chuckn246 + JointsWP
+ * https://github.com/JeremyEnglert/JointsWP
  */
-function page_navi($before = '', $after = '') {
+function pagination($before = '', $after = '') {
 	global $wpdb, $wp_query;
 	$request = $wp_query->request;
 	$posts_per_page = intval(get_query_var('posts_per_page'));
@@ -65,7 +67,7 @@ function page_navi($before = '', $after = '') {
 
 
 /**
- * Utility function to trim text
+ * Utility function to trim text by character, word, or sentence
  *
  * @param string   $text = string you want to trim
  * @param number   $length = length you want to arrive at
@@ -73,7 +75,7 @@ function page_navi($before = '', $after = '') {
  * @param string   $finish = word, or sentence
  * @return string  Filtered text
  *
- * Adapted from WP advanced_exerpt plugin
+ * @credit Adapted from WP advanced_exerpt plugin
  */
 
 function snip( $text = '', $length = 50, $length_type = 'words', $finish = 'word' ) {
@@ -141,12 +143,14 @@ function snip( $text = '', $length = 50, $length_type = 'words', $finish = 'word
   if ($shortened) {
     $out .= $ellipsis;
   }
-
+  
   return $out;
 }
 
+
 /**
- * Displays post meta - adapted from Twenty Fifteen theme
+ * Displays post metadata
+ * @credit Adapted from Twenty Fifteen theme
  */
 function entry_meta($options = [
   'output_author'        => true,
@@ -217,17 +221,9 @@ function entry_meta($options = [
   }
 }
 
-/**
- * Determines whether or not the current post is a paginated post.
- * @return boolean    true if the post is paginated; false, otherwise.
- */
-function is_paginated_post() {
-	global $multipage;
-	return 0 !== $multipage;
-}
 
 /**
- * Yoast SEO breadcrumbs
+ * Displays Yoast SEO breadcrumbs
  */
 function breadcrumbs() {
 	if ( function_exists('yoast_breadcrumb') ) {
@@ -238,8 +234,20 @@ function breadcrumbs() {
   }
 }
 
+
 /**
- * Lazysize Background Image
+ * Determines whether or not the current post is a paginated post
+ * @return boolean    true if the post is paginated; false, otherwise
+ */
+function is_paginated_post() {
+	global $multipage;
+	return 0 !== $multipage;
+}
+
+
+/**
+ * Outputs lazyloaded background image with srcset
+ * Requires lazysizes and lazysizes-bgset
  */
 function lazysizes_bgset($attachment_id, $size) {
   $bgset = wp_get_attachment_image_srcset($attachment_id, $size);

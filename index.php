@@ -14,4 +14,4 @@
   <?php get_template_part('templates/content', get_post_type()); ?>
 <?php endwhile; ?>
 
-<?php Extras\page_navi(); ?>
+<?php Extras\pagination(); ?>
