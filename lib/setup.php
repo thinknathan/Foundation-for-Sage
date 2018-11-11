@@ -104,6 +104,30 @@ add_action('after_setup_theme', __NAMESPACE__ . '\\setup');
 
 
 /**
+ * Custom Resource Hinting
+ * Removes DNS-Prefetch and adds Preconnect
+ */
+/*
+function my_custom_resource_hints( $hints, $relation_type ) {
+	// Remove all dns-prefetch
+	if ('dns-prefetch' === $relation_type) {
+    return [];
+  }
+	// Add preconnect hints
+  if ('preconnect' === $relation_type) {
+    $hints[] = 'https://www.googletagmanager.com';
+    $hints[] = 'https://www.google-analytics.com';
+    $hints[] = 'https://www.google.com';
+    $hints[] = 'https://maps.googleapis.com';
+    $hints[] = 'https://maps.gstatic.com';
+  }
+  return $hints;
+}
+add_filter( 'wp_resource_hints', 'my_custom_resource_hints', 10, 2 );
+*/
+
+
+/**
  * Google Maps API key for Advanced Custom Fields Pro
  */
 /*
