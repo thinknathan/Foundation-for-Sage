@@ -19,7 +19,6 @@ use Roots\Sage\Util;
         </div>
       <![endif]-->
       <?php
-        do_action('get_header');
         get_template_part('templates/header', 'site');
       ?>
       <div class="wrap container" role="document">
@@ -40,7 +39,6 @@ use Roots\Sage\Util;
         </div><!-- /.content -->
       </div><!-- /.wrap -->
       <?php
-        do_action('get_footer');
         get_template_part('templates/footer', 'site');
         wp_footer();
       ?>
