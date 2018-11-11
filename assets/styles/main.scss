@@ -109,6 +109,24 @@
 @import "atoms/thumbnail";
 @import "atoms/tooltip";
 
+/* Gravity Forms Styles */
+
+@import "atoms/gform-base";
+@import "atoms/gform-progress";
+@import "atoms/gform-textarea";
+@import "atoms/gform-select";
+@import "atoms/gform-numbers";
+@import "atoms/gform-checkbox-radio";
+@import "atoms/gform-section-html";
+@import "atoms/gform-complex";
+@import "atoms/gform-date";
+@import "atoms/gform-datepicker";
+@import "atoms/gform-upload";
+@import "atoms/gform-tables";
+@import "atoms/gform-pricing";
+@import "atoms/gform-errors";
+@import "atoms/gform-hidden";
+
 /* Custom */
 
 @import "atoms/stretch-card";
@@ -129,21 +147,3 @@
 @import "molecules/site-footer";
 @import "molecules/off-canvas";
 @import "molecules/tinymce";
-
-/* Gravity Forms Styles */
-
-@import "molecules/gform-base";
-@import "molecules/gform-progress";
-@import "molecules/gform-textarea";
-@import "molecules/gform-select";
-@import "molecules/gform-numbers";
-@import "molecules/gform-checkbox-radio";
-@import "molecules/gform-section-html";
-@import "molecules/gform-complex";
-@import "molecules/gform-date";
-@import "molecules/gform-datepicker";
-@import "molecules/gform-upload";
-@import "molecules/gform-tables";
-@import "molecules/gform-pricing";
-@import "molecules/gform-errors";
-@import "molecules/gform-hidden";
