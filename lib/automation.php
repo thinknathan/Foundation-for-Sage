@@ -1,6 +1,6 @@
 <?php
 
-namespace Roots\Sage\Extras;
+namespace Roots\Sage\Automation;
 
 /**
  * Creates a sitemap for gulp tasks to parse.
