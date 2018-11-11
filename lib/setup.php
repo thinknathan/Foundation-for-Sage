@@ -20,9 +20,6 @@ function setup() {
   
   // Enable features from Abettor plugin
   // https://github.com/thinknathan/wp-abettor
-  //add_theme_support('abet-limit-revisions');
-  //add_theme_support('abet-disable-revisions');
-  //add_theme_support('abet-relevanssi-remove-meta');
   add_theme_support('abet-clean-admin-dashboard');
   add_theme_support('abet-demarcate-development');
   add_theme_support('abet-disable-admin-bar');
@@ -31,7 +28,8 @@ function setup() {
   add_theme_support('abet-gravity-forms-setup');
   add_theme_support('abet-gravity-forms-to-footer');
   add_theme_support('abet-tinymce-clean-paste');
-  add_theme_support('abet-add-logout-link');
+  add_theme_support('abet-add-logout-link-admin-sidebar');
+  add_theme_support('abet-add-view-site-admin-sidebar');
 
   // Indicate support for WooCommerce
   //add_theme_support( 'woocommerce' );
