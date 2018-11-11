@@ -3,6 +3,7 @@
 use Roots\Sage\Setup;
 use Roots\Sage\Wrapper;
 use Roots\Sage\Extras;
+use Roots\Sage\Util;
 
 ?>
 
@@ -27,7 +28,7 @@ use Roots\Sage\Extras;
             <div class="content">
               <?php
                 if (Setup\display_breadcrumbs()) :
-                  Extras\breadcrumbs();
+                  Util\breadcrumbs();
                 endif;
               ?>
               <main class="main">

@@ -1,4 +1,4 @@
-<?php use Roots\Sage\Extras ?>
+<?php use Roots\Sage\Util ?>
 
 <?php get_template_part('templates/header', 'page'); ?>
 
@@ -14,4 +14,4 @@
   <?php get_template_part('templates/content', get_post_type()); ?>
 <?php endwhile; ?>
 
-<?php Extras\pagination(); ?>
+<?php Util\pagination(); ?>

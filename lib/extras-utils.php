@@ -1,8 +1,9 @@
 <?php
 
-namespace Roots\Sage\Extras;
+namespace Roots\Sage\Util;
 
 use Roots\Sage\Setup;
+use Roots\Sage\Extras;
 
 
 /**
@@ -149,80 +150,6 @@ function snip( $text = '', $length = 50, $length_type = 'words', $finish = 'word
 
 
 /**
- * Displays post metadata
- * @credit Adapted from Twenty Fifteen theme
- */
-function entry_meta($options = [
-  'output_author'        => true,
-  'output_publish_date'  => true,
-  'output_modified_date' => true,
-  'output_post_format'   => true,
-  'output_categories'    => true,
-  'output_tags'          => true
-  ]) {
-  
-  // Author
-  if ( $options['output_author'] ) {
-    printf( '<span class="meta byline author vcard"><span class="screen-reader-text">%1$s </span><a rel="author" class="fn" href="%2$s">%3$s</a></span>',
-      __('By', 'sage'),
-      esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
-      get_the_author()
-    );
-  }
-  
-  // Publish and Modified Date
-  if ( $options['output_publish_date'] ) {
-		$time_string = '<time class="meta published" datetime="%1$s">%2$s</time>';
-
-		if ( $options['output_modified_date'] && get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
-			$time_string = '<time class="meta published" datetime="%1$s">%2$s</time><time class="meta updated" datetime="%3$s">%4$s</time>';
-		}
-
-		$time_string = sprintf( $time_string,
-			esc_attr( get_the_date( 'c' ) ),
-			get_the_date(),
-			esc_attr( get_the_modified_date( 'c' ) ),
-			get_the_modified_date()
-		);
-
-		printf( '<span class="meta posted-on"><span class="screen-reader-text">%1$s </span><a href="%2$s" rel="bookmark">%3$s</a></span>',
-			__( 'Posted on', 'sage' ),
-			esc_url( get_permalink() ),
-			$time_string
-		);
-  }
-  
-  // Formats
-	$format = get_post_format();
-	if ( $options['output_post_format'] && current_theme_supports( 'post-formats', $format ) ) {
-		printf( '<span class="meta entry-format">%1$s<a href="%2$s">%3$s</a></span>',
-			sprintf( '<span class="screen-reader-text">%s </span>', __( 'Format', 'sage' ) ),
-			esc_url( get_post_format_link( $format ) ),
-			get_post_format_string( $format )
-		);
-	}
-
-  // List Categories
-  $categories_list = get_the_category_list( ', ' );
-  if ( $options['output_categories'] && $categories_list ) {
-    printf( '<span class="meta cat-links"><span class="screen-reader-text">%1$s </span>%2$s</span>',
-      __( 'Categories', 'sage' ),
-      $categories_list
-    );
-  }
-
-  // List Tags
-  $tags_list = get_the_tag_list( ', ' );
-  if ( $options['output_tags'] && $tags_list ) {
-    printf( '<span class="meta tags-links"><span class="screen-reader-text">%1$s </span>%2$s</span>',
-      __( 'Tags', 'sage' ),
-      $tags_list
-    );
-  }
-}
-
-
-/**
  * Displays Yoast SEO breadcrumbs
  */
 function breadcrumbs() {
@@ -249,7 +176,7 @@ function is_paginated_post() {
  * Outputs lazyloaded background image with srcset
  * Requires lazysizes and lazysizes-bgset
  */
-function lazysizes_bgset($attachment_id, $size) {
+function get_bgset($attachment_id, $size) {
   $bgset = wp_get_attachment_image_srcset($attachment_id, $size);
   // Sometimes wp_get_attachment_image_srcset silently fails
   // So here is a manual fallback to wp_get_attachment_image_src
@@ -257,4 +184,11 @@ function lazysizes_bgset($attachment_id, $size) {
     $bgset = wp_get_attachment_image_src($attachment_id, $size)[0];
   }
   return ' data-bgset="' . $bgset . '" data-sizes="auto" ';
+}
+
+/**
+ * Outputs image run through filter_images
+ */
+function get_image( $image, $size ) {
+  return Extras\filter_images( wp_get_attachment_image( $image, $size ) );
 }

@@ -1,4 +1,4 @@
-<?php use Roots\Sage\Extras ?>
+<?php use Roots\Sage\Util ?>
 
 <article <?php post_class(); ?>>
   <header class="entry-header">
@@ -9,7 +9,7 @@
     </h2>
   </header>
   <div class="entry-summary">
-    <?= Extras\snip(get_the_content(), '20', 'words'); ?>
+    <?= Util\snip(get_the_content(), '20', 'words'); ?>
   </div>
   <?php if (get_post_type() === 'post'): ?>
     <footer class="entry-footer">
