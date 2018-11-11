@@ -7,6 +7,10 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
+    "sass-divider": "git://github.com/thinknathan/sass-divider.git",
+    "sass-hover-transition": "git://github.com/thinknathan/sass-hover-transition.git",
+    "sass-inline-icons": "git://github.com/thinknathan/sass-inline-icons.git",
+    "sass-ripple": "git://github.com/thinknathan/sass-ripple.git",
     "loadcss": "~2",
     "fontfaceobserver": "~2",
     "lazysizes": "~4",
