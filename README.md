@@ -2,16 +2,13 @@
 [![Build Status](https://travis-ci.org/thinknathan/Foundation-for-Sage.svg)](https://travis-ci.org/thinknathan/Foundation-for-Sage)
 [![devDependency Status](https://david-dm.org/thinknathan/Foundation-for-Sage/dev-status.svg)](https://david-dm.org/thinknathan/Foundation-for-Sage#info=devDependencies)
 
-Forked from Foundation-for-Sage.
+Forked from Foundation-for-Sage, with some significant modifications.
 
 Sage is a WordPress starter theme based on HTML5 Boilerplate, gulp, Bower, and Zurb Foundation for sites, that will help you make better themes.
 
 * Source: [https://github.com/roots/sage](https://github.com/roots/sage)
 * Homepage: [https://roots.io/sage/](https://roots.io/sage/)
 * Documentation: [https://roots.io/sage/docs/](https://roots.io/sage/docs/)
-* Twitter: [@rootswp](https://twitter.com/rootswp)
-* Newsletter: [Subscribe](http://roots.io/subscribe/)
-* Forum: [https://discourse.roots.io/](https://discourse.roots.io/)
 
 ## Requirements
 
@@ -44,6 +41,20 @@ Install the [Soil](https://github.com/roots/soil) plugin to enable additional fe
 * Nice search (`/search/query/`)
 * Google CDN jQuery snippet from [HTML5 Boilerplate](http://html5boilerplate.com/)
 * Google Analytics snippet from [HTML5 Boilerplate](http://html5boilerplate.com/)
+
+Install the [WP-Abettor](https://github.com/thinknathan/wp-abettor) plugin to enable additional features:
+
+* Hide default dashboard widgets on the back-end
+* Add a fixed position emblem & modifies favicon to differentiate development sites from production sites
+* Disable the admin bar on the front-end
+* Turn off comments and related comments in the back-end interface
+* Disable Yoast SEO columns for posts and pages on the back-end interface
+* Set default settings for Gravity Forms: HTML5 output on & CSS output off
+* Move Gravity Forms injected scripts to the footer
+* Remove cruft from text when pasting into the TinyMCE editor
+* Removes the back-end admin top bar from larger screens
+* Adds a View Site link to the admin sidebar
+* Adds a Logout link to the admin sidebar
 
 See a complete working example in the [roots-example-project.com repo](https://github.com/roots/roots-example-project.com).
 
@@ -102,20 +113,30 @@ If your local development URL looks like `http://localhost:8888/project-name/` y
 
 Sage documentation is available at [https://roots.io/sage/docs/](https://roots.io/sage/docs/).
 
-## New Additions
+## New Additions in this Fork
 
-* Based on Zurb's Foundation
-* Custom SASS organization following Atomic Design principles
-* `gulp --production` will strip unused CSS
-* `gulp --production` will add inline critical CSS to the header
+### Structure
+* Custom SASS file structure following [Atomic Design](https://www.smashingmagazine.com/2013/08/other-interface-atomic-design-sass/) principles
+* SASS file structure that loads pieces of Zurb's Foundation, allowing you to easily remove chunks of CSS you're not using
+
+### Tasks
+* `gulp uncss` will strip unused CSS
+* `gulp critical` will add inline critical CSS to the header (Requires you to save a post in Wordpress to produce the sitemap used in this process.)
+* Include Google Fonts in `assets/manifest.json` to auto download and include them in fonts.css (If not using this feature, remove fonts.css from being loaded in lib/setup.php)
+
+### Popular WP Plugin Integration
+* Includes SASS styles for Gravity Forms to allow easy styling
+* Formats Yoast SEO Breadcrumbs to use Foundation styles
+
+### Popular JS Plugin Integration
+* Includes Slick.js styles
+* Includes Magnific popup styles
+
+### Opinionated Changes
 * CSS is loaded async with loadCSS
 * Small blocks of CSS can be inlined in the header
-* Open-source icons included as embedded SVG
-* Include Google Fonts in `assets/manifest.json` to auto download and include them
 * Uses webfont observer to show system fonts until webfonts are loaded
 * Small blocks of JS can be inlined in the footer and header
 * Custom login page styles
-* Support Yoast SEO Breadcrumbs & formats them to be Foundation-compatible
-* Auto-output images with srcset and lazyloading with Lazysizes
-* Simpler default tinyMCE
-* Gravity Forms integration and SASS
+* Functions to output images or background images with srcset and lazyloading via Lazysizes JS
+* Simpler default controls for tinyMCE editor
