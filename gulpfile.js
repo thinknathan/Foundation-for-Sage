@@ -286,6 +286,7 @@ gulp.task('uncss', function () {
     /.*\.pace.*/,
     /.*\.rellax.*/,
     /.*\[data-rellax.*/,
+    /.*\.datepicker.*/,
     // Generic
     /expanded/,
     /js/,
