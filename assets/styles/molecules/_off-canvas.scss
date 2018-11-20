@@ -8,11 +8,13 @@
   .no-js & {
     transition-delay: 0s;
   }
+
   .close-button {
-    top: .5rem;
+    top: 0.5rem;
     right: 1rem;
     color: $white;
   }
+
   .off-canvas-inner {
     padding: $global-padding * 2;
   }

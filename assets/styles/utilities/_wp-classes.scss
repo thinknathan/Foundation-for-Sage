@@ -29,11 +29,13 @@ article.sticky {
 }
 
 @include breakpoint(medium) {
+
   // Only float if not on an extra small device
   .alignleft {
     float: left;
     margin-right: $global-margin;
   }
+
   .alignright {
     float: right;
     margin-left: $global-margin;
@@ -51,7 +53,14 @@ article.sticky {
 }
 
 // Text meant only for screen readers
-.screen-reader-text {
-  @extend .show-for-sr;
-  @extend .show-on-focus;
+.screen-reader-text,
+.show-for-sr,
+.show-on-focus {
+  @include element-invisible;
+
+  // Only display the element when it's focused
+  &:active,
+  &:focus {
+    @include element-invisible-off;
+  }
 }

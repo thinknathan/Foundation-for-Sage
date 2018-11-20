@@ -11,9 +11,11 @@ $alt-nav-style-breakpoint: 'large';
       display: none;
     }
   }
+
   a {
     color: $white;
   }
+
   .site-title {
     margin-bottom: 0;
     color: $white;
@@ -22,22 +24,32 @@ $alt-nav-style-breakpoint: 'large';
   /* Title Bar for small screens */
   .site-title-bar-small {
     @include hide-for($alt-nav-style-breakpoint);
+
     width: 100%;
     background-color: $primary-color;
+    position: sticky;
+    z-index: 5;
+
     .site-title-bar-small-inner {
       @include flex-grid-row;
       @include flex-align($y: middle);
+
       padding: $global-padding;
+
       @include breakpoint(medium) {
         padding: $global-padding * 1.5;
       }
+
       .site-title-bar-left {
         @include flex-grid-column();
       }
+
       .site-title-bar-right {
         @include flex-grid-column('shrink');
+
         .menu-button {
           color: $white;
+
           .menu-icon {
             margin-left: $global-margin * 0.5;
           }
@@ -49,35 +61,27 @@ $alt-nav-style-breakpoint: 'large';
   /* Full Navigation for larger screens */
   .site-navigation-full {
     @include show-for($alt-nav-style-breakpoint);
+
     width: 100%;
     background-color: $primary-color;
+    position: sticky;
+    z-index: 5;
+
     .site-navigation-full-inner {
       @include flex-grid-row;
       @include flex-align($y: middle);
+
       height: 100%;
+
       .site-logo-section {
         @include flex-grid-column();
       }
+
       .site-links-section {
         @include flex-grid-column('shrink');
+
         justify-content: flex-end;
       }
     }
-    /*
-    &.is-stuck {
-      animation: 'slideIn' $offcanvas-transition-length $offcanvas-transition-timing;
-    }
-    */
   }
 }
-
-/*
-@keyframes slideIn {
-  0% {
-    transform: translateY(-100%);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-*/

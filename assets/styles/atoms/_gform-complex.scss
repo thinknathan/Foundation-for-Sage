@@ -10,17 +10,20 @@
     @include breakpoint(medium) {
       @include xy-grid;
     }
+
     .ginput_full {
       @include breakpoint(medium) {
         @include xy-cell($gutters: 0);
       }
     }
+
     .name_first,
     .ginput_left {
       @include breakpoint(medium) {
         @include xy-cell($size: 50%, $gutter-position: right);
       }
     }
+
     .name_last,
     .ginput_right {
       @include breakpoint(medium) {

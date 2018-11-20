@@ -37,6 +37,7 @@ $card-hover-transition: 'fade';
 
 .card {
   @include card-container($card-post-bg, $card-post-text-color, 2rem, $global-radius);
+
   @include breakpoint(medium) {
     margin-bottom: $global-margin * 3;
   }
@@ -52,14 +53,8 @@ $card-hover-transition: 'fade';
 
 .card-post {
   z-index: 0;
+
   @include card-container($card-post-bg, $card-post-text-color, 2rem, $global-radius);
-  /*
-  &:hover {
-    .card-post-img {
-      opacity: 1;
-    }
-  }
-  */
 }
 
 .card-post-content {
@@ -68,6 +63,7 @@ $card-hover-transition: 'fade';
 
 .card-post-actions {
   @include card-divider;
+
   background: $card-post-bg;
   display: flex;
   padding-top: 0;
@@ -95,6 +91,7 @@ $card-hover-transition: 'fade';
 .card-post-button {
   margin-bottom: 0;
   flex: 1 0 0;
+
   + .card-post-button {
     margin-left: 1rem;
   }
@@ -107,5 +104,5 @@ $card-hover-transition: 'fade';
 }
 
 .card-post-img {
-  @include hover-transition($card-hover-type, $card-hover-transition, .66, $primary-color, $card-hover-icon, $card-hover-icon-colour, 30, $primary-color);
+  @include hover-transition($card-hover-type, $card-hover-transition, 0.66, $primary-color, $card-hover-icon, $card-hover-icon-colour, 30, $primary-color);
 }

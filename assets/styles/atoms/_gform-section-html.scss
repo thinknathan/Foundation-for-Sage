@@ -6,14 +6,18 @@
  */
 
 .gform_wrapper {
+  // No empty line allowed
   .gfield_html,
   .gsection {
-    margin: $gravity-margin 0 $gravity-margin-small;
+    margin: $gravity-margin 0 0;
     padding: 0 0 $gravity-margin-small;
+
     @include breakpoint(large) {
-      margin-bottom: $gravity-margin-medium;
       padding-bottom: $gravity-margin-medium;
     }
   }
+
+  /*
   .gfield_html {}
+  */
 }

@@ -8,6 +8,7 @@ $sidebar-sm-columns: 4;
 
 .wrap {
   padding: $global-padding * 2 $global-padding;
+
   @include breakpoint(medium) {
     padding: $global-padding * 3;
   }
@@ -20,8 +21,10 @@ $sidebar-sm-columns: 4;
 
 .main {
   @include flex-grid-column($main-sm-columns);
+
   .sidebar-primary & {
     @include flex-grid-column($main-sm-columns - $sidebar-sm-columns);
+
     @include breakpoint(medium down) {
       @include flex-grid-column($main-sm-columns);
     }
@@ -30,6 +33,7 @@ $sidebar-sm-columns: 4;
 
 .sidebar {
   @include flex-grid-column($sidebar-sm-columns);
+
   @include breakpoint(medium down) {
     display: none;
   }

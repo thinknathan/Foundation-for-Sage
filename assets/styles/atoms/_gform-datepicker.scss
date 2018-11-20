@@ -5,19 +5,24 @@
  * License: MIT - http://wpsitecare.mit-license.org/
  */
 
+/* stylelint-disable */
+
 .ui-datepicker {
   font-size: $gravity-small-font-size;
   height: auto;
   margin: 5px auto 0;
   width: 216px;
   z-index: 9999;
+
   a {
     text-decoration: none;
   }
+
   thead {
-    background: linear-gradient( to bottom, $gravity-light-fog 0%, $gravity-light-fog 100%);
+    background: linear-gradient(to bottom, $gravity-light-fog 0%, $gravity-light-fog 100%);
     border-bottom: 1px solid $gravity-fog;
   }
+
   th {
     color: $gravity-gray;
     font-size: $gravity-small-font-size;
@@ -26,20 +31,9 @@
     text-shadow: 1px 0 0 $gravity-white;
     text-transform: uppercase;
   }
-  tbody {
-    td {
-      border-right: 1px solid $gravity-fog;
-      border-top: 1px solid $gravity-fog;
-      padding: 0;
-    }
-    tr {
-      border-bottom: 1px solid $gravity-fog;
-      &:last-child {
-        border-bottom: 0 none;
-      }
-    }
-  }
+
   td {
+    // No empty line allowed
     a,
     span {
       color: $gravity-gray;
@@ -50,6 +44,22 @@
       text-align: center;
       text-shadow: 1px 1px 0 $gravity-white;
       width: 30px;
+    }
+  }
+
+  tbody {
+    td {
+      border-right: 1px solid $gravity-fog;
+      border-top: 1px solid $gravity-fog;
+      padding: 0;
+    }
+
+    tr {
+      border-bottom: 1px solid $gravity-fog;
+
+      &:last-child {
+        border-bottom: 0 none;
+      }
     }
   }
 }
@@ -67,6 +77,7 @@
 
 .ui-datepicker-title {
   text-align: center;
+
   select {
     //background-size: 10px 8px;
     margin-top: 2.5%;
@@ -77,7 +88,7 @@
 
 .ui-datepicker-prev,
 .ui-datepicker-next {
-  background-image: url("../images/gf-arrow.png");
+  background-image: url("../../node_modules/gravity-forms-scss/images/gf-arrow.png");
   background-repeat: no-repeat;
   cursor: pointer;
   display: inline-block;
@@ -100,13 +111,16 @@
 
 .ui-datepicker-calendar {
   margin-bottom: 0;
+
   .ui-state-default {
-    background: linear-gradient( to bottom, $gravity-light-fog 0%, $gravity-medium-fog 100%);
+    background: linear-gradient(to bottom, $gravity-light-fog 0%, $gravity-medium-fog 100%);
     box-shadow: inset 1px 1px 0 0 $gravity-gray;
   }
+
   .ui-state-hover {
     background: $gravity-white;
   }
+
   .ui-state-active {
     background: $gravity-yellow;
     border: 1px solid $gravity-red;
@@ -114,6 +128,7 @@
     margin: -1px;
     position: relative;
   }
+
   td {
     &:first-child {
       .ui-state-active {
@@ -121,6 +136,7 @@
         width: 29px;
       }
     }
+
     &:last-child {
       .ui-state-active {
         margin-right: 0;
@@ -128,6 +144,7 @@
       }
     }
   }
+
   tr {
     &:last-child {
       .ui-state-active {
@@ -143,6 +160,7 @@
     background: $gravity-white;
     color: $gravity-light-gray;
   }
+
   &.ui-state-disabled {
     background-color: $gravity-light-fog;
   }

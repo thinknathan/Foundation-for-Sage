@@ -7,12 +7,16 @@ $footer-cols: 12;
 .site-footer {
   background: $primary-color;
   color: $white;
+
   .site-footer-inner {
     @include flex-grid-row;
+
     padding: $global-padding;
   }
+
   .copyright {
     @include flex-grid-column($footer-cols);
+
     text-align: center;
     margin-bottom: 0;
   }

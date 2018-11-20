@@ -6,20 +6,25 @@
  */
 
 .gform_wrapper {
+
   // Let the datepicker icon float next to input
   .datepicker_with_icon {
     display: inline-block;
     margin-right: 10px;
     max-width: 85%;
   }
+
   // Remove the seconds separator completely
   .gfield_time_hour > input + i {
     display: none;
   }
+
   .clear-multi {
     @include xy-grid;
+
     & > div {
       @include xy-cell($size: auto, $gutter-position: right);
+
       &:last-child {
         margin-right: 0;
       }

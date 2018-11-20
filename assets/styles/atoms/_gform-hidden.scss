@@ -8,13 +8,14 @@
 .gform_wrapper {
   .hidden_label {
     .gfield_label {
-      clip: rect( 1px, 1px, 1px, 1px);
+      clip: rect(1px, 1px, 1px, 1px);
       height: 1px;
       overflow: hidden;
       position: absolute;
       width: 1px;
     }
   }
+
   .gform_validation_container {
     display: none;
     left: -9000px;

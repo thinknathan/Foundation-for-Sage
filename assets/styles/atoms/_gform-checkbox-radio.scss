@@ -6,9 +6,11 @@
  */
 
 .gform_wrapper {
+  // No empty line allowed here
   .gfield_checkbox,
   .gfield_radio {
     margin-top: 0;
+
     li {
       line-height: 1;
       margin: 0 0 $gravity-margin-small;
