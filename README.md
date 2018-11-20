@@ -1,37 +1,16 @@
 # Foundation for Sage
-[![Build Status](https://travis-ci.org/thinknathan/Foundation-for-Sage.svg)](https://travis-ci.org/thinknathan/Foundation-for-Sage)
-[![devDependency Status](https://david-dm.org/thinknathan/Foundation-for-Sage/dev-status.svg)](https://david-dm.org/thinknathan/Foundation-for-Sage#info=devDependencies)
 
-Forked from Foundation-for-Sage, with some significant modifications.
+Sage is a WordPress starter theme with a modern development workflow.
 
-Sage is a WordPress starter theme based on HTML5 Boilerplate, gulp, Bower, and Zurb Foundation for sites, that will help you make better themes.
-
-* Source: [https://github.com/roots/sage](https://github.com/roots/sage)
-* Homepage: [https://roots.io/sage/](https://roots.io/sage/)
-* Documentation: [https://roots.io/sage/docs/](https://roots.io/sage/docs/)
-
-## Requirements
-
-| Prerequisite    | How to check | How to install
-| --------------- | ------------ | ------------- |
-| PHP >= 5.6.x    | `php -v`     | [php.net](http://php.net/manual/en/install.php) |
-| Node.js 0.12.x  | `node -v`    | [nodejs.org](http://nodejs.org/) |
-| gulp >= 3.8.10  | `gulp -v`    | `npm install -g gulp` |
-| Bower >= 1.3.12 | `bower -v`   | `npm install -g bower` |
-
-For more installation notes, refer to the [Install gulp and Bower](#install-gulp-and-bower) section in this document.
+This branch combines the structure of [Sage 8](https://github.com/roots/sage/releases/tag/8.5.4) with the updated workflow of [Sage 9](https://github.com/roots/sage/releases) and beyond.
 
 ## Features
 
-* [gulp](http://gulpjs.com/) build script that compiles both Sass and Less, checks for JavaScript errors, optimizes images, and concatenates and minifies files
-* [BrowserSync](http://www.browsersync.io/) for keeping multiple browsers and devices synchronized while testing, along with injecting updated CSS and JS into your browser while you're developing
-* [Bower](http://bower.io/) for front-end package management
-* [asset-builder](https://github.com/austinpray/asset-builder) for the JSON file based asset pipeline
-* [Foundation for sites](http://foundation.zurb.com/sites.html)
-* [Theme wrapper](https://roots.io/sage/docs/theme-wrapper/)
-* ARIA roles and microformats
-* Posts use the [hNews](http://microformats.org/wiki/hnews) microformat
-* [Multilingual ready](https://roots.io/wpml/) and over 30 available [community translations](https://github.com/roots/sage-translations)
+* Sass for stylesheets
+* Modern JavaScript
+* [Webpack](https://webpack.github.io/) for compiling assets, optimizing images, and concatenating and minifying files
+* [Browsersync](http://www.browsersync.io/) for synchronized browser testing
+* CSS framework: [Foundation](https://foundation.zurb.com/)
 
 Install the [Soil](https://github.com/roots/soil) plugin to enable additional features:
 
@@ -56,7 +35,16 @@ Install the [WP-Abettor](https://github.com/thinknathan/wp-abettor) plugin to en
 * Adds a View Site link to the admin sidebar
 * Adds a Logout link to the admin sidebar
 
-See a complete working example in the [roots-example-project.com repo](https://github.com/roots/roots-example-project.com).
+See a working example at [roots-example-project.com](https://roots-example-project.com/).
+
+## Requirements
+
+Make sure all dependencies have been installed before moving on:
+
+* [WordPress](https://wordpress.org/) >= 4.7
+* [PHP](https://secure.php.net/manual/en/install.php) >= 7.1.3 (with [`php-mbstring`](https://secure.php.net/manual/en/book.mbstring.php) enabled)
+* [Node.js](http://nodejs.org/) >= 6.9.x
+* [Yarn](https://yarnpkg.com/en/docs/install)
 
 ## Theme installation
 
@@ -68,50 +56,40 @@ Edit `lib/setup.php` to enable or disable theme features, setup navigation menus
 
 ## Theme development
 
-Sage uses [gulp](http://gulpjs.com/) as its build system and [Bower](http://bower.io/) to manage front-end packages.
+* Run `yarn` from the theme directory to install dependencies
+* Update `resources/assets/config.json` settings:
+  * `devUrl` should reflect your local development hostname
+  * `publicPath` should reflect your WordPress folder structure (`/wp-content/themes/sage` for non-[Bedrock](https://roots.io/bedrock/) installs)
 
-### Install gulp and Bower
+### Build commands
 
-Building the theme requires [node.js](http://nodejs.org/download/). We recommend you update to the latest version of npm: `npm install -g npm@latest`.
-
-From the command line:
-
-1. Install [gulp](http://gulpjs.com) and [Bower](http://bower.io/) globally with `npm install -g gulp bower`
-2. Navigate to the theme directory, then run `npm install`
-3. Run `bower install`
-
-You now have all the necessary dependencies to run the build process.
-
-### Available gulp commands
-
-* `gulp` — Compile and optimize the files in your assets directory
-* `gulp watch` — Compile assets when file changes are made
-* `gulp --production` — Compile assets for production (no source maps).
-
-### Using BrowserSync
-
-To use BrowserSync during `gulp watch` you need to update `devUrl` at the bottom of `assets/manifest.json` to reflect your local development hostname.
-
-For example, if your local development URL is `http://project-name.dev` you would update the file to read:
-```json
-...
-  "config": {
-    "devUrl": "http://project-name.dev"
-  }
-...
-```
-If your local development URL looks like `http://localhost:8888/project-name/` you would update the file to read:
-```json
-...
-  "config": {
-    "devUrl": "http://localhost:8888/project-name/"
-  }
-...
-```
+* `yarn start` — Compile assets when file changes are made, start Browsersync session
+* `yarn build` — Compile and optimize the files in your assets directory
+* `yarn build:production` — Compile assets for production
 
 ## Documentation
 
-Sage documentation is available at [https://roots.io/sage/docs/](https://roots.io/sage/docs/).
+* [Sage documentation](https://roots.io/sage/docs/)
+
+## Contributing
+
+Contributions are welcome from everyone. We have [contributing guidelines](https://github.com/roots/guidelines/blob/master/CONTRIBUTING.md) to help you get started.
+
+## Sage sponsors
+
+Help support our open-source development efforts by [becoming a patron](https://www.patreon.com/rootsdev).
+
+<a href="https://kinsta.com/?kaid=OFDHAJIXUDIV"><img src="https://cdn.roots.io/app/uploads/kinsta.svg" alt="Kinsta" width="200" height="150"></a> <a href="https://k-m.com/"><img src="https://cdn.roots.io/app/uploads/km-digital.svg" alt="KM Digital" width="200" height="150"></a>
+
+## Community
+
+Keep track of development and community news.
+
+* Participate on the [Roots Discourse](https://discourse.roots.io/)
+* Follow [@rootswp on Twitter](https://twitter.com/rootswp)
+* Read and subscribe to the [Roots Blog](https://roots.io/blog/)
+* Subscribe to the [Roots Newsletter](https://roots.io/subscribe/)
+* Listen to the [Roots Radio podcast](https://roots.io/podcast/)
 
 ## New Additions in this Fork
 
@@ -120,9 +98,7 @@ Sage documentation is available at [https://roots.io/sage/docs/](https://roots.i
 * SASS file structure that loads pieces of Zurb's Foundation, allowing you to easily remove chunks of CSS you're not using
 
 ### Tasks
-* `gulp uncss` will strip unused CSS
-* `gulp critical` will add inline critical CSS to the header (Requires you to save a post in Wordpress to produce the sitemap used in this process.)
-* Include Google Fonts in `assets/manifest.json` to auto download and include them in fonts.css (If not using this feature, remove fonts.css from being loaded in lib/setup.php)
+* WIP
 
 ### Popular WP Plugin Integration
 * Includes SASS styles for Gravity Forms to allow easy styling
@@ -135,7 +111,6 @@ Sage documentation is available at [https://roots.io/sage/docs/](https://roots.i
 ### Opinionated Changes
 * CSS is loaded async with loadCSS
 * Small blocks of CSS can be inlined in the header
-* Uses webfont observer to show system fonts until webfonts are loaded
 * Small blocks of JS can be inlined in the footer and header
 * Custom login page styles
 * Functions to output images or background images with srcset and lazyloading via Lazysizes JS
