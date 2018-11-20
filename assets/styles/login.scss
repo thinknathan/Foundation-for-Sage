@@ -3,14 +3,14 @@
  */
 
 @import 'settings/settings';
-@import "../../bower_components/foundation-sites/scss/foundation.scss";
+@import "../../node_modules/foundation-sites/scss/foundation.scss";
 
 body {
   background: $primary-color;
 }
 
-#login h1 a,
-.login h1 a {
+.login h1 a,
+#login h1 a {
   background-image: url('../images/logo.svg');
   width: 320px;
   height: 80px;
@@ -20,14 +20,16 @@ body {
 .login #nav,
 .login #backtoblog {
   text-align: center;
+
   a:link,
   a:visited {
     color: $white;
   }
+
   a:focus,
   a:active,
   a:hover {
     color: $white;
-    opacity: .9;
+    opacity: 0.9;
   }
 }

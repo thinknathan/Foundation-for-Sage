@@ -240,9 +240,6 @@ function display_breadcrumbs() {
  * Theme assets
  */
 function assets() {
-  // Optional font file: delete if unused
-  wp_enqueue_style('sage/fonts', Assets\asset_path('fonts/fonts.css'), false, null);
-  
   // Main CSS file
   wp_enqueue_style('sage/css', Assets\asset_path('styles/main.css'), false, null);
 
@@ -259,18 +256,18 @@ function assets() {
   wp_script_add_data('sage/polyfill', 'conditional', 'IE');
   
   // Head script
-  wp_enqueue_script('sage/head', Assets\asset_path('scripts/head.js'), array(), null, false);
+  wp_enqueue_script('sage/head', Assets\asset_path('scripts/lazyload.js'), array(), null, false);
 
-  // jQuery
+  // jQuery script
   wp_deregister_script('jquery');
-  wp_enqueue_script('jquery', Assets\asset_path('scripts/jquery.js'), array(), null, true);
+  wp_enqueue_script('jquery', Assets\asset_path('scripts/jquery.js'), array(), null, false);
+  
+  // Foundation script
+  wp_enqueue_script('sage/foundation', Assets\asset_path('scripts/foundation.js'), ['jquery'], null, false);
 
-  // Theme script
-  wp_enqueue_script('sage/js', Assets\asset_path('scripts/main.js'), ['jquery'], null, true);
+  // Main script
+  wp_enqueue_script('sage/js', Assets\asset_path('scripts/main.js'), ['sage/foundation'], null, false);
 
-  // Internet Explorer CSS3 & Media Query polyfills
-  wp_enqueue_script('sage/selectivizr2', 'https://cdnjs.cloudflare.com/ajax/libs/corysimmons-selectivizr2/1.0.9/selectivizr2.min.js', ['jquery'], null, true);
-  wp_script_add_data('sage/selectivizr2', 'conditional', 'lt IE 9');
 }
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\assets', 100);
 
@@ -280,12 +277,12 @@ add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\assets', 100);
 function inline_assets_head_before() {
   echo '<style>';
   
-  $fileToInline = get_template_directory() . '/dist/styles/' . basename(Assets\asset_path('styles/head-critical.css'));
+  $fileToInline = get_template_directory() . '/dist/styles/' . basename(Assets\asset_path('styles/critical.css'));
   if ( file_exists($fileToInline) ) {
     readfile($fileToInline);
   }
   
-  $fileToInline = get_template_directory() . '/dist/styles/' . basename(Assets\asset_path('styles/head-inline.css'));
+  $fileToInline = get_template_directory() . '/dist/styles/' . basename(Assets\asset_path('styles/inline.css'));
   if ( file_exists($fileToInline) ) {
     readfile($fileToInline);
   }
@@ -298,7 +295,7 @@ add_action('wp_head', __NAMESPACE__ . '\\inline_assets_head_before', 1);
  * Inline assets - Head - After other scripts/styles have been queued
  */
 function inline_assets_head_after() {
-  $fileToInline = get_template_directory() . '/dist/scripts/' . basename(Assets\asset_path('scripts/head-inline.js'));
+  $fileToInline = get_template_directory() . '/dist/scripts/' . basename(Assets\asset_path('scripts/inline.js'));
   
   if ( file_exists($fileToInline) ) {
     echo '<script>';

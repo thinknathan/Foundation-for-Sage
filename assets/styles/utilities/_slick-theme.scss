@@ -2,14 +2,16 @@
  * Theme for Slick Slider
  */
 
+/* stylelint-disable */
+
 // Default Variables
 // Slick icon entity codes outputs the following
 // "\2190" outputs ascii character "←"
 // "\2192" outputs ascii character "→"
 // "\2022" outputs ascii character "•"
-$slick-font-path: "../../dist/fonts/" !default;
+$slick-font-path: "../../node_modules/slick-carousel/slick/fonts/" !default;
 $slick-font-family: "slick" !default;
-$slick-loader-path: "../../dist/images/" !default;
+$slick-loader-path: "../../node_modules/slick-carousel/slick/" !default;
 $slick-arrow-color: $white !default;
 $slick-arrow-background: $medium-gray !default;
 $slick-arrow-background-active: $primary-color !default;
@@ -24,6 +26,7 @@ $slick-opacity-on-hover: 1 !default;
 $slick-opacity-not-active: 0.25 !default;
 $slick-font-family: sans-serif;
 $slick-transition: $button-transition;
+
 // Remove outline if using mouse
 [data-whatinput="mouse"] .slick-initialized .slick-slide {
   outline: none;
@@ -33,6 +36,7 @@ $slick-transition: $button-transition;
   @if function-exists(image-url) {
     @return image-url($url);
   }
+
   @else {
     @return url($slick-loader-path + $url);
   }
@@ -42,6 +46,7 @@ $slick-transition: $button-transition;
   @if function-exists(font-url) {
     @return font-url($url);
   }
+
   @else {
     @return url($slick-font-path + $url);
   }
@@ -71,16 +76,15 @@ $slick-transition: $button-transition;
 // Arrows
 .slick-prev,
 .slick-next {
-  // For some reason, the default z-index lets this button get stacked under other elements
-  z-index: 20;
+  z-index: 4;
   position: absolute;
   display: block;
   height: 1rem;
   width: 1rem;
   padding: 0.5rem;
   border-radius: 100px;
-  line-height: 0px;
-  font-size: 0px;
+  line-height: 0;
+  font-size: 0;
   cursor: pointer;
   background: transparent;
   color: transparent;
@@ -91,18 +95,22 @@ $slick-transition: $button-transition;
   padding: 0;
   border: none;
   outline: none;
+
   &:hover,
   &:focus {
     outline: none;
     background: transparent;
     color: transparent;
+
     &::before {
       opacity: $slick-opacity-on-hover;
     }
   }
+
   &.slick-disabled::before {
     opacity: $slick-opacity-not-active;
   }
+
   &::before {
     font-family: $slick-font-family;
     font-size: 1rem;
@@ -116,6 +124,7 @@ $slick-transition: $button-transition;
     -moz-osx-font-smoothing: grayscale;
     transition: $slick-transition;
   }
+
   &:hover::before {
     background: $slick-arrow-background-active;
   }
@@ -123,12 +132,15 @@ $slick-transition: $button-transition;
 
 .slick-prev {
   left: 1rem;
+
   [dir="rtl"] & {
     left: auto;
     right: 1rem;
   }
+
   &::before {
     content: $slick-prev-character;
+
     [dir="rtl"] & {
       content: $slick-next-character;
     }
@@ -137,12 +149,15 @@ $slick-transition: $button-transition;
 
 .slick-next {
   right: 2rem;
+
   [dir="rtl"] & {
     left: 2rem;
     right: auto;
   }
+
   &::before {
     content: $slick-next-character;
+
     [dir="rtl"] & {
       content: $slick-prev-character;
     }
@@ -165,6 +180,7 @@ $slick-transition: $button-transition;
   padding: 0;
   margin: 0;
   width: 100%;
+
   li {
     position: relative;
     display: inline-block;
@@ -173,6 +189,7 @@ $slick-transition: $button-transition;
     margin: 0 5px;
     padding: 0;
     cursor: pointer;
+
     button {
       border: 0;
       background: transparent;
@@ -180,18 +197,21 @@ $slick-transition: $button-transition;
       height: 20px;
       width: 20px;
       outline: none;
-      line-height: 0px;
-      font-size: 0px;
+      line-height: 0;
+      font-size: 0;
       color: transparent;
       padding: 5px;
       cursor: pointer;
+
       &:hover,
       &:focus {
         outline: none;
+
         &::before {
           opacity: $slick-opacity-on-hover;
         }
       }
+
       &::before {
         position: absolute;
         top: 0;
@@ -210,6 +230,7 @@ $slick-transition: $button-transition;
         transition: $slick-transition;
       }
     }
+
     &.slick-active button::before {
       color: $slick-dot-color-active;
       opacity: $slick-opacity-default;
