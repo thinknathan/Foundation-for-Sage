@@ -311,7 +311,7 @@ add_filter( 'acf/fields/wysiwyg/toolbars', __NAMESPACE__ . '\\configure_tinymce_
 
 
 /**
- * Converts Yoast SEO breadcrumbs to Zurb Foundation 6 breadcrumbs
+ * Converts Yoast breadcrumbs to Foundation 6 breadcrumbs
  */
 function foundation_yoast_breadcrumb_output( $output ){
   // Kill span closing tags
@@ -320,15 +320,10 @@ function foundation_yoast_breadcrumb_output( $output ){
   $output = str_replace( $from, $to, $output );
   
   // Kill the wrapper
-  $from = '<span xmlns:v="http://rdf.data-vocabulary.org/#">'; 
-  $to     = '';
+  $from = '<span><span>'; 
+  $to     = '<span>';
   $output = str_replace( $from, $to, $output );
 
-  // Remove separators
-  $from = '&raquo;'; 
-  $to     = '';
-  $output = str_replace( $from, $to, $output );
-  
   // Change the remaining span into a list item
   $from = '<span'; 
   $to     = '<li';
@@ -349,7 +344,9 @@ function foundation_yoast_breadcrumb_output( $output ){
   
   return $output;
 }
-add_filter( 'wpseo_breadcrumb_output', __NAMESPACE__ . '\\foundation_yoast_breadcrumb_output' );
+if ( function_exists('yoast_breadcrumb') ) {
+  add_filter( 'wpseo_breadcrumb_output', __NAMESPACE__ . '\\foundation_yoast_breadcrumb_output' );
+}
 
 
 /**
