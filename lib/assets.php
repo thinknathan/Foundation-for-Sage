@@ -41,7 +41,6 @@ class JsonManifest {
 
 function asset_path($filename) {
   $dist_path = get_template_directory_uri() . '/dist/';
-  $directory = dirname($filename) . '/';
   $file = basename($filename);
   static $manifest;
 
@@ -53,6 +52,6 @@ function asset_path($filename) {
   if (array_key_exists($filename, $manifest->get())) {
     return $dist_path . $manifest->get()[$filename];
   } else {
-    return $dist_path . $directory . $file;
+    return $dist_path . $filename;
   }
 }
