@@ -49,6 +49,7 @@
     "eslint": "^5.7",
     "eslint-plugin-import": "^2.13",
     "exports-loader": "^0.7.0",
+    "expose-loader": "^0.7.5",
     "file-loader": "^2.0",
     "friendly-errors-webpack-plugin": "^1.7",
     "glob-all": "^3.1",

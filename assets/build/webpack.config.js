@@ -22,7 +22,9 @@ const merge = require('webpack-merge');
 const desire = require('./util/desire');
 const PurgecssPlugin = desire('purgecss-webpack-plugin'); // remove unnecessary CSS
 const purgecssConfig = require('./purgecss.config');
-const { default: ImageminPlugin } = desire('imagemin-webpack-plugin'); // compress images
+const {
+  default: ImageminPlugin,
+} = desire('imagemin-webpack-plugin'); // compress images
 
 /** local dependencies */
 const assetsManifestFormatter = require('./util/assetManifestsFormatter');
@@ -62,7 +64,8 @@ const webpackConfig = {
       name: true,
       cacheGroups: {
         jquery: {
-          test: /(jquery|jquery-migrate)\.js/,
+          //test: /(jquery|jquery-migrate)\.js/,
+          test: /jquery\.js/,
           name: 'jquery',
           chunks: 'all',
         },
@@ -80,7 +83,7 @@ const webpackConfig = {
         parallel: true,
         sourceMap: config.enabled.sourceMaps,
         uglifyOptions: {
-          ecma: 8,
+          ecma: 5,
           compress: {
             warnings: true,
             drop_console: true,
@@ -94,17 +97,20 @@ const webpackConfig = {
     rules: [
       {
         enforce: 'pre',
-        test: /\.(js|s?[ca]ss)$/,
+        test: /\.(m?js|s?[ca]ss)$/,
         include: config.paths.assets,
         loader: 'import-glob',
       },
       {
-        test: /\.js$/,
+        test: /\.m?js$/,
         exclude: /(node_modules|bower_components)/,
         use: [{
           loader: 'cache-loader',
         }, {
           loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+          },
         }],
       },
       {
@@ -161,7 +167,18 @@ const webpackConfig = {
           name: `${config.cacheBusting}.[ext]`,
         },
       },
+      {
+        test: require.resolve('jquery'),
+        use: [{
+          loader: 'expose-loader',
+          options: 'jQuery',
+        }, {
+          loader: 'expose-loader',
+          options: '$',
+        }],
+      },
     ],
+
   },
   resolve: {
     modules: [config.paths.assets, 'node_modules'],
@@ -185,8 +202,6 @@ const webpackConfig = {
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
-      'window.jQuery': 'jquery',
-      Popper: 'popper.js/dist/umd/popper.js',
     }),
     new FriendlyErrorsWebpackPlugin(),
   ],
