@@ -123,7 +123,7 @@ function my_custom_resource_hints( $hints, $relation_type ) {
   }
   return $hints;
 }
-add_filter( 'wp_resource_hints', 'my_custom_resource_hints', 10, 2 );
+add_filter( 'wp_resource_hints', __NAMESPACE__ . '\\my_custom_resource_hints', 10, 2 );
 */
 
 
