@@ -50,8 +50,8 @@ function asset_path($filename) {
     $manifest = new JsonManifest($manifest_path);
   }
 
-  if (array_key_exists($file, $manifest->get())) {
-    return $dist_path . $directory . $manifest->get()[$file];
+  if (array_key_exists($filename, $manifest->get())) {
+    return $dist_path . $manifest->get()[$filename];
   } else {
     return $dist_path . $directory . $file;
   }
