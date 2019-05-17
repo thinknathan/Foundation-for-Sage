@@ -63,9 +63,11 @@ function setup() {
   add_theme_support('html5', ['caption', 'comment-form', 'comment-list', 'gallery', 'search-form']);
   
   // Support Yoast SEO Breadcrumbs
+  // https://kb.yoast.com/kb/implement-wordpress-seo-breadcrumbs/
   add_theme_support('yoast-seo-breadcrumbs');
   
   // ACF Options Page
+  // https://www.advancedcustomfields.com/resources/acf_add_options_page/
   if( function_exists('acf_add_options_page') ) {
     acf_add_options_page([
       'page_title' => 'Options',
@@ -81,6 +83,7 @@ function setup() {
   ]);
   
   // Custom Post Types
+  // https://codex.wordpress.org/Function_Reference/register_post_type
   /*
   register_post_type( 'cpt_xxx',
     [
@@ -108,22 +111,19 @@ add_action('after_setup_theme', __NAMESPACE__ . '\\setup');
  * Removes DNS-Prefetch and adds Preconnect
  */
 /*
-function my_custom_resource_hints( $hints, $relation_type ) {
+function resource_hints( $hints, $relation_type ) {
+  if ( is_admin() ) return $hints;
 	// Remove all dns-prefetch
 	if ('dns-prefetch' === $relation_type) {
     return [];
   }
 	// Add preconnect hints
   if ('preconnect' === $relation_type) {
-    $hints[] = 'https://www.googletagmanager.com';
     $hints[] = 'https://www.google-analytics.com';
-    $hints[] = 'https://www.google.com';
-    $hints[] = 'https://maps.googleapis.com';
-    $hints[] = 'https://maps.gstatic.com';
   }
   return $hints;
 }
-add_filter( 'wp_resource_hints', __NAMESPACE__ . '\\my_custom_resource_hints', 10, 2 );
+add_filter( 'wp_resource_hints', __NAMESPACE__ . '\\resource_hints', 10, 2 );
 */
 
 
