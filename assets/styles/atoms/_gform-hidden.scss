@@ -21,4 +21,10 @@
     left: -9000px;
     position: absolute;
   }
+
+  .gfield_visibility_hidden {
+    visibility: hidden;
+    position: absolute;
+    left: -9999px;
+  }
 }
