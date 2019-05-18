@@ -9,6 +9,16 @@ use Roots\Sage\Extras;
  * Theme setup
  */
 function setup() {
+  // Indicate support for WooCommerce
+  //add_theme_support( 'woocommerce' );
+  
+  // Custom logo support
+  //add_theme_support( 'custom-logo' );
+
+  // Make theme available for translation
+  // Community translations can be found at https://github.com/roots/sage-translations
+  //load_theme_textdomain('sage', get_template_directory() . '/lang');
+  
   // Enable features from Soil when plugin is activated
   // https://roots.io/plugins/soil/
   add_theme_support('soil-clean-up');
@@ -30,16 +40,6 @@ function setup() {
   add_theme_support('abet-tinymce-clean-paste');
   add_theme_support('abet-add-logout-link-admin-sidebar');
   add_theme_support('abet-add-view-site-admin-sidebar');
-
-  // Indicate support for WooCommerce
-  //add_theme_support( 'woocommerce' );
-  
-  // Custom logo support
-  //add_theme_support( 'custom-logo' );
-
-  // Make theme available for translation
-  // Community translations can be found at https://github.com/roots/sage-translations
-  //load_theme_textdomain('sage', get_template_directory() . '/lang');
 
   // Enable plugins to manage the document title
   // http://codex.wordpress.org/Function_Reference/add_theme_support#Title_Tag
@@ -101,7 +101,6 @@ function setup() {
     ]
   );
   */
-  
 }
 add_action('after_setup_theme', __NAMESPACE__ . '\\setup');
 
@@ -147,24 +146,9 @@ function top_nav() {
   ]);
 }
 
-/**
- * Off-Canvas menu
- */
-function off_canvas_nav() {
-  wp_nav_menu([
-    'theme_location' => 'mobile_navigation',        // Where it's located in the theme
-    'container' => false,                           // Remove nav container
-    'menu_class' => 'vertical menu',                // Adding custom nav class
-    'items_wrap' => '<ul class="%2$s" data-drilldown data-auto-height="true" data-animate-height="true">%3$s</ul>',
-    'depth' => 2,                                   // Limit the depth of the nav
-    'fallback_cb' => false,                         // Fallback function (see below)
-    'walker' => new Extras\off_canvas_nav_walker()
-  ]);
-}
-
 
 /**
- * Determine which pages should NOT display the sidebar
+ * Determine which pages should display the sidebar
  */
 function display_sidebar() {
   static $display;
@@ -181,6 +165,7 @@ function display_sidebar() {
   return apply_filters('sage/display_sidebar', $display);
 }
 
+
 /**
  * Determine which pages should display breadcrumbs
  */
@@ -194,7 +179,7 @@ function display_breadcrumbs() {
     is_archive(),
     is_search(),
   ]);
-  
+
   return apply_filters('sage/display_breadcrumbs', $display);
 }
 
@@ -203,35 +188,43 @@ function display_breadcrumbs() {
  * Theme assets
  */
 function assets() {
-  // Main CSS file
+  // Add Main CSS
   wp_enqueue_style('sage/css', Assets\asset_path('styles/app.main.css'), false, null);
 
+  // Add WP Comments JS
   if (is_single() && comments_open() && get_option('thread_comments')) {
     wp_enqueue_script('comment-reply');
   }
 
+  // Add Priority script
+  wp_enqueue_script('sage/js/priority', Assets\asset_path('scripts/app.priority.js'), array(), null, false);
+
+  // Add Main script
+  wp_enqueue_script('sage/js/main', Assets\asset_path('scripts/app.main.js'), array(), null, false);
+
+  // Remove jQuery script
+  wp_deregister_script('jquery');
+
+  // Remove Gutenberg CSS
+  wp_dequeue_style( 'wp-block-library' );
+}
+add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\assets', 100);
+
+
+/**
+ * Internet Explorer polyfills
+ */
+function ie_assets() {
   // Internet Explorer min/max-width media query polyfill
   wp_enqueue_script('sage/respond', 'https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js', array(), null, false);
   wp_script_add_data('sage/respond', 'conditional', 'IE');
-  
+
   // Internet Explorer JS-focused polyfill
   wp_enqueue_script('sage/polyfill', 'https://cdn.polyfill.io/v2/polyfill.min.js', array(), null, false);
   wp_script_add_data('sage/polyfill', 'conditional', 'IE');
-  
-  // Head script
-  wp_enqueue_script('sage/js/priority', Assets\asset_path('scripts/app.priority.js'), array(), null, false);
-
-  // jQuery script
-  wp_deregister_script('jquery');
-
-  // Main script
-  wp_enqueue_script('sage/js/main', Assets\asset_path('scripts/app.main.js'), array(), null, false);
-  
-  // Remove Gutenberg CSS
-  wp_dequeue_style( 'wp-block-library' );
-
 }
-add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\assets', 100);
+add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\ie_assets', 1);
+
 
 /**
  * Inline CSS in Head
@@ -247,6 +240,7 @@ function inline_assets_head_before() {
 }
 add_action('wp_head', __NAMESPACE__ . '\\inline_assets_head_before', 1);
 
+
 /**
  * Inline JS in Head
  * After other assets have been queued
@@ -261,6 +255,7 @@ function inline_assets_head_after() {
   }
 }
 add_action('wp_head', __NAMESPACE__ . '\\inline_assets_head_after', 101);
+
 
 /**
  * Login page assets

@@ -15,6 +15,11 @@ $sage_includes = [
   'lib/util.php',         // Utilities
   'lib/setup.php',        // Theme setup
   'lib/titles.php',       // Page titles
+  'lib/gravity-forms.php',
+  'lib/woocommerce.php',
+  'lib/advanced-custom-fields.php',
+  'lib/yoast.php',
+  'lib/lazysizes.php',
   'lib/wrapper.php'       // Theme wrapper class
 ];
 
