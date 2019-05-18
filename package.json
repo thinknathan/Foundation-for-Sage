@@ -90,15 +90,11 @@
     "fg-loadcss": "^2.0.1",
     "foundation-sites": "^6.5.1",
     "gravity-forms-scss": "git+https://git@github.com/wpsitecare/gravity-forms-scss.git",
-    "jquery": "^3.3.1",
-    "jquery-migrate": "^3",
     "lazysizes": "~4",
-    "magnific-popup": "~1",
     "rellax": "latest",
     "sass-divider": "git+https://git@github.com/thinknathan/sass-divider.git",
     "sass-hover-transition": "git+https://git@github.com/thinknathan/sass-hover-transition.git",
     "sass-inline-icons": "git+https://git@github.com/thinknathan/sass-inline-icons.git",
-    "sass-ripple": "git+https://git@github.com/thinknathan/sass-ripple.git",
-    "slick-carousel": "^1.8.1"
+    "sass-ripple": "git+https://git@github.com/thinknathan/sass-ripple.git"
   }
 }

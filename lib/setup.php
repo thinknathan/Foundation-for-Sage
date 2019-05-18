@@ -260,10 +260,6 @@ function assets() {
 
   // jQuery script
   wp_deregister_script('jquery');
-  wp_enqueue_script('jquery', Assets\asset_path('scripts/jquery.js'), array(), null, false);
-  
-  // Foundation script
-  wp_enqueue_script('sage/foundation', Assets\asset_path('scripts/foundation.js'), ['jquery'], null, false);
 
   // Main script
   wp_enqueue_script('sage/js', Assets\asset_path('scripts/main.js'), ['sage/foundation'], null, false);
@@ -278,19 +274,12 @@ add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\assets', 100);
  * Inline assets - Head - Before other scripts/styles have been queued
  */
 function inline_assets_head_before() {
-  echo '<style>';
-  
   $fileToInline = get_template_directory() . '/dist/styles/' . basename(Assets\asset_path('styles/critical.css'));
   if ( file_exists($fileToInline) ) {
+    echo '<style>';
     readfile($fileToInline);
+    echo '</style>';
   }
-  
-  $fileToInline = get_template_directory() . '/dist/styles/' . basename(Assets\asset_path('styles/inline.css'));
-  if ( file_exists($fileToInline) ) {
-    readfile($fileToInline);
-  }
-  
-  echo '</style>';
 }
 add_action('wp_head', __NAMESPACE__ . '\\inline_assets_head_before', 1);
 

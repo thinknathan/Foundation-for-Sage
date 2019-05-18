@@ -350,21 +350,6 @@ if ( function_exists('yoast_breadcrumb') ) {
 
 
 /**
- * Changes .sticky class to .sticky-post for sticky posts
- * Zurb Foundation uses the .sticky class in its Sticky plugin
- * @credit https://github.com/brettsmason/croft/blob/master/inc/utility.php
- */
-function sticky_post_class( $classes ) {
-	if ( ( $key = array_search( 'sticky', $classes ) ) !== false ) {
-		unset( $classes[$key] );
-		$classes[] = 'sticky-post';
-	}
-	return $classes;
-}
-add_filter( 'post_class', __NAMESPACE__ . '\\sticky_post_class', 20 );
-
-
-/**
  * Adds convenient titles for ACF Flexible Content
  * 'acf_section_title' is used as the title
  */

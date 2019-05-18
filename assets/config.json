@@ -1,8 +1,7 @@
 {
   "entry": {
     "inline": [
-      "./scripts/inline.js",
-      "./styles/inline.scss"
+      "./scripts/inline.js"
     ],
     "login": ["./styles/login.scss"],
     "lazyload": ["./scripts/lazyload.js"],

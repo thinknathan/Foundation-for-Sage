@@ -1,13 +1,8 @@
 import AOS from 'aos';
-import 'magnific-popup';
 import 'rellax';
-import 'slick-carousel';
 
 export default {
   init() {
-    // JavaScript to be fired on all pages
-    $(document).foundation();
-
     // AOS library
     AOS.init();
 
