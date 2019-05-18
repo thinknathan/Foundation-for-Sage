@@ -11,7 +11,6 @@
  */
 $sage_includes = [
   'lib/assets.php',       // Scripts and stylesheets
-  'lib/automation.php',   // Functions for use with task runners
   'lib/extras.php',       // Custom functions
   'lib/util.php',         // Utilities
   'lib/setup.php',        // Theme setup

@@ -128,13 +128,13 @@ add_filter('next_posts_link_attributes', __NAMESPACE__ . '\\next_posts_link_attr
  * https://www.davidtiong.com/using-defer-or-async-with-scripts-in-wordpress/
  */
 function script_tag_defer($tag, $handle) {
-	if (is_admin()) {
+	if (is_admin() || $GLOBALS['pagenow'] === 'wp-login.php') {
 		return $tag;
 	}
 	if (strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE 9.') !== false) {
 		return $tag;
 	} 
-  if ($handle === 'sage/head') {
+  if ($handle === 'sage/js/priority') {
 		return str_replace(' src',' async="async" src', $tag);
 	}
 	return str_replace(' src',' defer="defer" src', $tag);

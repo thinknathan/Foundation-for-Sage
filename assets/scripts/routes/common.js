@@ -1,5 +1,5 @@
 import AOS from 'aos';
-import 'rellax';
+import Rellax from 'rellax';
 
 export default {
   init() {
@@ -7,7 +7,7 @@ export default {
     AOS.init();
 
     // Rellax
-    var rellax = new Rellax('.rellax', { // eslint-disable-line
+    new Rellax('.rellax', {
       speed: -2,
       center: false,
       wrapper: null,

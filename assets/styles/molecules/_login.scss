@@ -1,0 +1,44 @@
+/**
+ * WordPress Login Screen styles
+ * wp-login.php
+ */
+
+body.login {
+  background: $primary-color;
+
+  // Custom Logo
+  h1 > a {
+    background-image: url('../images/logo.svg');
+    width: 320px;
+    height: 80px;
+    background-size: 320px 80px;
+  }
+
+  // Customize all footer links
+  .privacy-policy-page-link,
+  #nav,
+  #backtoblog {
+    text-align: center;
+
+    > a {
+      transition: opacity 0.5s $global-transition-curve;
+
+      &:link,
+      &:visited {
+        color: $white;
+        opacity: 0.9;
+      }
+
+      &:focus,
+      &:active,
+      &:hover {
+        color: $white;
+        opacity: 1;
+      }
+    }
+  }
+  
+  #loginform {
+    border-radius: $global-radius;
+  }
+}

@@ -109,10 +109,13 @@ add_action('after_setup_theme', __NAMESPACE__ . '\\setup');
 /**
  * Custom Resource Hinting
  * Removes DNS-Prefetch and adds Preconnect
+ * @link https://www.keycdn.com/blog/resource-hints
  */
 /*
 function resource_hints( $hints, $relation_type ) {
-  if ( is_admin() ) return $hints;
+  if (is_admin() || $GLOBALS['pagenow'] === 'wp-login.php') {
+    return $hints;
+  }
 	// Remove all dns-prefetch
 	if ('dns-prefetch' === $relation_type) {
     return [];
@@ -128,49 +131,9 @@ add_filter( 'wp_resource_hints', __NAMESPACE__ . '\\resource_hints', 10, 2 );
 
 
 /**
- * Google Maps API key for Advanced Custom Fields Pro
- */
-/*
-function my_acf_init() {
-	acf_update_setting('google_api_key', 'XXXXX');
-}
-add_action('acf/init', __NAMESPACE__ . '\\my_acf_init');
-*/
-
-
-/**
- * Set login redirects by user role
- */
-/*
-function login_redirect( $redirect_to, $request, $user ) {
-	if ( isset( $user->roles ) && is_array( $user->roles ) ) {
-		// Administrator role
-		if ( in_array( 'administrator', $user->roles ) ) {
-			return $redirect_to;
-    // Editor role
-		} elseif ( in_array( 'editor', $user->roles ) ) {
-			return $redirect_to;
-    // Author role
-    } elseif ( in_array( 'author', $user->roles ) ) {
-			return $redirect_to;
-    // Contributor role
-		} elseif ( in_array( 'contributor', $user->roles ) ) {
-			return $redirect_to;
-    // Subscriber role
-		} else {
-			return $redirect_to;
-		}
-	} else {
-		return $redirect_to;
-	}
-}
-add_filter( 'login_redirect', __NAMESPACE__ . '\\login_redirect', 20, 3 );
-*/
-
-
-/**
  * Top menu
- * Credit to chuckn246 + JointsWP Menu Code (https://github.com/JeremyEnglert/JointsWP)
+ * Credit to chuckn246 + JointsWP Menu Code
+ * @link https://github.com/JeremyEnglert/JointsWP
  */
 function top_nav() {
   wp_nav_menu([
@@ -241,7 +204,7 @@ function display_breadcrumbs() {
  */
 function assets() {
   // Main CSS file
-  wp_enqueue_style('sage/css', Assets\asset_path('styles/main.css'), false, null);
+  wp_enqueue_style('sage/css', Assets\asset_path('styles/app.main.css'), false, null);
 
   if (is_single() && comments_open() && get_option('thread_comments')) {
     wp_enqueue_script('comment-reply');
@@ -256,13 +219,13 @@ function assets() {
   wp_script_add_data('sage/polyfill', 'conditional', 'IE');
   
   // Head script
-  wp_enqueue_script('sage/head', Assets\asset_path('scripts/lazyload.js'), array(), null, false);
+  wp_enqueue_script('sage/js/priority', Assets\asset_path('scripts/app.priority.js'), array(), null, false);
 
   // jQuery script
   wp_deregister_script('jquery');
 
   // Main script
-  wp_enqueue_script('sage/js', Assets\asset_path('scripts/main.js'), ['sage/foundation'], null, false);
+  wp_enqueue_script('sage/js/main', Assets\asset_path('scripts/app.main.js'), array(), null, false);
   
   // Remove Gutenberg CSS
   wp_dequeue_style( 'wp-block-library' );
@@ -271,7 +234,8 @@ function assets() {
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\assets', 100);
 
 /**
- * Inline assets - Head - Before other scripts/styles have been queued
+ * Inline CSS in Head
+ * Before other assets have been queued
  */
 function inline_assets_head_before() {
   $fileToInline = get_template_directory() . '/dist/styles/' . basename(Assets\asset_path('styles/critical.css'));
@@ -284,10 +248,11 @@ function inline_assets_head_before() {
 add_action('wp_head', __NAMESPACE__ . '\\inline_assets_head_before', 1);
 
 /**
- * Inline assets - Head - After other scripts/styles have been queued
+ * Inline JS in Head
+ * After other assets have been queued
  */
 function inline_assets_head_after() {
-  $fileToInline = get_template_directory() . '/dist/scripts/' . basename(Assets\asset_path('scripts/inline.js'));
+  $fileToInline = get_template_directory() . '/dist/scripts/' . basename(Assets\asset_path('scripts/app.inline.js'));
   
   if ( file_exists($fileToInline) ) {
     echo '<script>';
@@ -301,6 +266,6 @@ add_action('wp_head', __NAMESPACE__ . '\\inline_assets_head_after', 101);
  * Login page assets
  */
 function login_assets() {
-  wp_enqueue_style('sage/css', Assets\asset_path('styles/login.css'), false, null);
+  wp_enqueue_style('sage/css', Assets\asset_path('styles/app.main.css'), false, null);
 }
 add_action('login_enqueue_scripts', __NAMESPACE__ . '\\login_assets', 10);

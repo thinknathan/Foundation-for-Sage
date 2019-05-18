@@ -2,13 +2,13 @@
 
 Sage is a WordPress starter theme with a modern development workflow.
 
-This branch combines the structure of [Sage 8](https://github.com/roots/sage/releases/tag/8.5.4) with the updated workflow of [Sage 9](https://github.com/roots/sage/releases) and beyond.
+This branch combines the structure of [Sage 8](https://github.com/roots/sage/releases/tag/8.5.4) (vanilla WP, no Laravel) with the updated workflow of [Sage 10](https://github.com/roots/sage/releases).
 
 ## Features
 
 * Sass for stylesheets
 * Modern JavaScript
-* [Webpack](https://webpack.github.io/) for compiling assets, optimizing images, and concatenating and minifying files
+* [Laravel Mix](https://github.com/JeffreyWay/laravel-mix) for compiling assets and concatenating and minifying files
 * [Browsersync](http://www.browsersync.io/) for synchronized browser testing
 * CSS framework: [Foundation](https://foundation.zurb.com/)
 
@@ -35,15 +35,13 @@ Install the [WP-Abettor](https://github.com/thinknathan/wp-abettor) plugin to en
 * Adds a View Site link to the admin sidebar
 * Adds a Logout link to the admin sidebar
 
-See a working example at [roots-example-project.com](https://roots-example-project.com/).
-
 ## Requirements
 
 Make sure all dependencies have been installed before moving on:
 
 * [WordPress](https://wordpress.org/) >= 4.7
 * [PHP](https://secure.php.net/manual/en/install.php) >= 7.1.3 (with [`php-mbstring`](https://secure.php.net/manual/en/book.mbstring.php) enabled)
-* [Node.js](http://nodejs.org/) >= 6.9.x
+* [Node.js](http://nodejs.org/) >= 8.0.0
 * [Yarn](https://yarnpkg.com/en/docs/install)
 
 ## Theme installation
@@ -57,9 +55,7 @@ Edit `lib/setup.php` to enable or disable theme features, setup navigation menus
 ## Theme development
 
 * Run `yarn` from the theme directory to install dependencies
-* Update `resources/assets/config.json` settings:
-  * `devUrl` should reflect your local development hostname
-  * `publicPath` should reflect your WordPress folder structure (`/wp-content/themes/sage` for non-[Bedrock](https://roots.io/bedrock/) installs)
+* Update `webpack.mix.js` with your local dev URL
 
 ### Build commands
 
@@ -79,7 +75,7 @@ Contributions are welcome from everyone. We have [contributing guidelines](https
 
 Help support our open-source development efforts by [becoming a patron](https://www.patreon.com/rootsdev).
 
-<a href="https://kinsta.com/?kaid=OFDHAJIXUDIV"><img src="https://cdn.roots.io/app/uploads/kinsta.svg" alt="Kinsta" width="200" height="150"></a> <a href="https://k-m.com/"><img src="https://cdn.roots.io/app/uploads/km-digital.svg" alt="KM Digital" width="200" height="150"></a>
+<a href="https://kinsta.com/?kaid=OFDHAJIXUDIV"><img src="https://cdn.roots.io/app/uploads/kinsta.svg" alt="Kinsta" width="200" height="150"></a> <a href="https://k-m.com/"><img src="https://cdn.roots.io/app/uploads/km-digital.svg" alt="KM Digital" width="200" height="150"></a> <a href="https://www.itineris.co.uk/"><img src="https://cdn.roots.io/app/uploads/itineris.svg" alt="itineris" width="200" height="150"></a>
 
 ## Community
 
@@ -97,21 +93,15 @@ Keep track of development and community news.
 * Custom SASS file structure following [Atomic Design](https://www.smashingmagazine.com/2013/08/other-interface-atomic-design-sass/) principles
 * SASS file structure that loads pieces of Zurb's Foundation, allowing you to easily remove chunks of CSS you're not using
 
-### Tasks
-* WIP
-
 ### Popular WP Plugin Integration
 * Includes SASS styles for Gravity Forms to allow easy styling
 * Formats Yoast SEO Breadcrumbs to use Foundation styles
 
-### Popular JS Plugin Integration
-* Includes Slick.js styles
-* Includes Magnific popup styles
-
 ### Opinionated Changes
+* Uses Zurb Foundation by default
+* Removes jQuery by default
 * CSS is loaded async with loadCSS
-* Small blocks of CSS can be inlined in the header
-* Small blocks of JS can be inlined in the footer and header
-* Custom login page styles
+* Polyfill JS can be inlined in the header
+* Custom login page styles in `assets/styles/molecules/_login.scss`
 * Functions to output images or background images with srcset and lazyloading via Lazysizes JS
 * Simpler default controls for tinyMCE editor
