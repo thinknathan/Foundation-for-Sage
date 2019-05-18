@@ -34,10 +34,10 @@
   },
   "dependencies": {
     "aos": "~2",
-    "fg-loadcss": "^2.0.1",
-    "foundation-sites": "^6.5.1",
+    "fg-loadcss": "~2",
+    "foundation-sites": "^6.5.3",
     "gravity-forms-scss": "git+https://git@github.com/wpsitecare/gravity-forms-scss.git",
-    "lazysizes": "~4",
+    "lazysizes": "~5",
     "rellax": "latest",
     "sass-divider": "git+https://git@github.com/thinknathan/sass-divider.git",
     "sass-hover-transition": "git+https://git@github.com/thinknathan/sass-hover-transition.git",
