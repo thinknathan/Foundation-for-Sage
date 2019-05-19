@@ -33,10 +33,12 @@
     "vue-template-compiler": "^2.6.10"
   },
   "dependencies": {
+    "@10up/component-navigation": "^1.0.1",
     "aos": "~2",
     "fg-loadcss": "~2",
     "foundation-sites": "^6.5.3",
     "gravity-forms-scss": "git+https://git@github.com/wpsitecare/gravity-forms-scss.git",
+    "headroom.js": "^0.9.4",
     "lazysizes": "~5",
     "rellax": "latest",
     "sass-divider": "git+https://git@github.com/thinknathan/sass-divider.git",
