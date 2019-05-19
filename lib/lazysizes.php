@@ -1,6 +1,6 @@
 <?php
 
-namespace Roots\Sage\LazySizes;
+namespace Roots\Sage\Extras;
 
 /**
  * Adds lazyloading syntax to images and iframes
