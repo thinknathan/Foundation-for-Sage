@@ -7,34 +7,33 @@ $main-sm-columns: 12;
 $sidebar-sm-columns: 4;
 
 .wrap {
-  padding: $global-padding * 2 $global-padding;
+  padding: $global-padding;
 
   @include breakpoint(medium) {
-    padding: $global-padding * 3;
+    padding: $global-padding * 2;
   }
 }
 
 // Grid system
 .content {
-  @include flex-grid-row;
+  @include xy-grid;
+  @include xy-grid-container;
 }
 
 .main {
-  @include flex-grid-column($main-sm-columns);
+  @include xy-cell;
 
   .sidebar-primary & {
-    @include flex-grid-column($main-sm-columns - $sidebar-sm-columns);
-
-    @include breakpoint(medium down) {
-      @include flex-grid-column($main-sm-columns);
+    @include breakpoint(medium) {
+      @include xy-cell($main-sm-columns - $sidebar-sm-columns of 12);
     }
   }
 }
 
 .sidebar {
-  @include flex-grid-column($sidebar-sm-columns);
+  @include xy-cell;
 
-  @include breakpoint(medium down) {
-    display: none;
+  @include breakpoint(medium) {
+    @include xy-cell($sidebar-sm-columns of 12);
   }
 }

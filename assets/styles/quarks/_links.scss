@@ -1,9 +1,14 @@
-a {
-  color: $black;
-}
+/*
+ * Customize link colours
+ */
 
-a:focus,
-a:active,
-a:hover {
-  color: $dark-gray;
+$anchor-color: $primary-color;
+
+a {
+  color: $anchor-color;
+
+  &:focus,
+  &:hover {
+    color: darken($anchor-color, 10%);
+  }
 }

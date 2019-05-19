@@ -1,21 +1,17 @@
 /**
  * Styles for Headroom.js
+ * @link https://wicky.nillia.ms/headroom.js/
  */
 
-.sticky.headroom,
 .headroom {
   will-change: transform;
-  transition: transform 200ms linear;
+  transition: transform 250ms $global-transition-curve;
 }
 
-.sticky.headroom--pinned,
 .headroom--pinned {
   transform: translateY(0%);
 }
 
-.sticky.headroom--unpinned,
 .headroom--unpinned {
-  @include breakpoint(medium down) {
-    transform: translateY(-100%);
-  }
+  transform: translateY(-100%);
 }

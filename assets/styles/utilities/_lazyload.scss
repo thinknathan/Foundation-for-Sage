@@ -1,6 +1,11 @@
 /**
  * Styles for lazysizes
+ * @link https://afarkas.github.io/lazysizes/index.html
  */
+
+// Colours used in pulsing animation
+$lazyload-color: $light-gray;
+$lazyload-color2: darken($lazyload-color, 5%);
 
 .intrinsic-ratio-box {
   position: relative;
@@ -18,40 +23,31 @@
     height: 100%;
     display: block;
   }
-
-  .intrinsic-ratio-helper {
-    display: block;
-  }
 }
 
+.intrinsic-ratio-helper {
+  display: block;
+}
+
+.lazyload,
 .lazyloading {
-  transition: background-size 0.2s $global-transition-curve;
-  animation: progress-indeterminate 2s linear infinite;
-  background-color: $light-gray;
-  background-image: linear-gradient(90deg, $primary-color 0%, $primary-color 100%);
-  background-size: 100% 4px;
-  background-repeat: no-repeat;
-  background-position: 0 0;
+  background-color: $lazyload-color;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-name: placeholderPulse;
+  animation-timing-function: ease-in-out;
 }
 
-@keyframes progress-indeterminate {
+@keyframes placeholderPulse {
   0% {
-    background-position: 0% 0;
-    background-size: 1% 4px;
+    background-color: $lazyload-color;
   }
 
   50% {
-    background-position: 10% 0;
-    background-size: 25% 4px;
-  }
-
-  75% {
-    background-position: 20% 0;
-    background-size: 50% 4px;
+    background-color: $lazyload-color2;
   }
 
   100% {
-    background-position: 100% 0;
-    background-size: 10% 4px;
+    background-color: $lazyload-color;
   }
 }

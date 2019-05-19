@@ -23,7 +23,7 @@ $related_posts = new WP_Query( $args ); ?>
 
 <?php // Only display posts if there are more than 2 found
 if ( $related_posts->have_posts() && $related_posts->found_posts > 2 ) : ?>
-  <aside class="related-posts" data-equalizer data-equalize-on="medium">
+  <aside class="related-posts">
     <?php
     while ( $related_posts->have_posts() ): $related_posts->the_post();
     ?>

@@ -1,12 +1,7 @@
 /**
  * WordPress Generated Classes
- * http://codex.wordpress.org/CSS#WordPress_Generated_Classes
+ * @link http://codex.wordpress.org/CSS#WordPress_Generated_Classes
  */
-
-body.sticky,
-article.sticky {
-  position: static;
-}
 
 // Media alignment
 .alignnone {
@@ -29,7 +24,6 @@ article.sticky {
 }
 
 @include breakpoint(medium) {
-
   // Only float if not on an extra small device
   .alignleft {
     float: left;
@@ -44,7 +38,6 @@ article.sticky {
 
 // Captions
 .wp-caption {
-  //@extend .thumbnail;
   line-height: normal;
 }
 

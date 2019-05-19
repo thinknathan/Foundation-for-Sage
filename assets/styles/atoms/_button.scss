@@ -2,16 +2,5 @@
 
 .button {
   @include ripple;
-}
-
-// Prevent a:link styles overriding button colour
-a.button {
-  // No blank line allowed here
-  &:link,
-  &:visited,
-  &:focus,
-  &:hover,
-  &:active {
-    color: $white;
-  }
+  letter-spacing: 0.04em;
 }

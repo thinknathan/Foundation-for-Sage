@@ -1,0 +1,20 @@
+/**
+ * Website footer
+ */
+
+.footer-site {
+  background: $primary-color;
+  color: $white;
+}
+
+.footer-site-inner {
+  @include xy-grid;
+  @include xy-grid-container;
+  padding: $global-padding;
+}
+
+.footer-site-copyright {
+  @include xy-cell;
+  text-align: center;
+  margin-bottom: 0;
+}

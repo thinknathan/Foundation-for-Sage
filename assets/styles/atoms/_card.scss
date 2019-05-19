@@ -1,10 +1,11 @@
 /**
  * Foundation Cards
  * + integration with Divider Mixin
+ * + integration with Hover Transition Mixin
  */
 
-$card-post-bg: $card-background;
-$card-post-text-color: $body-font-color;
+// Divider effect
+$card-divider-height: 10;
 
 /** Divider options:
  * forward
@@ -16,7 +17,7 @@ $card-post-text-color: $body-font-color;
  * serrated
  */
 
-$card-post-divider-style: 'back';
+$card-divider-style: 'back';
 
 /** Position options:
  * top-outside
@@ -25,22 +26,36 @@ $card-post-divider-style: 'back';
  * bottom-inside
  */
 
-$card-post-divider-position: 'top-outside';
-$card-post-divider-height: 10;
+$card-divider-position: 'top-outside';
 
-/* Hover Options */
+// Hover effect
+$card-hover-icon-colour: $white;
 
-$card-hover-type: 'square';
+/** Hover type options:
+ * circle
+ * square
+ */
+
+$card-hover-type: 'circle';
+
+/** Hover icon options:
+ * @link https://github.com/thinknathan/sass-inline-icons/blob/master/sass-inline-icons.scss
+ */
+
 $card-hover-icon: 'chevron-right';
-$card-hover-icon-colour: '#fff';
+
+/** Hover transition options:
+ * fade
+ * slide-up
+ * slide-right
+ * slide-down
+ * slide-left
+ */
+
 $card-hover-transition: 'fade';
 
 .card {
-  @include card-container($card-post-bg, $card-post-text-color, 2rem, $global-radius);
-
-  @include breakpoint(medium) {
-    margin-bottom: $global-margin * 3;
-  }
+  @include card-container($card-background, $card-font-color, $global-padding, $global-radius);
 }
 
 .card-divider {
@@ -51,58 +66,27 @@ $card-hover-transition: 'fade';
   @include card-section;
 }
 
-.card-post {
-  z-index: 0;
+.card-image {
+  > .intrinsic-ratio-box {
+    display: block;
+    max-width: none !important;
 
-  @include card-container($card-post-bg, $card-post-text-color, 2rem, $global-radius);
-}
-
-.card-post-content {
-  position: relative; //@include divider($card-post-divider-style, $card-post-divider-height, $card-post-bg, $card-post-divider-position);
-}
-
-.card-post-actions {
-  @include card-divider;
-
-  background: $card-post-bg;
-  display: flex;
-  padding-top: 0;
-}
-
-.card-post-avatar {
-  position: absolute;
-  bottom: 100%;
-  left: 1rem;
-  z-index: 2;
-  max-width: rem-calc(90);
-}
-
-.card-post-avatar-img {
-  border-radius: 50%;
-  box-shadow: 0 2px 8px rgba($black, 0.2);
-}
-
-.card-post-name {
-  margin-bottom: $global-margin / 2;
-  font-size: 1.5rem;
-  line-height: $header-lineheight;
-}
-
-.card-post-button {
-  margin-bottom: 0;
-  flex: 1 0 0;
-
-  + .card-post-button {
-    margin-left: 1rem;
+    > img {
+      object-fit: cover;
+    }
   }
 }
 
-.card-post-info {
-  font-size: 0.875rem;
-  letter-spacing: 1px;
-  color: lighten($card-post-text-color, 20%);
+.card-image + .card-section {
+  @include divider($card-divider-style, $card-divider-height, $card-background, $card-divider-position);
 }
 
-.card-post-img {
+.card-meta {
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  opacity: 0.9;
+}
+
+.card-image {
   @include hover-transition($card-hover-type, $card-hover-transition, 0.66, $primary-color, $card-hover-icon, $card-hover-icon-colour, 30, $primary-color);
 }

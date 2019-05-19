@@ -1,6 +1,6 @@
-<footer class="site-footer">
-  <div class="site-footer-inner">
-    <p class="copyright">
+<footer class="footer-site">
+  <div class="footer-site-inner">
+    <p class="footer-site-copyright">
       &copy; <?= date('Y'), ' ', get_bloginfo('name'); ?>
     </p>
   </div>
