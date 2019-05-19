@@ -1,0 +1,44 @@
+/**
+ * Website header
+ */
+
+.header-site {
+  background-color: $primary-color;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.header-site-inner {
+  @include xy-grid;
+  @include xy-grid-container;
+  padding: $global-padding;
+}
+
+.header-site-brand {
+  @include xy-cell(shrink);
+  min-width: 5rem;
+  min-width: 10vw;
+}
+
+.header-site-navigation {
+  @include xy-cell(auto);
+
+  a {
+    color: $white;
+
+    &:focus,
+    &:hover {
+      color: darken($white, 10%);
+    }
+  }
+}
+
+.header-site-title-link {
+  display: block;
+
+  > .intrinsic-ratio-box {
+    display: block;
+  }
+}

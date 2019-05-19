@@ -18,6 +18,31 @@ class top_nav_walker extends \Walker_Nav_Menu {
 }
 
 
+/** 
+ * Adds .is-dropdown-submenu-parent class to parent menu items
+ * Only works with dropdown menus and not drilldown menus
+ * @credit https://stackoverflow.com/questions/8448978/wordpress-how-do-i-know-if-a-menu-item-has-children
+ */
+function menu_set_dropdown( $sorted_menu_items, $args ) {
+  // Stop unless it's the main dropdown menu
+  if ($args->theme_location !== 'primary_navigation') {
+    return $sorted_menu_items;
+  }
+  $last_top = 0;
+  foreach ( $sorted_menu_items as $key => $obj ) {
+    // it is a top lv item?
+    if ( 0 == $obj->menu_item_parent ) {
+      // set the key of the parent
+      $last_top = $key;
+    } else {
+      $sorted_menu_items[$last_top]->classes['is-dropdown-submenu-parent'] = 'is-dropdown-submenu-parent';
+    }
+  }
+  return $sorted_menu_items;
+}
+add_filter( 'wp_nav_menu_objects', __NAMESPACE__ . '\\menu_set_dropdown', 10, 2 );
+
+
 /**
  * Removes ID attributes from navigation menu items
  */
@@ -96,6 +121,12 @@ function script_tag_defer($tag, $handle) {
 	if (is_admin() || $GLOBALS['pagenow'] === 'wp-login.php') {
 		return $tag;
 	}
+  if (function_exists('is_amp_endpoint') && is_amp_endpoint()) {
+    return $tag;
+  }
+  if ($handle === 'jquery') {
+    return $tag;
+  }
   if ($handle === 'sage/js/priority') {
 		return str_replace(' src',' async src', $tag);
 	}
