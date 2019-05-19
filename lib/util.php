@@ -4,6 +4,7 @@ namespace Roots\Sage\Util;
 
 use Roots\Sage\Setup;
 use Roots\Sage\Extras;
+use Roots\Sage\Assets;
 
 
 /**
@@ -186,9 +187,26 @@ function get_bgset($attachment_id, $size) {
   return ' data-bgset="' . $bgset . '" data-sizes="auto" ';
 }
 
+
 /**
  * Outputs image run through filter_images
  */
 function get_image( $image, $size ) {
   return Extras\filter_images( wp_get_attachment_image( $image, $size ) );
+}
+
+
+/**
+ * Outputs image from local Assets folder
+ */
+function local_image($filename, $width = '', $height = '', $alt = '', $classes = '') {
+  return Extras\filter_images( 
+      '<img src="'
+      . Assets\asset_path('images/' . $filename) . '"'
+      . ' class="' . $classes . '"'
+      . ' width="' . $width . '"'
+      . ' height="' . $height . '"'
+      . ' alt="' . $alt . '"'
+      . '>'
+    );
 }
