@@ -55,6 +55,7 @@ function setup() {
   set_post_thumbnail_size( 480, 270, true );
   add_image_size( 'small', 480, 270, false );
   add_image_size( 'medium', 640, 360, false );
+  add_image_size( 'card-thumbnail', 640, 360, false );
   add_image_size( 'large', 1280, 720, false );
   add_image_size( 'xlarge', 1920, 1080, false );
 
@@ -110,7 +111,6 @@ add_action('after_setup_theme', __NAMESPACE__ . '\\setup');
  * Removes DNS-Prefetch and adds Preconnect
  * @link https://www.keycdn.com/blog/resource-hints
  */
-/*
 function resource_hints( $hints, $relation_type ) {
   if (is_admin() || $GLOBALS['pagenow'] === 'wp-login.php') {
     return $hints;
@@ -121,12 +121,11 @@ function resource_hints( $hints, $relation_type ) {
   }
 	// Add preconnect hints
   if ('preconnect' === $relation_type) {
-    $hints[] = 'https://www.google-analytics.com';
+    //$hints[] = 'https://www.google-analytics.com';
   }
   return $hints;
 }
 add_filter( 'wp_resource_hints', __NAMESPACE__ . '\\resource_hints', 10, 2 );
-*/
 
 
 /**
@@ -138,8 +137,8 @@ function top_nav() {
   wp_nav_menu([
     'theme_location' => 'primary_navigation',       // Where it's located in the theme
     'container' => false,                           // Remove nav container
-    'menu_class' => 'dropdown menu',                // Adding custom nav class
-    'items_wrap' => '<ul class="%2$s" data-dropdown-menu role="menubar">%3$s</ul>',
+    'menu_class' => 'menu menu-primary',                // Adding custom nav class
+    'items_wrap' => '<ul class="%2$s" id="menu-primary" role="menubar">%3$s</ul>',
     'depth' => 2,                                   // Limit the depth of the nav
     'fallback_cb' => false,                         // Fallback function (see below)
     'walker' => new Extras\top_nav_walker()
@@ -185,12 +184,24 @@ function display_breadcrumbs() {
 
 
 /**
- * Theme assets
+ * Add Theme CSS assets
  */
-function assets() {
+function css_assets() {
   // Add Main CSS
   wp_enqueue_style('sage/css', Assets\asset_path('styles/app.main.css'), false, null);
+  
+  if (!is_admin() && $GLOBALS['pagenow'] !== 'wp-login.php') {
+    // Remove Gutenberg CSS
+    wp_dequeue_style( 'wp-block-library' );
+  }
+}
+add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\css_assets', 90);
 
+
+/**
+ * Add Theme JS assets
+ */
+function js_assets() {
   // Add WP Comments JS
   if (is_single() && comments_open() && get_option('thread_comments')) {
     wp_enqueue_script('comment-reply');
@@ -201,29 +212,13 @@ function assets() {
 
   // Add Main script
   wp_enqueue_script('sage/js/main', Assets\asset_path('scripts/app.main.js'), array(), null, false);
-
-  // Remove jQuery script
-  wp_deregister_script('jquery');
-
-  // Remove Gutenberg CSS
-  wp_dequeue_style( 'wp-block-library' );
+  
+  if (!is_admin() && $GLOBALS['pagenow'] !== 'wp-login.php') {
+    // Remove jQuery script
+    wp_deregister_script('jquery');
+  }
 }
-add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\assets', 100);
-
-
-/**
- * Internet Explorer polyfills
- */
-function ie_assets() {
-  // Internet Explorer min/max-width media query polyfill
-  wp_enqueue_script('sage/respond', 'https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js', array(), null, false);
-  wp_script_add_data('sage/respond', 'conditional', 'IE');
-
-  // Internet Explorer JS-focused polyfill
-  wp_enqueue_script('sage/polyfill', 'https://cdn.polyfill.io/v2/polyfill.min.js', array(), null, false);
-  wp_script_add_data('sage/polyfill', 'conditional', 'IE');
-}
-add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\ie_assets', 1);
+add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\js_assets', 100);
 
 
 /**
@@ -243,7 +238,7 @@ add_action('wp_head', __NAMESPACE__ . '\\inline_assets_head_before', 1);
 
 /**
  * Inline JS in Head
- * After other assets have been queued
+ * After styles, before other scripts
  */
 function inline_assets_head_after() {
   $fileToInline = get_template_directory() . '/dist/scripts/' . basename(Assets\asset_path('scripts/app.inline.js'));
@@ -254,7 +249,7 @@ function inline_assets_head_after() {
     echo '</script>';
   }
 }
-add_action('wp_head', __NAMESPACE__ . '\\inline_assets_head_after', 101);
+add_action('wp_head', __NAMESPACE__ . '\\inline_assets_head_after', 8);
 
 
 /**
