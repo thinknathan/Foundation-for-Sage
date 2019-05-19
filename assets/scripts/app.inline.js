@@ -1,14 +1,19 @@
 /* ========================================================================
  * Scripts that are inlined in the head
- * Warning: jQuery is not yet loaded
+ * Note: jQuery is not loaded
  * ======================================================================== */
 
+// Preload stylesheet polyfill
+// @link https://www.npmjs.com/package/fg-loadcss
 import '../../node_modules/fg-loadcss/src/cssrelpreload.js';
 
-(function (document, window) {
-  // Store HTML element
-  var htmlTag = document.getElementsByTagName('html')[0];
-
-  // Remove .no-js class from HTML tag
-  htmlTag.classList.remove('no-js');
-})(document, window);
+// JS polyfill service
+// @link https://cdn.polyfill.io
+if (typeof Promise === 'undefined' || typeof requestAnimationFrame === 'undefined' || typeof Object.assign != 'function') {
+  let scriptToInject = document.createElement('script');
+  let documentHead = document.head;
+  let firstScriptInHead = document.getElementsByTagName('script')[0];
+  scriptToInject.type = 'text/javascript';
+  scriptToInject.src = 'https://polyfill.io/v3/polyfill.min.js';
+  documentHead.insertBefore(scriptToInject, firstScriptInHead);
+}
