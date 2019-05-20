@@ -42,8 +42,7 @@ function filter_images( $content, $type = 'ratio' ) {
 
   $matches = array();
   $skip_images_regex = '/class=".*lazyload.*"/';
-  $placeholder_image = apply_filters( 'lazysizes_placeholder_image',
-    'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==' );
+  $placeholder_image = apply_filters( 'lazysizes_placeholder_image', 'data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\'/%3E' );
   preg_match_all( '/<img\s+.*?>/', $content, $matches );
 
   $search = array();
