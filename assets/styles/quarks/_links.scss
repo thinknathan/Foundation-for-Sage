@@ -6,6 +6,7 @@ $anchor-color: $primary-color;
 
 a {
   color: $anchor-color;
+  transition: $button-transition;
 
   &:focus,
   &:hover {

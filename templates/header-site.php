@@ -1,6 +1,6 @@
 <?php use Roots\Sage\Util ?>
 
-<header class="header-site headroom" data-headroom data-tolerance="5" data-offset="300">
+<header class="header-site headroom stick-to-top">
   <div class="header-site-inner">
     <div class="header-site-brand">
       <h1 class="header-site-title">
@@ -10,8 +10,8 @@
       </h1>
     </div>
 
-    <nav class="header-site-navigation">
+    <div class="header-site-navigation">
       <?php get_template_part('templates/menu-primary'); ?>
-    </nav>
+    </div>
   </div>
 </header>

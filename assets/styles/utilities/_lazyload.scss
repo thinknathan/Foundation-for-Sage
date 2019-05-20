@@ -9,8 +9,7 @@ $lazyload-color2: darken($lazyload-color, 5%);
 
 .intrinsic-ratio-box {
   position: relative;
-  display: inline-block;
-  vertical-align: middle;
+  display: block;
 
   /* padding-bottom is calculated and rendered into HTML */
   img,

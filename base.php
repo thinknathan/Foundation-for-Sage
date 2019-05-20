@@ -23,7 +23,7 @@ use Roots\Sage\Util;
             Util\breadcrumbs();
           endif;
         ?>
-        <main class="main">
+        <main class="main" id="main">
           <?php include Wrapper\template_path(); ?>
         </main><!-- /.main -->
         <?php if (Setup\display_sidebar()) : ?>
@@ -35,6 +35,7 @@ use Roots\Sage\Util;
     </div><!-- /.wrap -->
     <?php
       get_template_part('templates/footer', 'site');
+      get_template_part('templates/menu-bottombar');
       wp_footer();
     ?>
   </body>

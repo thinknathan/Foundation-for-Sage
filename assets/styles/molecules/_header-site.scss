@@ -5,6 +5,7 @@
 .header-site {
   background-color: $primary-color;
   position: sticky;
+  z-index: 5;
   top: 0;
   left: 0;
   right: 0;
@@ -13,6 +14,7 @@
 .header-site-inner {
   @include xy-grid;
   @include xy-grid-container;
+  @include flex-align($y: middle);
   padding: $global-padding;
 }
 
@@ -37,8 +39,4 @@
 
 .header-site-title-link {
   display: block;
-
-  > .intrinsic-ratio-box {
-    display: block;
-  }
 }
