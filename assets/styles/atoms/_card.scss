@@ -56,6 +56,27 @@ $card-hover-transition: 'fade';
 
 .card {
   @include card-container($card-background, $card-font-color, $global-padding, $global-radius);
+  cursor: pointer;
+
+  &:focus-within {
+    box-shadow: $shadow-depth3;
+  }
+}
+
+// Add `.card-image-first` to swap the order of the image and title section
+.card-image-first {
+  .card-image {
+    order: -1;
+  }
+
+  .card-section-head {
+    @include divider($card-divider-style, $card-divider-height, $card-background, $card-divider-position);
+    padding-bottom: 0;
+
+    &::before {
+      z-index: 1;
+    }
+  }
 }
 
 .card-divider {
@@ -68,7 +89,6 @@ $card-hover-transition: 'fade';
 
 .card-image {
   > .intrinsic-ratio-box {
-    display: block;
     max-width: none !important;
 
     > img {
@@ -77,8 +97,10 @@ $card-hover-transition: 'fade';
   }
 }
 
-.card-image + .card-section {
-  @include divider($card-divider-style, $card-divider-height, $card-background, $card-divider-position);
+.card:not(.card-image-first) {
+  .card-image + .card-section {
+    @include divider($card-divider-style, $card-divider-height, $card-background, $card-divider-position);
+  }
 }
 
 .card-meta {
