@@ -1,8 +1,3 @@
-(function (document) {
-  // Remove .no-js class from HTML tag
-  document.getElementsByTagName('html')[0].classList.remove('no-js');
-})(document);
-
 /*
  * Lazysizes lazy-loading library
  * @link https://github.com/aFarkas/lazysizes

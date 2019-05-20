@@ -3,6 +3,11 @@
  * Note: jQuery is not loaded
  * ======================================================================== */
 
+// Remove .no-js class from HTML tag
+(function (document) {
+  document.getElementsByTagName('html')[0].classList.remove('no-js');
+})(document);
+
 // Preload stylesheet polyfill
 // @link https://www.npmjs.com/package/fg-loadcss
 import '../../node_modules/fg-loadcss/src/cssrelpreload.js';
