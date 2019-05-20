@@ -1,0 +1,17 @@
+@import "../../node_modules/glider-js/glider.min.css";
+
+.carousel {
+  position: relative;
+}
+
+// Give enough margin for comfortable tap size distance
+.glider-slide {
+  margin-left: $global-minimum-margin;
+  margin-right: $global-minimum-margin;
+}
+
+// Give enough padding for box-shadows to show
+.glider-track {
+  padding-top: $global-minimum-margin;
+  padding-bottom: $global-minimum-margin;
+}

@@ -6,7 +6,6 @@
 @import "../../node_modules/sass-divider/sass-divider.scss";
 @import "../../node_modules/sass-hover-transition/sass-hover-transition.scss";
 @import "../../node_modules/sass-ripple/sass-ripple.scss";
-@import "../../node_modules/aos/src/sass/aos.scss";
 
 /* ==========================================================================
  * Utilities
@@ -22,6 +21,7 @@
 
 @import "utilities/headroom";
 @import "utilities/lazyload";
+@import "../../node_modules/aos/src/sass/aos.scss";
 
 /* ==========================================================================
  * Quarks
@@ -35,6 +35,7 @@
 @import "quarks/table";
 @import "quarks/typography";
 @import "quarks/links";
+@import "quarks/scroll";
 
 /* ==========================================================================
  * Atoms
@@ -90,7 +91,12 @@
 
 /* Custom */
 
+@import "atoms/accordion";
+@import "atoms/carousel";
+@import "atoms/dialog";
 @import "atoms/inline-icon";
+@import "atoms/lightbox";
+@import "atoms/social-share";
 
 /* ==========================================================================
  * Molecules
@@ -103,5 +109,6 @@
 @import "molecules/footer-site";
 @import "molecules/header-site";
 @import "molecules/login";
+@import "molecules/menu-bottombar";
 @import "molecules/menu-primary";
 @import "molecules/sidebar";
