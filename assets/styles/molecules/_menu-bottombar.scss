@@ -1,0 +1,23 @@
+/**
+ * Mobile bottom bar
+ */
+
+.menu-bottombar {
+  width: 100%;
+  position: sticky;
+  z-index: 5;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $secondary-color;
+  padding: $global-padding;
+  margin-bottom: 0;
+
+  @include breakpoint(medium) {
+    display: none;
+  }
+
+  > .button {
+    margin-bottom: 0;
+  }
+}
