@@ -40,8 +40,8 @@ class JsonManifest {
 }
 
 function asset_path($filename) {
-  $dist_path = get_template_directory_uri() . '/dist/';
-  $file = basename($filename);
+  $dist_path = get_template_directory_uri() . '/dist';
+  $filename = '/' . $filename;
   static $manifest;
 
   if (empty($manifest)) {
