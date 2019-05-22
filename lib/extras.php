@@ -10,7 +10,7 @@ use Roots\Sage\Setup;
  * Adds Zurb Foundation class to submenus
  * @credit Brett Mason (https://github.com/brettsmason)
  */
-class top_nav_walker extends \Walker_Nav_Menu {
+class walker_primary extends \Walker_Nav_Menu {
   function start_lvl(&$output, $depth = 0, $args = Array() ) {
     $indent = str_repeat("\t", $depth);
     $output .= "\n$indent<ul class=\"menu vertical submenu is-dropdown-submenu\">\n";
@@ -25,7 +25,7 @@ class top_nav_walker extends \Walker_Nav_Menu {
  */
 function menu_set_dropdown( $sorted_menu_items, $args ) {
   // Stop unless it's the main dropdown menu
-  if ($args->theme_location !== 'primary_navigation') {
+  if ($args->theme_location !== 'navigation_primary') {
     return $sorted_menu_items;
   }
   $last_top = 0;
@@ -56,7 +56,7 @@ add_filter('nav_menu_item_id', '__return_null');
 function clean_nav_class($classes, $item) {
   $slug = sanitize_title($item->title);
   // Remove most core classes
-  $classes = preg_replace('/(current(-menu-|[-_]page[-_])(item|parent|ancestor))/', 'active', $classes);
+  $classes = preg_replace('/(current(-menu-|[-_]page[-_])(item|parent|ancestor))/', 'menu-item-active', $classes);
   $classes = preg_replace('/^((menu|page)[-_\w+]+)+/', '', $classes);
   // Re-add core `menu-item` class
   $classes[] = 'menu-item';

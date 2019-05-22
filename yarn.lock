@@ -3445,6 +3445,11 @@ fr-accordion@^1.0.6:
   resolved "https://registry.yarnpkg.com/fr-accordion/-/fr-accordion-1.0.6.tgz#2968901ccc461e2843640391dfa994af00073ed4"
   integrity sha1-KWiQHMxGHihDZAOR36mUrwAHPtQ=
 
+fr-offcanvas@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/fr-offcanvas/-/fr-offcanvas-1.1.1.tgz#096c67e69b2727a9ce70dc0fde35cf857d04ecc4"
+  integrity sha512-Dm4DYAWhElN4mzD7bXil5ZLZlhkXUJdMUeAQ6tUrhJ1dM+PQeV/doj0h9i5eBdyku9g21a+c49p+IjHXKLwUGA==
+
 fragment-cache@^0.2.1:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/fragment-cache/-/fragment-cache-0.2.1.tgz#4290fad27f13e89be7f33799c6bc5a0abfff0d19"
@@ -5188,6 +5193,11 @@ methods@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/methods/-/methods-1.1.2.tgz#5529a4d67654134edcc5266656835b0f851afcee"
   integrity sha1-VSmk1nZUE07cxSZmVoNbD4Ua/O4=
+
+metismenujs@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/metismenujs/-/metismenujs-1.0.3.tgz#433bc679a6e2fad2189b7157018138269c98605c"
+  integrity sha512-sAW2c6zu3AqOX3VDT0vhXw4lyJ2s84NfwlOAc7/xFj7N3ARgA3z6WuG8K+X58oNzrtq0iQwv//PhXI5l8vLZbQ==
 
 micromatch@^3.0.4, micromatch@^3.1.10, micromatch@^3.1.4, micromatch@^3.1.8:
   version "3.1.10"

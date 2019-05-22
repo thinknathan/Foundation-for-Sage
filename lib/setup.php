@@ -78,8 +78,7 @@ function setup() {
   // Register wp_nav_menu() menus
   // http://codex.wordpress.org/Function_Reference/register_nav_menus
   register_nav_menus([
-    'primary_navigation' => __('Primary Navigation', 'sage'),
-    'mobile_navigation' => __('Mobile Navigation', 'sage')
+    'navigation_primary' => __('Primary Navigation', 'sage'),
   ]);
   
   // Custom Post Types
@@ -132,15 +131,31 @@ add_filter( 'wp_resource_hints', __NAMESPACE__ . '\\resource_hints', 10, 2 );
  * Credit to chuckn246 + JointsWP Menu Code
  * @link https://github.com/JeremyEnglert/JointsWP
  */
-function top_nav() {
+function menu_primary() {
   wp_nav_menu([
-    'theme_location' => 'primary_navigation',       // Where it's located in the theme
+    'theme_location' => 'navigation_primary',       // Where it's located in the theme
     'container' => false,                           // Remove nav container
     'menu_class' => 'menu menu-primary',                // Adding custom nav class
-    'items_wrap' => '<ul class="%2$s" id="menu-primary" role="menubar">%3$s</ul>',
+    'items_wrap' => '<ul class="%2$s" id="menu-primary">%3$s</ul>',
     'depth' => 2,                                   // Limit the depth of the nav
     'fallback_cb' => false,                         // Fallback function (see below)
-    'walker' => new Extras\top_nav_walker()
+    'walker' => new Extras\walker_primary()
+  ]);
+}
+
+
+/**
+ * Offcanvas menu
+ */
+function menu_offcanvas() {
+  wp_nav_menu([
+    'theme_location' => 'navigation_primary',       // Where it's located in the theme
+    'container' => false,                           // Remove nav container
+    'menu_class' => 'menu vertical menu-offcanvas',                // Adding custom nav class
+    'items_wrap' => '<ul class="%2$s" id="menu-offcanvas">%3$s</ul>',
+    'depth' => 2,                                   // Limit the depth of the nav
+    'fallback_cb' => false,                         // Fallback function (see below)
+    'walker' => new Extras\walker_primary()
   ]);
 }
 

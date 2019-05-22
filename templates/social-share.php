@@ -6,7 +6,7 @@
  */
 ?>
 
-<div class="social-share button-group">
+<div class="social-share">
 
   <a href="https://www.facebook.com/sharer/sharer.php?u=<?php the_permalink(); ?>&t=<?php echo urlencode( $post->post_title ); ?>" target="_blank" rel="noopener noreferrer" class="social-share__link button">
     <?php esc_html_e( 'Share on Facebook', 'sage' ); ?><span class="show-for-sr"><?php esc_html_e( '(opens new window)', 'sage' ); ?></span>

@@ -1,13 +1,15 @@
 import AOS from 'aos';
 import Rellax from 'rellax';
 import Headroom from 'headroom.js';
-import navigation from '@10up/component-navigation';
+//import navigation from '@10up/component-navigation';
 import Glider from 'glider-js';
 import Fraccordion from 'fr-accordion';
 import Tobi from 'rqrauhvmra__tobi';
 import A11yDialog from 'a11y-dialog';
 import stickybits from 'stickybits';
 import '../util/socialShare.js';
+import MetisMenu from 'metismenujs';
+import Froffcanvas from 'fr-offcanvas';
 
 export default {
   init() {
@@ -52,10 +54,10 @@ export default {
      * @link https://github.com/10up/component-navigation
      */
     let navigationElement = '#menu-primary';
-    new navigation(navigationElement, {
-      action: 'hover',
-      breakpoint: '(min-width: 40em)',
-    });
+    new MetisMenu(navigationElement);
+    
+    let navigationOffcanvasElement = '#menu-offcanvas';
+    new MetisMenu(navigationOffcanvasElement);
 
     /*
      * Init Glider.js
@@ -166,8 +168,9 @@ export default {
      * Popup for social share buttons
      * @link https://10up.github.io/wp-component-library/component/social-links/index.html
      */
+    let socialLinkElement = '.social-share';
     TenUp.socialLinks({
-      'target': '.social-share',
+      'target': socialLinkElement,
       'window_height': 450,
       'window_width': 625,
     });
@@ -177,8 +180,7 @@ export default {
      * Makes the entirety of the card clickable
      * @link https://inclusive-components.design/cards/
      */
-
-    const cards = document.querySelectorAll('.card-single-link');
+    let cards = document.querySelectorAll('.card-single-link');
     Array.prototype.forEach.call(cards, card => {
       let down, up, link = card.querySelector('h2 a');
       card.onmousedown = () => down = +new Date();
@@ -189,6 +191,35 @@ export default {
         }
       }
     });
+
+    /*
+     * Init fr-offcanvas
+     * Toggleable offcanvas panel
+     * @link https://frend.co/components/offcanvas/
+     */
+    let offCanvasElement = '.fr-offcanvas-panel';
+    Froffcanvas({
+      // String - Panel selector, hook for JS init() method
+      selector: offCanvasElement,
+
+      // String - Selector for the open button(s)
+      openSelector: '.fr-offcanvas-open',
+
+      // String - Selector for the close button
+      closeSelector: '.fr-offcanvas-close',
+
+      // Boolean - Prevent click events outside panel from triggering close
+      preventClickOutside: false,
+
+      // String - Class name that will be added to the selector when the component has been initialised
+      readyClass: 'fr-offcanvas--is-ready',
+
+      // String - Class name that will be added to the selector when the panel is visible
+      activeClass: 'fr-offcanvas--is-active',
+    });
+    
+    let offCanvasToggle = document.querySelector('.fr-offcanvas-open');
+    offCanvasToggle.classList.add('is-ready');
 
   },
   finalize() {
