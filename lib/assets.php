@@ -45,7 +45,7 @@ function asset_path($filename) {
   static $manifest;
 
   if (empty($manifest)) {
-    $manifest_path = get_template_directory() . '/dist/' . 'mix-manifest.json';
+    $manifest_path = get_template_directory() . '/dist/mix-manifest.json';
     $manifest = new JsonManifest($manifest_path);
   }
 

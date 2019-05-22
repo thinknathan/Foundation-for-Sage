@@ -23,7 +23,7 @@ mix.setPublicPath('./dist');
 
 // Browsersync
 mix.browserSync({
-  proxy: 'http://localhost/XXX/public_html/',
+  proxy: 'http://localhost/xxx/public_html/',
   files: [
     '**/*.php',
     publicPath`(styles|scripts)/**/*.(css|js)`,
@@ -35,7 +35,8 @@ mix.sass(src`styles/app.main.scss`, 'styles');
 
 // JavaScript
 mix.js(src`scripts/app.main.js`, 'scripts')
-   .js(src`scripts/app.priority.js`, 'scripts');
+   .js(src`scripts/app.priority.js`, 'scripts')
+   .js(src`scripts/app.inline.js`, 'scripts');
 
 // Assets
 mix.copyDirectory(src`images`, publicPath`images`)
@@ -54,11 +55,7 @@ if (!mix.inProduction()) {
 if (mix.inProduction()) {
   // Hash and version files in production.
   mix.versionHash();
-  
-  // Inline JS currently used for polyfills,
-  // so only needed in production
-  mix.js(src`scripts/app.inline.js`, 'scripts');
-  
+
   // PostCSS Plugins
   mix.options({
     postCss: [
