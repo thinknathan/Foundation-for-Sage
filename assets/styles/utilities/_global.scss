@@ -1,1 +1,97 @@
+// 1. Global
+// ---------
+
+$global-font-size: 100%;
+$global-width: rem-calc(1200);
+$global-lineheight: 1.6;
+$foundation-palette: (
+  primary: #3c7fcf,
+  secondary: #f100bc,
+  success: #3adb76,
+  warning: #ffae00,
+  alert: #cc4b37,
+);
+$light-gray: #e6e6e6;
+$medium-gray: #cacaca;
+$dark-gray: #8a8a8a;
+$black: #3f453a;
+$white: #fefefe;
+$body-background: $white;
+$body-font-color: $black;
+$body-font-family: -apple-system,
+BlinkMacSystemFont,
+"Segoe UI",
+Roboto,
+Oxygen-Sans,
+Ubuntu,
+Cantarell,
+"Helvetica Neue",
+sans-serif;
+$body-antialiased: true;
+$global-margin: 1rem;
+$global-minimum-margin: 0.5rem;
+$global-padding: 1rem;
+$global-position: 1rem;
+$global-weight-normal: normal;
+$global-weight-bold: bold;
+$global-radius: 0;
+$global-menu-padding: 0.75rem 1rem;
+$global-menu-nested-margin: 1rem;
+$global-text-direction: ltr;
+$global-flexbox: true;
+$global-prototype-breakpoints: false;
+$global-button-cursor: auto;
+$global-color-pick-contrast-tolerance: 0;
+$global-transition-curve: cubic-bezier(0.4, 0, 0.2, 1);
+$print-transparent-backgrounds: true;
+
+// Material Design Shadow Depth
+// --------------------
+$shadow-depth1: 0 1px 3px rgba($black, 0.12),
+0 1px 2px rgba($black, 0.24);
+$shadow-depth2: 0 3px 6px rgba($black, 0.16),
+0 3px 6px rgba($black, 0.23);
+$shadow-depth3: 0 10px 20px rgba($black, 0.19),
+0 6px 6px rgba($black, 0.23);
+$shadow-depth4: 0 14px 28px rgba($black, 0.25),
+0 10px 10px rgba($black, 0.22);
+$shadow-depth5: 0 19px 38px rgba($black, 0.30),
+0 15px 12px rgba($black, 0.22);
+
+// 2. Breakpoints
+// --------------
+
+$breakpoints: (
+  small: 0,
+  medium: 640px,
+  large: 1024px,
+  xlarge: 1200px,
+  xxlarge: 1440px,
+  jumbo: 1680px,
+  mammoth: 1920px,
+);
+$print-breakpoint: large;
+$breakpoint-classes: (small medium large);
+
+// 19. Flexbox Utilities
+// ---------------------
+
+$flex-source-ordering-count: 6;
+$flexbox-responsive-breakpoints: true;
+
+// 56. Xy Grid
+// -----------
+
+$xy-grid: true;
+$grid-container: $global-width;
+$grid-columns: 12;
+$grid-margin-gutters: (small: 20px,
+medium: 30px);
+$grid-padding-gutters: $grid-margin-gutters;
+$grid-container-padding: $grid-padding-gutters;
+$grid-container-max: $global-width;
+$xy-block-grid-max: 8;
+
+@import '../../node_modules/foundation-sites/scss/util/util';
+@include add-foundation-colors;
 @include foundation-global-styles;

@@ -4,6 +4,18 @@
  * + integration with Hover Transition Mixin
  */
 
+// 14. Card
+// --------
+
+$card-background: $white;
+$card-font-color: $body-font-color;
+$card-divider-background: $light-gray;
+$card-border: 0;
+$card-shadow: $shadow-depth1;
+$card-border-radius: $global-radius;
+$card-padding: $global-padding;
+$card-margin-bottom: $global-margin;
+
 // Divider effect
 $card-divider-height: 10;
 

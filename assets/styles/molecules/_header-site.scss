@@ -2,13 +2,16 @@
  * Website header
  */
 
+$navigation-breakpoint-toggle: large;
+
 .header-site {
   background-color: $primary-color;
   position: sticky;
-  z-index: 5;
+  z-index: 4;
   top: 0;
   left: 0;
   right: 0;
+  box-shadow: $shadow-depth1;
 }
 
 .header-site-inner {
@@ -20,12 +23,20 @@
 
 .header-site-brand {
   @include xy-cell(shrink);
-  min-width: 5rem;
-  min-width: 10vw;
+  min-width: rem-calc(100);
+
+  @include breakpoint(large) {
+    min-width: rem-calc(200);
+  }
 }
 
 .header-site-navigation {
   @include xy-cell(auto);
+  text-align: right;
+
+  @include breakpoint($navigation-breakpoint-toggle) {
+    text-align: left;
+  }
 
   a {
     color: $white;
@@ -35,6 +46,19 @@
       color: darken($white, 10%);
     }
   }
+
+  .menu-primary {
+    @include show-for($navigation-breakpoint-toggle);
+  }
+
+  .offcanvas-toggle {
+    @include hide-for($navigation-breakpoint-toggle);
+  }
+}
+
+.header-site-title {
+  line-height: 1;
+  margin: 0;
 }
 
 .header-site-title-link {

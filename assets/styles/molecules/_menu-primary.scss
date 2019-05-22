@@ -2,142 +2,62 @@
  * Primary Menu
  */
 
-$swap-to-full-menu-breakpoint: medium;
+$active-bar-height: 2px;
 
 .menu-primary {
   @include flex-align($x: right);
-}
 
-.menu {
-  flex-wrap: nowrap;
-  flex-direction: column;
-
-  @include breakpoint($swap-to-full-menu-breakpoint) {
-    flex-wrap: wrap;
-    flex-direction: row;
-  }
-}
-
-.menu-primary-toggle,
-.menu,
-.submenu,
-.menu-item {
-  &[aria-hidden="true"] {
-    display: none;
-  }
-}
-
-.menu-item {
-  @include breakpoint($swap-to-full-menu-breakpoint) {
-    position: relative;
-  }
-}
-
-[data-action="hover"] {
-  .menu-item {
-    &:hover {
-
-      @include breakpoint($swap-to-full-menu-breakpoint) {
-
-        & > .submenu,
-        & > .submenu[aria-hidden="true"] {
-          display: block;
-        }
-      }
-    }
-  }
-}
-
-.submenu {
-  @include breakpoint($swap-to-full-menu-breakpoint) {
-    left: 0;
-    position: absolute;
-    top: 100%;
-  }
-
-  & > .menu-item {
-    display: block;
-  }
-}
-
-
-
-
-
-
-
-
-
-
-// WIP
-
-.no-js {
-
-  & [data-responsive-nav-control] {
-
-    @include breakpoint($swap-to-full-menu-breakpoint) {
-      display: none;
-    }
-  }
-
-  & .primary-menu {
-    display: none;
-    list-style: none;
-    margin: 0;
-    padding-left: 0;
-
-    @include breakpoint($swap-to-full-menu-breakpoint) {
-      display: block;
-    }
-
-    &:target {
-      display: block;
-    }
-
-    & ul {
-      list-style: none;
-      margin: 0;
-      padding-left: 0;
-    }
-
-    & li {
+  // Active menu item styles
+  > .menu-item {
+    > a[aria-current="page"] {
       position: relative;
 
-      &:hover,
-      &:focus-within {
-
-        & > ul {
-          display: block;
-        }
-      }
-
-      & > a {
-
-        &:focus {
-
-          & > ul {
-            display: block;
-          }
-        }
-      }
-
-      & > ul {
-        display: none;
-
-        @include breakpoint($swap-to-full-menu-breakpoint) {
-          left: 0;
-          position: absolute;
-          top: 100%;
-        }
+      &::after {
+        content: '';
+        position: absolute;
+        height: $active-bar-height;
+        background-color: $white;
+        width: calc(100% - 2rem);
+        bottom: -$active-bar-height;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
       }
     }
+  }
 
-    & > li {
-      display: block;
+  // Dropdown menu with some depth
+  .submenu {
+    position: absolute;
+    left: 50%;
+    background-color: $white;
+    box-shadow: $shadow-depth2;
+    min-width: $dropdownmenu-min-width;
+    padding-top: $global-minimum-margin;
+    padding-bottom: $global-minimum-margin;
+    border-radius: $global-radius;
+    transform: translateX(-50%);
 
-      @include breakpoint($swap-to-full-menu-breakpoint) {
-        display: inline-block;
-      }
+    a {
+      color: $primary-color;
+    }
+  }
+
+  // Don't centre last submenu
+  // so it doesn't stretch off the screen
+  > li:last-of-type {
+    .submenu {
+      transform: none;
+      right: 0;
+      left: auto;
+    }
+  }
+
+  // Arrow for menu parents
+  .is-dropdown-submenu-parent {
+    &::after {
+      @include css-triangle($dropdownmenu-arrow-size, $white, down);
     }
   }
 }

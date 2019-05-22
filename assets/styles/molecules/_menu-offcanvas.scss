@@ -1,0 +1,55 @@
+/*
+ * Offcanvas Menu
+ */
+
+$menu-offcanvas-hover-background: $light-gray;
+
+.menu-offcanvas {
+  a {
+    color: $primary-color;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: 0.9rem;
+    padding-bottom: 0.9rem;
+    font-size: 0.9rem;
+
+    &:hover {
+      background-color: lighten($menu-offcanvas-hover-background, 5%);
+    }
+
+    &:focus,
+    &:active {
+      background-color: $menu-offcanvas-hover-background;
+    }
+  }
+
+  .active {
+    > a {
+      color: $primary-color;
+    }
+  }
+
+  .submenu {
+    a {
+      padding-left: 3rem;
+      opacity: 0.9;
+
+      &:hover,
+      &:focus,
+      &:active {
+        opacity: 1;
+      }
+    }
+  }
+
+  .is-dropdown-submenu-parent {
+    &::after {
+      @include css-triangle($dropdownmenu-arrow-size, $primary-color, down);
+      right: 1.5rem;
+    }
+
+    > a {
+      padding-right: 2.5rem;
+    }
+  }
+}

@@ -1,1 +1,58 @@
+// 23. Menu
+// --------
+
+$menu-margin: $global-margin 0;
+$menu-nested-margin: $global-menu-nested-margin;
+$menu-items-padding: $global-menu-padding;
+$menu-simple-margin: 1rem;
+$menu-item-color-active: $white;
+$menu-item-background-active: transparent;
+$menu-icon-spacing: 0.25rem;
+$menu-item-background-hover: transparent;
+$menu-state-back-compat: true;
+$menu-centered-back-compat: true;
+$menu-icons-back-compat: true;
+
 @include foundation-menu;
+
+.menu {
+  .collapse {
+    display: none;
+  }
+
+  .collapse.in {
+    display: flex;
+  }
+
+  .collapsing {
+    height: 0;
+    overflow: hidden;
+    transition-timing-function: $global-transition-curve;
+    transition-duration: 0.3s;
+    transition-property: height;
+  }
+}
+
+.is-dropdown-submenu-parent {
+  position: relative;
+
+  &::after {
+    @include css-triangle($dropdownmenu-arrow-size, $dropdownmenu-arrow-color, down);
+    position: absolute;
+    transition: all 0.3s $global-transition-curve;
+    will-change: transform;
+    right: 5px;
+    left: auto;
+    top: 1.3rem;
+    transform: translate(0, -50%);
+    transform-origin: top;
+  }
+
+  &.active::after {
+    transform: rotate(-180deg) translate(0, -50%);
+  }
+
+  > a {
+    padding-right: 1.5rem;
+  }
+}

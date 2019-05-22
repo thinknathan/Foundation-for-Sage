@@ -1,6 +1,5 @@
 /* Structure based on Robert Rendle's The “Other” Interface: Atomic Design With Sass */
 
-@import "settings/settings";
 @import "../../node_modules/foundation-sites/scss/foundation.scss";
 @import "../../node_modules/sass-inline-icons/sass-inline-icons.scss";
 @import "../../node_modules/sass-divider/sass-divider.scss";
@@ -97,6 +96,8 @@
 @import "atoms/inline-icon";
 @import "atoms/lightbox";
 @import "atoms/social-share";
+@import "atoms/tabs";
+@import "atoms/offcanvas-toggle";
 
 /* ==========================================================================
  * Molecules
@@ -108,7 +109,9 @@
 @import "molecules/base";
 @import "molecules/footer-site";
 @import "molecules/header-site";
-@import "molecules/login";
 @import "molecules/menu-bottombar";
+@import "molecules/menu-offcanvas";
 @import "molecules/menu-primary";
+@import "molecules/offcanvas-panel";
+@import "molecules/page-login";
 @import "molecules/sidebar";

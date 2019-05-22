@@ -5,6 +5,35 @@
  * License: MIT - http://wpsitecare.mit-license.org/
  */
 
+// Gravity Forms Colors
+// -----------
+$gravity-black: $black;
+$gravity-off-black: $black;
+$gravity-gray: $dark-gray;
+$gravity-light-gray: $light-gray;
+$gravity-light-fog: $light-gray;
+$gravity-medium-fog: $medium-gray;
+$gravity-fog: $medium-gray;
+$gravity-white: $white;
+$gravity-blue: #0072bc;
+$gravity-yellow: #fff2aa;
+$gravity-green: #94dc21;
+$gravity-orange: #dc7021;
+$gravity-red: #dc2521;
+
+// Gravity Forms Layout Options
+// -----------
+$gravity-margin: $global-margin;
+$gravity-margin-medium: $global-margin / 2;
+$gravity-margin-small: $global-margin / 3;
+$gravity-form-input-padding: $input-padding;
+
+// Base Font Sizes
+// -----------
+$gravity-medium-font-size: $global-font-size;
+$gravity-small-font-size: $small-font-size;
+$gravity-title-font-size: 18px;
+
 .gform_wrapper {
   text-align: left;
 
