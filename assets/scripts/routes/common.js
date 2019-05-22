@@ -1,7 +1,6 @@
 import AOS from 'aos';
 import Rellax from 'rellax';
 import Headroom from 'headroom.js';
-//import navigation from '@10up/component-navigation';
 import Glider from 'glider-js';
 import Fraccordion from 'fr-accordion';
 import Tobi from 'rqrauhvmra__tobi';
@@ -10,6 +9,7 @@ import stickybits from 'stickybits';
 import '../util/socialShare.js';
 import MetisMenu from 'metismenujs';
 import Froffcanvas from 'fr-offcanvas';
+import Frtabs from 'fr-tabs';
 
 export default {
   init() {
@@ -49,13 +49,13 @@ export default {
     headroom.init();
 
     /*
-     * Init navigation
-     * Horizontal navigation on large screen, collapses down to an off-canvas model on small viewports
-     * @link https://github.com/10up/component-navigation
+     * Init MetisMenu navigation
+     * Dropdown menu
+     * @link https://github.com/onokumus/metismenujs
      */
     let navigationElement = '#menu-primary';
     new MetisMenu(navigationElement);
-    
+
     let navigationOffcanvasElement = '#menu-offcanvas';
     new MetisMenu(navigationOffcanvasElement);
 
@@ -169,7 +169,7 @@ export default {
      * @link https://10up.github.io/wp-component-library/component/social-links/index.html
      */
     let socialLinkElement = '.social-share';
-    TenUp.socialLinks({
+    new TenUp.socialLinks({
       'target': socialLinkElement,
       'window_height': 450,
       'window_width': 625,
@@ -217,10 +217,29 @@ export default {
       // String - Class name that will be added to the selector when the panel is visible
       activeClass: 'fr-offcanvas--is-active',
     });
-    
+
     let offCanvasToggle = document.querySelector('.fr-offcanvas-open');
     offCanvasToggle.classList.add('is-ready');
 
+    /*
+     * Init fr-tabs
+     * Accessible tab system
+     * @link https://frend.co/components/tabs/
+     */
+    let tabsElement = '.js-fr-tabs';
+    new Frtabs({
+      // String - Outer container selector, hook for JS init() method
+      selector: tabsElement,
+
+      // String - List selector to transform into tablist
+      tablistSelector: '.js-fr-tabs__tablist',
+
+      // String - Containers which hold content, toggled via tabs
+      tabpanelSelector: '.js-fr-tabs__panel',
+
+      // String - Class name that will be added to the selector when the component has been initialised
+      tabsReadyClass: 'fr-tabs--is-ready',
+    });
   },
   finalize() {
     // JavaScript to be fired on all pages, after page specific JS is fired

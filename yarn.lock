@@ -2,13 +2,6 @@
 # yarn lockfile v1
 
 
-"@10up/component-navigation@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@10up/component-navigation/-/component-navigation-1.0.1.tgz#4b7c946084d96c39ce0318cb4a8475c14ea76eb8"
-  integrity sha512-nJhVJplSRWJCwTSJW2rgoAlnsqzNNwiaJ0x3wacXEWFlyf/kw63lnVWXXaMTwPt3oQwumLcB9H1MPF055frLTw==
-  dependencies:
-    "@babel/polyfill" "^7.2.5"
-
 "@babel/code-frame@^7.0.0":
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.0.0.tgz#06e2ab19bdb535385559aabb5ba59729482800f8"
@@ -547,14 +540,6 @@
     "@babel/helper-plugin-utils" "^7.0.0"
     "@babel/helper-regex" "^7.4.4"
     regexpu-core "^4.5.4"
-
-"@babel/polyfill@^7.2.5":
-  version "7.4.4"
-  resolved "https://registry.yarnpkg.com/@babel/polyfill/-/polyfill-7.4.4.tgz#78801cf3dbe657844eeabf31c1cae3828051e893"
-  integrity sha512-WlthFLfhQQhh+A2Gn5NSFl0Huxz36x86Jn+E9OW7ibK8edKPq+KLy4apM1yDpQ8kJOVi1OVjpP4vSDLdrI04dg==
-  dependencies:
-    core-js "^2.6.5"
-    regenerator-runtime "^0.13.2"
 
 "@babel/preset-env@^7.2.0":
   version "7.4.4"
@@ -2127,11 +2112,6 @@ core-js@3.0.1:
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.0.1.tgz#1343182634298f7f38622f95e73f54e48ddf4738"
   integrity sha512-sco40rF+2KlE0ROMvydjkrVMMG1vYilP2ALoRXcYR4obqbYIuV3Bg+51GEDW+HF8n7NRA+iaA4qD0nD9lo9mew==
 
-core-js@^2.6.5:
-  version "2.6.6"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.6.tgz#00eb6d6bf815471cc16d8563edd7d38786dec50b"
-  integrity sha512-Mt/LaAym54NXnrjEMdo918cT2h70tqb/Yl7T3uPHQHRm5SxVoqlKmerUy4mL11k8saSBDWQ7ULIHxmeFyT3pfg==
-
 core-util-is@~1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/core-util-is/-/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
@@ -3449,6 +3429,11 @@ fr-offcanvas@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/fr-offcanvas/-/fr-offcanvas-1.1.1.tgz#096c67e69b2727a9ce70dc0fde35cf857d04ecc4"
   integrity sha512-Dm4DYAWhElN4mzD7bXil5ZLZlhkXUJdMUeAQ6tUrhJ1dM+PQeV/doj0h9i5eBdyku9g21a+c49p+IjHXKLwUGA==
+
+fr-tabs@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/fr-tabs/-/fr-tabs-1.0.6.tgz#bf09560b5e73ffacd19be1d69a5778e1986566ca"
+  integrity sha1-vwlWC15z/6zRm+HWmld44ZhlZso=
 
 fragment-cache@^0.2.1:
   version "0.2.1"
