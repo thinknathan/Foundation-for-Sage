@@ -1,0 +1,40 @@
+.js-to_expand[aria-hidden=true],
+.js-to_expand[data-hidden=true] {
+  display: none;
+}
+
+/* This is the opened state */
+.expandmore__to_expand {
+  display: block;
+  overflow: hidden;
+  opacity: 1;
+  transition: visibility 0s ease, max-height 0.3s ease, opacity 0.3s ease;
+  max-height: 80em;
+  /* magic number for max-height = enough height */
+  visibility: visible;
+  transition-delay: 0s;
+}
+
+/* This is the hidden state */
+[data-hidden=true].expandmore__to_expand {
+  display: block;
+  max-height: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition-delay: 2s, 0s, 0s;
+}
+
+.expandmore__button {
+  background: none;
+  font-size: inherit;
+  color: inherit;
+}
+
+/* optional */
+.expandmore__symbol::before {
+  content: '+ ';
+}
+
+.expandmore__button[aria-expanded=true] > .expandmore__symbol::before {
+  content: '− ';
+}

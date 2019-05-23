@@ -1,4 +1,5 @@
 const mix = require('laravel-mix');
+const webpack = require('webpack');
 require('laravel-mix-versionhash');
 
 // Public path helper
@@ -35,17 +36,24 @@ mix.sass(src`styles/app.main.scss`, 'styles');
 
 // JavaScript
 mix.js(src`scripts/app.main.js`, 'scripts')
-   .js(src`scripts/app.priority.js`, 'scripts')
-   .js(src`scripts/app.inline.js`, 'scripts');
+  .js(src`scripts/app.priority.js`, 'scripts')
+  .js(src`scripts/app.inline.js`, 'scripts');
 
 // Assets
 mix.copyDirectory(src`images`, publicPath`images`)
-   .copyDirectory(src`fonts`, publicPath`fonts`);
+  .copyDirectory(src`fonts`, publicPath`fonts`);
+
+// Ignore Pikaday.js file trying to import Moment.js
+mix.webpackConfig({
+  plugins: [
+    new webpack.IgnorePlugin(/moment/),
+  ],
+});
 
 if (!mix.inProduction()) {
   // Source maps when not in production.
   mix.sourceMaps();
-  
+
   // Don't rebase URLs in CSS
   mix.options({
     processCssUrls: false,

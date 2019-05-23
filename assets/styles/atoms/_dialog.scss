@@ -1,33 +1,122 @@
-/**
- * When the native `<dialog>` element is supported, the overlay is implied and
- * can be styled with `::backdrop`, which means the DOM one should be removed.
- *
- * The `data-a11y-dialog-native` attribute is set by the script when the
- * `<dialog>` element is properly supported.
- *
- * Feel free to replace `:first-child` with the overlay selector you prefer.
- */
-[data-a11y-dialog-native] > :first-child {
-  display: none;
+.fr-dialogmodal--is-ready {
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
 }
 
-/**
- * When the `<dialog>` element is not supported, its default display is `inline`
- * which can cause layout issues. This makes sure the dialog is correctly
- * displayed when open.
- */
-dialog[open] {
-  display: block;
+.fr-dialogmodal--is-ready .fr-dialogmodal-modal {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  /* Modal blurs when using translate3d */
 }
 
-/**
- * When the native `<dialog>` element is not supported, the script toggles the
- * `aria-hidden` attribute on the container. If `aria-hidden` is set to `true`,
- * the container should be hidden entirely.
- *
- * Feel free to replace `.dialog-container` with the container selector you
- * prefer.
- */
-.dialog-container[aria-hidden='true'] {
-  display: none;
+.fr-dialogmodal--is-ready[aria-hidden="true"] {
+  visibility: hidden;
+}
+
+.fr-dialogmodal--is-ready[aria-hidden="false"] {
+  visibility: visible;
+}
+
+.fr-dialogmodal--is-ready {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  transition: background-color .15s ease-out, visibility .15s ease-out
+}
+
+.fr-dialogmodal--is-ready[aria-hidden=false] {
+  background-color: rgba(34, 34, 34, .8);
+  box-shadow: 0 3.75em 0 0 rgba(34, 34, 34, .8);
+  transition: background-color .15s ease-out
+}
+
+.fr-dialogmodal--is-ready .fr-dialogmodal-modal {
+  background-color: #ffe566;
+  border-radius: .25em;
+  max-height: calc(100vh - 3.75em);
+  opacity: 0;
+  overflow: auto;
+  padding: 5.625em 1.25em 0;
+  transition: opacity .15s ease-out;
+  width: calc(100vw - 3.75em)
+}
+
+@media all and (min-width:31.25em) {
+  .fr-dialogmodal--is-ready .fr-dialogmodal-modal {
+    max-width: 37.5em;
+    min-width: 25em
+  }
+}
+
+.fr-dialogmodal--is-ready[aria-hidden=false] .fr-dialogmodal-modal {
+  opacity: 1
+}
+
+.fr-dialogmodal-open {
+  background-color: #ffe566;
+  border-bottom: .125em solid #e6ce5c;
+  border-radius: .25em;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 1em;
+  line-height: 1.25;
+  padding: 1em 1.25em;
+  text-transform: uppercase;
+  transition: background-color .15s ease-out, border-color .15s ease-out, color .15s ease-out
+}
+
+.fr-dialogmodal-open:focus,
+.fr-dialogmodal-open:hover {
+  background-color: #4e4e4e;
+  border-bottom-color: #222;
+  color: #fff
+}
+
+.fr-dialogmodal-close {
+  background-color: #383838;
+  border-bottom: .125em solid #222;
+  border-radius: .25em;
+  color: #fff;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 1em;
+  line-height: 1.25;
+  padding: 1em 1.25em;
+  position: absolute;
+  right: 1.25em;
+  text-transform: uppercase;
+  top: 1.25em;
+  transition: background-color .15s ease-out, border-color .15s ease-out, color .15s ease-out
+}
+
+.fr-dialogmodal:not(.fr-dialogmodal--is-ready) .fr-dialogmodal-close {
+  display: none
+}
+
+.fr-dialogmodal-close:focus,
+.fr-dialogmodal-close:hover {
+  background-color: #4e4e4e;
+  border-bottom-color: #222;
+  color: #fff
+}
+
+.fr-dialogmodal--is-ready a {
+  background-image: linear-gradient(270deg, #222 50%, #222 0)
+}
+
+.fr-dialogmodal--is-ready a,
+.fr-dialogmodal--is-ready a:focus,
+.fr-dialogmodal--is-ready a:hover {
+  background-position: 0 1.05em;
+  background-repeat: repeat-x;
+  background-size: 1px 1px;
+  text-shadow: -2px 0 #ffe566, 2px 0 #ffe566
+}
+
+.fr-dialogmodal--is-ready a:focus,
+.fr-dialogmodal--is-ready a:hover {
+  background-image: linear-gradient(270deg, #ea3b37 50%, #ea3b37 0)
 }

@@ -4,12 +4,13 @@ import Headroom from 'headroom.js';
 import Glider from 'glider-js';
 import Fraccordion from 'fr-accordion';
 import Tobi from 'rqrauhvmra__tobi';
-import A11yDialog from 'a11y-dialog';
+import Frdialogmodal from 'fr-dialogmodal';
 import stickybits from 'stickybits';
 import '../util/socialShare.js';
 import MetisMenu from 'metismenujs';
 import Froffcanvas from 'fr-offcanvas';
 import Frtabs from 'fr-tabs';
+import Pikaday from 'pikaday';
 
 export default {
   init() {
@@ -143,12 +144,33 @@ export default {
     new Tobi();
 
     /*
-     * Init A11yDialog
+     * Init Dialog/Modal
      * Dialog or modal
-     * @link https://github.com/edenspiekermann/a11y-dialog
+     * @link https://frend.co/components/dialogmodal/
      */
-    let dialogElement = document.getElementById('my-accessible-dialog');
-    new A11yDialog(dialogElement);
+    let dialogElement = '.fr-dialogmodal';
+    new Frdialogmodal({
+      // String - Outer container selector, hook for JS init() method
+      selector: dialogElement,
+
+      // String - Modal selector, the element that represents the modal
+      modalSelector: '.fr-dialogmodal-modal',
+
+      // String - Selector for the open button
+      openSelector: '.fr-dialogmodal-open',
+
+      // String - Selector for the close button
+      closeSelector: '.fr-dialogmodal-close',
+
+      // Boolean - Switches the dialog role to alertdialog, only use this when representing an alert, error or warning
+      isAlert: false,
+
+      // String - Class name that will be added to the selector when the component has been initialised
+      readyClass: 'fr-dialogmodal--is-ready',
+
+      // String - Class name that will be added to the selector when the component is active
+      activeClass: 'fr-dialogmodal--is-active',
+    });
 
     /*
      * Init StickyBits
@@ -239,6 +261,20 @@ export default {
 
       // String - Class name that will be added to the selector when the component has been initialised
       tabsReadyClass: 'fr-tabs--is-ready',
+    });
+
+    /*
+     * Init Pikaday
+     * A refreshing JavaScript Datepicker
+     * @link https://github.com/Pikaday/Pikaday
+     */
+    let datePickerElement = document.getElementById('datepicker');
+    var datePicker = new Pikaday({
+      field: datePickerElement,
+      format: 'D/M/YYYY',
+      onSelect: function () {
+        console.log(datePicker.toString());
+      },
     });
   },
   finalize() {
