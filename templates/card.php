@@ -29,11 +29,11 @@
 
 ?>
 
-<li class="card card-<?= esc_attr( get_post_type() ) ?> card-single-link">
+<div class="card card-<?= esc_attr( get_post_type() ) ?> card-single-link">
   <div class="card-section card-section-head">
 
     <h2 class="h3">
-      <a href="<?php the_permalink() ?>" aria-describedby="card-button-<?= $card_id ?>"><?= Util\snip(get_the_title(), '9', 'words'); ?></a>
+      <a class="card-title-link" href="<?php the_permalink() ?>" aria-describedby="card-button-<?= $card_id ?>"><?= Util\snip(get_the_title(), '9', 'words'); ?></a>
     </h2>
 
     <p class="card-meta">
@@ -56,4 +56,4 @@
       <span class="button" aria-hidden="true" id="card-button-<?= $card_id ?>">Read More</span>
     </div>
   </div>
-</li>
+</div>
