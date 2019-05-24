@@ -97,6 +97,24 @@ $card-hover-transition: 'fade';
 
 .card-section {
   @include card-section;
+  position: relative;
+}
+
+.card-section-head {
+  padding: 0;
+
+  .card-meta {
+    padding: $card-padding;
+  }
+
+  .card-title + .card-meta {
+    margin-top: -$card-padding * 2;
+  }
+}
+
+.card-title-link {
+  display: block;
+  padding: $card-padding;
 }
 
 .card-image {

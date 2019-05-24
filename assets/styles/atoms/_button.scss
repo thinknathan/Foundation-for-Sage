@@ -2,7 +2,7 @@
 // ----------
 
 $button-font-family: inherit;
-$button-padding: 0.85em 1em;
+$button-padding: 0.9rem 1rem;
 $button-margin: 0 0 $global-margin 0;
 $button-fill: solid;
 $button-background: $primary-color;
@@ -29,4 +29,5 @@ color 0.25s $global-transition-curve, opacity 0.25s $global-transition-curve;
 .button {
   @include ripple;
   letter-spacing: 0.04em;
+  line-height: 1.2;
 }

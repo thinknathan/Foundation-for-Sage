@@ -5,8 +5,8 @@ $global-font-size: 100%;
 $global-width: rem-calc(1200);
 $global-lineheight: 1.6;
 $foundation-palette: (
-  primary: #3c7fcf,
-  secondary: #f100bc,
+  primary: #1976D2,
+  secondary: #C2185B,
   success: #3adb76,
   warning: #ffae00,
   alert: #cc4b37,
@@ -15,7 +15,7 @@ $light-gray: #e6e6e6;
 $medium-gray: #cacaca;
 $dark-gray: #8a8a8a;
 $black: #3f453a;
-$white: #fefefe;
+$white: #fff;
 $body-background: $white;
 $body-font-color: $black;
 $body-font-family: -apple-system,

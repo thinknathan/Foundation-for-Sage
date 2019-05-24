@@ -32,7 +32,7 @@
 <div class="card card-<?= esc_attr( get_post_type() ) ?> card-single-link">
   <div class="card-section card-section-head">
 
-    <h2 class="h3">
+    <h2 class="card-title h3">
       <a class="card-title-link" href="<?php the_permalink() ?>" aria-describedby="card-button-<?= $card_id ?>"><?= Util\snip(get_the_title(), '9', 'words'); ?></a>
     </h2>
 
