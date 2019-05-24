@@ -79,6 +79,7 @@ function setup() {
   // http://codex.wordpress.org/Function_Reference/register_nav_menus
   register_nav_menus([
     'navigation_primary' => __('Primary Navigation', 'sage'),
+    'navigation_navbar' => __('Mobile Navbar (Max 4 Links)', 'sage'),
   ]);
   
   // Custom Post Types
@@ -138,7 +139,7 @@ function menu_primary() {
     'menu_class' => 'menu menu-primary',                // Adding custom nav class
     'items_wrap' => '<ul class="%2$s" id="menu-primary">%3$s</ul>',
     'depth' => 2,                                   // Limit the depth of the nav
-    'fallback_cb' => false,                         // Fallback function (see below)
+    'fallback_cb' => false,                         // Fallback function
     'walker' => new Extras\walker_primary()
   ]);
 }
@@ -154,8 +155,25 @@ function menu_offcanvas() {
     'menu_class' => 'menu vertical menu-offcanvas',                // Adding custom nav class
     'items_wrap' => '<ul class="%2$s" id="menu-offcanvas">%3$s</ul>',
     'depth' => 2,                                   // Limit the depth of the nav
-    'fallback_cb' => false,                         // Fallback function (see below)
+    'fallback_cb' => false,                         // Fallback function
     'walker' => new Extras\walker_primary()
+  ]);
+}
+
+
+/**
+ * Mobile navbar menu
+ */
+function menu_navbar() {
+  wp_nav_menu([
+    'theme_location' => 'navigation_navbar',       // Where it's located in the theme
+    'container' => false,                           // Remove nav container
+    'menu_class' => 'menu menu-navbar',                // Adding custom nav class
+    'items_wrap' => '<ul class="%2$s" id="menu-navbar">%3$s</ul>',
+    'depth' => 1,                                   // Limit the depth of the nav
+    'fallback_cb' => false,                         // Fallback function
+    'link_before'    => '<span>',
+    'link_after'     => '</span>'
   ]);
 }
 

@@ -31,6 +31,9 @@ $menu-icons-back-compat: true;
     transition-duration: 0.3s;
     transition-property: height;
   }
+  .button {
+    padding: $button-padding;
+  }
 }
 
 .is-dropdown-submenu-parent {

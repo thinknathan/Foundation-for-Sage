@@ -1,0 +1,60 @@
+/**
+ * Mobile bottom bar
+ */
+
+$navbar-shadow: 0 -1px 3px rgba(63, 69, 58, 0.12),
+0 -1px 2px rgba(63, 69, 58, 0.24);
+$navbar-background: $primary-color;
+$navbar-breakpoint-to-hide: large;
+
+.nav-navbar {
+  width: 100%;
+  position: sticky;
+  z-index: 4;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: auto;
+  background-color: $navbar-background;
+  padding: 0 $global-minimum-margin;
+  margin-bottom: 0;
+  box-shadow: $navbar-shadow;
+
+  @include breakpoint($navbar-breakpoint-to-hide) {
+    display: none;
+  }
+}
+
+.menu-navbar {
+  width: 100%;
+  overflow-x: auto;
+  flex-wrap: nowrap;
+
+  .menu-item {
+    flex: 1 1 0px;
+    margin-right: 0.5rem;
+    display: block;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    > a {
+      border-top: 2px solid transparent;
+      border-bottom: 2px solid transparent;
+      height: 100%;
+      margin-bottom: 0;
+
+      &[aria-current] {
+        border-top-color: $white;
+      }
+
+      > span {
+        display: block;
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+  }
+}
