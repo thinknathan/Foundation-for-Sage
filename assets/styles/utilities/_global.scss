@@ -1,11 +1,10 @@
-// 1. Global
-// ---------
-
+/*
+ * Global settings
+ */
 $global-font-size: 100%;
 $global-width: rem-calc(1200);
 $global-lineheight: 1.6;
-$foundation-palette: (
-  primary: #1976D2,
+$foundation-palette: (primary: #1976D2,
   secondary: #C2185B,
   success: #3adb76,
   warning: #ffae00,
@@ -45,8 +44,9 @@ $global-color-pick-contrast-tolerance: 0;
 $global-transition-curve: cubic-bezier(0.4, 0, 0.2, 1);
 $print-transparent-backgrounds: true;
 
-// Material Design Shadow Depth
-// --------------------
+/*
+ * Material Design Shadow Depth
+ */
 $shadow-depth1: 0 1px 3px rgba($black, 0.12),
 0 1px 2px rgba($black, 0.24);
 $shadow-depth2: 0 3px 6px rgba($black, 0.16),
@@ -58,11 +58,10 @@ $shadow-depth4: 0 14px 28px rgba($black, 0.25),
 $shadow-depth5: 0 19px 38px rgba($black, 0.30),
 0 15px 12px rgba($black, 0.22);
 
-// 2. Breakpoints
-// --------------
-
-$breakpoints: (
-  small: 0,
+/*
+ * Breakpoints
+ */
+$breakpoints: (small: 0,
   medium: 640px,
   large: 1024px,
   xlarge: 1200px,
@@ -73,20 +72,20 @@ $breakpoints: (
 $print-breakpoint: large;
 $breakpoint-classes: (small medium large);
 
-// 19. Flexbox Utilities
-// ---------------------
-
+/*
+ * Flexbox Utilities
+ */
 $flex-source-ordering-count: 6;
 $flexbox-responsive-breakpoints: true;
 
-// 56. Xy Grid
-// -----------
-
+/*
+ * XY Grid
+ */
 $xy-grid: true;
 $grid-container: $global-width;
 $grid-columns: 12;
 $grid-margin-gutters: (small: 20px,
-medium: 30px);
+  medium: 30px);
 $grid-padding-gutters: $grid-margin-gutters;
 $grid-container-padding: $grid-padding-gutters;
 $grid-container-max: $global-width;
@@ -95,3 +94,27 @@ $xy-block-grid-max: 8;
 @import '../../node_modules/foundation-sites/scss/util/util';
 @include add-foundation-colors;
 @include foundation-global-styles;
+
+/**
+ * Smooth scrolling on the whole document
+ * @link https://gomakethings.com/smooth-scrolling-links-with-only-css/
+ */
+html {
+  scroll-behavior: smooth;
+}
+
+/**
+ * Remove motion for user-agents requesting reduced motion
+ * Hat tip Nick/cssremedy
+ * @link https://css-tricks.com/revisiting-prefers-reduced-motion-the-reduced-motion-media-query/#comment-1700170)
+*/
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

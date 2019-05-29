@@ -1,11 +1,5 @@
 /* Structure based on Robert Rendle's The “Other” Interface: Atomic Design With Sass */
 
-@import "../../node_modules/foundation-sites/scss/foundation.scss";
-@import "../../node_modules/sass-inline-icons/sass-inline-icons.scss";
-@import "../../node_modules/sass-divider/sass-divider.scss";
-@import "../../node_modules/sass-hover-transition/sass-hover-transition.scss";
-@import "../../node_modules/sass-ripple/sass-ripple.scss";
-
 /* ==========================================================================
  * Utilities
  * system-wide styles
@@ -13,8 +7,19 @@
  * global classes, mixins and styles that can be used anywhere and at any time
    ========================================================================== */
 
+/* Dependencies */
+
+@import "../../node_modules/foundation-sites/scss/foundation.scss";
+@import "../../node_modules/sass-inline-icons/sass-inline-icons.scss";
+@import "../../node_modules/sass-divider/sass-divider.scss";
+@import "../../node_modules/sass-hover-transition/sass-hover-transition.scss";
+@import "../../node_modules/sass-ripple/sass-ripple.scss";
+
+/* Helper Plugins and Setup */
+
 @import "utilities/global";
 @import "utilities/wp-classes";
+@import "utilities/inline-icon";
 
 /* JavaScript Plugins */
 
@@ -34,7 +39,6 @@
 @import "quarks/table";
 @import "quarks/typography";
 @import "quarks/links";
-@import "quarks/scroll";
 
 /* ==========================================================================
  * Atoms
@@ -94,7 +98,6 @@
 @import "atoms/carousel";
 @import "atoms/dialog";
 @import "atoms/datepicker";
-@import "atoms/inline-icon";
 @import "atoms/lightbox";
 @import "atoms/social-share";
 @import "atoms/tabs";

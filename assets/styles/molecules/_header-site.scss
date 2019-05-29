@@ -18,7 +18,7 @@ $navigation-breakpoint-toggle: large;
   @include xy-grid;
   @include xy-grid-container;
   @include flex-align($y: middle);
-  padding: $global-padding;
+  padding: $global-minimum-margin;
 }
 
 .header-site-brand {

@@ -1,12 +1,13 @@
 /*
- * Customize link colours
+ * Anchor tags
  */
 
 $anchor-color: $primary-color;
+$anchor-transition: $button-transition;
 
 a {
   color: $anchor-color;
-  transition: $button-transition;
+  transition: $anchor-transition;
 
   &:focus,
   &:hover {

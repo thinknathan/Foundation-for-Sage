@@ -10,7 +10,7 @@ use Roots\Sage\Assets;
 /**
  * Displays pagination for archives and paginated posts
  * @credit chuckn246 + JointsWP
- * https://github.com/JeremyEnglert/JointsWP
+ * @link https://github.com/JeremyEnglert/JointsWP
  */
 function pagination($before = '', $after = '') {
 	global $wpdb, $wp_query;

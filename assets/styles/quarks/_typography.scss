@@ -1,6 +1,6 @@
-// 4. Base Typography
-// ------------------
-
+/*
+ * Base Typography
+ */
 $header-font-family: $body-font-family;
 $header-font-weight: $global-weight-normal;
 $header-font-style: normal;
@@ -77,9 +77,9 @@ $keystroke-padding: rem-calc(2 4 0);
 $keystroke-radius: $global-radius;
 $abbr-underline: 1px dotted $black;
 
-// 5. Typography Helpers
-// ---------------------
-
+/*
+ * Typography Helpers
+ */
 $lead-font-size: $global-font-size * 1.25;
 $lead-lineheight: 1.6;
 $subheader-lineheight: 1.4;

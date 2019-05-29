@@ -1,5 +1,5 @@
 /**
- * Mobile bottom bar
+ * Mobile navbar
  */
 
 $navbar-shadow: 0 -1px 3px rgba(63, 69, 58, 0.12),
@@ -41,7 +41,6 @@ $navbar-breakpoint-to-hide: large;
 
     > a {
       border-top: 2px solid transparent;
-      border-bottom: 2px solid transparent;
       height: 100%;
       margin-bottom: 0;
 

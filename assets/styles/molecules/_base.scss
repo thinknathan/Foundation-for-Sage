@@ -1,5 +1,5 @@
 /**
- * Main content
+ * Page structure grid
  */
 
 // Grid settings
@@ -7,11 +7,7 @@ $main-sm-columns: 12;
 $sidebar-sm-columns: 4;
 
 .wrap {
-  padding: $global-padding;
-
-  @include breakpoint(medium) {
-    padding: $global-padding * 2;
-  }
+  padding: $global-padding 0;
 }
 
 // Grid system

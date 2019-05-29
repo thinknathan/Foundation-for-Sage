@@ -11,12 +11,20 @@
 }
  */
 
-.inline-icon {
+@mixin inline-icon-base($size) {
   &::before {
     content: '';
     display: inline-block;
-    width: 1rem;
-    height: 1rem;
+    width: $size;
+    height: $size;
+  }
+}
+
+.inline-icon {
+  @include inline-icon-base(1rem);
+  font-size: 0;
+
+  &::before {
     margin-right: 0.25rem;
     vertical-align: middle;
   }

@@ -4,9 +4,6 @@
  * + integration with Hover Transition Mixin
  */
 
-// 14. Card
-// --------
-
 $card-background: $white;
 $card-font-color: $body-font-color;
 $card-divider-background: $light-gray;
@@ -54,7 +51,7 @@ $card-hover-type: 'circle';
  * @link https://github.com/thinknathan/sass-inline-icons/blob/master/sass-inline-icons.scss
  */
 
-$card-hover-icon: 'chevron-right';
+$card-hover-icon: 'maximize';
 
 /** Hover transition options:
  * fade

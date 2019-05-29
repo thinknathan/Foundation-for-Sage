@@ -1,5 +1,6 @@
-// 25. Off-canvas
-// --------------
+/**
+ * Off-Canvas Panel
+ */
 
 $offcanvas-size: 300px;
 $offcanvas-header-background: $primary-color;
@@ -10,7 +11,6 @@ $offcanvas-transition-length: 0.3s;
 $offcanvas-transition-timing: $global-transition-curve;
 $offcanvas-exit-background: rgba($black, 0.5);
 
-/*	Panel */
 .fr-offcanvas-panel {
   background-color: $offcanvas-content-background;
   height: 100%;
@@ -65,7 +65,7 @@ $offcanvas-exit-background: rgba($black, 0.5);
 }
 
 .fr-offcanvas-controls {
-  padding: $global-padding;
+  padding: $global-minimum-margin;
   background-color: $offcanvas-header-background;
   text-align: right;
 }

@@ -14,6 +14,13 @@ import Pikaday from 'pikaday';
 
 export default {
   init() {
+    // Motion and defaults
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let sliderDuration = 1;
+    if (prefersReducedMotion) {
+      sliderDuration = 0;
+    }
+
     /*
      * Init AOS
      * Animations on scroll
@@ -71,21 +78,19 @@ export default {
       slidesToShow: 1,
       slidesToScroll: 1,
       scrollLock: true,
-      dots: '#resp-dots',
+      duration: sliderDuration,
+      dots: '#glider-dots-1',
       arrows: {
-        prev: '.glider-prev',
-        next: '.glider-next',
+        prev: '#glider-prev-1',
+        next: '#glider-next-1',
       },
       responsive: [
         {
           // screens greater than >= 775px
           breakpoint: 775,
           settings: {
-            // Set to `auto` and provide item width to adjust to viewport
             slidesToShow: 2,
             slidesToScroll: 1,
-            itemWidth: 150,
-            duration: 0.25,
           },
         },
         {
@@ -94,8 +99,6 @@ export default {
           settings: {
             slidesToShow: 3,
             slidesToScroll: 1,
-            itemWidth: 150,
-            duration: 0.25,
           },
         },
       ],
