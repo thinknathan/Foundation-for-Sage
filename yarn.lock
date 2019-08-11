@@ -5221,10 +5221,10 @@ methods@~1.1.2:
   resolved "https://registry.yarnpkg.com/methods/-/methods-1.1.2.tgz#5529a4d67654134edcc5266656835b0f851afcee"
   integrity sha1-VSmk1nZUE07cxSZmVoNbD4Ua/O4=
 
-metismenujs@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/metismenujs/-/metismenujs-1.0.3.tgz#433bc679a6e2fad2189b7157018138269c98605c"
-  integrity sha512-sAW2c6zu3AqOX3VDT0vhXw4lyJ2s84NfwlOAc7/xFj7N3ARgA3z6WuG8K+X58oNzrtq0iQwv//PhXI5l8vLZbQ==
+metismenujs@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/metismenujs/-/metismenujs-1.1.0.tgz#7b73161fbc9f42ac68b0694b0983b320c85bdc7e"
+  integrity sha512-lSnmOoR8xnfg07b0DROmpp0kOWNZxot5t6RhtQfyQ41V/5/i2bJLlDQHgGj25VHs+34k8UXqh7YTxEd5oh3BtQ==
 
 micromatch@^3.0.4, micromatch@^3.1.10, micromatch@^3.1.4, micromatch@^3.1.8:
   version "3.1.10"
