@@ -20,5 +20,6 @@ if (typeof Promise === 'undefined' || typeof requestAnimationFrame === 'undefine
   let firstScriptInHead = document.getElementsByTagName('script')[0];
   scriptToInject.type = 'text/javascript';
   scriptToInject.src = 'https://polyfill.io/v3/polyfill.min.js';
+  scriptToInject.async = false;
   documentHead.insertBefore(scriptToInject, firstScriptInHead);
 }
