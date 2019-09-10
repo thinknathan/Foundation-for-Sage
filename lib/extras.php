@@ -184,33 +184,3 @@ function style_loadcss($html, $handle) {
 	return $html;
 }
 add_filter('style_loader_tag', __NAMESPACE__ . '\\style_loadcss', 20, 2);
-
-
-/**
- * Simplifies toolbar options in the TinyMCE editor
- * Also specifies text formats
- */
-function configure_tinymce( $in ) {
-  $in['toolbar1'] = 'formatselect,bold,italic,bullist,numlist,blockquote,alignleft,aligncenter,alignright,link,unlink,removeformat,wp_fullscreen ';
-	$in['toolbar2'] = '';
-  $in['block_formats'] = 'Paragraph=p;Heading 2=h2;Heading 3=h3;Heading 4=h4';
-  return $in;
-}
-add_filter( 'tiny_mce_before_init', __NAMESPACE__ . '\\configure_tinymce' );
-
-
-/**
- * Simplifies toolbar options in the TinyMCE editor
- * Applies to WYSIWYG editor in Advanced Custom Fields
- */
-function configure_tinymce_acf( $toolbars ) {
-  $toolbars['Custom'] = array();
-  $toolbars['Custom'][1] = array('formatselect', 'bold', 'italic', 'bullist', 'numlist', 'blockquote', 'alignleft', 'aligncenter', 'alignright', 'link', 'unlink', 'removeformat', 'wp_fullscreen' );
-  // remove the 'Basic' toolbar completely
-  unset( $toolbars['Basic' ] );
-  // remove the 'Full' toolbar completely
-  unset( $toolbars['Full' ] );
-  // return $toolbars
-  return $toolbars;
-}
-add_filter( 'acf/fields/wysiwyg/toolbars', __NAMESPACE__ . '\\configure_tinymce_acf' );
