@@ -3,7 +3,9 @@ import Router from './util/Router';
 import common from './routes/common';
 import home from './routes/home';
 import aboutUs from './routes/about';
-import { ready } from './utils';
+import ready from './util/ready';
+import browserSupportsAllFeatures from './util/browserSupportsAllFeatures';
+import loadScript from './util/loadScript';
 
 /** Populate Router instance with DOM routes */
 const routes = new Router({
@@ -16,4 +18,4 @@ const routes = new Router({
 });
 
 // Load Events
-ready(() => routes.loadEvents());
+ready(() => browserSupportsAllFeatures() ? routes.loadEvents() : loadScript('https://polyfill.io/v3/polyfill.min.js', routes.loadEvents, routes) );
