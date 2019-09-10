@@ -36,8 +36,7 @@ mix.sass(src`styles/app.main.scss`, 'styles');
 
 // JavaScript
 mix.js(src`scripts/app.main.js`, 'scripts')
-  .js(src`scripts/app.priority.js`, 'scripts')
-  .js(src`scripts/app.inline.js`, 'scripts');
+  .js(src`scripts/app.priority.js`, 'scripts');
 
 // Assets
 mix.copyDirectory(src`images`, publicPath`images`)

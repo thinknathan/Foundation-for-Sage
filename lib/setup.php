@@ -266,22 +266,6 @@ add_action('wp_head', __NAMESPACE__ . '\\inline_assets_head_before', 1);
 
 
 /**
- * Inline JS in Head
- * After styles, before other scripts
- */
-function inline_assets_head_after() {
-  $fileToInline = get_template_directory() . '/dist/scripts/' . basename(Assets\asset_path('scripts/app.inline.js'));
-  
-  if ( file_exists($fileToInline) ) {
-    echo '<script>';
-    readfile($fileToInline);
-    echo '</script>';
-  }
-}
-add_action('wp_head', __NAMESPACE__ . '\\inline_assets_head_after', 8);
-
-
-/**
  * Login page assets
  */
 function login_assets() {

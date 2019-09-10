@@ -101,7 +101,6 @@ Keep track of development and community news.
 * Uses Zurb Foundation by default
 * Removes jQuery by default
 * CSS is loaded async with loadCSS
-* Polyfill JS can be inlined in the header
+* Polyfill JS loaded as needed
 * Custom login page styles in `assets/styles/molecules/_login.scss`
 * Functions to output images or background images with srcset and lazyloading via Lazysizes JS
-* Simpler default controls for tinyMCE editor
