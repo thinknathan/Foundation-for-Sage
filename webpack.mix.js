@@ -49,14 +49,14 @@ mix.webpackConfig({
   ],
 });
 
+// Don't rebase URLs in CSS
+mix.options({
+  processCssUrls: false,
+});
+
 if (!mix.inProduction()) {
   // Source maps when not in production.
   mix.sourceMaps();
-
-  // Don't rebase URLs in CSS
-  mix.options({
-    processCssUrls: false,
-  });
 }
 
 if (mix.inProduction()) {
