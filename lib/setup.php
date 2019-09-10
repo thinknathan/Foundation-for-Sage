@@ -25,7 +25,6 @@ function setup() {
   add_theme_support('soil-nice-search');
   add_theme_support('soil-disable-trackbacks');
   add_theme_support('soil-disable-asset-versioning');
-  add_theme_support('soil-google-analytics', 'UA-XXXXX-Y');
   
   // Enable features from Abettor plugin
   // https://github.com/thinknathan/wp-abettor
@@ -221,11 +220,9 @@ function display_breadcrumbs() {
 function css_assets() {
   // Add Main CSS
   wp_enqueue_style('sage/css', Assets\asset_path('styles/app.main.css'), false, null);
-  
-  if (!is_admin() && $GLOBALS['pagenow'] !== 'wp-login.php') {
-    // Remove Gutenberg CSS
-    wp_dequeue_style( 'wp-block-library' );
-  }
+
+  // Remove Gutenberg CSS
+  wp_dequeue_style( 'wp-block-library' );
 }
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\css_assets', 90);
 
