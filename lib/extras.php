@@ -53,14 +53,9 @@ add_filter( 'nav_menu_link_attributes', __NAMESPACE__ . '\\add_link_atts', 10, 3
 
 /** 
  * Adds .is-dropdown-submenu-parent class to parent menu items
- * Only works with dropdown menus and not drilldown menus
  * @credit https://stackoverflow.com/questions/8448978/wordpress-how-do-i-know-if-a-menu-item-has-children
  */
 function menu_set_dropdown( $sorted_menu_items, $args ) {
-  // Stop unless it's the main dropdown menu
-  if ($args->theme_location !== 'navigation_primary') {
-    return $sorted_menu_items;
-  }
   $last_top = 0;
   foreach ( $sorted_menu_items as $key => $obj ) {
     // it is a top lv item?
