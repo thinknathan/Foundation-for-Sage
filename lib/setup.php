@@ -105,6 +105,34 @@ add_action('after_setup_theme', __NAMESPACE__ . '\\setup');
 
 
 /**
+ * Limit Gutenberg block types
+ */
+function allowed_block_types( $allowed_blocks, $post ) {
+  $allowed_blocks = [
+    'core/image',
+    'core/paragraph',
+    'core/heading',
+    'core/list',
+    'core/quote',
+    'core/button',
+    'core/shortcode',
+    'core/embed',
+    'core-embed/youtube',
+    'core-embed/vimeo',
+    'core-embed/instagram',
+  ];
+
+/*
+  if( $post->post_type === 'page' ) {
+      $allowed_blocks[] = 'core/shortcode';
+  }
+*/
+  return $allowed_blocks;
+}
+add_filter( 'allowed_block_types', __NAMESPACE__ . '\\allowed_block_types', 10, 2 );
+
+
+/**
  * Custom Resource Hinting
  * Removes DNS-Prefetch and adds Preconnect
  * @link https://www.keycdn.com/blog/resource-hints
