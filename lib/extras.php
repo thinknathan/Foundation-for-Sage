@@ -27,6 +27,18 @@ add_filter( 'wp_nav_menu_objects', __NAMESPACE__ . '\\menu_limit_to_4', 10, 2 );
 
 
 /** 
+ * Add `.button` class to anchors in Navbar Navigation
+ */
+function add_link_atts( $atts, $item, $args ) {
+  if ( $args->theme_location == 'navigation_navbar' ) {
+    $atts['class'] = "button";
+  }
+  return $atts;
+}
+add_filter( 'nav_menu_link_attributes', __NAMESPACE__ . '\\add_link_atts', 10, 3);
+
+
+/** 
  * Top nav menu walker
  * Adds Zurb Foundation class to submenus
  * @credit Brett Mason (https://github.com/brettsmason)
@@ -37,18 +49,6 @@ class walker_primary extends \Walker_Nav_Menu {
     $output .= "\n$indent<ul class=\"menu vertical submenu is-dropdown-submenu\">\n";
   }
 }
-
-
-/** 
- * Add `.button` class to anchors in Navbar Navigation
- */
-function add_link_atts( $atts, $item, $args ) {
-  if ( $args->theme_location == 'navigation_navbar' ) {
-    $atts['class'] = "button";
-  }
-  return $atts;
-}
-add_filter( 'nav_menu_link_attributes', __NAMESPACE__ . '\\add_link_atts', 10, 3);
 
 
 /** 
