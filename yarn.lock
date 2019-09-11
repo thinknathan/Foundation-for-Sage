@@ -3545,6 +3545,11 @@ fr-accordion@^1.0.6:
   resolved "https://registry.yarnpkg.com/fr-accordion/-/fr-accordion-1.0.6.tgz#2968901ccc461e2843640391dfa994af00073ed4"
   integrity sha1-KWiQHMxGHihDZAOR36mUrwAHPtQ=
 
+fr-dialogmodal@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/fr-dialogmodal/-/fr-dialogmodal-1.0.4.tgz#ba72a7adbd3bcb3f9149a8799cbfc9af9d7705c0"
+  integrity sha1-unKnrb07yz+RSah5nL/Jr513BcA=
+
 fr-offcanvas@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/fr-offcanvas/-/fr-offcanvas-1.1.1.tgz#096c67e69b2727a9ce70dc0fde35cf857d04ecc4"
@@ -6169,6 +6174,11 @@ pify@^4.0.1:
   resolved "https://registry.yarnpkg.com/pify/-/pify-4.0.1.tgz#4b2cd25c50d598735c50292224fd8c6df41e3231"
   integrity sha512-uB80kBFb/tfd68bVleG9T5GGsGPjJrLAUpR5PZIrhBnIaRTQRjqdJSsIKkOP6OAIFbj7GOrcudc5pNjZ+geV2g==
 
+pikaday@^1.8.0:
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/pikaday/-/pikaday-1.8.0.tgz#ce930e257042e852e6aadee1115e01554b2d71c5"
+  integrity sha512-SgGxMYX0NHj9oQnMaSyAipr2gOrbB4Lfs/TJTb6H6hRHs39/5c5VZi73Q8hr53+vWjdn6HzkWcj8Vtl3c9ziaA==
+
 pinkie-promise@^2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/pinkie-promise/-/pinkie-promise-2.0.1.tgz#2135d6dfa7a358c069ac9b178776288228450ffa"
@@ -7302,6 +7312,8 @@ rxjs@^6.4.0:
   version "6.5.2"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.5.2.tgz#2e35ce815cd46d84d02a209fb4e5921e051dbec7"
   integrity sha512-HUb7j3kvb7p7eCUHE3FqjoDsC1xfZQ4AHFWfTKSpZ+sAhhz5X1WX0ZuUqWbzB2QhSLp3DoLUG+hMdEDKqWo2Zg==
+  dependencies:
+    tslib "^1.9.0"
 
 safe-buffer@5.1.2, safe-buffer@>=5.1.0, safe-buffer@^5.0.1, safe-buffer@^5.1.0, safe-buffer@^5.1.1, safe-buffer@^5.1.2, safe-buffer@~5.1.0, safe-buffer@~5.1.1:
   version "5.1.2"
