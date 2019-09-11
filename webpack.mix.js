@@ -54,11 +54,6 @@ mix.options({
   processCssUrls: false,
 });
 
-if (!mix.inProduction()) {
-  // Source maps when not in production.
-  mix.sourceMaps();
-}
-
 if (mix.inProduction()) {
   // Hash and version files in production.
   mix.versionHash();
@@ -74,4 +69,7 @@ if (mix.inProduction()) {
       }),
     ],
   });
+} else {
+  // Source maps when not in production.
+  mix.sourceMaps();
 }
