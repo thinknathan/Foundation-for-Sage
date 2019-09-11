@@ -17,7 +17,7 @@ export default {
   init() {
     // Motion and defaults
     let sliderDuration = 1;
-    if (prefersReducedMotion) {
+    if (prefersReducedMotion()) {
       sliderDuration = 0;
     }
 
