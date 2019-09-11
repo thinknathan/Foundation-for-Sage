@@ -11,11 +11,11 @@ import MetisMenu from 'metismenujs';
 import Froffcanvas from 'fr-offcanvas';
 import Frtabs from 'fr-tabs';
 import Pikaday from 'pikaday';
+import prefersReducedMotion from '../util/prefersReducedMotion.js';
 
 export default {
   init() {
     // Motion and defaults
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let sliderDuration = 1;
     if (prefersReducedMotion) {
       sliderDuration = 0;
