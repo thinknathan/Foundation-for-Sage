@@ -20,22 +20,26 @@ export default function (elemQuery, fn, singular) {
   var init = function (elem) {
     if (isVisible(elem) && isInViewport(elem)) {
       // Element is in viewport, so activate it
-      //console.log('PASSED isInViewport + isVisible: ' + fn);
       fn.call(elem);
+      //console.log('INSTANT: ' + fn.toString().slice(0, 60) );
     } else {
+      var scroll = new ScrollWatcher().watch(elem);
+
       // Element is off-screen, so add it to the lazy queue
-      var functionInQueue = makeIdleGetter(() => fn.call(elem));
-      //console.log('QUEUED ' + fn + ' to makeIdleGetter');
+      var functionInQueue = makeIdleGetter(() => {
+        // turn off scroll watcher
+        scroll.off('enter');
+        // run function
+        fn.call(elem);
+        //console.log('RUN from queue: ' + fn.toString().slice(0, 60) );
+      });
+      //console.log('QUEUED makeIdleGetter: ' + fn.toString().slice(0, 60) );
 
       // Activate it immediately if it's scrolled into view
-      var scroll = new ScrollWatcher();
       scroll
-        .watch(elem)
-        .once("enter", function () {
-          if (isVisible(elem)) {
-            functionInQueue();
-            //console.log('SCROLL called functionInQueue: ' + fn);
-          }
+        .once('enter', function () {
+          //console.log('SCROLL called: ' + fn.toString().slice(0, 60) );
+          functionInQueue();
         });
     }
   }
@@ -48,6 +52,6 @@ export default function (elemQuery, fn, singular) {
   } else {
     forEach(elemQuery, function () {
       init(this);
-    })
+    });
   }
 }
