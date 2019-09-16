@@ -18,7 +18,7 @@
     "browser-sync": "^2.26",
     "browser-sync-webpack-plugin": "2.2",
     "cross-env": "^5.2",
-    "eslint": "^6.3",
+    "eslint": "^6.4",
     "eslint-plugin-import": "^2.18",
     "laravel-mix": "^4.1",
     "laravel-mix-versionhash": "^1.0",
