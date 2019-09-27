@@ -3961,10 +3961,10 @@ he@1.2.x, he@^1.1.0:
   resolved "https://registry.yarnpkg.com/he/-/he-1.2.0.tgz#84ae65fa7eafb165fddb61566ae14baf05664f0f"
   integrity sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==
 
-headroom.js@^0.10.2:
-  version "0.10.2"
-  resolved "https://registry.yarnpkg.com/headroom.js/-/headroom.js-0.10.2.tgz#0575f9237b64386024fb802ae97156930bef1206"
-  integrity sha512-Xw6rg0xzBXaMK6Y46CFsYsHpXE+RHkYBS1vmYCqIM713st3RQvFJJHpoXpg+RV1j6ygBy6vgeQRJeQpPBa0ADg==
+headroom.js@^0.10.3:
+  version "0.10.3"
+  resolved "https://registry.yarnpkg.com/headroom.js/-/headroom.js-0.10.3.tgz#2fb37ce94bb2f43471070c854d68511ae07db6e7"
+  integrity sha512-gMLqEtViTt4GI2G2+XnqRr9OIxxrgKmywHuCY2XtjKnQc2UcdDKbocvkL7Ohi1K5v3sU7BZmzqbQakAjDG/WZQ==
 
 hex-color-regex@^1.1.0:
   version "1.1.0"
