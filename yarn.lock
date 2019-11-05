@@ -4845,9 +4845,9 @@ known-css-properties@^0.15.0:
   integrity sha512-TS0RCcQfHYsA+59uIHhnsA71NBkpILbqi0W+hde4R5FtESdzur0tCJFoko/1Pbhx+8rmdUc0R1VE4ixnnD+9xw==
 
 laravel-mix-versionhash@^1.0:
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/laravel-mix-versionhash/-/laravel-mix-versionhash-1.0.7.tgz#136463792875f325d1d47afc9050be4e37199e97"
-  integrity sha512-FqJxynezdvsl3mwlPcFWAkBuegu/HFgLwNRRWKl8jBcoRB+cN+zWXP8QPMNxViZ4P/4IYmBxlBMjuDWxwdDkhg==
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/laravel-mix-versionhash/-/laravel-mix-versionhash-1.0.8.tgz#4887a339fa54ed3942b39664b6273fa26f46f94c"
+  integrity sha512-GdJVvqUdAgXD5Ty5vOxWXYpGBHG+ORA6JBA37CXyqGMVKYv+lDRsJiKby2mCyYdGd2JaPYWxur5TqSU+gPzVbA==
 
 laravel-mix@^5.0:
   version "5.0.0"
