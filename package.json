@@ -55,6 +55,6 @@
     "sass-hover-transition": "git+https://git@github.com/thinknathan/sass-hover-transition.git",
     "sass-inline-icons": "git+https://git@github.com/thinknathan/sass-inline-icons.git",
     "sass-ripple": "git+https://git@github.com/thinknathan/sass-ripple.git",
-    "stickybits": "^3.6.7"
+    "stickybits": "^3.6.8"
   }
 }
