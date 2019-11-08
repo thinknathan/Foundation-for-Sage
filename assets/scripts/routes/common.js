@@ -12,6 +12,7 @@ import Froffcanvas from 'fr-offcanvas';
 import Frtabs from 'fr-tabs';
 import Pikaday from 'pikaday';
 import prefersReducedMotion from '../util/prefersReducedMotion.js';
+import queueByElement from '../util/queueByElement.js';
 
 export default {
   init() {
@@ -21,107 +22,146 @@ export default {
       sliderDuration = 0;
     }
 
-    /*
+
+    /**
      * Init AOS
      * Animations on scroll
      * @link https://michalsnik.github.io/aos/
      */
     AOS.init();
 
-    /*
+
+    /**
      * Init Relax
      * Parallax effects
      * @link https://github.com/dixonandmoe/rellax
      */
-    let rellaxElement = '.rellax';
-    new Rellax(rellaxElement, {
-      speed: -2,
-      center: false,
-      wrapper: null,
-      round: true,
-      vertical: true,
-      horizontal: false,
+    var rellaxElement = '.rellax';
+    queueByElement(rellaxElement, function () {
+      new Rellax(this, {
+        speed: -2,
+        center: false,
+        wrapper: null,
+        round: true,
+        vertical: true,
+        horizontal: false,
+      });
     });
 
-    /*
+
+    /**
      * Init Headroom
      * Hide your header until you need it
      * @link https://wicky.nillia.ms/headroom.js/
      */
-    let headroomElement = document.querySelector(".headroom");
-    let headroom = new Headroom(headroomElement, {
-      offset: 300,
-      // scroll tolerance in px before state changes
-      tolerance: 6,
+    var headroomElement = '.headroom';
+    queueByElement(headroomElement, function () {
+      let headroom = new Headroom(this, {
+        offset: 300,
+        // scroll tolerance in px before state changes
+        tolerance: 6,
+      });
+      headroom.init();
     });
-    headroom.init();
 
-    /*
+
+    /**
      * Init MetisMenu navigation
      * Dropdown menu
      * @link https://github.com/onokumus/metismenujs
      */
-    let navigationElement = '#menu-primary';
-    new MetisMenu(navigationElement);
+    var navigationElement = '#menu-primary';
+    queueByElement(navigationElement, function () {
+      var mm1 = new MetisMenu('#menu-primary').on("shown.metisMenu", function (event) {
+        window.addEventListener("click", function mmClick1(e) {
+          if (!event.target.contains(e.target)) {
+            mm1.hide(event.detail.shownElement);
+            window.removeEventListener("click", mmClick1);
+          }
+        });
+      });
+    });
 
-    let navigationOffcanvasElement = '#menu-offcanvas';
-    new MetisMenu(navigationOffcanvasElement);
+    var navigationOffcanvasElement = '#menu-offcanvas';
+    queueByElement(navigationOffcanvasElement, function () {
+      new MetisMenu(navigationOffcanvasElement);
+    });
 
-    /*
+
+    /**
      * Init Glider.js
      * Carousel, fast and accessible
      * @link https://nickpiscitelli.github.io/Glider.js/
      */
-    let carouselElement = document.querySelector('.carousel-inner');
-    new Glider(carouselElement, {
-      // Mobile-first defaults
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      scrollLock: true,
-      duration: sliderDuration,
-      dots: '#glider-dots-1',
-      arrows: {
-        prev: '#glider-prev-1',
-        next: '#glider-next-1',
-      },
-      responsive: [
-        {
-          // screens greater than >= 775px
-          breakpoint: 775,
-          settings: {
-            slidesToShow: 2,
-            slidesToScroll: 1,
-          },
+    var carousels = [];
+    var carouselElement = '.carousel-inner';
+    queueByElement(carouselElement, function () {
+      let options = {
+        // Mobile-first defaults
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        scrollLock: true,
+        duration: sliderDuration,
+        dots: '#glider-dots-1',
+        arrows: {
+          prev: '#glider-prev-1',
+          next: '#glider-next-1',
         },
-        {
-          // screens greater than >= 1024px
-          breakpoint: 1024,
-          settings: {
-            slidesToShow: 3,
-            slidesToScroll: 1,
-          },
+        responsive: [
+          {
+            // screens greater than >= 775px
+            breakpoint: 775,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1,
+            },
+        },
+          {
+            // screens greater than >= 1024px
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 3,
+              slidesToScroll: 1,
+            },
         },
       ],
-    });
+      };
+      carousels.push(new Glider(this, options));
+      this.classList.remove('slider--load');
+      this.classList.add('slider--loaded');
+    })
+
+    /*
+     * Utility function to refresh elements
+     * when they come into view (eg. via tab switch)
+     */
+    var refreshRevealedElements = function () {
+      if (carousels) {
+        for (let j = 0; j < carousels.length; ++j) {
+          carousels[j].refresh(false);
+        }
+      }
+    }
+
 
     /*
      * Init fr-accordion
      * Accordion, lightweight and accessible
      * @link https://frend.co/components/accordion/
      */
-    let accordionElement = '.js-fr-accordion';
+    let accordionElement = '.fr-accordion';
     new Fraccordion({
       // String - Outer container selector, hook for JS init() method
       selector: accordionElement,
 
       // String - Accordion header elements converted to focusable, togglable elements
-      headerSelector: '.js-fr-accordion__header',
+      headerSelector: accordionElement + '__header',
 
       // String - Use header id on element to tie each accordion panel to its header - see panelIdPrefix
       headerIdPrefix: 'accordion-header',
 
       // String - Accordion panel elements to expand/collapse
-      panelSelector: '.js-fr-accordion__panel',
+      panelSelector: accordionElement + '__panel',
 
       // String - Use panel id on element to tie each accordion header to its panel - see headerIdPrefix
       panelIdPrefix: 'accordion-panel',
@@ -133,11 +173,15 @@ export default {
       multiselectable: false,
 
       // String - Class name that will be added to the selector when the component has been initialised
-      readyClass: 'fr-accordion--is-ready',
+      readyClass: accordionElement + '--is-ready',
 
       // Integer - Duration (in milliseconds) of CSS transition when opening/closing accordion panels
       transitionLength: 250,
     });
+    forEach(accordionElement + '__header', function () {
+      this.addEventListener('click', refreshRevealedElements);
+    });
+
 
     /*
      * Init Tobi
@@ -145,6 +189,7 @@ export default {
      * @link https://github.com/rqrauhvmra/Tobi
      */
     new Tobi();
+
 
     /*
      * Init Dialog/Modal
@@ -157,23 +202,24 @@ export default {
       selector: dialogElement,
 
       // String - Modal selector, the element that represents the modal
-      modalSelector: '.fr-dialogmodal-modal',
+      modalSelector: dialogElement + '__modal',
 
       // String - Selector for the open button
-      openSelector: '.fr-dialogmodal-open',
+      openSelector: dialogElement + '__open',
 
       // String - Selector for the close button
-      closeSelector: '.fr-dialogmodal-close',
+      closeSelector: dialogElement + '__close',
 
       // Boolean - Switches the dialog role to alertdialog, only use this when representing an alert, error or warning
       isAlert: false,
 
       // String - Class name that will be added to the selector when the component has been initialised
-      readyClass: 'fr-dialogmodal--is-ready',
+      readyClass: dialogElement + '--is-ready',
 
       // String - Class name that will be added to the selector when the component is active
-      activeClass: 'fr-dialogmodal--is-active',
+      activeClass: dialogElement + '--is-active',
     });
+
 
     /*
      * Init StickyBits
@@ -188,6 +234,7 @@ export default {
       verticalPosition: 'bottom',
     });
 
+
     /*
      * Init Social Links
      * Popup for social share buttons
@@ -199,6 +246,7 @@ export default {
       'window_height': 450,
       'window_width': 625,
     });
+
 
     /*
      * Fix for `.card-single-link` elements
@@ -217,6 +265,7 @@ export default {
       }
     });
 
+
     /*
      * Init fr-offcanvas
      * Toggleable offcanvas panel
@@ -228,43 +277,45 @@ export default {
       selector: offCanvasElement,
 
       // String - Selector for the open button(s)
-      openSelector: '.fr-offcanvas-open',
+      openSelector: offCanvasElement + '__open',
 
       // String - Selector for the close button
-      closeSelector: '.fr-offcanvas-close',
+      closeSelector: offCanvasElement + '__close',
 
       // Boolean - Prevent click events outside panel from triggering close
       preventClickOutside: false,
 
       // String - Class name that will be added to the selector when the component has been initialised
-      readyClass: 'fr-offcanvas--is-ready',
+      readyClass: offCanvasElement + '--is-ready',
 
       // String - Class name that will be added to the selector when the panel is visible
-      activeClass: 'fr-offcanvas--is-active',
+      activeClass: offCanvasElement + '--is-active',
     });
 
-    let offCanvasToggle = document.querySelector('.fr-offcanvas-open');
+    let offCanvasToggle = document.querySelector(offCanvasElement + '__open');
     offCanvasToggle.classList.add('is-ready');
+
 
     /*
      * Init fr-tabs
      * Accessible tab system
      * @link https://frend.co/components/tabs/
      */
-    let tabsElement = '.js-fr-tabs';
+    let tabsElement = '.fr-tabs';
     new Frtabs({
       // String - Outer container selector, hook for JS init() method
       selector: tabsElement,
 
       // String - List selector to transform into tablist
-      tablistSelector: '.js-fr-tabs__tablist',
+      tablistSelector: tabsElement + '__tablist',
 
       // String - Containers which hold content, toggled via tabs
-      tabpanelSelector: '.js-fr-tabs__panel',
+      tabpanelSelector: tabsElement + 'fr-tabs__panel',
 
       // String - Class name that will be added to the selector when the component has been initialised
-      tabsReadyClass: 'fr-tabs--is-ready',
+      tabsReadyClass: tabsElement + '--is-ready',
     });
+
 
     /*
      * Init Pikaday
