@@ -21,7 +21,7 @@
     "eslint": "^6.5",
     "eslint-plugin-import": "^2.18",
     "laravel-mix": "^5.0",
-    "laravel-mix-versionhash": "^1.0",
+    "laravel-mix-versionhash": "^1.1",
     "npm-run-all": "^4.1",
     "postcss-discard-duplicates": "^4.0",
     "postcss-font-magician": "^2.2",
