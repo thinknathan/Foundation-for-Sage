@@ -23,7 +23,8 @@ $button-opacity-disabled: 0.25;
 $button-background-hover-lightness: -20%;
 $button-hollow-hover-lightness: -50%;
 $button-transition: background-color 0.25s $global-transition-curve,
-color 0.25s $global-transition-curve, opacity 0.25s $global-transition-curve;
+color 0.25s $global-transition-curve,
+opacity 0.25s $global-transition-curve;
 
 @include foundation-button;
 
@@ -31,4 +32,25 @@ color 0.25s $global-transition-curve, opacity 0.25s $global-transition-curve;
   @include ripple;
   letter-spacing: 0.04em;
   line-height: 1.2;
+  border: 1px transparent;
+
+  &--primary {
+    background-color: $primary-color;
+    color: $white;
+  }
+
+  &--secondary {
+    background-color: $secondary-color;
+    color: $white;
+  }
+
+  &--light {
+    background-color: $white;
+    color: $primary-color;
+  }
+
+  &--ghost {
+    border: 1px solid $primary-color;
+    color: $primary-color;
+  }
 }
