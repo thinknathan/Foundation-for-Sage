@@ -8,4 +8,11 @@ $buttongroup-child-selector: '.button';
 $buttongroup-expand-max: 6;
 $buttongroup-radius-on-each: true;
 
-@include foundation-button-group;
+.button-group {
+  @include button-group;
+
+  // Even-width Group
+  &--expanded {
+    @include button-group-expand;
+  }
+}

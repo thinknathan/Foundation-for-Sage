@@ -2,4 +2,19 @@
  * Foundation Media Object
  */
 
-@include foundation-media-object;
+/// Bottom margin of a media object.
+$mediaobject-margin-bottom: $global-margin;
+
+/// Left and right padding on sections within a media object.
+$mediaobject-section-padding: $global-padding;
+
+/// Width of images within a media object, when the object is stacked vertically. Set to 'auto' to use the image's natural width.
+$mediaobject-image-width-stacked: 100%;
+
+.media-object {
+  @include media-object-container;
+}
+
+.media-object-section {
+  @include media-object-section;
+}

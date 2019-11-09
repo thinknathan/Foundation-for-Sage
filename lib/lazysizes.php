@@ -67,7 +67,7 @@ function filter_images( $content, $type = 'ratio' ) {
         if ( preg_match( '/width=["|\']*(\d+)["|\']*/', $imgHTML, $width ) == 1
           && preg_match( '/height=["|\']*(\d+)["|\']*/', $imgHTML, $height ) == 1 ) {
 
-          $ratioBox = '<span class="intrinsic-ratio-box';
+          $ratioBox = '<span class="ratio__box';
           if ( preg_match( '/(align(none|left|right|center))/', $imgHTML, $align_class ) == 1 ) {
             $ratioBox .= ' ' . $align_class[0];
             $replaceHTML = str_replace( $align_class[0], '', $replaceHTML );
@@ -75,7 +75,7 @@ function filter_images( $content, $type = 'ratio' ) {
 
           $ratioBox .= '" style="max-width: ' . $width[1] . 'px; max-height: ' . $height[1] . 'px;';
 
-          $ratioBox .= '"><span class="intrinsic-ratio-helper" style="padding-bottom: ';
+          $ratioBox .= '"><span class="ratio__helper" style="padding-bottom: ';
           $replaceHTML = $ratioBox . (($height[1] / $width[1]) * 100) . '%;"></span>'
             . $replaceHTML . '</span>';
         }

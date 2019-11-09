@@ -2,105 +2,94 @@
  * Tabs
  */
 
-$tab-margin: 0;
-$tab-background: $white;
-$tab-color: $primary-color;
-$tab-background-active: $light-gray;
-$tab-active-color: $primary-color;
-$tab-item-font-size: rem-calc(12);
-$tab-item-background-hover: $white;
-$tab-item-padding: 1.25rem 1.5rem;
-$tab-expand-max: 6;
-$tab-content-background: $white;
-$tab-content-border: $light-gray;
-$tab-content-color: $body-font-color;
-$tab-content-padding: 1rem;
+// Globa
+$tabs-margin-bottom: $global-margin;
+// Tabs
+$tabs-color: $white;
+$tabs-background: $primary-color;
+$tabs-spacing: $global-minimum-margin;
+$tabs-radius: $global-radius;
+$tabs-padding: $global-padding;
+$tabs-font-size: inherit;
+$tabs-outline: $global-outline;
+$tabs-focus-color: $white;
+$tabs-focus-background: darken($tabs-background, 10%);
+$tabs-active-color: $white;
+$tabs-active-background: $dark-gray;
+// Panel
+$tabs-panel-padding: 1rem;
+$tabs-panel-background: $primary-color;
+$tabs-panel-color: $white;
+$tabs-panel-font-size: inherit;
+$tabs-panel-outline: none;
 
-/* Container */
-.fr-tabs {
-}
+.tabs {
+  margin-bottom: $tabs-margin-bottom;
 
-/* Tablist */
-.fr-tabs__tablist {
-  margin-left: 0;
-  margin-bottom: 0;
-}
+  /* Tablist */
+  &__tablist {
+    margin: 0;
+    list-style: none;
+  }
 
-.fr-tabs--is-ready .fr-tabs__tablist-item {
-	display: inline;
-}
 
-.fr-tabs__tab {
-}
-.fr-tabs__tab[tabindex="0"] {
-}
+  &__tablist-item {
+    display: inline-block;
+  }
 
-/* Tabpanel */
-.fr-tabs__panel {
-}
-.fr-tabs__panel[aria-hidden="true"] {
-	display: none;
-}
 
-.fr-tabs:not(.fr-tabs--is-ready) .fr-tabs__tablist {
-  margin-bottom: 1.25em;
-  margin-left: 1.25em
-}
+  &__tab {
+    color: $tabs-color;
+    display: inline-block;
+    margin-right: $tabs-spacing;
+    font-size: $tabs-font-size;
+    line-height: 1.2;
+    text-decoration: none;
+    background-color: $tabs-background;
+    border-radius: $tabs-radius $tabs-radius 0 0;
+    padding: $tabs-padding;
+    text-transform: uppercase;
+    transition: background-color 0.2s $global-transition-curve, color 0.2s $global-transition-curve;
 
-.fr-tabs--is-ready .fr-tabs__tablist {
-  list-style: none
-}
+    &[tabindex="0"] {
+      background-color: $tabs-active-background;
+      color: $tabs-active-color;
+    }
 
-.fr-tabs__tab {
-  color: #222;
-  display: inline-block;
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 1em;
-  line-height: 1.25;
-  text-decoration: none
-}
+    &:not([tabindex="0"]):hover {
+      background-color: $tabs-focus-background;
+      color: $tabs-focus-color;
+    }
+    
+    &:hover,
+    &:focus {
+      outline: $tabs-outline;
+    }
+  }
 
-.fr-tabs:not(.fr-tabs--is-ready) .fr-tabs__tab:focus,
-.fr-tabs:not(.fr-tabs--is-ready) .fr-tabs__tab:hover {
-  text-decoration: underline
-}
+  &:not(&--is-ready) &__tablist {
+    opacity: 0.25;
+  }
 
-.fr-tabs--is-ready .fr-tabs__tab {
-  background-color: #f2da61;
-  border-radius: .25em .25em 0 0;
-  padding: 1em 1.25em;
-  text-transform: uppercase;
-  transition: background-color .15s ease-out, color .15s ease-out
-}
 
-.fr-tabs--is-ready .fr-tabs__tab[tabindex="0"] {
-  background-color: #ffe566
-}
+  /* Tabpanel */
+  &__panel {
+    background-color: $tabs-panel-background;
+    color: $tabs-panel-color;
+    font-size: $tabs-panel-font-size;
+    outline: $tabs-panel-outline;
 
-.fr-tabs--is-ready .fr-tabs__tab:not([tabindex="0"]):hover {
-  background-color: #4e4e4e;
-  color: #fff
-}
+    &[aria-hidden="true"] {
+      display: none;
+    }
+  }
 
-.fr-tabs--is-ready .fr-tabs__panel {
-  background-color: #ffe566;
-  padding: 1.25em
-}
 
-.fr-tabs p a {
-  background-image: linear-gradient(270deg, #222 50%, #222 0)
-}
+  &__inner {
+    padding: $tabs-panel-padding;
 
-.fr-tabs p a,
-.fr-tabs p a:focus,
-.fr-tabs p a:hover {
-  background-position: 0 1.05em;
-  background-repeat: repeat-x;
-  background-size: 1px 1px;
-  text-shadow: -2px 0 #ffe566, 2px 0 #ffe566
-}
-
-.fr-tabs p a:focus,
-.fr-tabs p a:hover {
-  background-image: linear-gradient(270deg, #ea3b37 50%, #ea3b37 0)
+    > :last-child {
+      margin-bottom: 0;
+    }
+  }
 }

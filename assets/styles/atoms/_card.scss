@@ -13,10 +13,11 @@ $card-border-radius: $global-radius;
 $card-padding: $global-padding;
 $card-margin-bottom: $global-margin;
 
-// Divider effect
+// Divider
 $card-divider-height: 10;
 
-/** Divider options:
+/**
+ * Divider options:
  * forward
  * back
  * peak
@@ -28,7 +29,8 @@ $card-divider-height: 10;
 
 $card-divider-style: 'back';
 
-/** Position options:
+/**
+ * Position options:
  * top-outside
  * top-inside
  * bottom-outside
@@ -40,20 +42,23 @@ $card-divider-position: 'top-outside';
 // Hover effect
 $card-hover-icon-colour: $white;
 
-/** Hover type options:
+/**
+ * Hover type options:
  * circle
  * square
  */
 
 $card-hover-type: 'circle';
 
-/** Hover icon options:
+/**
+ * Hover icon options:
  * @link https://github.com/thinknathan/sass-inline-icons/blob/master/sass-inline-icons.scss
  */
 
 $card-hover-icon: 'maximize';
 
-/** Hover transition options:
+/**
+ * Hover transition options:
  * fade
  * slide-up
  * slide-right
@@ -70,15 +75,64 @@ $card-hover-transition: 'fade';
   &:focus-within {
     box-shadow: $shadow-depth3;
   }
+
+  &__section {
+    @include card-section;
+    position: relative;
+
+    &--head {
+      padding: 0;
+    }
+  }
+
+  &__title {
+    margin-bottom: 0;
+  }
+
+  &__title-link {
+    display: block;
+    padding: $card-padding;
+  }
+
+  &__meta {
+    font-size: 0.9rem;
+    letter-spacing: 0.04em;
+    opacity: 0.9;
+
+    &--head {
+      padding: $card-padding;
+      margin-top: -$card-padding;
+    }
+  }
+
+  &__image {
+    @include hover-transition($card-hover-type, $card-hover-transition, 0.66, $primary-color, $card-hover-icon, $card-hover-icon-colour, 30, $primary-color);
+    min-height: 1px;
+
+    // Hack to work with intrinsic ratio images
+    > .ratio__box {
+      max-width: none !important;
+
+      > img {
+        object-fit: cover;
+      }
+    }
+  }
+
+  &:not(&--image-first) {
+    .card__image + .card__section {
+      @include divider($card-divider-style, $card-divider-height, $card-background, $card-divider-position);
+    }
+  }
 }
 
-// Add `.card-image-first` to swap the order of the image and title section
-.card-image-first {
-  .card-image {
+// Add `.card--image-first` to swap the order of the image and title section
+.card--image-first {
+  &__image {
     order: -1;
   }
 
-  .card-section-head {
+  &__section--head {
     @include divider($card-divider-style, $card-divider-height, $card-background, $card-divider-position);
     padding-bottom: 0;
 
@@ -86,56 +140,4 @@ $card-hover-transition: 'fade';
       z-index: 1;
     }
   }
-}
-
-.card-divider {
-  @include card-divider;
-}
-
-.card-section {
-  @include card-section;
-  position: relative;
-}
-
-.card-section-head {
-  padding: 0;
-
-  .card-meta {
-    padding: $card-padding;
-  }
-
-  .card-title + .card-meta {
-    margin-top: -$card-padding * 2;
-  }
-}
-
-.card-title-link {
-  display: block;
-  padding: $card-padding;
-}
-
-.card-image {
-  > .intrinsic-ratio-box {
-    max-width: none !important;
-
-    > img {
-      object-fit: cover;
-    }
-  }
-}
-
-.card:not(.card-image-first) {
-  .card-image + .card-section {
-    @include divider($card-divider-style, $card-divider-height, $card-background, $card-divider-position);
-  }
-}
-
-.card-meta {
-  font-size: 0.9rem;
-  letter-spacing: 0.04em;
-  opacity: 0.9;
-}
-
-.card-image {
-  @include hover-transition($card-hover-type, $card-hover-transition, 0.66, $primary-color, $card-hover-icon, $card-hover-icon-colour, 30, $primary-color);
 }

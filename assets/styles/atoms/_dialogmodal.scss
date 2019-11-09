@@ -1,0 +1,65 @@
+/**
+ * Dialog/Modal
+ */
+
+.dialogmodal {
+  &--is-ready {
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    transition: background-color 0.2s ease-out, visibility 0.2s ease-out;
+
+    .dialogmodal__modal {
+      left: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      background-color: $white;
+      border-radius: $global-radius;
+      max-height: calc(100vh - 3.75em);
+      opacity: 0;
+      overflow: auto;
+      padding: 5.625rem 1.25rem 0;
+      width: calc(100vw - 3.75em);
+
+      @include breakpoint(medium) {
+        max-width: 37.5em;
+        min-width: 25em
+      }
+    }
+
+    &[aria-hidden="true"] {
+      visibility: hidden;
+    }
+
+    &[aria-hidden="false"] {
+      visibility: visible;
+      background-color: rgba($black, 0.8);
+      box-shadow: 0 3.75em 0 0 rgba($black, 0.8);
+      transition: background-color 0.2s $global-transition-curve;
+
+      .dialogmodal__modal {
+        opacity: 1
+      }
+    }
+  }
+
+  &__modal {
+    transition: opacity 0.2s $global-transition-curve;
+  }
+
+  &__close {
+    position: absolute;
+    right: 1.25em;
+    top: 1.25em;
+  }
+
+  &:not(&--is-ready) &__close {
+    display: none
+  }
+}

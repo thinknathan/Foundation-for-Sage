@@ -15,6 +15,7 @@ use Roots\Sage\Util;
     <![endif]-->
     <?php
       get_template_part('templates/header', 'site');
+      get_template_part('templates/offcanvas');
     ?>
     <div class="wrap container" role="document">
       <div class="content">

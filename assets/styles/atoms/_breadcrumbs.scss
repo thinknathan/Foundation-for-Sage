@@ -14,4 +14,11 @@ $breadcrumbs-item-separator-item: '/';
 $breadcrumbs-item-separator-item-rtl: '\\';
 $breadcrumbs-item-separator-color: $medium-gray;
 
-@include foundation-breadcrumbs;
+.breadcrumbs {
+  @include breadcrumbs-container;
+
+  .disabled {
+    color: $breadcrumbs-item-color-disabled;
+    cursor: not-allowed;
+  }
+}

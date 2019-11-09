@@ -12,8 +12,7 @@ $button-color: $white;
 $button-color-alt: $black;
 $button-radius: $global-radius;
 $button-hollow-border-width: 1px;
-$button-sizes: (
-  tiny: 0.6rem,
+$button-sizes: (tiny: 0.6rem,
   small: 0.75rem,
   default: 0.9rem,
   large: 1.25rem,
@@ -26,31 +25,93 @@ $button-transition: background-color 0.25s $global-transition-curve,
 color 0.25s $global-transition-curve,
 opacity 0.25s $global-transition-curve;
 
-@include foundation-button;
-
 .button {
+  @include button;
   @include ripple;
   letter-spacing: 0.04em;
   line-height: 1.2;
   border: 1px transparent;
+  text-decoration: none;
 
-  &--primary {
-    background-color: $primary-color;
-    color: $white;
+
+  // Full width button
+  &--expanded {
+    @include button-expand;
   }
 
-  &--secondary {
-    background-color: $secondary-color;
-    color: $white;
+
+  // Colours
+  @each $name,
+  $color in $button-palette {
+    @if $button-fill !=hollow {
+      &--#{$name} {
+        @include button-style($color, auto, auto);
+      }
+    }
+
+    @else {
+      &--#{$name} {
+        @include button-hollow-style($color);
+      }
+    }
   }
 
-  &--light {
-    background-color: $white;
-    color: $primary-color;
+
+  // Disabled style
+  &--disabled,
+  &[disabled] {
+    @include button-disabled;
   }
 
-  &--ghost {
-    border: 1px solid $primary-color;
-    color: $primary-color;
+  @each $name,
+  $color in $button-palette {
+    &--#{$name}--disabled {
+      @include button-disabled($color, auto);
+    }
+  }
+
+
+  // Hollow style
+  @if $button-fill !=hollow {
+    &--hollow {
+      @include button-hollow;
+      @include button-hollow-style;
+    }
+
+    @each $name,
+    $color in $button-palette {
+      &--#{$name}--hollow {
+        @include button-hollow-style($color);
+      }
+    }
+  }
+
+
+  // Clear style
+  @if $button-fill !=clear {
+    &--clear {
+      @include button-hollow;
+      @include button-hollow-style;
+      border-color: transparent;
+
+      &:hover,
+      &:focus {
+        border-color: transparent;
+      }
+
+    }
+
+    @each $name,
+    $color in $button-palette {
+      &--#{$name}--clear {
+        @include button-hollow-style($color);
+        border-color: transparent;
+
+        &:hover,
+        &:focus {
+          border-color: transparent;
+        }
+      }
+    }
   }
 }

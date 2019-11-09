@@ -15,6 +15,37 @@ $pagination-item-color-disabled: $medium-gray;
 $pagination-ellipsis-color: $black;
 $pagination-mobile-items: false;
 $pagination-mobile-current-item: false;
-$pagination-arrows: true;
+$pagination-arrows: false;
 
-@include foundation-pagination;
+.pagination {
+  @include pagination-container;
+
+  &--current {
+    @include pagination-item-current;
+  }
+
+  &--disabled {
+    @include pagination-item-disabled;
+  }
+
+  &--ellipsis::after {
+    @include pagination-ellipsis;
+  }
+}
+
+@if $pagination-arrows {
+
+  .pagination-previous a::before,
+  .pagination-previous.pagination--disabled::before {
+    display: inline-block;
+    margin-#{$global-right}: 0.5rem;
+    content: '\00ab';
+  }
+
+  .pagination-next a::after,
+  .pagination-next.pagination--disabled::after {
+    display: inline-block;
+    margin-#{$global-left}: 0.5rem;
+    content: '\00bb';
+  }
+}

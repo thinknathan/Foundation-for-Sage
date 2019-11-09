@@ -7,7 +7,7 @@
 $lazyload-color: $light-gray;
 $lazyload-color2: darken($lazyload-color, 5%);
 
-.intrinsic-ratio-box {
+.ratio__box {
   position: relative;
   display: block;
 
@@ -24,7 +24,7 @@ $lazyload-color2: darken($lazyload-color, 5%);
   }
 }
 
-.intrinsic-ratio-helper {
+.ratio__helper {
   display: block;
 }
 

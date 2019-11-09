@@ -14,7 +14,137 @@ $menu-state-back-compat: true;
 $menu-centered-back-compat: true;
 $menu-icons-back-compat: true;
 
-@include foundation-menu;
+.menu {
+  @include menu-base;
+
+  // Default orientation: horizontal
+  &,
+  &.horizontal {
+    @include menu-direction(horizontal);
+  }
+
+  // Vertical orientation modifier
+  &.vertical {
+    @include menu-direction(vertical);
+  }
+
+  // Even-width modifier for horizontal orientation
+  &.expanded {
+    @include menu-expand;
+  }
+
+  // Simple
+  &.simple {
+    @include menu-simple;
+  }
+
+  // Breakpoint specific versions
+  @include -zf-each-breakpoint($small: false) {
+    &.#{$-zf-size}-horizontal {
+      @include menu-direction(horizontal);
+    }
+
+    &.#{$-zf-size}-vertical {
+      @include menu-direction(vertical);
+    }
+
+    &.#{$-zf-size}-expanded {
+      @include menu-expand;
+    }
+
+    &.#{$-zf-size}-simple {
+      @include menu-expand;
+    }
+  }
+
+  // Nesting
+  &.nested {
+    @include menu-nested;
+  }
+
+  // Icon Base Styles
+  &.icons {
+    @include menu-icons;
+  }
+
+  // Backward Compatibility for active state
+  @if $menu-icons-back-compat {
+
+    &.icon-top,
+    &.icon-right,
+    &.icon-bottom,
+    &.icon-left {
+      @include menu-icons;
+    }
+  }
+
+  // Icon Left
+  &.icon-left {
+    @include menu-icon-position(left);
+  }
+
+  // Icon Right
+  &.icon-right {
+    @include menu-icon-position(right);
+  }
+
+  // Icon Top
+  &.icon-top {
+    @include menu-icon-position(top);
+  }
+
+  // Icon Bottom
+  &.icon-bottom {
+    @include menu-icon-position(bottom);
+  }
+
+  // Active state
+  .is-active > a {
+    @include menu-state-active;
+  }
+
+  // Backward Compatibility for active state
+  @if $menu-state-back-compat {
+    .active > a {
+      @include menu-state-active;
+    }
+  }
+
+  // Align left
+  &.align-#{$global-left} {
+    @include menu-align(left);
+  }
+
+  // Align right
+  &.align-#{$global-right} {
+    @include menu-align(right);
+
+    .nested {
+      @include menu-nested($nested-alignment: right);
+    }
+  }
+
+  // Align center
+  &.align-center {
+    @include menu-align(center);
+  }
+
+  .menu-text {
+    @include menu-text;
+  }
+}
+
+@if $menu-centered-back-compat {
+  .menu-centered {
+    > .menu {
+      @if $global-flexbox {
+        justify-content: center;
+      }
+
+      @include menu-align(center);
+    }
+  }
+}
 
 .menu {
   .collapse {
@@ -32,6 +162,7 @@ $menu-icons-back-compat: true;
     transition-duration: 0.3s;
     transition-property: height;
   }
+
   .button {
     padding: $button-padding;
   }

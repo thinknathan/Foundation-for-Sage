@@ -9,4 +9,14 @@ $thumbnail-shadow-hover: 0 0 6px 1px rgba($primary-color, 0.5);
 $thumbnail-transition: box-shadow 200ms $global-transition-curve;
 $thumbnail-radius: $global-radius;
 
-@include foundation-thumbnail;
+.thumbnail {
+  @include thumbnail;
+
+  @include hover-transition($card-hover-type, $card-hover-transition, 0.66, $primary-color, $card-hover-icon, $card-hover-icon-colour, 30, $primary-color);
+}
+
+.thumbnail-link {
+  @include thumbnail-link;
+
+  @include hover-transition($card-hover-type, $card-hover-transition, 0.66, $primary-color, $card-hover-icon, $card-hover-icon-colour, 30, $primary-color);
+}

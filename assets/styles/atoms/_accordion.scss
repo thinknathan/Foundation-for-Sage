@@ -2,102 +2,119 @@
  * Accordion
  */
 
-$accordion-background: $white;
-$accordion-plusminus: true;
-$accordion-title-font-size: rem-calc(12);
-$accordion-item-color: $primary-color;
-$accordion-item-background-hover: $light-gray;
-$accordion-item-padding: 1.25rem 1rem;
-$accordion-content-background: $white;
-$accordion-content-border: 1px solid $light-gray;
-$accordion-content-color: $body-font-color;
-$accordion-content-padding: 1rem;
+// Global
+$accordion-radius: $global-radius;
+$accordion-margin-bottom: $global-margin;
+// Headers
+$accordion-header-background: $primary-color;
+$accordion-header-color: $white;
+$accordion-header-font-size: inherit;
+$accordion-header-padding: $global-padding;
+$accordion-header-focus-background: darken($accordion-header-background, 10%);
+$accordion-header-focus-color: $white;
+$accordion-header-active-background: $dark-gray;
+$accordion-header-active-color: $white;
+$accordion-triangle-color: rgba(0, 0, 0, 0.5);
+$accordion-triangle-active-color: rgba(255, 255, 255, 0.5);
+$accordion-header-outline: $global-outline;
+// Panel
+$accordion-panel-background: $light-gray;
+$accordion-panel-color: $black;
+$accordion-panel-font-size: inherit;
+$accordion-panel-padding: $global-padding;
+$accordion-panel-outline: none;
 
-@import "../../node_modules/fr-accordion/accordion.css";
+.accordion {
+  margin-bottom: $accordion-margin-bottom;
 
-.fr-accordion--is-ready .fr-accordion__header {
-  background-color: #ffe566;
-  border-bottom: 1px solid #e6ce5c;
-  color: #222;
-  display: block;
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 1em;
-  line-height: 1.25;
-  margin-bottom: 0;
-  padding: 1em 1.25em;
-  position: relative;
-  text-decoration: none;
-  text-transform: uppercase;
-  transition: background-color .15s ease-out, color .15s ease-out
-}
+  &__header {
+    display: block;
+    cursor: pointer;
+    background-color: $accordion-header-background;
+    color: $accordion-header-color;
+    border-bottom: darken($accordion-header-background, 10%);
+    font-size: $accordion-header-font-size;
+    line-height: 1.2;
+    margin-bottom: 0;
+    padding: $accordion-header-padding;
+    position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background-color 0.2s $global-transition-curve,
+      color 0.2s $global-transition-curve;
 
-.fonts-loaded .fr-accordion__header {
-  font-family: Benton Sans Cond Medium, Helvetica, Arial, sans-serif
-}
+    // Triangle indicator
+    &::after {
+      content: '';
+      border-left: 0.313rem solid transparent;
+      border-right: 0.313rem solid transparent;
+      border-top: 0.313rem solid $accordion-triangle-color;
+      margin-top: -0.25rem;
+      position: absolute;
+      right: 1.25rem;
+      top: 50%;
+      width: 0;
+      height: 0;
+    }
 
-.fr-accordion--is-ready .fr-accordion__header:after {
-  border-left: .313rem solid transparent;
-  border-right: .313rem solid transparent;
-  border-top: .313rem solid rgba(0, 0, 0, .5);
-  content: '';
-  height: 0;
-  margin-top: -.25rem;
-  position: absolute;
-  right: 1.25rem;
-  top: 50%;
-  width: 0
-}
+    &:first-child {
+      border-radius: $accordion-radius $accordion-radius 0 0;
+    }
 
-.fr-accordion--is-ready .fr-accordion__header:first-child {
-  border-radius: .25em .25em 0 0
-}
+    &:last-of-type:not([aria-selected=true]) {
+      border-radius: 0 0 $accordion-radius $accordion-radius;
+    }
 
-.fr-accordion--is-ready .fr-accordion__header:last-of-type:not([aria-selected=true]) {
-  border-radius: 0 0 .25em .25em
-}
+    &[aria-selected=true] {
+      background-color: $accordion-header-active-background;
+      color: $accordion-header-active-color;
+    }
 
-.fr-accordion__header[aria-selected=true] {
-  background-color: #4e4e4e;
-  color: #fff
-}
+    // Triangle indicator when active
+    &[aria-selected=true]::after {
+      border-bottom: 0.313rem solid $accordion-triangle-active-color;
+      border-top: 0;
+    }
 
-.fr-accordion__header[aria-selected=true]:after {
-  border-bottom: .313rem solid hsla(0, 0%, 100%, .5);
-  border-top: 0
-}
+    &[aria-selected=false]:focus,
+    &[aria-selected=false]:hover {
+      background-color: $accordion-header-focus-background;
+      color: $accordion-header-focus-color;
+    }
 
-.fr-accordion__header[aria-selected=false]:focus,
-.fr-accordion__header[aria-selected=false]:hover {
-  background-color: #f2da61
-}
+    &:focus {
+      outline: $accordion-header-outline;
+    }
+  }
 
-.fr-accordion--is-ready .fr-accordion__panel {
-  background-color: #ffe566;
-  transition: height .25s ease-out, visibility .25s
-}
+  &__panel {
+    background-color: $accordion-panel-background;
+    overflow: hidden;
+    color: $accordion-panel-color;
+    font-size: $accordion-panel-font-size;
+    transition: height 0.2s $global-transition-curve,
+      visibility 0.2s;
+    outline: $accordion-panel-outline;
 
-.fr-accordion--is-ready .fr-accordion__panel:last-child {
-  border-radius: 0 0 .25em .25em
-}
+    &:last-child {
+      border-radius: 0 0 $global-radius $global-radius;
+    }
 
-.fr-accordion--is-ready .fr-accordion p a {
-  background-image: linear-gradient(270deg, #222 50%, #222 0);
-  background-position: 0 1.05em;
-  background-repeat: repeat-x;
-  background-size: 1px 1px;
-  text-shadow: -2px 0 #ffe566, 2px 0 #ffe566
-}
+    &[aria-hidden="true"] {
+      visibility: hidden;
+      height: 0;
+    }
 
-.fr-accordion--is-ready .fr-accordion p a:focus,
-.fr-accordion--is-ready .fr-accordion p a:hover {
-  background-image: linear-gradient(270deg, #ea3b37 50%, #ea3b37 0);
-  background-position: 0 1.05em;
-  background-repeat: repeat-x;
-  background-size: 1px 1px;
-  text-shadow: -2px 0 #ffe566, 2px 0 #ffe566
-}
+    &[aria-hidden="false"] {
+      visibility: visible;
+    }
+  }
 
-.fr-accordion--is-ready .fr-accordion__inner {
-  border-bottom: 1px solid #e6ce5c;
-  padding: 1.25em
+  &__inner {
+    padding: $accordion-panel-padding;
+
+    > :last-child {
+      margin-bottom: 0;
+    }
+  }
 }

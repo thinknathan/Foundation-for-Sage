@@ -50,13 +50,11 @@
 
 @import "atoms/button";
 @import "atoms/button-group";
-@import "atoms/close-button";
 @import "atoms/switch";
 
 /* Foundation - Navigation */
 
 @import "atoms/menu";
-@import "atoms/menu-icon";
 @import "atoms/pagination";
 @import "atoms/breadcrumbs";
 
@@ -96,7 +94,7 @@
 
 @import "atoms/accordion";
 @import "atoms/carousel";
-@import "atoms/dialog";
+@import "atoms/dialogmodal";
 @import "atoms/datepicker";
 @import "atoms/lightbox";
 @import "atoms/social-share";
@@ -117,6 +115,6 @@
 @import "molecules/menu-navbar";
 @import "molecules/menu-offcanvas";
 @import "molecules/menu-primary";
-@import "molecules/offcanvas-panel";
+@import "molecules/offcanvas";
 @import "molecules/page-login";
 @import "molecules/sidebar";

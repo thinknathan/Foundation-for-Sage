@@ -2,4 +2,28 @@
  * Tobi Lightbox
  */
 
-@import "../../node_modules/rqrauhvmra__tobi/css/tobi.css";
+$baseFontSize: 16;
+
+$transitionDuration: 0.3s;
+$transitionTimingFunction: $global-transition-curve;
+
+$zoomIconBackground: transparent;
+$zoomIconColor: transparent;
+
+$lightboxBackground: rgba($black, 0.94);
+
+$figcaptionBackground: rgba($white, 0.94);
+$figcaptionColor: $black;
+
+$counterBackground: transparent;
+$counterColor: $white;
+
+$buttonBackground: transparent;
+$buttonColor: $white;
+
+$loaderColor: $white;
+
+$slideMaxHeight: 85vh;
+$slideMaxWidth: 85vw;
+
+@import "../../node_modules/rqrauhvmra__tobi/scss/tobi.scss";

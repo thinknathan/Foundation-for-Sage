@@ -13,6 +13,7 @@ import Frtabs from 'fr-tabs';
 import Pikaday from 'pikaday';
 import prefersReducedMotion from '../util/prefersReducedMotion.js';
 import queueByElement from '../util/queueByElement.js';
+import forEach from '../util/forEach.js';
 
 export default {
   init() {
@@ -28,7 +29,9 @@ export default {
      * Animations on scroll
      * @link https://michalsnik.github.io/aos/
      */
-    AOS.init();
+    AOS.init({
+      easing: 'ease-in',
+    });
 
 
     /**
@@ -94,25 +97,29 @@ export default {
      * @link https://nickpiscitelli.github.io/Glider.js/
      */
     var carousels = [];
-    var carouselElement = '.carousel-inner';
+    var carouselElement = '.carousel';
     queueByElement(carouselElement, function () {
+      let dotsEle = this.querySelector('.carousel__dots');
+      let prevEle = this.querySelector('.carousel__control--prev');
+      let nextEle = this.querySelector('.carousel__control--next');
+      let trackEle = this.querySelector('.carousel__track');
       let options = {
         // Mobile-first defaults
-        slidesToShow: 1,
+        slidesToShow: 1.2,
         slidesToScroll: 1,
         scrollLock: true,
         duration: sliderDuration,
-        dots: '#glider-dots-1',
+        dots: dotsEle,
         arrows: {
-          prev: '#glider-prev-1',
-          next: '#glider-next-1',
+          prev: prevEle,
+          next: nextEle,
         },
         responsive: [
           {
             // screens greater than >= 775px
             breakpoint: 775,
             settings: {
-              slidesToShow: 2,
+              slidesToShow: 2.5,
               slidesToScroll: 1,
             },
         },
@@ -126,14 +133,15 @@ export default {
         },
       ],
       };
-      carousels.push(new Glider(this, options));
-      this.classList.remove('slider--load');
-      this.classList.add('slider--loaded');
+      carousels.push(new Glider(trackEle, options));
+      this.classList.remove('carousel--load');
+      this.classList.add('carousel--loaded');
     })
+
 
     /*
      * Utility function to refresh elements
-     * when they come into view (eg. via tab switch)
+     * when they come into view (eg. via switching tabs)
      */
     var refreshRevealedElements = function () {
       if (carousels) {
@@ -149,37 +157,40 @@ export default {
      * Accordion, lightweight and accessible
      * @link https://frend.co/components/accordion/
      */
-    let accordionElement = '.fr-accordion';
-    new Fraccordion({
-      // String - Outer container selector, hook for JS init() method
-      selector: accordionElement,
+    var accordionElement = '.accordion';
+    queueByElement(accordionElement, function () {
+      new Fraccordion({
+        // String - Outer container selector, hook for JS init() method
+        selector: accordionElement,
 
-      // String - Accordion header elements converted to focusable, togglable elements
-      headerSelector: accordionElement + '__header',
+        // String - Accordion header elements converted to focusable, togglable elements
+        headerSelector: accordionElement + '__header',
 
-      // String - Use header id on element to tie each accordion panel to its header - see panelIdPrefix
-      headerIdPrefix: 'accordion-header',
+        // String - Use header id on element to tie each accordion panel to its header - see panelIdPrefix
+        headerIdPrefix: 'accordion-header',
 
-      // String - Accordion panel elements to expand/collapse
-      panelSelector: accordionElement + '__panel',
+        // String - Accordion panel elements to expand/collapse
+        panelSelector: accordionElement + '__panel',
 
-      // String - Use panel id on element to tie each accordion header to its panel - see headerIdPrefix
-      panelIdPrefix: 'accordion-panel',
+        // String - Use panel id on element to tie each accordion header to its panel - see headerIdPrefix
+        panelIdPrefix: 'accordion-panel',
 
-      // Boolean - If set to false, all accordion panels will be closed on init()
-      firstPanelsOpenByDefault: true,
+        // Boolean - If set to false, all accordion panels will be closed on init()
+        firstPanelsOpenByDefault: true,
 
-      // Boolean - If set to false, each accordion instance will only allow a single panel to be open at a time
-      multiselectable: false,
+        // Boolean - If set to false, each accordion instance will only allow a single panel to be open at a time
+        multiselectable: false,
 
-      // String - Class name that will be added to the selector when the component has been initialised
-      readyClass: accordionElement + '--is-ready',
+        // String - Class name that will be added to the selector when the component has been initialised
+        readyClass: accordionElement + '--is-ready',
 
-      // Integer - Duration (in milliseconds) of CSS transition when opening/closing accordion panels
-      transitionLength: 250,
-    });
-    forEach(accordionElement + '__header', function () {
-      this.addEventListener('click', refreshRevealedElements);
+        // Integer - Duration (in milliseconds) of CSS transition when opening/closing accordion panels
+        transitionLength: 250,
+      });
+      let headers = this.querySelectorAll(accordionElement + '__header');
+      [].forEach.call(headers, header => {
+        header.addEventListener('click', refreshRevealedElements);
+      });
     });
 
 
@@ -196,28 +207,30 @@ export default {
      * Dialog or modal
      * @link https://frend.co/components/dialogmodal/
      */
-    let dialogElement = '.fr-dialogmodal';
-    new Frdialogmodal({
-      // String - Outer container selector, hook for JS init() method
-      selector: dialogElement,
+    var dialogElement = '.dialogmodal';
+    queueByElement(dialogElement, function () {
+      new Frdialogmodal({
+        // String - Outer container selector, hook for JS init() method
+        selector: dialogElement,
 
-      // String - Modal selector, the element that represents the modal
-      modalSelector: dialogElement + '__modal',
+        // String - Modal selector, the element that represents the modal
+        modalSelector: dialogElement + '__modal',
 
-      // String - Selector for the open button
-      openSelector: dialogElement + '__open',
+        // String - Selector for the open button
+        openSelector: dialogElement + '__open',
 
-      // String - Selector for the close button
-      closeSelector: dialogElement + '__close',
+        // String - Selector for the close button
+        closeSelector: dialogElement + '__close',
 
-      // Boolean - Switches the dialog role to alertdialog, only use this when representing an alert, error or warning
-      isAlert: false,
+        // Boolean - Switches the dialog role to alertdialog, only use this when representing an alert, error or warning
+        isAlert: false,
 
-      // String - Class name that will be added to the selector when the component has been initialised
-      readyClass: dialogElement + '--is-ready',
+        // String - Class name that will be added to the selector when the component has been initialised
+        readyClass: 'dialogmodal--is-ready',
 
-      // String - Class name that will be added to the selector when the component is active
-      activeClass: dialogElement + '--is-active',
+        // String - Class name that will be added to the selector when the component is active
+        activeClass: 'dialogmodal--is-active',
+      });
     });
 
 
@@ -226,12 +239,16 @@ export default {
      * Polyfill for position: sticky
      * @link https://dollarshaveclub.github.io/stickybits/
      */
-    let stickyElementTop = '.stick-to-top';
-    stickybits(stickyElementTop);
+    var stickyElementTop = '.stick-to-top';
+    queueByElement(stickyElementTop, function () {
+      stickybits(stickyElementTop);
+    });
 
-    let stickyElementBottom = '.stick-to-bottom';
-    stickybits(stickyElementBottom, {
-      verticalPosition: 'bottom',
+    var stickyElementBottom = '.stick-to-bottom';
+    queueByElement(stickyElementBottom, function () {
+      stickybits(stickyElementBottom, {
+        verticalPosition: 'bottom',
+      });
     });
 
 
@@ -240,11 +257,13 @@ export default {
      * Popup for social share buttons
      * @link https://10up.github.io/wp-component-library/component/social-links/index.html
      */
-    let socialLinkElement = '.social-share';
-    new TenUp.socialLinks({
-      'target': socialLinkElement,
-      'window_height': 450,
-      'window_width': 625,
+    var socialLinkElement = '.social-share';
+    queueByElement(socialLinkElement, function () {
+      new TenUp.socialLinks({
+        'target': socialLinkElement,
+        'window_height': 450,
+        'window_width': 625,
+      });
     });
 
 
@@ -253,11 +272,11 @@ export default {
      * Makes the entirety of the card clickable
      * @link https://inclusive-components.design/cards/
      */
-    let cards = document.querySelectorAll('.card-single-link');
-    Array.prototype.forEach.call(cards, card => {
-      let down, up, link = card.querySelector('h2 a');
-      card.onmousedown = () => down = +new Date();
-      card.onmouseup = () => {
+    var cards = '.card--single-link';
+    queueByElement(cards, function () {
+      let down, up, link = this.querySelector('h2 a');
+      this.onmousedown = () => down = +new Date();
+      this.onmouseup = () => {
         up = +new Date();
         if ((up - down) < 150) {
           link.click();
@@ -271,29 +290,29 @@ export default {
      * Toggleable offcanvas panel
      * @link https://frend.co/components/offcanvas/
      */
-    let offCanvasElement = '.fr-offcanvas-panel';
-    Froffcanvas({
-      // String - Panel selector, hook for JS init() method
-      selector: offCanvasElement,
+    var offCanvasElement = '.offcanvas';
+    queueByElement(offCanvasElement, function () {
+      new Froffcanvas({
+        // String - Panel selector, hook for JS init() method
+        selector: offCanvasElement,
 
-      // String - Selector for the open button(s)
-      openSelector: offCanvasElement + '__open',
+        // String - Selector for the open button(s)
+        openSelector: offCanvasElement + '__open',
 
-      // String - Selector for the close button
-      closeSelector: offCanvasElement + '__close',
+        // String - Selector for the close button
+        closeSelector: offCanvasElement + '__close',
 
-      // Boolean - Prevent click events outside panel from triggering close
-      preventClickOutside: false,
+        // Boolean - Prevent click events outside panel from triggering close
+        preventClickOutside: false,
 
-      // String - Class name that will be added to the selector when the component has been initialised
-      readyClass: offCanvasElement + '--is-ready',
+        // String - Class name that will be added to the selector when the component has been initialised
+        readyClass: 'offcanvas--is-ready',
 
-      // String - Class name that will be added to the selector when the panel is visible
-      activeClass: offCanvasElement + '--is-active',
+        // String - Class name that will be added to the selector when the panel is visible
+        activeClass: 'offcanvas--is-active',
+      });
+
     });
-
-    let offCanvasToggle = document.querySelector(offCanvasElement + '__open');
-    offCanvasToggle.classList.add('is-ready');
 
 
     /*
@@ -301,19 +320,21 @@ export default {
      * Accessible tab system
      * @link https://frend.co/components/tabs/
      */
-    let tabsElement = '.fr-tabs';
-    new Frtabs({
-      // String - Outer container selector, hook for JS init() method
-      selector: tabsElement,
+    var tabsElement = '.tabs';
+    queueByElement(tabsElement, function () {
+      new Frtabs({
+        // String - Outer container selector, hook for JS init() method
+        selector: tabsElement,
 
-      // String - List selector to transform into tablist
-      tablistSelector: tabsElement + '__tablist',
+        // String - List selector to transform into tablist
+        tablistSelector: tabsElement + '__tablist',
 
-      // String - Containers which hold content, toggled via tabs
-      tabpanelSelector: tabsElement + 'fr-tabs__panel',
+        // String - Containers which hold content, toggled via tabs
+        tabpanelSelector: tabsElement + '__panel',
 
-      // String - Class name that will be added to the selector when the component has been initialised
-      tabsReadyClass: tabsElement + '--is-ready',
+        // String - Class name that will be added to the selector when the component has been initialised
+        tabsReadyClass: 'tabs--is-ready',
+      });
     });
 
 
@@ -322,13 +343,15 @@ export default {
      * A refreshing JavaScript Datepicker
      * @link https://github.com/Pikaday/Pikaday
      */
-    let datePickerElement = document.getElementById('datepicker');
-    var datePicker = new Pikaday({
-      field: datePickerElement,
-      format: 'D/M/YYYY',
-      onSelect: function () {
-        console.log(datePicker.toString());
-      },
+    var datePickerElement = '#datepicker';
+    queueByElement(datePickerElement, function () {
+      var datePicker = new Pikaday({
+        field: this,
+        format: 'D/M/YYYY',
+        onSelect: function () {
+          console.log(datePicker.toString());
+        },
+      });
     });
   },
   finalize() {

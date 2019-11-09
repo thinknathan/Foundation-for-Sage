@@ -3,32 +3,42 @@
  */
 
 // Colours
-$pd-text-color: #333;
-$pd-title-color: #333;
-$pd-title-bg: #fff;
-$pd-picker-bg: #fff;
-$pd-picker-border: #ccc;
-$pd-picker-border-bottom: #bbb;
-$pd-picker-shadow: rgba(0, 0, 0, .5);
-$pd-th-color: #999;
-$pd-day-color: #666;
-$pd-day-bg: #f5f5f5;
-$pd-day-hover-color: #fff;
-$pd-day-hover-bg: #ff8000;
-$pd-day-today-color: #33aaff;
-$pd-day-selected-color: #fff;
-$pd-day-selected-bg: #33aaff;
-$pd-day-selected-shadow: #178fe5;
-$pd-day-disabled-color: #999;
-$pd-week-color: #999;
-$pd-inrange-color: #666;
-$pd-inrange-bg: #D5E9F7;
-$pd-startrange-color: #fff;
-$pd-startrange-bg: #6CB31D;
-$pd-endrange-color: #fff;
-$pd-endrange-bg: #33aaff;
+$pd-text-color: $black;
+$pd-title-color: $black;
+$pd-title-bg: $white;
+$pd-picker-bg: $white;
+$pd-picker-border: transparent;
+$pd-picker-border-bottom: transparent;
+$pd-picker-shadow: rgba($black, 0.5);
+
+// Headers, eg days of the week
+$pd-th-color: $dark-gray;
+
+// Days
+$pd-day-color: $black;
+$pd-day-bg: darken($pd-title-bg, 4%);
+$pd-day-hover-color: $white;
+$pd-day-hover-bg: $secondary-color;
+$pd-day-today-color: $primary-color;
+$pd-day-selected-color: $white;
+$pd-day-selected-bg: darken($pd-day-today-color, 5%);
+$pd-day-selected-shadow: darken($pd-day-today-color, 10%);
+$pd-day-disabled-color: $medium-gray;
+
+// Weeks
+$pd-week-color: darken($pd-title-bg, 4%);
+
+// Ranges
+$pd-inrange-color: $black;
+$pd-inrange-bg: darken($pd-title-bg, 4%);
+
+$pd-startrange-color: $white;
+$pd-startrange-bg: $success-color;
+
+$pd-endrange-color: $white;
+$pd-endrange-bg: $primary-color;
 
 // Fonts
-$pd-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$pd-font-family: $body-font-family;
 
 @import '../../node_modules/pikaday/scss/pikaday.scss';

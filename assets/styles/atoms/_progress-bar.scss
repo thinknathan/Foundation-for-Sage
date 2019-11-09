@@ -8,4 +8,24 @@ $progress-margin-bottom: $global-margin;
 $progress-meter-background: $primary-color;
 $progress-radius: $global-radius;
 
-@include foundation-progress-bar;
+// Progress bar
+.progress {
+  @include progress-container;
+
+  // Inner meter
+  &__meter {
+    @include progress-meter;
+
+    @each $name,
+    $color in $foundation-palette {
+      &--#{$name} {
+        background-color: $color;
+      }
+    }
+  }
+
+  // Inner meter text
+  &__meter-text {
+    @include progress-meter-text;
+  }
+}

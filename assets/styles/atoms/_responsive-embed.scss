@@ -2,4 +2,23 @@
  * Foundation Responsive Embed
  */
 
-@include foundation-responsive-embed;
+/// Margin below a responsive embed container.
+$responsive-embed-margin-bottom: rem-calc(16);
+
+/// Aspect ratios used to determine padding-bottom of responsive embed containers.
+$responsive-embed-ratios: (default: 4 by 3,
+  widescreen: 16 by 9,
+);
+
+.responsive-embed {
+  @include responsive-embed($ratio: default);
+
+  $ratios: map-remove($responsive-embed-ratios, default);
+
+  @each $name,
+  $ratio in $ratios {
+    &--#{$name} {
+      padding-bottom: ratio-to-percentage($ratio);
+    }
+  }
+}

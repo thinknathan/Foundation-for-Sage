@@ -15,4 +15,48 @@ $switch-paddle-offset: 0.25rem;
 $switch-paddle-radius: $global-radius;
 $switch-paddle-transition: all 0.25s $global-transition-curve;
 
-@include foundation-switch;
+// Base label text styles
+%switch-text {
+  @include switch-text;
+}
+
+// Container class
+.switch {
+  height: $switch-height;
+  @include switch-container;
+
+  // <input> element
+  &__input {
+    @include switch-input;
+  }
+
+  // <label> element
+  &__paddle {
+    @include switch-paddle;
+  }
+
+  // Active label text styles
+  &--active {
+    @extend %switch-text;
+    @include switch-text-active;
+  }
+
+  // Inactive label text styles
+  &--inactive {
+    @extend %switch-text;
+    @include switch-text-inactive;
+  }
+
+  // Switch sizes
+  &--tiny {
+    @include switch-size(rem-calc(10), $switch-height-tiny, $switch-paddle-offset);
+  }
+
+  &--small {
+    @include switch-size(rem-calc(12), $switch-height-small, $switch-paddle-offset);
+  }
+
+  &--large {
+    @include switch-size(rem-calc(16), $switch-height-large, $switch-paddle-offset);
+  }
+}
