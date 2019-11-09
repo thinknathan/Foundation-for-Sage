@@ -26,7 +26,7 @@ $image-hover-transition: 'fade';
       padding-left: 1rem;
     }
   }
-  a:link .intrinsic-ratio-box {
+  a:link .ratio__box {
     @include hover-transition($image-hover-type, $image-hover-transition, .66, $primary-color, $image-hover-icon, $image-hover-icon-colour, 30, $primary-color);
   }
 }
