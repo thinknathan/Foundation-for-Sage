@@ -21,7 +21,7 @@
     "eslint": "^6.5",
     "eslint-plugin-import": "^2.18",
     "laravel-mix": "^5.0",
-    "laravel-mix-versionhash": "^1.0",
+    "laravel-mix-versionhash": "1.0.8",
     "npm-run-all": "^4.1",
     "postcss-discard-duplicates": "^4.0",
     "postcss-font-magician": "^2.2",
@@ -34,7 +34,6 @@
     "vue-template-compiler": "^2.6"
   },
   "dependencies": {
-    "a11y-dialog": "^5.2.0",
     "aos": "~2",
     "fg-loadcss": "~2",
     "foundation-sites": "^6.5.3",

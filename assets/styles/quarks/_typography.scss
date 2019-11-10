@@ -11,30 +11,27 @@ monospace;
 $header-color: inherit;
 $header-lineheight: 1.2;
 $header-margin-bottom: 0.5rem;
-$header-styles: (small: (
-  'h1': ('font-size': 28),
-  'h2': ('font-size': 23),
-  'h3': ('font-size': 19),
-  'h4': ('font-size': 16),
-  'h5': ('font-size': 16),
-  'h6': ('font-size': 16),
-),
-medium: (
-  'h1': ('font-size': 45),
-  'h2': ('font-size': 32),
-  'h3': ('font-size': 23),
-  'h4': ('font-size': 16),
-  'h5': ('font-size': 16),
-  'h6': ('font-size': 16),
-),
-xlarge: (
-  'h1': ('font-size': 45),
-  'h2': ('font-size': 32),
-  'h3': ('font-size': 23),
-  'h4': ('font-size': 16),
-  'h5': ('font-size': 16),
-  'h6': ('font-size': 16),
-),
+$header-styles: (small: ('h1': ('font-size': 28),
+    'h2': ('font-size': 23),
+    'h3': ('font-size': 19),
+    'h4': ('font-size': 16),
+    'h5': ('font-size': 16),
+    'h6': ('font-size': 16),
+  ),
+  medium: ('h1': ('font-size': 45),
+    'h2': ('font-size': 32),
+    'h3': ('font-size': 23),
+    'h4': ('font-size': 16),
+    'h5': ('font-size': 16),
+    'h6': ('font-size': 16),
+  ),
+  xlarge: ('h1': ('font-size': 45),
+    'h2': ('font-size': 32),
+    'h3': ('font-size': 23),
+    'h4': ('font-size': 16),
+    'h5': ('font-size': 16),
+    'h6': ('font-size': 16),
+  ),
 );
 $header-text-rendering: optimizeLegibility;
 $small-font-size: 80%;
@@ -89,7 +86,15 @@ $subheader-margin-top: 0.2rem;
 $subheader-margin-bottom: 0.5rem;
 $stat-font-size: 2.5rem;
 
-@include foundation-typography;
+@include foundation-typography-base;
+@include foundation-typography-helpers;
+@include foundation-text-alignment;
+@include foundation-print-styles;
+
+// Prevent text overflow on pre
+pre {
+  overflow: auto;
+}
 
 body {
   @include breakpoint(xlarge) {

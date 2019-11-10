@@ -53,43 +53,41 @@ $menu-icons-back-compat: true;
     @include menu-align(center);
   }
 
-  .collapse {
+  .mm-collapse {
     display: none;
   }
 
-  .collapse.in {
+  .mm-show {
     display: flex;
   }
 
-  .collapsing {
+  .mm-collapsing {
     height: 0;
     overflow: hidden;
-    transition-timing-function: $global-transition-curve;
-    transition-duration: 0.3s;
-    transition-property: height;
-  }
-}
-
-.menu--parent {
-  position: relative;
-
-  &::after {
-    @include css-triangle($dropdownmenu-arrow-size, $dropdownmenu-arrow-color, down);
-    position: absolute;
-    transition: all 0.3s $global-transition-curve;
-    will-change: transform;
-    right: 5px;
-    left: auto;
-    top: 1.3rem;
-    transform: translate(0, -50%);
-    transform-origin: top;
+    transition: height 0.3s $global-transition-curve;
   }
 
-  &.active::after {
-    transform: rotate(-180deg) translate(0, -50%);
-  }
+  &--parent {
+    position: relative;
 
-  > a {
-    padding-right: 1.5rem;
+    &::after {
+      @include css-triangle($dropdownmenu-arrow-size, $dropdownmenu-arrow-color, down);
+      position: absolute;
+      transition: all 0.3s $global-transition-curve;
+      will-change: transform;
+      right: 5px;
+      left: auto;
+      top: 1.3rem;
+      transform: translate(0, -50%);
+      transform-origin: top;
+    }
+
+    &.mm-active::after {
+      transform: rotate(-180deg) translate(0, -50%);
+    }
+
+    > a {
+      padding-right: 1.5rem;
+    }
   }
 }

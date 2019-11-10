@@ -6,13 +6,13 @@ import Fraccordion from 'fr-accordion';
 import Tobi from 'rqrauhvmra__tobi';
 import Frdialogmodal from 'fr-dialogmodal';
 import stickybits from 'stickybits';
-import '../util/socialShare.js';
 import MetisMenu from 'metismenujs';
 import Froffcanvas from 'fr-offcanvas';
 import Frtabs from 'fr-tabs';
 import Pikaday from 'pikaday';
 import prefersReducedMotion from '../util/prefersReducedMotion.js';
 import queueByElement from '../util/queueByElement.js';
+import delegateListener from '../util/delegateListener.js';
 import forEach from '../util/forEach.js';
 
 export default {
@@ -253,21 +253,6 @@ export default {
 
 
     /*
-     * Init Social Links
-     * Popup for social share buttons
-     * @link https://10up.github.io/wp-component-library/component/social-links/index.html
-     */
-    var socialLinkElement = '.social-share';
-    queueByElement(socialLinkElement, function () {
-      new TenUp.socialLinks({
-        'target': socialLinkElement,
-        'window_height': 450,
-        'window_width': 625,
-      });
-    });
-
-
-    /*
      * Fix for `.card-single-link` elements
      * Makes the entirety of the card clickable
      * @link https://inclusive-components.design/cards/
@@ -335,6 +320,10 @@ export default {
         // String - Class name that will be added to the selector when the component has been initialised
         tabsReadyClass: 'tabs--is-ready',
       });
+      let headers = this.querySelectorAll(tabsElement + '__tab');
+      [].forEach.call(headers, header => {
+        header.addEventListener('click', refreshRevealedElements);
+      });
     });
 
 
@@ -353,6 +342,37 @@ export default {
         },
       });
     });
+
+
+    /*
+     * Init Social Share
+     * @link https://10up.github.io/wp-component-library/component/social-links/index.html
+     * @license MIT
+     * @copyright 10up
+     */
+    var shareContainer = '.social-share';
+    queueByElement(shareContainer, function () {
+      delegateListener('.social-share__link', shareContainer, 'click', function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+
+        var target = event.target;
+        var location = target.getAttribute('href');
+        var randomNumber = Math.random() * (9999 - 1) + 1;
+        var socialWindow;
+
+        // If still no location set, bail out
+        if (!location) return;
+
+        // Open the window
+        socialWindow = window.open(location, 'share-window-' + randomNumber, 'width=' + 625 + ',height=' + 450 + 'menubar=no,location=no,resizable=no,scrollbars=no,status=no');
+
+        // Reset the opener
+        socialWindow.opener = null;
+
+      });
+    });
+
   },
   finalize() {
     // JavaScript to be fired on all pages, after page specific JS is fired

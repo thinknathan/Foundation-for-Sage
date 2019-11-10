@@ -9,7 +9,7 @@ $active-bar-height: 2px;
 
   // Active menu item styles
   > .menu-item {
-    > a[aria-current="page"] {
+    > [aria-current="page"] {
       position: relative;
 
       &::after {

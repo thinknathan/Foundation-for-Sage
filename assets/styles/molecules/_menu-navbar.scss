@@ -32,7 +32,7 @@ $navbar-breakpoint-to-hide: large;
 
   .menu-item {
     flex: 1 1 0px;
-    margin-right: 0.5rem;
+    margin-right: $global-minimum-margin;
     display: block;
 
     &:last-child {

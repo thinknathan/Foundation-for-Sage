@@ -30,6 +30,15 @@ $tabs-panel-outline: none;
   &__tablist {
     margin: 0;
     list-style: none;
+
+    // Add .tabs__tablist--scroll to prevent the tab list from wrapping
+    &--scroll {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: stretch;
+      max-width: 100%;
+      overflow: auto;
+    }
   }
 
 
@@ -41,6 +50,7 @@ $tabs-panel-outline: none;
   &__tab {
     color: $tabs-color;
     display: inline-block;
+    height: 100%;
     margin-right: $tabs-spacing;
     font-size: $tabs-font-size;
     line-height: 1.2;
@@ -60,7 +70,7 @@ $tabs-panel-outline: none;
       background-color: $tabs-focus-background;
       color: $tabs-focus-color;
     }
-    
+
     &:hover,
     &:focus {
       outline: $tabs-outline;

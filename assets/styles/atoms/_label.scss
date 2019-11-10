@@ -12,7 +12,6 @@ $label-radius: $global-radius;
 
 .label {
   @include label;
-
   background: $label-background;
   color: $label-color;
 

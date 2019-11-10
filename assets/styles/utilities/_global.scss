@@ -4,30 +4,6 @@
 $global-font-size: 100%;
 $global-width: rem-calc(1200);
 $global-lineheight: 1.6;
-$foundation-palette: (primary: #1976D2,
-  secondary: #C2185B,
-  light: #fff,
-  success: #3adb76,
-  warning: #ffae00,
-  alert: #cc4b37,
-);
-$light-gray: #e6e6e6;
-$medium-gray: #cacaca;
-$dark-gray: #8a8a8a;
-$black: #3f453a;
-$white: #fff;
-$body-background: $white;
-$body-font-color: $black;
-$body-font-family: -apple-system,
-BlinkMacSystemFont,
-"Segoe UI",
-Roboto,
-Oxygen-Sans,
-Ubuntu,
-Cantarell,
-"Helvetica Neue",
-sans-serif;
-$body-antialiased: true;
 $global-outline: default;
 $global-margin: 1rem;
 $global-minimum-margin: 0.5rem;
@@ -44,7 +20,35 @@ $global-prototype-breakpoints: false;
 $global-button-cursor: auto;
 $global-color-pick-contrast-tolerance: 0;
 $global-transition-curve: cubic-bezier(0.4, 0, 0.2, 1);
+$body-font-family: -apple-system,
+BlinkMacSystemFont,
+"Segoe UI",
+Roboto,
+Oxygen-Sans,
+Ubuntu,
+Cantarell,
+"Helvetica Neue",
+sans-serif;
+$body-antialiased: true;
 $print-transparent-backgrounds: true;
+
+/*
+ * Palette
+ */
+$foundation-palette: (primary: #1976D2,
+  secondary: #C2185B,
+  light: #fff,
+  success: #3adb76,
+  warning: #ffae00,
+  alert: #cc4b37,
+);
+$light-gray: #e6e6e6;
+$medium-gray: #cacaca;
+$dark-gray: #8a8a8a;
+$black: #3f453a;
+$white: #fff;
+$body-background: $white;
+$body-font-color: $black;
 
 /*
  * Material Design Shadow Depth
@@ -95,14 +99,39 @@ $xy-block-grid-max: 8;
 
 @import '../../node_modules/foundation-sites/scss/util/util';
 @include add-foundation-colors;
-@include foundation-global-styles;
+@include foundation-normalize;
 
-/**
- * Smooth scrolling on the whole document
- * @link https://gomakethings.com/smooth-scrolling-links-with-only-css/
- */
 html {
+  box-sizing: border-box;
+  font-size: $global-font-size;
+
+  // Smooth scrolling on the whole document
   scroll-behavior: smooth;
+}
+
+// Set box-sizing globally to handle padding and border widths
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+// Default body styles
+body {
+  margin: 0;
+  padding: 0;
+
+  background: $body-background;
+
+  font-family: $body-font-family;
+  font-weight: $global-weight-normal;
+  line-height: $global-lineheight;
+  color: $body-font-color;
+
+  @if ($body-antialiased) {
+    -webkit-font-smoothing: antialiased; // sass-lint:disable-line no-vendor-prefixes
+    -moz-osx-font-smoothing: grayscale; // sass-lint:disable-line no-vendor-prefixes
+  }
 }
 
 /**
@@ -111,6 +140,7 @@ html {
  * @link https://css-tricks.com/revisiting-prefers-reduced-motion-the-reduced-motion-media-query/#comment-1700170)
 */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
