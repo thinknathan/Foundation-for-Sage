@@ -2,7 +2,7 @@
 
 <?php if ( has_nav_menu( 'navigation_navbar' ) ): ?>
 
-<nav class="stick-to-bottom nav-navbar" aria-label="Frequently used links">
+<nav class="nav nav--navbar stick-to-bottom" aria-label="Frequently used links">
   <?php Setup\menu_navbar(); ?>
 </nav>
 

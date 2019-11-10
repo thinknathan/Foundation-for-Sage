@@ -4,7 +4,7 @@
 
 $active-bar-height: 2px;
 
-.menu-primary {
+.menu--primary {
   @include flex-align($x: right);
 
   // Active menu item styles
@@ -28,7 +28,7 @@ $active-bar-height: 2px;
   }
 
   // Dropdown menu with some depth
-  .submenu {
+  .menu--submenu {
     position: absolute;
     left: 50%;
     background-color: $white;
@@ -47,7 +47,7 @@ $active-bar-height: 2px;
   // Don't centre last submenu
   // so it doesn't stretch off the screen
   > li:last-of-type {
-    .submenu {
+    .menu--submenu {
       transform: none;
       right: 0;
       left: auto;
@@ -55,7 +55,7 @@ $active-bar-height: 2px;
   }
 
   // Arrow for menu parents
-  .is-dropdown-submenu-parent {
+  .menu--parent {
     &::after {
       @include css-triangle($dropdownmenu-arrow-size, $white, down);
     }

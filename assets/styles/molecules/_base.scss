@@ -5,13 +5,10 @@
 // Grid settings
 $main-sm-columns: 12;
 $sidebar-sm-columns: 4;
-
-.wrap {
-  padding: $global-padding 0;
-}
+$sidebar-breakpoint: medium;
 
 // Grid system
-.content {
+.content--site {
   @include xy-grid;
   @include xy-grid-container;
 }
@@ -19,8 +16,8 @@ $sidebar-sm-columns: 4;
 .main {
   @include xy-cell;
 
-  .sidebar-primary & {
-    @include breakpoint(medium) {
+  &--has-sidebar {
+    @include breakpoint($sidebar-breakpoint) {
       @include xy-cell($main-sm-columns - $sidebar-sm-columns of 12);
     }
   }
@@ -29,7 +26,7 @@ $sidebar-sm-columns: 4;
 .sidebar {
   @include xy-cell;
 
-  @include breakpoint(medium) {
+  @include breakpoint($sidebar-breakpoint) {
     @include xy-cell($sidebar-sm-columns of 12);
   }
 }

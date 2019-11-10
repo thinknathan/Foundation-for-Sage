@@ -17,7 +17,7 @@ $breadcrumbs-item-separator-color: $medium-gray;
 .breadcrumbs {
   @include breadcrumbs-container;
 
-  .disabled {
+  &--disabled {
     color: $breadcrumbs-item-color-disabled;
     cursor: not-allowed;
   }

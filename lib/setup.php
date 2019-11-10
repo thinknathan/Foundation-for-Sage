@@ -163,8 +163,8 @@ function menu_primary() {
   wp_nav_menu([
     'theme_location' => 'navigation_primary',       // Where it's located in the theme
     'container' => false,                           // Remove nav container
-    'menu_class' => 'menu menu-primary',                // Adding custom nav class
-    'items_wrap' => '<ul class="%2$s" id="menu-primary">%3$s</ul>',
+    'menu_class' => 'menu menu--primary',                // Adding custom nav class
+    'items_wrap' => '<ul class="%2$s" id="menu--primary">%3$s</ul>',
     'depth' => 2,                                   // Limit the depth of the nav
     'fallback_cb' => false,                         // Fallback function
     'walker' => new Extras\walker_primary()
@@ -179,8 +179,8 @@ function menu_offcanvas() {
   wp_nav_menu([
     'theme_location' => 'navigation_primary',       // Where it's located in the theme
     'container' => false,                           // Remove nav container
-    'menu_class' => 'menu vertical menu-offcanvas',                // Adding custom nav class
-    'items_wrap' => '<ul class="%2$s" id="menu-offcanvas">%3$s</ul>',
+    'menu_class' => 'menu menu--vertical menu--offcanvas',                // Adding custom nav class
+    'items_wrap' => '<ul class="%2$s" id="menu--offcanvas">%3$s</ul>',
     'depth' => 2,                                   // Limit the depth of the nav
     'fallback_cb' => false,                         // Fallback function
     'walker' => new Extras\walker_primary()
@@ -195,8 +195,8 @@ function menu_navbar() {
   wp_nav_menu([
     'theme_location' => 'navigation_navbar',       // Where it's located in the theme
     'container' => false,                           // Remove nav container
-    'menu_class' => 'menu menu-navbar',                // Adding custom nav class
-    'items_wrap' => '<ul class="%2$s" id="menu-navbar">%3$s</ul>',
+    'menu_class' => 'menu menu--navbar',                // Adding custom nav class
+    'items_wrap' => '<ul class="%2$s" id="menu--navbar">%3$s</ul>',
     'depth' => 1,                                   // Limit the depth of the nav
     'fallback_cb' => false,                         // Fallback function
     'link_before'    => '<span>',

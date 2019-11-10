@@ -7,7 +7,7 @@ $navbar-shadow: 0 -1px 3px rgba(63, 69, 58, 0.12),
 $navbar-background: $primary-color;
 $navbar-breakpoint-to-hide: large;
 
-.nav-navbar {
+.nav--navbar {
   width: 100%;
   position: sticky;
   z-index: 4;
@@ -25,7 +25,7 @@ $navbar-breakpoint-to-hide: large;
   }
 }
 
-.menu-navbar {
+.menu--navbar {
   width: 100%;
   overflow-x: auto;
   flex-wrap: nowrap;

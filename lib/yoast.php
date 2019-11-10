@@ -28,7 +28,7 @@ function foundation_yoast_breadcrumb_output( $output ){
 
   // Screen reader text
   $from = '<li class="breadcrumb_last">'; 
-  $to     = '<li class="last"><span class="show-for-sr">Current: </span>';
+  $to     = '<li class="breadcrumbs--last"><span class="show-for-sr">Current: </span>';
   $output = str_replace( $from, $to, $output );
   
   // Close final item

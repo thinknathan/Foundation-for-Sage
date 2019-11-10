@@ -46,7 +46,7 @@ add_filter( 'nav_menu_link_attributes', __NAMESPACE__ . '\\add_link_atts', 10, 3
 class walker_primary extends \Walker_Nav_Menu {
   function start_lvl(&$output, $depth = 0, $args = Array() ) {
     $indent = str_repeat("\t", $depth);
-    $output .= "\n$indent<ul class=\"menu vertical submenu is-dropdown-submenu\">\n";
+    $output .= "\n$indent<ul class=\"menu menu--vertical menu--submenu\">\n";
   }
 }
 
@@ -63,7 +63,7 @@ function menu_set_dropdown( $sorted_menu_items, $args ) {
       // set the key of the parent
       $last_top = $key;
     } else {
-      $sorted_menu_items[$last_top]->classes['is-dropdown-submenu-parent'] = 'is-dropdown-submenu-parent';
+      $sorted_menu_items[$last_top]->classes['menu--parent'] = 'menu--parent';
     }
   }
   return $sorted_menu_items;
@@ -79,17 +79,17 @@ add_filter('nav_menu_item_id', '__return_null');
 
 /**
  * Removes classes from navigation menu items
- * Adds Zurb Foundation active class to menu items
+ * Adds menu--active class to menu items
  */
 function clean_nav_class($classes, $item) {
   $slug = sanitize_title($item->title);
   // Remove most core classes
-  $classes = preg_replace('/(current(-menu-|[-_]page[-_])(item|parent|ancestor))/', 'menu-item-active', $classes);
-  $classes = preg_replace('/^((menu|page)[-_\w+]+)+/', '', $classes);
+  $classes = preg_replace('/(current(-menu-|[-_]page[-_])(item|parent|ancestor))/', 'menu-item--active', $classes);
+  $classes = preg_replace('/^((menu|page)(?!--)[-_\w+]+)+/', '', $classes);
   // Re-add core `menu-item` class
   $classes[] = 'menu-item';
-  // Add `menu-<slug>` class
-  $classes[] = 'menu-' . $slug;
+  // Add `menu-item--<slug>` class
+  $classes[] = 'menu-item--' . $slug;
   // Formatting cleanup
   $classes = array_unique($classes);
   $classes = array_map('trim', $classes);
@@ -100,7 +100,6 @@ add_filter('nav_menu_css_class', __NAMESPACE__ . '\\clean_nav_class', 10, 2);
 
 /**
  * Adds post slug as a class to the <body>
- * Also adds class if sidebar is active
  */
 function body_class($classes) {
   // Add page slug if it doesn't exist
@@ -108,9 +107,6 @@ function body_class($classes) {
     if (!in_array(basename(get_permalink()), $classes)) {
       $classes[] = basename(get_permalink());
     }
-  }
-  if (Setup\display_sidebar()) {
-    $classes[] = 'sidebar-primary';
   }
   return $classes;
 }
@@ -137,18 +133,23 @@ add_filter('next_posts_link_attributes', __NAMESPACE__ . '\\next_posts_link_attr
  * @link https://www.davidtiong.com/using-defer-or-async-with-scripts-in-wordpress/
  */
 function script_tag_defer($tag, $handle) {
+  // Don't change admin or login-page scripts
 	if (is_admin() || $GLOBALS['pagenow'] === 'wp-login.php') {
 		return $tag;
 	}
+  // Don't change AMP scripts
   if (function_exists('is_amp_endpoint') && is_amp_endpoint()) {
     return $tag;
   }
+  // Don't change jQuery
   if ($handle === 'jquery') {
     return $tag;
   }
+  // Set the priority script to async instead of defer
   if ($handle === 'sage/js/priority') {
 		return str_replace(' src',' async src', $tag);
 	}
+  // Set all other scripts to defer
 	return str_replace(' src',' defer src', $tag);
 }
 add_filter('script_loader_tag', __NAMESPACE__ . '\\script_tag_defer', 10, 2);

@@ -17,26 +17,24 @@ use Roots\Sage\Util;
       get_template_part('templates/header', 'site');
       get_template_part('templates/offcanvas');
     ?>
-    <div class="wrap container" role="document">
-      <div class="content">
-        <?php
-          if (Setup\display_breadcrumbs()) :
-            Util\breadcrumbs();
-          endif;
-        ?>
-        <main class="main" id="main">
-          <?php include Wrapper\template_path(); ?>
-        </main><!-- /.main -->
-        <?php if (Setup\display_sidebar()) : ?>
-          <aside class="sidebar">
-            <?php include Wrapper\sidebar_path(); ?>
-          </aside><!-- /.sidebar -->
-        <?php endif; ?>
-      </div><!-- /.content -->
-    </div><!-- /.wrap -->
+    <div class="content content--site" role="document">
+      <?php
+        if (Setup\display_breadcrumbs()) :
+          Util\breadcrumbs();
+        endif;
+      ?>
+      <main class="main <?php if (Setup\display_sidebar()): ?>main--has-sidebar<?php endif; ?>" id="main">
+        <?php include Wrapper\template_path(); ?>
+      </main><!-- /.main -->
+      <?php if (Setup\display_sidebar()) : ?>
+        <aside class="sidebar">
+          <?php include Wrapper\sidebar_path(); ?>
+        </aside><!-- /.sidebar -->
+      <?php endif; ?>
+    </div><!-- /.content -->
     <?php
       get_template_part('templates/footer', 'site');
-      get_template_part('templates/menu-bottombar');
+      get_template_part('templates/menu', 'bottombar');
       wp_footer();
     ?>
   </body>

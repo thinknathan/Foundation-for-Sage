@@ -4,7 +4,7 @@
 
 $navigation-breakpoint-toggle: large;
 
-.header-site {
+.header--site {
   background-color: $primary-color;
   position: sticky;
   z-index: 4;
@@ -12,55 +12,56 @@ $navigation-breakpoint-toggle: large;
   left: 0;
   right: 0;
   box-shadow: $shadow-depth1;
-}
 
-.header-site-inner {
-  @include xy-grid;
-  @include xy-grid-container;
-  @include flex-align($y: middle);
-  padding: $global-minimum-margin;
-}
 
-.header-site-brand {
-  @include xy-cell(shrink);
-  min-width: rem-calc(100);
-
-  @include breakpoint(large) {
-    min-width: rem-calc(200);
-  }
-}
-
-.header-site-navigation {
-  @include xy-cell(auto);
-  text-align: right;
-
-  @include breakpoint($navigation-breakpoint-toggle) {
-    text-align: left;
+  &__inner {
+    @include xy-grid;
+    @include xy-grid-container;
+    @include flex-align($y: middle);
+    padding: $global-minimum-margin;
   }
 
-  a {
-    color: $white;
+  &__brand {
+    @include xy-cell(shrink);
+    min-width: rem-calc(100);
 
-    &:focus,
-    &:hover {
-      color: darken($white, 10%);
+    @include breakpoint(large) {
+      min-width: rem-calc(200);
     }
   }
 
-  .menu-primary {
-    @include show-for($navigation-breakpoint-toggle);
+  &__navigation {
+    @include xy-cell(auto);
+    text-align: right;
+
+    @include breakpoint($navigation-breakpoint-toggle) {
+      text-align: left;
+    }
+
+    a {
+      color: $white;
+
+      &:focus,
+      &:hover {
+        color: darken($white, 10%);
+      }
+    }
+
+    .menu--primary {
+      @include show-for($navigation-breakpoint-toggle);
+    }
+
+    .offcanvas__toggle {
+      @include hide-for($navigation-breakpoint-toggle);
+    }
   }
 
-  .offcanvas-toggle {
-    @include hide-for($navigation-breakpoint-toggle);
+  &__title {
+    line-height: 1;
+    margin: 0;
   }
-}
 
-.header-site-title {
-  line-height: 1;
-  margin: 0;
-}
-
-.header-site-title-link {
-  display: block;
+  &__title-link {
+    display: block;
+  }
 }

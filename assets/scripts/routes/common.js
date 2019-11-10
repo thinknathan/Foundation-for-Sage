@@ -73,9 +73,9 @@ export default {
      * Dropdown menu
      * @link https://github.com/onokumus/metismenujs
      */
-    var navigationElement = '#menu-primary';
+    var navigationElement = '#menu--primary';
     queueByElement(navigationElement, function () {
-      var mm1 = new MetisMenu('#menu-primary').on("shown.metisMenu", function (event) {
+      var mm1 = new MetisMenu(navigationElement).on("shown.metisMenu", function (event) {
         window.addEventListener("click", function mmClick1(e) {
           if (!event.target.contains(e.target)) {
             mm1.hide(event.detail.shownElement);
@@ -85,7 +85,7 @@ export default {
       });
     });
 
-    var navigationOffcanvasElement = '#menu-offcanvas';
+    var navigationOffcanvasElement = '#menu--offcanvas';
     queueByElement(navigationOffcanvasElement, function () {
       new MetisMenu(navigationOffcanvasElement);
     });

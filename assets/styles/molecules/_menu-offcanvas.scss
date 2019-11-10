@@ -4,7 +4,7 @@
 
 $menu-offcanvas-hover-background: $light-gray;
 
-.menu-offcanvas {
+.menu--offcanvas {
   a {
     color: $primary-color;
     padding-left: 1.5rem;
@@ -29,7 +29,7 @@ $menu-offcanvas-hover-background: $light-gray;
     }
   }
 
-  .submenu {
+  .menu--submenu {
     a {
       padding-left: 3rem;
       opacity: 0.9;
@@ -42,7 +42,7 @@ $menu-offcanvas-hover-background: $light-gray;
     }
   }
 
-  .is-dropdown-submenu-parent {
+  .menu--parent {
     &::after {
       @include css-triangle($dropdownmenu-arrow-size, $primary-color, down);
       right: 1.5rem;

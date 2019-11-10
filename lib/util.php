@@ -42,22 +42,22 @@ function pagination($before = '', $after = '') {
 	if($start_page <= 0) {
 		$start_page = 1;
 	}
-	echo $before.'<nav class="page-navigation"><ul class="pagination text-center" role="navigation" aria-label="Pagination">'."";
+	echo $before.'<nav class="nav nav--entry"><ul class="pagination" role="navigation" aria-label="Pagination">'."";
 	if ($start_page >= 2 && $pages_to_show < $max_page) {
 		$first_page_text = __( 'First', 'sage' );
 		echo '<li><a href="'.get_pagenum_link().'" title="'.$first_page_text.'" aria-label="First page">'.$first_page_text.'</a></li>';
 	}
-	echo '<li class="pagination-previous">';
+	echo '<li class="pagination__previous">';
 	previous_posts_link( __('Previous', 'sage') );
 	echo '</li>';
 	for($i = $start_page; $i  <= $end_page; $i++) {
 		if($i == $paged) {
-			echo '<li class="current"><span class="show-for-sr">You\'re on page</span> '.$i.' </li>';
+			echo '<li class="pagination--current"><span class="show-for-sr">You\'re on page</span> '.$i.' </li>';
 		} else {
 			echo '<li><a href="'.get_pagenum_link($i).'" aria-label="Page '.$i.'">'.$i.'</a></li>';
 		}
 	}
-	echo '<li class="pagination-next">';
+	echo '<li class="pagination__next">';
 	next_posts_link( __('Next', 'sage'), 0 );
 	echo '</li>';
 	if ($end_page < $max_page) {

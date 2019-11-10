@@ -35,15 +35,15 @@ $pagination-arrows: false;
 
 @if $pagination-arrows {
 
-  .pagination-previous a::before,
-  .pagination-previous.pagination--disabled::before {
+  .pagination__previous a::before,
+  .pagination__previous.pagination--disabled::before {
     display: inline-block;
     margin-#{$global-right}: 0.5rem;
     content: '\00ab';
   }
 
-  .pagination-next a::after,
-  .pagination-next.pagination--disabled::after {
+  .pagination__next a::after,
+  .pagination__next.pagination--disabled::after {
     display: inline-block;
     margin-#{$global-left}: 0.5rem;
     content: '\00bb';
