@@ -7,29 +7,8 @@
 $lazyload-color: $light-gray;
 $lazyload-color2: darken($lazyload-color, 5%);
 
-.ratio__box {
-  position: relative;
-  display: block;
-
-  /* padding-bottom is calculated and rendered into HTML */
-  img,
-  iframe,
-  video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: block;
-  }
-}
-
-.ratio__helper {
-  display: block;
-}
-
 .lazyload,
-.lazyloading {
+.is-lazyloading {
   background-color: $lazyload-color;
   animation-duration: 1s;
   animation-iteration-count: infinite;
@@ -55,7 +34,7 @@ $lazyload-color2: darken($lazyload-color, 5%);
  * Material Design image load
  * @credit: https://stackoverflow.com/questions/36377545/implement-material-image-loading-pattern-using-css-filters
  */
-.lazyloaded {
+.is-lazyloaded {
   animation: progressComplete 2s;
   animation-fill-mode: forward;
 }

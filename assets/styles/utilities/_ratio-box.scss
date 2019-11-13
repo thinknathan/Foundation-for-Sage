@@ -1,0 +1,25 @@
+/*
+ * Intrinsic ratio box
+ * Used as a placeholder for lazyloaded images
+ */
+
+.ratio__box {
+  position: relative;
+  display: block;
+
+  /* padding-bottom is calculated and rendered into HTML */
+  img,
+  iframe,
+  video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+}
+
+.ratio__helper {
+  display: block;
+}
