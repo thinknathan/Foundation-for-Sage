@@ -1,3 +1,4 @@
+import Cookies from 'js-cookie';
 import AOS from 'aos';
 import Rellax from 'rellax';
 import Headroom from 'headroom.js';
@@ -12,8 +13,8 @@ import Frtabs from 'fr-tabs';
 import Pikaday from 'pikaday';
 import prefersReducedMotion from '../util/prefersReducedMotion.js';
 import queueByElement from '../util/queueByElement.js';
-import delegateListener from '../util/delegateListener.js';
-import forEach from '../util/forEach.js';
+//import delegateListener from '../util/delegateListener.js';
+//import forEach from '../util/forEach.js';
 
 export default {
   init() {
@@ -22,6 +23,27 @@ export default {
     if (prefersReducedMotion()) {
       sliderDuration = 0;
     }
+
+
+    /**
+     * Init Privacy Callout
+     */
+    queueByElement('#callout--privacy', function () {
+      if (!Cookies.get('privacy-is-accepted')) {
+        var acceptButton = this.querySelector('#callout--privacy__close');
+        this.classList.remove('callout--privacy--inactive');
+        this.setAttribute('role', 'dialog');
+        if (acceptButton) acceptButton.focus();
+        this.addEventListener('click', function (event) {
+          if (event.target.matches('#callout--privacy__more') || event.target.matches('#callout--privacy__close')) {
+            Cookies.set('privacy-is-accepted', 1, {
+              expires: 365
+            });
+            this.classList.add('callout--privacy--inactive');
+          }
+        });
+      }
+    }, true);
 
 
     /**
@@ -57,12 +79,30 @@ export default {
      * Hide your header until you need it
      * @link https://wicky.nillia.ms/headroom.js/
      */
-    var headroomElement = '.headroom';
+    var headroomElement = '.header--site';
     queueByElement(headroomElement, function () {
       let headroom = new Headroom(this, {
         offset: 300,
         // scroll tolerance in px before state changes
         tolerance: 6,
+        classes: {
+          // when element is initialised
+          initial: "is-headroom",
+          // when scrolling up
+          pinned: "is-headroom--pinned",
+          // when scrolling down
+          unpinned: "is-headroom--unpinned",
+          // when above offset
+          top: "is-headroom--top",
+          // when below offset
+          notTop: "is-headroom--not-top",
+          // when at bottom of scoll area
+          bottom: "is-headroom--bottom",
+          // when not at bottom of scroll area
+          notBottom: "is-headroom--not-bottom",
+          // when frozen method has been called
+          frozen: "is-headroom--frozen"
+        },
       });
       headroom.init();
     });
@@ -187,9 +227,11 @@ export default {
         // Integer - Duration (in milliseconds) of CSS transition when opening/closing accordion panels
         transitionLength: 250,
       });
-      let headers = this.querySelectorAll(accordionElement + '__header');
-      [].forEach.call(headers, header => {
-        header.addEventListener('click', refreshRevealedElements);
+
+      this.addEventListener('click', function (event) {
+        if (event.target.matches(accordionElement + '__header')) {
+          refreshRevealedElements();
+        }
       });
     });
 
@@ -199,7 +241,10 @@ export default {
      * Lightbox, light-weight and accessible
      * @link https://github.com/rqrauhvmra/Tobi
      */
-    new Tobi();
+    var lightboxElement = '.lightbox';
+    queueByElement(lightboxElement, function () {
+      new Tobi();
+    });
 
 
     /*
@@ -239,12 +284,14 @@ export default {
      * Polyfill for position: sticky
      * @link https://dollarshaveclub.github.io/stickybits/
      */
-    var stickyElementTop = '.stick-to-top';
+    // Stick header to the top
+    var stickyElementTop = '.header--site';
     queueByElement(stickyElementTop, function () {
       stickybits(stickyElementTop);
     });
 
-    var stickyElementBottom = '.stick-to-bottom';
+    // Stick navbar to the bottom
+    var stickyElementBottom = '.nav--navbar';
     queueByElement(stickyElementBottom, function () {
       stickybits(stickyElementBottom, {
         verticalPosition: 'bottom',
@@ -320,9 +367,11 @@ export default {
         // String - Class name that will be added to the selector when the component has been initialised
         tabsReadyClass: 'tabs--is-ready',
       });
-      let headers = this.querySelectorAll(tabsElement + '__tab');
-      [].forEach.call(headers, header => {
-        header.addEventListener('click', refreshRevealedElements);
+
+      this.addEventListener('click', function (event) {
+        if (event.target.matches(tabsElement + '__tab')) {
+          refreshRevealedElements();
+        }
       });
     });
 
@@ -352,24 +401,25 @@ export default {
      */
     var shareContainer = '.social-share';
     queueByElement(shareContainer, function () {
-      delegateListener('.social-share__link', shareContainer, 'click', function (event) {
-        event.preventDefault();
-        event.stopPropagation();
+      this.addEventListener('click', function (event) {
+        if (event.target.matches('.social-share__link')) {
+          event.preventDefault();
+          event.stopPropagation();
 
-        var target = event.target;
-        var location = target.getAttribute('href');
-        var randomNumber = Math.random() * (9999 - 1) + 1;
-        var socialWindow;
+          var target = event.target;
+          var location = target.getAttribute('href');
+          var randomNumber = Math.random() * (9999 - 1) + 1;
+          var socialWindow;
 
-        // If still no location set, bail out
-        if (!location) return;
+          // If still no location set, bail out
+          if (!location) return;
 
-        // Open the window
-        socialWindow = window.open(location, 'share-window-' + randomNumber, 'width=' + 625 + ',height=' + 450 + 'menubar=no,location=no,resizable=no,scrollbars=no,status=no');
+          // Open the window
+          socialWindow = window.open(location, 'share-window-' + randomNumber, 'width=' + 625 + ',height=' + 450 + 'menubar=no,location=no,resizable=no,scrollbars=no,status=no');
 
-        // Reset the opener
-        socialWindow.opener = null;
-
+          // Reset the opener
+          socialWindow.opener = null;
+        }
       });
     });
 

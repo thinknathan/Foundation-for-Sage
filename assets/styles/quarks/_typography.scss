@@ -87,8 +87,8 @@ $subheader-margin-bottom: 0.5rem;
 $stat-font-size: 2.5rem;
 
 @include foundation-typography-base;
-@include foundation-typography-helpers;
-@include foundation-text-alignment;
+//@include foundation-typography-helpers;
+//@include foundation-text-alignment;
 @include foundation-print-styles;
 
 // Prevent text overflow on pre

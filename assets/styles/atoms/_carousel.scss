@@ -17,7 +17,13 @@
   }
 
   &__control {
-    @include inline-icon-base(2rem);
+    &::before {
+      content: '';
+      display: inline-block;
+      width: 2rem;
+      height: 2rem;
+    }
+
     user-select: none;
     position: absolute;
     z-index: 2;

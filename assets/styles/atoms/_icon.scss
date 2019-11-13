@@ -1,0 +1,37 @@
+/**
+ * Icons
+ */
+
+.icon {
+  &--text {
+    display: inline-block;
+    font-size: 2rem;
+    line-height: 0;
+    font-weight: normal;
+  }
+
+  /**
+   * Embedded Icons
+   * Use with the inline-icon mixin
+   *
+   * Example usage:
+   *
+  .icon--calendar {
+    &::before {
+      width: 1rem;
+      height: 1rem;
+      background-image: inline-icon(calendar, $primary-color);
+    }
+  }
+   */
+
+  &--embedded {
+
+    &::before {
+      content: '';
+      display: inline-block;
+      margin-right: 0.25rem;
+      vertical-align: middle;
+    }
+  }
+}

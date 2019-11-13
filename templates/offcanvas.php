@@ -4,7 +4,7 @@
 <section class="offcanvas" id="offcanvas-1" aria-hidden="true">
   <div class="offcanvas__controls">
     <button class="button offcanvas__toggle offcanvas__close" aria-label="Close primary menu">
-      Close <span aria-hidden="true">&times;</span>
+      Close <span class="icon icon--text" aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="offcanvas__head">

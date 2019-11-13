@@ -15,4 +15,8 @@ $buttongroup-radius-on-each: true;
   &--expanded {
     @include button-group-expand;
   }
+
+  &--end {
+    @include flex-align($x: right);
+  }
 }

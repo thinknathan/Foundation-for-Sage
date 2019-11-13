@@ -1,6 +1,6 @@
 <?php use Roots\Sage\Util ?>
 
-<header class="header header--site headroom stick-to-top">
+<header class="header header--site">
   <div class="header--site__inner">
     <div class="header--site__brand">
       <h1 class="header--site__title">

@@ -2,9 +2,8 @@
 
 /* ==========================================================================
  * Utilities
- * system-wide styles
- * the basic plumbing of the website
- * global classes, mixins and styles that can be used anywhere and at any time
+ * Definition: the basic plumbing of the website
+ * Usage: global classes, mixins and styles that can be used anywhere and at any time
    ========================================================================== */
 
 /* Dependencies */
@@ -19,19 +18,18 @@
 
 @import "utilities/global";
 @import "utilities/wp-classes";
-@import "utilities/inline-icon";
 
 /* JavaScript Plugins */
 
 @import "utilities/headroom";
 @import "utilities/lazyload";
+@import "utilities/ratio-box";
 @import "../../node_modules/aos/src/sass/aos.scss";
 
 /* ==========================================================================
  * Quarks
- * basic building blocks: classless HTML elements
- * paragraphs, tables, images and links
- * think globally and don't styling for any particular section of the design
+ * Definition: classless HTML elements
+ * Usage: think globally and don't style for any particular section of the design
    ========================================================================== */
 
 @import "quarks/forms";
@@ -42,8 +40,8 @@
 
 /* ==========================================================================
  * Atoms
- * universal abstractions: media or flag
- * should almost never be attached to an HTML element itself
+ * Definition: common, re-usable components
+ * Usage: use low-specificity classes; should almost never be attached to an HTML element itself
    ========================================================================== */
 
 /* Foundation - Controls */
@@ -96,20 +94,22 @@
 @import "atoms/carousel";
 @import "atoms/dialogmodal";
 @import "atoms/datepicker";
+@import "atoms/icon";
 @import "atoms/lightbox";
+@import "atoms/placeholder";
+@import "atoms/offcanvas-toggle";
 @import "atoms/social-share";
 @import "atoms/tabs";
-@import "atoms/offcanvas-toggle";
 @import "atoms/showhide";
 
 /* ==========================================================================
  * Molecules
- * one-off structures: banner, navigation element, footer
- * don’t intend to replicate
- * extend, modify and combine other styles and modules
+ * Definition: one-off structures you don’t intend to replicate
+ * Usage: extend, modify and combine other styles and modules
    ========================================================================== */
 
 @import "molecules/base";
+@import "molecules/callout-privacy";
 @import "molecules/footer-site";
 @import "molecules/header-site";
 @import "molecules/menu-navbar";
