@@ -67,10 +67,20 @@ function setup() {
   
   // ACF Options Page
   // https://www.advancedcustomfields.com/resources/acf_add_options_page/
-  if( function_exists('acf_add_options_page') ) {
+  if( function_exists('acf_add_options_page') && function_exists('acf_add_options_sub_page') ) {
     acf_add_options_page([
-      'page_title' => 'Options',
-      'icon_url' => 'dashicons-admin-generic'
+      'page_title' => 'Sitewide Content',
+      'icon_url' => 'dashicons-welcome-widgets-menus',
+      'menu_slug' 	=> 'theme-sitewide-content',
+      'position' => 33.1,
+    ]);
+    acf_add_options_sub_page([
+      'page_title' 	=> 'Contact Info',
+      'parent_slug'	=> 'theme-sitewide-content',
+    ]);
+    acf_add_options_sub_page([
+      'page_title' 	=> 'Headers & Footers',
+      'parent_slug'	=> 'theme-sitewide-content',
     ]);
   }
   
