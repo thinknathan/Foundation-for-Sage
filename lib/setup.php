@@ -39,6 +39,18 @@ function setup() {
   add_theme_support('abet-add-logout-link-admin-sidebar');
   add_theme_support('abet-add-view-site-admin-sidebar');
 
+  // Disable custom colours in block editor
+  // https://developer.wordpress.org/block-editor/developers/themes/theme-support/
+  add_theme_support( 'disable-custom-colors' );
+  add_theme_support( 'editor-color-palette', [] );
+
+  // Disable custom font sizes in block editor
+  add_theme_support( 'disable-custom-font-sizes' );
+  add_theme_support( 'editor-font-sizes', [] );
+
+  // Add responsive embed support in block editor
+  add_theme_support( 'responsive-embeds' );
+  
   // Enable plugins to manage the document title
   // http://codex.wordpress.org/Function_Reference/add_theme_support#Title_Tag
   add_theme_support('title-tag');
