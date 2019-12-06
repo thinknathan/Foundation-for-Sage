@@ -36,7 +36,7 @@
   "dependencies": {
     "aos": "~2",
     "fg-loadcss": "~2",
-    "foundation-sites": "^6.5.3",
+    "foundation-sites": "^6.6.0",
     "fr-accordion": "^1.0.6",
     "fr-dialogmodal": "^1.0.4",
     "fr-offcanvas": "^1.1.1",

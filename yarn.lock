@@ -3613,10 +3613,10 @@ forwarded@~0.1.2:
   resolved "https://registry.yarnpkg.com/forwarded/-/forwarded-0.1.2.tgz#98c23dab1175657b8c0573e8ceccd91b0ff18c84"
   integrity sha1-mMI9qxF1ZXuMBXPozszZGw/xjIQ=
 
-foundation-sites@^6.5.3:
-  version "6.5.3"
-  resolved "https://registry.yarnpkg.com/foundation-sites/-/foundation-sites-6.5.3.tgz#85373aaed72233ca0d16fdfcb034e976cc6943c9"
-  integrity sha512-ZwI0idjHHjezh6jRjpPxkczvmtUuJ1uGatZHpyloX0MvsFHfM0BFoxrqdXryXugGPdmb+yJi3JYMnz6+5t3K1A==
+foundation-sites@^6.6.0:
+  version "6.6.0"
+  resolved "https://registry.yarnpkg.com/foundation-sites/-/foundation-sites-6.6.0.tgz#7ce7133a2750d3553a45d11bc9cfb925ee928ea8"
+  integrity sha512-/KXP7rLOO8HvpxiW+uS9jJ2GiRDXj/OGe1W0UeCWv8t+sfxQkDVz4nXmFG4NUjuhEFMulMq/DlbdiqrFlAOpNQ==
 
 fr-accordion@^1.0.6:
   version "1.0.6"
