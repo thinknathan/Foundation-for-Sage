@@ -8046,10 +8046,10 @@ statuses@~1.4.0:
   resolved "https://registry.yarnpkg.com/statuses/-/statuses-1.4.0.tgz#bb73d446da2796106efcc1b601a253d6c46bd087"
   integrity sha512-zhSCtt8v2NDrRlPQpCNtw/heZLtfUDqxBM1udqikb/Hbk52LK4nQSwr10u77iopCW5LsyHpuXS0GnEc48mLeew==
 
-stickybits@^3.6.7:
-  version "3.7.0"
-  resolved "https://registry.yarnpkg.com/stickybits/-/stickybits-3.7.0.tgz#1b5893cb8263c5ab8cd152290eaec07266400752"
-  integrity sha512-tdoZF8rtHsfK6eJMXS7mdToJqgb8Wk/XCOLqQBkfzp2HWW2oEyODNh//TrWu+s0GUICBZlk4nUpfC4oT76QhkA==
+stickybits@^3.7.2:
+  version "3.7.2"
+  resolved "https://registry.yarnpkg.com/stickybits/-/stickybits-3.7.2.tgz#2e8c6728d7f0804bc2ff6964a1ddc0cfef254df1"
+  integrity sha512-7w9f6xStum9gzpaM/e7OPtJFGSXAL2l5BXh/WtBG6IKhAlZGkJWY492svOEJpyLvr9Oe8rzMTl014P3+NW6tig==
 
 stream-browserify@^2.0.1:
   version "2.0.2"
