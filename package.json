@@ -11,7 +11,7 @@
     "clean:dist": "rimraf dist",
     "lint": "run-s -c lint:*",
     "lint:scripts": "eslint assets/scripts",
-    "lint:styles": "stylelint \"assets/**/*.{vue,css,sass,scss,sss,less}\"",
+    "lint:styles": "stylelint \"assets/**/*.{vue,css,sass,scss,less}\"",
     "test": "run-s -c lint"
   },
   "devDependencies": {
@@ -21,6 +21,7 @@
     "eslint": "^6.5",
     "eslint-plugin-import": "^2.18",
     "laravel-mix": "^5.0",
+    "laravel-mix-copy-watched": "^2.2.1",
     "laravel-mix-versionhash": "1.0.8",
     "npm-run-all": "^4.1",
     "postcss-discard-duplicates": "^4.0",

@@ -1,6 +1,7 @@
 const mix = require('laravel-mix');
 const webpack = require('webpack');
 require('laravel-mix-versionhash');
+require('laravel-mix-copy-watched');
 
 // Public path helper
 const publicPath = path => `${mix.config.publicPath}/${path}`;
@@ -27,20 +28,20 @@ mix.browserSync({
   proxy: 'http://localhost/xxx/public_html/',
   files: [
     '**/*.php',
-    publicPath`(styles|scripts)/**/*.(css|js)`,
+    publicPath `(styles|scripts)/**/*.(css|js)`,
   ],
 });
 
 // Styles
-mix.sass(src`styles/app.main.scss`, 'styles');
+mix.sass(src `styles/app.main.scss`, 'styles');
 
 // JavaScript
-mix.js(src`scripts/app.main.js`, 'scripts')
-  .js(src`scripts/app.priority.js`, 'scripts');
+mix.js(src `scripts/app.main.js`, 'scripts')
+  .js(src `scripts/app.priority.js`, 'scripts');
 
 // Assets
-mix.copyDirectory(src`images`, publicPath`images`)
-  .copyDirectory(src`fonts`, publicPath`fonts`);
+mix.copyWatched(src `images`, publicPath `images`)
+  .copyWatched(src `fonts`, publicPath `fonts`);
 
 // Ignore Pikaday.js file trying to import Moment.js
 mix.webpackConfig({
@@ -58,17 +59,38 @@ if (mix.inProduction()) {
   // Hash and version files in production.
   mix.versionHash();
 
+  // Make babel parse packages in node_modules
+  mix.webpackConfig({
+    module: {
+      rules: [
+        {
+          test: /\.jsx?$/,
+          exclude: /(bower_components)/,
+          use: [
+            {
+              loader: 'babel-loader',
+              options: Config.babel()
+            }
+          ]
+        }
+      ]
+    }
+  });
+
   // PostCSS Plugins
   mix.options({
     postCss: [
       require('postcss-discard-duplicates'),
+      /*
       require('postcss-font-magician')({
         display: 'swap',
         hosted: [src`fonts`, publicPath`fonts`],
         protocol: 'https:',
       }),
+      */
     ],
   });
+
 } else {
   // Source maps when not in production.
   mix.sourceMaps();

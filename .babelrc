@@ -1,0 +1,13 @@
+{
+    "presets": [
+        [
+            "@babel/preset-env",
+            {
+                "debug": false,
+                "modules": "auto",
+                "forceAllTransforms": true,
+                "targets": "last 1 version, > 1%"
+            }
+        ]
+    ]
+}
