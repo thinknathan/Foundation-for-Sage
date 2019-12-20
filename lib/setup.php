@@ -131,13 +131,14 @@ add_action('after_setup_theme', __NAMESPACE__ . '\\setup');
  */
 function allowed_block_types( $allowed_blocks, $post ) {
   $allowed_blocks = [
+    'core/block', // Reusable blocks
     'core/image',
     'core/paragraph',
     'core/heading',
     'core/list',
     'core/quote',
     'core/button',
-    'core/shortcode',
+    //'core/shortcode',
     'core/embed',
     'core-embed/youtube',
     'core-embed/vimeo',
