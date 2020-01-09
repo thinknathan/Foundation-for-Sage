@@ -1,13 +1,7 @@
-const mix = require('laravel-mix');
 const webpack = require('webpack');
-require('laravel-mix-versionhash');
-require('laravel-mix-copy-watched');
-
-// Public path helper
-const publicPath = path => `${mix.config.publicPath}/${path}`;
-
-// Source path helper
-const src = path => `assets/${path}`;
+const mix = require('laravel-mix');
+            require('laravel-mix-versionhash');
+            require('laravel-mix-copy-watched');
 
 /*
  |--------------------------------------------------------------------------
@@ -20,28 +14,16 @@ const src = path => `assets/${path}`;
  |
  */
 
-// Public Path
-mix.setPublicPath('./dist');
+mix.setPublicPath('./dist')
+   .browserSync('http://localhost/xxx/public_html/');
 
-// Browsersync
-mix.browserSync({
-  proxy: 'http://localhost/xxx/public_html/',
-  files: [
-    '**/*.php',
-    publicPath `(styles|scripts)/**/*.(css|js)`,
-  ],
-});
+mix.sass('assets/styles/app.main.scss', 'styles');
 
-// Styles
-mix.sass(src `styles/app.main.scss`, 'styles');
+mix.js('assets/scripts/app.main.js', 'scripts')
+   .js('assets/scripts/app.priority.js', 'scripts');
 
-// JavaScript
-mix.js(src `scripts/app.main.js`, 'scripts')
-  .js(src `scripts/app.priority.js`, 'scripts');
-
-// Assets
-mix.copyWatched(src `images`, publicPath `images`)
-  .copyWatched(src `fonts`, publicPath `fonts`);
+mix.copyWatched('assets/images/**', 'dist/images')
+   .copyWatched('assets/fonts/**', 'dist/fonts');
 
 // Ignore Pikaday.js file trying to import Moment.js
 mix.webpackConfig({
@@ -54,6 +36,9 @@ mix.webpackConfig({
 mix.options({
   processCssUrls: false,
 });
+
+// Source maps when not in production.
+mix.sourceMaps(false, 'source-map');
 
 if (mix.inProduction()) {
   // Hash and version files in production.
@@ -78,20 +63,16 @@ if (mix.inProduction()) {
   });
 
   // PostCSS Plugins
+  /*
   mix.options({
     postCss: [
       require('postcss-discard-duplicates'),
-      /*
       require('postcss-font-magician')({
         display: 'swap',
-        hosted: [src`fonts`, publicPath`fonts`],
+        hosted: ['assets/fonts', 'dist/fonts'],
         protocol: 'https:',
       }),
-      */
     ],
   });
-
-} else {
-  // Source maps when not in production.
-  mix.sourceMaps();
+  */
 }
