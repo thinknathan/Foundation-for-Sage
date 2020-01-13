@@ -15,7 +15,13 @@ const mix = require('laravel-mix');
  */
 
 mix.setPublicPath('./dist')
-   .browserSync('http://localhost/xxx/public_html/');
+   .browserSync({
+      proxy: 'http://localhost/xxx/public_html/',
+      files: [
+        '**/*.php',
+        `dist/(styles|scripts)/**/*.(css|js)`,
+      ],
+    });
 
 mix.sass('assets/styles/app.main.scss', 'styles');
 
