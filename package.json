@@ -25,7 +25,7 @@
     "laravel-mix-versionhash": "1.0.8",
     "npm-run-all": "^4.1",
     "postcss-discard-duplicates": "^4.0",
-    "postcss-font-magician": "^2.2",
+    "postcss-font-magician": "^2.3",
     "resolve-url-loader": "3.1",
     "rimraf": "^3.0",
     "sass": "^1.22",
