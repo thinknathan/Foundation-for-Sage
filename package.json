@@ -42,7 +42,7 @@
     "fr-dialogmodal": "^1.0.4",
     "fr-offcanvas": "^1.1.1",
     "fr-tabs": "^1.0.6",
-    "glider-js": "^1.7.1",
+    "glider-js": "^1.7.3",
     "gravity-forms-scss": "git+https://git@github.com/wpsitecare/gravity-forms-scss.git",
     "headroom.js": "^0.10.3",
     "idle-until-urgent": "^1.0.0",
