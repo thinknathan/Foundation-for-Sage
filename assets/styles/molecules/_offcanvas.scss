@@ -21,7 +21,6 @@ $offcanvas-exit-background: rgba($black, 0.5);
   top: 0;
   width: 100%;
   z-index: $offcanvas-overlay-zindex;
-  box-shadow: $shadow-depth4;
   transform: translateX(0);
   will-change: translateX;
   transition: transform $offcanvas-transition-length $offcanvas-transition-timing;
@@ -29,6 +28,7 @@ $offcanvas-exit-background: rgba($black, 0.5);
   &--is-ready {
     &[aria-hidden="false"] {
       transform: translateX(-100%);
+      box-shadow: $shadow-depth4;
     }
 
     &[aria-hidden=true] {
