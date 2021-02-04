@@ -2,6 +2,8 @@
 
 Sage is a WordPress starter theme with a modern development workflow.
 
+* [Sage documentation](https://roots.io/sage/docs/)
+
 This branch combines the structure of [Sage 8](https://github.com/roots/sage/releases/tag/8.5.4) (vanilla WP, no Laravel) with the updated workflow of [Sage 10](https://github.com/roots/sage/releases).
 
 ## Features
@@ -11,15 +13,6 @@ This branch combines the structure of [Sage 8](https://github.com/roots/sage/rel
 * [Laravel Mix](https://github.com/JeffreyWay/laravel-mix) for compiling assets and concatenating and minifying files
 * [Browsersync](http://www.browsersync.io/) for synchronized browser testing
 * CSS framework: [Foundation](https://foundation.zurb.com/)
-
-Install the [Soil](https://github.com/roots/soil) plugin to enable additional features:
-
-* Cleaner output of `wp_head` and enqueued assets
-* Cleaner HTML output of navigation menus
-* Root relative URLs
-* Nice search (`/search/query/`)
-* Google CDN jQuery snippet from [HTML5 Boilerplate](http://html5boilerplate.com/)
-* Google Analytics snippet from [HTML5 Boilerplate](http://html5boilerplate.com/)
 
 Install the [WP-Abettor](https://github.com/thinknathan/wp-abettor) plugin to enable additional features:
 
@@ -63,30 +56,6 @@ Edit `lib/setup.php` to enable or disable theme features, setup navigation menus
 * `yarn build` — Compile and optimize the files in your assets directory
 * `yarn build:production` — Compile assets for production
 
-## Documentation
-
-* [Sage documentation](https://roots.io/sage/docs/)
-
-## Contributing
-
-Contributions are welcome from everyone. We have [contributing guidelines](https://github.com/roots/guidelines/blob/master/CONTRIBUTING.md) to help you get started.
-
-## Sage sponsors
-
-Help support our open-source development efforts by [becoming a patron](https://www.patreon.com/rootsdev).
-
-<a href="https://kinsta.com/?kaid=OFDHAJIXUDIV"><img src="https://cdn.roots.io/app/uploads/kinsta.svg" alt="Kinsta" width="200" height="150"></a> <a href="https://k-m.com/"><img src="https://cdn.roots.io/app/uploads/km-digital.svg" alt="KM Digital" width="200" height="150"></a> <a href="https://www.itineris.co.uk/"><img src="https://cdn.roots.io/app/uploads/itineris.svg" alt="itineris" width="200" height="150"></a>
-
-## Community
-
-Keep track of development and community news.
-
-* Participate on the [Roots Discourse](https://discourse.roots.io/)
-* Follow [@rootswp on Twitter](https://twitter.com/rootswp)
-* Read and subscribe to the [Roots Blog](https://roots.io/blog/)
-* Subscribe to the [Roots Newsletter](https://roots.io/subscribe/)
-* Listen to the [Roots Radio podcast](https://roots.io/podcast/)
-
 ## New Additions in this Fork
 
 ### Structure
@@ -100,7 +69,5 @@ Keep track of development and community news.
 ### Opinionated Changes
 * Uses Zurb Foundation by default
 * Removes jQuery by default
-* CSS is loaded async with loadCSS
 * Polyfill JS loaded as needed
 * Custom login page styles in `assets/styles/molecules/_login.scss`
-* Functions to output images or background images with srcset and lazyloading via Lazysizes JS

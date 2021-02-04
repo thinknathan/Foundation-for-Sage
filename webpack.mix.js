@@ -24,8 +24,7 @@ mix.setPublicPath('./dist')
 
 mix.sass('assets/styles/app.main.scss', 'styles');
 
-mix.js('assets/scripts/app.main.js', 'scripts')
-   .js('assets/scripts/app.priority.js', 'scripts');
+mix.js('assets/scripts/app.main.js', 'scripts');
 
 mix.copyWatched('assets/images/**', 'dist/images')
    .copyWatched('assets/fonts/**', 'dist/fonts');

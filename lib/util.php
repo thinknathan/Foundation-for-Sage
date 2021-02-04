@@ -174,39 +174,14 @@ function is_paginated_post() {
 
 
 /**
- * Outputs lazyloaded background image with srcset
- * Requires lazysizes and lazysizes-bgset
- */
-function get_bgset($attachment_id, $size) {
-  $bgset = wp_get_attachment_image_srcset($attachment_id, $size);
-  // Sometimes wp_get_attachment_image_srcset silently fails
-  // So here is a manual fallback to wp_get_attachment_image_src
-  if ($bgset === false) {
-    $bgset = wp_get_attachment_image_src($attachment_id, $size)[0];
-  }
-  return ' data-bgset="' . $bgset . '" data-sizes="auto" ';
-}
-
-
-/**
- * Outputs image run through filter_images
- */
-function get_image( $image, $size ) {
-  return Extras\filter_images( wp_get_attachment_image( $image, $size ) );
-}
-
-
-/**
  * Outputs image from local Assets folder
  */
 function local_image($filename, $width = '', $height = '', $alt = '', $classes = '') {
-  return Extras\filter_images( 
-      '<img src="'
+  return '<img src="'
       . Assets\asset_path('images/' . $filename) . '"'
       . ' class="' . $classes . '"'
       . ' width="' . $width . '"'
       . ' height="' . $height . '"'
       . ' alt="' . $alt . '"'
-      . '>'
-    );
+      . '>';
 }

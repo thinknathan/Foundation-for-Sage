@@ -15,29 +15,23 @@ function setup() {
   // Custom logo support
   //add_theme_support( 'custom-logo' );
 
-  // Make theme available for translation
-  // Community translations can be found at https://github.com/roots/sage-translations
-  //load_theme_textdomain('sage', get_template_directory() . '/lang');
-  
-  // Enable features from Soil when plugin is activated
-  // https://roots.io/plugins/soil/
-  add_theme_support('soil-clean-up');
-  add_theme_support('soil-nice-search');
-  add_theme_support('soil-disable-trackbacks');
-  add_theme_support('soil-disable-asset-versioning');
-  
   // Enable features from Abettor plugin
   // https://github.com/thinknathan/wp-abettor
-  add_theme_support('abet-clean-admin-dashboard');
-  add_theme_support('abet-demarcate-development');
-  add_theme_support('abet-disable-admin-bar');
-  add_theme_support('abet-disable-backend-admin-bar');
-  add_theme_support('abet-disable-comments');
-  add_theme_support('abet-gravity-forms-setup');
-  add_theme_support('abet-gravity-forms-to-footer');
-  add_theme_support('abet-tinymce-clean-paste');
-  add_theme_support('abet-add-logout-link-admin-sidebar');
-  add_theme_support('abet-add-view-site-admin-sidebar');
+  add_theme_support('abet-clean-up'); // Cleaner WordPress markup
+  add_theme_support('abet-nice-search');  // Convert search results from /?s=query to /search/query/
+  add_theme_support('abet-disable-trackbacks'); // Disable trackbacks
+  add_theme_support('abet-disable-asset-versioning'); // Disable asset versioning
+  add_theme_support('abet-clean-admin-dashboard');  // Remove default dash widgets
+  add_theme_support('abet-demarcate-development');  // Changes favicon of development sites
+  add_theme_support('abet-disable-admin-bar');  // Hide top bar on front-end
+  add_theme_support('abet-disable-backend-admin-bar'); // Hide top bar on back-end
+  add_theme_support('abet-disable-comments'); // Turn off comments and back-end widgets
+  add_theme_support('abet-gravity-forms-setup'); // Gravity Forms HTML5 output on & CSS output off
+  add_theme_support('abet-gravity-forms-to-footer'); // Move Gravity Forms injected scripts to the footer
+  add_theme_support('abet-tinymce-clean-paste'); //Remove cruft from text when pasting into the TinyMCE editor
+  add_theme_support('abet-add-logout-link-admin-sidebar');  // Adds a Logout link to the admin sidebar
+  add_theme_support('abet-add-view-site-admin-sidebar');  // Adds a View Site link to the admin sidebar  
+
 
   // Disable custom colours in block editor
   // https://developer.wordpress.org/block-editor/developers/themes/theme-support/
@@ -138,7 +132,6 @@ function allowed_block_types( $allowed_blocks, $post ) {
     'core/list',
     'core/quote',
     'core/button',
-    //'core/shortcode',
     'core/embed',
     'core-embed/youtube',
     'core-embed/vimeo',
@@ -287,9 +280,6 @@ function js_assets() {
     wp_enqueue_script('comment-reply');
   }
 
-  // Add Priority script
-  wp_enqueue_script('sage/js/priority', Assets\asset_path('scripts/app.priority.js'), array(), null, false);
-
   // Add Main script
   wp_enqueue_script('sage/js/main', Assets\asset_path('scripts/app.main.js'), array(), null, false);
   
@@ -299,21 +289,6 @@ function js_assets() {
   }
 }
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\js_assets', 100);
-
-
-/**
- * Inline CSS in Head
- * Before other assets have been queued
- */
-function inline_assets_head_before() {
-  $fileToInline = get_template_directory() . '/dist/styles/' . basename(Assets\asset_path('styles/critical.css'));
-  if ( file_exists($fileToInline) ) {
-    echo '<style>';
-    readfile($fileToInline);
-    echo '</style>';
-  }
-}
-add_action('wp_head', __NAMESPACE__ . '\\inline_assets_head_before', 1);
 
 
 /**

@@ -14,14 +14,15 @@ use Roots\Sage\Util;
       </div>
     <![endif]-->
     <?php
+      do_action('get_header');
       get_template_part('templates/header', 'site');
       get_template_part('templates/offcanvas');
     ?>
     <div class="content content--site" role="document">
       <?php
-        if (Setup\display_breadcrumbs()) :
+        if (Setup\display_breadcrumbs()) {
           Util\breadcrumbs();
-        endif;
+        }
       ?>
       <main class="main <?php if (Setup\display_sidebar()): ?>main--has-sidebar<?php endif; ?>" id="main">
         <?php include Wrapper\template_path(); ?>
@@ -33,6 +34,7 @@ use Roots\Sage\Util;
       <?php endif; ?>
     </div><!-- /.content -->
     <?php
+      do_action('get_footer');
       get_template_part('templates/footer', 'site');
       get_template_part('templates/menu', 'bottombar');
       wp_footer();

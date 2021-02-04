@@ -7,6 +7,13 @@ import ready from './util/ready';
 import browserSupportsAllFeatures from './util/browserSupportsAllFeatures';
 import loadScript from './util/loadScript';
 
+/*
+ * Remove .no-js class from HTML tag
+ */
+(function (document) {
+  document.getElementsByTagName('html')[0].classList.remove('no-js');
+})(document);
+
 /** Populate Router instance with DOM routes */
 const routes = new Router({
   // All pages

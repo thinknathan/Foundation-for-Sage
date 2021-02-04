@@ -34,7 +34,6 @@
   },
   "dependencies": {
     "aos": "~2",
-    "fg-loadcss": "~2",
     "foundation-sites": "^6.6.3",
     "fr-accordion": "^1.0.6",
     "fr-dialogmodal": "^1.0.4",
@@ -44,9 +43,7 @@
     "gravity-forms-scss": "git+https://git@github.com/wpsitecare/gravity-forms-scss.git",
     "headroom.js": "^0.10.3",
     "idle-until-urgent": "^1.0.0",
-    "idlize": "^0.1.1",
     "js-cookie": "^2.2.1",
-    "lazysizes": "~5",
     "metismenujs": "^1.0.3",
     "pikaday": "^1.8.0",
     "rellax": "^1.12.1",

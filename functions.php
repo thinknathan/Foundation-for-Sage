@@ -10,17 +10,15 @@
  * @link https://github.com/roots/sage/pull/1042
  */
 $sage_includes = [
-  'lib/assets.php',       // Scripts and stylesheets
-  'lib/extras.php',       // Custom functions
-  'lib/util.php',         // Utilities
-  'lib/setup.php',        // Theme setup
-  'lib/titles.php',       // Page titles
-  'lib/gravity-forms.php',
-  'lib/woocommerce.php',
-  'lib/advanced-custom-fields.php',
-  'lib/yoast.php',
-  'lib/lazysizes.php',
-  'lib/wrapper.php'       // Theme wrapper class
+  'lib/assets.php',             // Scripts and stylesheets
+  'lib/extras.php',             // Custom functions
+  'lib/util.php',               // Utilities
+  'lib/setup.php',              // Theme setup
+  'lib/titles.php',             // Page titles
+  'lib/wrapper.php',            // Theme wrapper class
+  'lib/gravity-forms.php',      // Gravity Forms plugin specific
+  'lib/woocommerce.php',        // WooCommerce plugin specific
+  'lib/yoast.php'               // Yoast SEO plugin specific
 ];
 
 foreach ($sage_includes as $file) {
