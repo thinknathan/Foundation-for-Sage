@@ -1,5 +1,10 @@
 /* Structure based on Robert Rendle's The “Other” Interface: Atomic Design With Sass */
 
+// Temporary hack to workaround these classes
+// not existing when optionally extended
+.cite-block {}
+.code-inline {}
+
 /* ==========================================================================
  * Utilities
  * Definition: the basic plumbing of the website

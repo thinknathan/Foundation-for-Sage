@@ -1,6 +1,5 @@
 const webpack = require('webpack');
 const mix = require('laravel-mix');
-            require('laravel-mix-versionhash');
             require('laravel-mix-copy-watched');
 
 /*
@@ -34,7 +33,7 @@ mix.copyWatched('assets/images/**', 'dist/images')
 // Ignore Pikaday.js file trying to import Moment.js
 mix.webpackConfig({
   plugins: [
-    new webpack.IgnorePlugin(/moment/),
+    new webpack.IgnorePlugin({resourceRegExp: /moment/}),
   ],
 });
 
@@ -47,9 +46,6 @@ mix.options({
 mix.sourceMaps(false, 'source-map');
 
 if (mix.inProduction()) {
-  // Hash and version files in production.
-  mix.versionHash();
-
   // Make babel parse packages in node_modules
   mix.webpackConfig({
     module: {
@@ -67,18 +63,4 @@ if (mix.inProduction()) {
       ]
     }
   });
-
-  // PostCSS Plugins
-  /*
-  mix.options({
-    postCss: [
-      require('postcss-discard-duplicates'),
-      require('postcss-font-magician')({
-        display: 'swap',
-        hosted: ['assets/fonts', 'dist/fonts'],
-        protocol: 'https:',
-      }),
-    ],
-  });
-  */
 }

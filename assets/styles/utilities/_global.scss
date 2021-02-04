@@ -97,7 +97,7 @@ $grid-container-padding: $grid-padding-gutters;
 $grid-container-max: $global-width;
 $xy-block-grid-max: 8;
 
-@import '../../node_modules/foundation-sites/scss/util/util';
+@import '../../../node_modules/foundation-sites/scss/util/util';
 @include add-foundation-colors;
 @include foundation-normalize;
 

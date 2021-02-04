@@ -40,31 +40,31 @@
   }
 
   .gform_card_icon_amex {
-    background-image: url("../../node_modules/gravity-forms-scss/images/cards/amex.svg");
+    background-image: url("../../../node_modules/gravity-forms-scss/images/cards/amex.svg");
   }
 
   .gform_card_icon_discover {
-    background-image: url("../../node_modules/gravity-forms-scss/images/cards/discover.svg");
+    background-image: url("../../../node_modules/gravity-forms-scss/images/cards/discover.svg");
   }
 
   .gform_card_icon_mastercard {
-    background-image: url("../../node_modules/gravity-forms-scss/images/cards/mastercard.svg");
+    background-image: url("../../../node_modules/gravity-forms-scss/images/cards/mastercard.svg");
   }
 
   .gform_card_icon_visa {
-    background-image: url("../../node_modules/gravity-forms-scss/images/cards/visa.svg");
+    background-image: url("../../../node_modules/gravity-forms-scss/images/cards/visa.svg");
   }
 
   .gform_card_icon_jcb {
-    background-image: url("../../node_modules/gravity-forms-scss/images/cards/jcb.svg");
+    background-image: url("../../../node_modules/gravity-forms-scss/images/cards/jcb.svg");
   }
 
   .gform_card_icon_maestro {
-    background-image: url("../../node_modules/gravity-forms-scss/images/cards/maestro.svg");
+    background-image: url("../../../node_modules/gravity-forms-scss/images/cards/maestro.svg");
   }
 
   .ginput_card_security_code_icon {
-    background-image: url("../../node_modules/gravity-forms-scss/images/cards/security-code.svg");
+    background-image: url("../../../node_modules/gravity-forms-scss/images/cards/security-code.svg");
 
     @include xy-cell($size: 2 of 12, $gutters: 0); // Should be right-aligned
   }
