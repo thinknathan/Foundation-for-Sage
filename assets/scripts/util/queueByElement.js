@@ -14,7 +14,7 @@ import forEach from './forEach';
 import isVisible from './isVisible';
 import isInViewport from './isInViewport';
 import makeIdleGetter from 'idle-until-urgent';
-import ScrollWatcher from 'scroll-watcher';
+import 'scroll-watcher';
 
 export default function (elemQuery, fn, singular) {
   var init = function (elem) {
