@@ -19,7 +19,7 @@
     "browser-sync": "^2.3",
     "browser-sync-webpack-plugin": "2.3",
     "cross-env": "^7.0",
-    "eslint": "^6.5",
+    "eslint": "^7.19",
     "eslint-plugin-import": "^2.18",
     "laravel-mix": "^6.0",
     "laravel-mix-copy-watched": "^2.2.1",
@@ -42,7 +42,7 @@
     "fr-tabs": "^1.0.6",
     "glider-js": "^1.7.3",
     "gravity-forms-scss": "git+https://git@github.com/wpsitecare/gravity-forms-scss.git",
-    "headroom.js": "^0.10.3",
+    "headroom.js": "^0.12.0",
     "idle-until-urgent": "^1.0.0",
     "js-cookie": "^2.2.1",
     "metismenujs": "^1.0.3",
@@ -52,7 +52,7 @@
     "sass-hover-transition": "git+https://git@github.com/thinknathan/sass-hover-transition.git",
     "sass-inline-icons": "git+https://git@github.com/thinknathan/sass-inline-icons.git",
     "sass-ripple": "git+https://git@github.com/thinknathan/sass-ripple.git",
-    "scroll-watcher": "^1.3.1",
+    "scroll-watcher": "~2",
     "stickybits": "^3.7.7",
     "tobii": "^2.0.0-alpha"
   }
