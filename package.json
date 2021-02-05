@@ -52,7 +52,7 @@
     "sass-hover-transition": "git+https://git@github.com/thinknathan/sass-hover-transition.git",
     "sass-inline-icons": "git+https://git@github.com/thinknathan/sass-inline-icons.git",
     "sass-ripple": "git+https://git@github.com/thinknathan/sass-ripple.git",
-    "scroll-watcher": "^1.3.1",
+    "scroll-watcher": "^2.0.0",
     "stickybits": "^3.7.7",
     "tobii": "^2.0.0-alpha"
   }
