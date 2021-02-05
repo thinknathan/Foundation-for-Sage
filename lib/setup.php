@@ -20,7 +20,6 @@ function setup() {
   add_theme_support('abet-clean-up'); // Cleaner WordPress markup
   add_theme_support('abet-nice-search');  // Convert search results from /?s=query to /search/query/
   add_theme_support('abet-disable-trackbacks'); // Disable trackbacks
-  add_theme_support('abet-disable-asset-versioning'); // Disable asset versioning
   add_theme_support('abet-clean-admin-dashboard');  // Remove default dash widgets
   add_theme_support('abet-demarcate-development');  // Changes favicon of development sites
   add_theme_support('abet-disable-admin-bar');  // Hide top bar on front-end
