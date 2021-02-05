@@ -15,6 +15,7 @@
     "test": "run-s -c lint"
   },
   "devDependencies": {
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "browser-sync": "^2.3",
     "browser-sync-webpack-plugin": "2.3",
     "cross-env": "^7.0",

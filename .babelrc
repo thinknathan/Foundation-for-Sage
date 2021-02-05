@@ -9,5 +9,6 @@
                 "targets": "last 1 version, > 1%"
             }
         ]
-    ]
+    ],
+    "plugins": ["@babel/plugin-syntax-dynamic-import"]
 }
