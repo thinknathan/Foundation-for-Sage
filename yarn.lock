@@ -1632,6 +1632,11 @@ babel-plugin-dynamic-import-node@^2.3.3:
   dependencies:
     object.assign "^4.1.0"
 
+babel-plugin-syntax-dynamic-import@^6.18.0:
+  version "6.18.0"
+  resolved "https://registry.yarnpkg.com/babel-plugin-syntax-dynamic-import/-/babel-plugin-syntax-dynamic-import-6.18.0.tgz#8d6a26229c83745a9982a441051572caa179b1da"
+  integrity sha1-jWomIpyDdFqZgqRBBRVyyqF5sdo=
+
 backo2@1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/backo2/-/backo2-1.0.2.tgz#31ab1ac8b129363463e35b3ebb69f4dfcfba7947"
@@ -7243,11 +7248,6 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
     hash-base "^3.0.0"
     inherits "^2.0.1"
 
-rqrauhvmra__tobi@^1.8.1:
-  version "1.8.1"
-  resolved "https://registry.yarnpkg.com/rqrauhvmra__tobi/-/rqrauhvmra__tobi-1.8.1.tgz#5df0891f7595d625da12b5eaea38a2ab78816857"
-  integrity sha512-3dLMftgt3CHjk64rLy/qMqUnVEHBXZQa3q9TInaGUFd16MHjOkWn3PjijeaA8uTCahlEN6Pe6nLEHMlIWdWlMw==
-
 run-async@^2.4.0:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/run-async/-/run-async-2.4.1.tgz#8440eccf99ea3e70bd409d49aab88e10c189a455"
@@ -8271,6 +8271,11 @@ to-regex@^3.0.1, to-regex@^3.0.2:
     extend-shallow "^3.0.2"
     regex-not "^1.0.2"
     safe-regex "^1.1.0"
+
+tobii@^2.0.0-alpha:
+  version "2.0.0-alpha"
+  resolved "https://registry.yarnpkg.com/tobii/-/tobii-2.0.0-alpha.tgz#90b6c4961046e453e16b2ca3c6803499b4352270"
+  integrity sha512-pPBdmay5bCMO4wW/8JTc2eSsS2ivfHmtCp5ypy/q6B9czL4EcnlRR7G08shwxgB8UGBglTdzT4rxKdJtPXjZCQ==
 
 toidentifier@1.0.0:
   version "1.0.0"

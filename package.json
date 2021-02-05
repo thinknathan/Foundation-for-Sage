@@ -48,12 +48,12 @@
     "metismenujs": "^1.0.3",
     "pikaday": "^1.8.0",
     "rellax": "^1.12.1",
-    "rqrauhvmra__tobi": "^1.8.1",
     "sass-divider": "git+https://git@github.com/thinknathan/sass-divider.git",
     "sass-hover-transition": "git+https://git@github.com/thinknathan/sass-hover-transition.git",
     "sass-inline-icons": "git+https://git@github.com/thinknathan/sass-inline-icons.git",
     "sass-ripple": "git+https://git@github.com/thinknathan/sass-ripple.git",
     "scroll-watcher": "^1.3.1",
-    "stickybits": "^3.7.7"
+    "stickybits": "^3.7.7",
+    "tobii": "^2.0.0-alpha"
   }
 }

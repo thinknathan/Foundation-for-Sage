@@ -4,7 +4,7 @@ import Rellax from 'rellax';
 import Headroom from 'headroom.js';
 import Glider from 'glider-js';
 import Fraccordion from 'fr-accordion';
-import Tobi from 'rqrauhvmra__tobi';
+import Tobi from 'tobii';
 import Frdialogmodal from 'fr-dialogmodal';
 import stickybits from 'stickybits';
 import MetisMenu from 'metismenujs';
