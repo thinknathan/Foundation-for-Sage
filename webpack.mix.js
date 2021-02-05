@@ -1,3 +1,7 @@
+// Set public path if it's something other than root
+const publicPath = '/';
+// Set theme name
+const themeName = '';
 const webpack = require('webpack');
 const mix = require('laravel-mix');
             require('laravel-mix-copy-watched');
@@ -14,15 +18,22 @@ const mix = require('laravel-mix');
  */
 
 mix.setPublicPath('./dist')
+   .webpackConfig({
+      output: {
+        publicPath: `${publicPath}app/themes/${themeName}/dist/`,
+        chunkFilename: 'scripts/chunks/[name].[chunkhash].js'
+      }
+   })
    .browserSync({
-      proxy: 'http://localhost/xxx/public_html/',
+      proxy: `localhost${publicPath}`,
       files: [
         '**/*.php',
         `dist/(styles|scripts)/**/*.(css|js)`,
       ],
     });
 
-mix.sass('assets/styles/app.main.scss', 'styles');
+mix.sass('assets/styles/app.main.scss', 'styles')
+   .sass('assets/styles/editor.scss', 'styles');
 
 mix.js('assets/scripts/app.main.js', 'scripts');
 
