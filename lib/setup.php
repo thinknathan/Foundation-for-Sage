@@ -41,6 +41,9 @@ function setup() {
   // Disable custom font sizes in block editor
   add_theme_support( 'disable-custom-font-sizes' );
   add_theme_support( 'editor-font-sizes', [] );
+  
+  // Add theme support for Wide Alignment
+  add_theme_support('align-wide');
 
   // Add responsive embed support in block editor
   add_theme_support( 'responsive-embeds' );
@@ -259,20 +262,20 @@ function display_breadcrumbs() {
 
 
 /**
- * Add Theme CSS assets
+ * Add CSS assets to front-end
  */
 function css_assets() {
   // Add Main CSS
-  wp_enqueue_style('sage/css', Assets\asset_path('styles/app.main.css'), false, null);
+  wp_enqueue_style('sage/css/main', Assets\asset_path('styles/app.main.css'), false, null);
 
   // Remove Gutenberg CSS
-  wp_dequeue_style( 'wp-block-library' );
+  //wp_dequeue_style( 'wp-block-library' );
 }
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\css_assets', 90);
 
 
 /**
- * Add Theme JS assets
+ * Add JS assets to front-end
  */
 function js_assets() {
   // Add WP Comments JS
@@ -295,6 +298,16 @@ add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\js_assets', 100);
  * Login page assets
  */
 function login_assets() {
-  wp_enqueue_style('sage/css', Assets\asset_path('styles/app.main.css'), false, null);
+  wp_enqueue_style('sage/css/main', Assets\asset_path('styles/app.main.css'), false, null);
 }
 add_action('login_enqueue_scripts', __NAMESPACE__ . '\\login_assets', 10);
+
+
+/**
+ * Add assets to block editor
+ */
+function block_editor_assets() {
+  // Add editor CSS
+  wp_enqueue_style('sage/css/editor', Assets\asset_path('styles/editor.css'), false, null);
+}
+add_action('enqueue_block_editor_assets', __NAMESPACE__ . '\\block_editor_assets', 100);
