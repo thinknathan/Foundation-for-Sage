@@ -28,7 +28,7 @@
     "resolve-url-loader": "3.1",
     "rimraf": "^3.0",
     "sass": "^1.32",
-    "sass-loader": "10.*",
+    "sass-loader": "11.*",
     "stylelint": "^13.10",
     "stylelint-config-standard": "^20.0",
     "vue-template-compiler": "^2.6"
