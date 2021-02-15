@@ -53,7 +53,7 @@
     "sass-inline-icons": "git+https://git@github.com/thinknathan/sass-inline-icons.git",
     "sass-ripple": "git+https://git@github.com/thinknathan/sass-ripple.git",
     "scroll-watcher": "~2",
-    "stickybits": "^3.7.7",
+    "stickybits": "^3.7.9",
     "tobii": "^2.0.0-alpha"
   }
 }
