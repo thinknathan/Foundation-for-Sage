@@ -3905,10 +3905,10 @@ get-value@^2.0.3, get-value@^2.0.6:
   resolved "https://registry.yarnpkg.com/get-value/-/get-value-2.0.6.tgz#dc15ca1c672387ca76bd37ac0a395ba2042a2c28"
   integrity sha1-3BXKHGcjh8p2vTesCjlbogQqLCg=
 
-glider-js@^1.7.3:
-  version "1.7.3"
-  resolved "https://registry.yarnpkg.com/glider-js/-/glider-js-1.7.3.tgz#4d397fb9de0870753953244d146a94248d4eb394"
-  integrity sha512-smiepWalDyBAUtOH6Ev06fHlcQ128OUzGLx97E/9NcR8/fR+uALUVSMytVN6z5pIqO4kDGTzINniqZV2yMf8bg==
+glider-js@^1.7.5:
+  version "1.7.5"
+  resolved "https://registry.yarnpkg.com/glider-js/-/glider-js-1.7.5.tgz#af61a66c09f0be1dec1c43b74f5c7316244871e7"
+  integrity sha512-6aPhwEZmyYj9z4ucg2ggN6s4i1OtBa7/+IS7KBKYE4xXleuvX81W/l5ccfMOFFIS0eWLl3LRbWqRDhdF3kMp/g==
 
 glob-parent@^3.1.0:
   version "3.1.0"
