@@ -7236,9 +7236,9 @@ schema-utils@^3.0.0:
     ajv-keywords "^3.5.2"
 
 scroll-watcher@~2:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/scroll-watcher/-/scroll-watcher-2.0.0.tgz#9c93a487b2e00923aad64b38e08418793a678157"
-  integrity sha512-L2lLTlHQcHBxg3Ta9EuoAGsR9EdtcHe+O1uT7Fp+4X2XMLlgRIEv7MTnrAZjEP8fnqpFNFHz4rOBBm5RTPC6FA==
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/scroll-watcher/-/scroll-watcher-2.1.0.tgz#e7c1341db3ad6cdaae00021efb2cbf600bcbc267"
+  integrity sha512-u2boOvJSUwN/yFgBAuR/ufcIYpfFnskaPjTXMVGTj7Mf8szeiaCHGO29PPqBKVAvsy9IL1xuCgyV9Hz8mvHYhg==
 
 select-hose@^2.0.0:
   version "2.0.0"
