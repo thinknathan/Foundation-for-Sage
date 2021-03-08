@@ -29,7 +29,7 @@
     "rimraf": "^3.0",
     "sass": "^1.32",
     "sass-loader": "10.*",
-    "stylelint": "^13.11",
+    "stylelint": "^13.12",
     "stylelint-config-standard": "^20.0",
     "vue-template-compiler": "^2.6"
   },
