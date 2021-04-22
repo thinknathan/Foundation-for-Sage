@@ -53,16 +53,16 @@ $body-font-color: $black;
 /*
  * Material Design Shadow Depth
  */
-$shadow-depth1: 0 1px 3px rgba($black, 0.12),
-0 1px 2px rgba($black, 0.24);
-$shadow-depth2: 0 3px 6px rgba($black, 0.16),
-0 3px 6px rgba($black, 0.23);
-$shadow-depth3: 0 10px 20px rgba($black, 0.19),
-0 6px 6px rgba($black, 0.23);
-$shadow-depth4: 0 14px 28px rgba($black, 0.25),
-0 10px 10px rgba($black, 0.22);
-$shadow-depth5: 0 19px 38px rgba($black, 0.30),
-0 15px 12px rgba($black, 0.22);
+// Shadow 2dp
+$shadow-depth1: 0 2px 2px 0 rgba($black,0.14), 0 3px 1px -2px rgba($black,0.12), 0 1px 5px 0 rgba($black,0.20);
+// Shadow 4dp
+$shadow-depth2: 0 4px 5px 0 rgba($black,0.14), 0 1px 10px 0 rgba($black,0.12), 0 2px 4px -1px rgba($black,0.20);
+// Shadow 8dp
+$shadow-depth3: 0 8px 10px 1px rgba($black,0.14), 0 3px 14px 2px rgba($black,0.12), 0 5px 5px -3px rgba($black,0.20);
+// Shadow 12dp
+$shadow-depth4: 0 12px 17px 2px rgba($black,0.14), 0 5px 22px 4px rgba($black,0.12), 0 7px 8px -4px rgba($black,0.20);
+// Shadow 16dp
+$shadow-depth5: 0 16px 24px 2px rgba($black,0.14), 0 6px 30px 5px rgba($black,0.12), 0 8px 10px -5px rgba($black,0.20);
 
 /*
  * Breakpoints
