@@ -44,6 +44,10 @@ function setup() {
   // Add theme support for Wide Alignment
   add_theme_support('align-wide');
 
+  // Remove support for block patterns
+  // https://make.wordpress.org/core/2020/07/16/block-patterns-in-wordpress-5-5/
+  remove_theme_support( 'core-block-patterns' );
+
   // Add responsive embed support in block editor
   add_theme_support( 'responsive-embeds' );
 
