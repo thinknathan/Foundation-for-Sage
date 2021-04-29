@@ -1,0 +1,67 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "13:00"
+  open-pull-requests-limit: 10
+  assignees:
+  - thinknathan
+  ignore:
+  - dependency-name: laravel-mix
+    versions:
+    - 6.0.18
+  - dependency-name: eslint
+    versions:
+    - 6.8.0
+    - 7.19.0
+    - 7.22.0
+    - 7.23.0
+    - 7.24.0
+  - dependency-name: stylelint-config-standard
+    versions:
+    - 21.0.0
+  - dependency-name: sass-loader
+    versions:
+    - 10.1.1
+    - 11.0.0
+    - 11.0.1
+  - dependency-name: headroom.js
+    versions:
+    - 0.12.0
+  - dependency-name: scroll-watcher
+    versions:
+    - 2.0.0
+  - dependency-name: elliptic
+    versions:
+    - 6.5.3
+    - 6.5.4
+  - dependency-name: sass
+    versions:
+    - 1.32.5
+    - 1.32.6
+  - dependency-name: stylelint
+    versions:
+    - 13.9.0
+  - dependency-name: ini
+    versions:
+    - 1.3.8
+  - dependency-name: cross-env
+    versions:
+    - 7.0.3
+  - dependency-name: laravel-mix-versionhash
+    versions:
+    - 1.1.7
+  - dependency-name: eslint-plugin-import
+    versions:
+    - 2.22.1
+  - dependency-name: foundation-sites
+    versions:
+    - 6.6.3
+  - dependency-name: lazysizes
+    versions:
+    - 5.2.2
+  - dependency-name: postcss-font-magician
+    versions:
+    - 2.3.1
