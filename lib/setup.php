@@ -132,6 +132,8 @@ add_action('after_setup_theme', __NAMESPACE__ . '\\setup');
 
 /**
  * Register Gutenberg blocks
+ * Credit to David Bushell
+ * @link https://dbushell.com/2020/10/05/wordpress-gutenberg-and-tips-for-acf-blocks/
  */
 function my_acf_init() {
 
