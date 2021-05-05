@@ -114,7 +114,7 @@ export default {
         if ((up - down) < 150) {
           link.click();
         }
-      }
+      };
     });
 
 
@@ -154,10 +154,10 @@ export default {
      * Init Privacy Callout
      */
     queueByElement('#callout--privacy', function () {
-      import('../components/privacy-banner.js').then(init => init.default.call(this));
+      import('../components/privacy-banner.js').then(init => init.default.call(this)); // jshint ignore:line
     }, true);
 
-    
+
     /**
      * Init Relax
      * Parallax effects
@@ -165,7 +165,7 @@ export default {
      */
     let rellaxElement = '.rellax';
     queueByElement(rellaxElement, function () {
-      import('../components/rellax.js').then(init => init.default.call(this));
+      import('../components/rellax.js').then(init => init.default.call(this)); // jshint ignore:line
     });
 
 
@@ -176,7 +176,7 @@ export default {
      */
     let carouselElement = '.carousel';
     queueByElement(carouselElement, function () {
-      import('../components/carousel.js').then(init => init.default.call(this));
+      import('../components/carousel.js').then(init => init.default.call(this)); // jshint ignore:line
     });
 
 
@@ -187,7 +187,7 @@ export default {
      */
     let accordionElement = '.accordion';
     queueByElement(accordionElement, function () {
-      import('../components/accordion.js').then(init => init.default.call(this, accordionElement));
+      import('../components/accordion.js').then(init => init.default.call(this, accordionElement)); // jshint ignore:line
     });
 
 
@@ -198,7 +198,7 @@ export default {
      */
     let lightboxElement = '.lightbox';
     queueByElement(lightboxElement, function () {
-      import('../components/lightbox.js').then(init => init.default.call(this));
+      import('../components/lightbox.js').then(init => init.default.call(this)); // jshint ignore:line
     });
 
 
@@ -209,7 +209,7 @@ export default {
      */
     let dialogElement = '.dialogmodal';
     queueByElement(dialogElement, function () {
-      import('../components/dialogmodal.js').then(init => init.default.call(this, dialogElement));
+      import('../components/dialogmodal.js').then(init => init.default.call(this, dialogElement)); // jshint ignore:line
     });
 
 
@@ -220,7 +220,7 @@ export default {
      */
     let tabsElement = '.tabs';
     queueByElement(tabsElement, function () {
-      import('../components/tabs.js').then(init => init.default.call(this, tabsElement));
+      import('../components/tabs.js').then(init => init.default.call(this, tabsElement)); // jshint ignore:line
     });
 
 
@@ -231,7 +231,7 @@ export default {
      */
     let datePickerElement = '#datepicker';
     queueByElement(datePickerElement, function () {
-      import('../components/calendar.js').then(init => init.default.call(this));
+      import('../components/calendar.js').then(init => init.default.call(this)); // jshint ignore:line
     });
 
 
@@ -243,7 +243,7 @@ export default {
      */
     let shareContainer = '.social-share';
     queueByElement(shareContainer, function () {
-      import('../components/social-share.js').then(init => init.default.call(this));
+      import('../components/social-share.js').then(init => init.default.call(this)); // jshint ignore:line
     });
   },
 };

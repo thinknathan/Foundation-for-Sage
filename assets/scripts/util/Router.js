@@ -35,13 +35,15 @@ class Router {
       .map(camelCase)
       .forEach((className) => {
         if (context.routes.includes(className)) {
+          /* jshint ignore:start */
           import('../routes/' + className).then(dynamicImport => {
             if (dynamicImport.default.init) dynamicImport.default.init();
             if (dynamicImport.default.finalize) dynamicImport.default.finalize();
           });
+          /* jshint ignore:end */
         }
       });
   }
 }
 
-export default Router
+export default Router;

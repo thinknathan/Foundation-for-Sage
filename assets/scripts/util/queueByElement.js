@@ -42,7 +42,7 @@ export default function (elemQuery, fn, singular) {
           functionInQueue();
         });
     }
-  }
+  };
 
   if (singular) {
     let elem = document.querySelector(elemQuery);
