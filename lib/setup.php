@@ -137,58 +137,58 @@ add_action('after_setup_theme', __NAMESPACE__ . '\\setup');
  */
 function my_acf_init() {
 
-  if( function_exists('acf_update_setting') ) {
-    //acf_update_setting('google_api_key', '');
-  }
+ if( function_exists('acf_update_setting') ) {
+   //acf_update_setting('google_api_key', '');
+ }
 
-  if( function_exists('acf_register_block') ) {
-    // Get an array of theme PHP templates
-    $theme = wp_get_theme();
-    $files = $theme->get_files('php', 2, false);
+ if( function_exists('acf_register_block') ) {
+   // Get an array of theme PHP templates
+   $theme = wp_get_theme();
+   $files = $theme->get_files('php', 2, false);
 
-    // Iterate over and ignore non-block templates
-    foreach ($files as $filename => $filepath) {
-      if (preg_match('#^templates/(block|container)s?/#', $filename, $matches) !== 1) {
-        continue;
-      }
-      // Read the PHP comment meta data for the block
-      $meta = get_file_data($filepath, array(
-        'name'        => 'Block Name',
-        'description' => 'Block Description',
-        'post_types'  => 'Post Types',
-        'mode'        => 'Block Mode',
-        'align'       => 'Block Align',
-        'icon'        => 'Block Icon',
-      ));
-      // Skip template if a name is not provided
-      if (empty($meta['name'])) {
-        continue;
-      }
-      // Convert the post types to an array (or use defaults)
-      $post_types = array_filter(
-        array_map('trim', explode(',', $meta['post_types']))
-      );
-      if (empty($post_types)) {
-        $post_types = array('page', 'post');
-      }
-      // Register the ACF block using the meta data
-      acf_register_block_type(array(
-        'name'              => "{$matches[1]}_" . sanitize_title($meta['name']),
-        'title'             => $meta['name'],
-        'description'       => $meta['description'],
-        'category'          => "theme_{$matches[1]}s",
-        'post_types'        => $post_types,
-        'render_template'   => $filepath,
-        'icon'              => $meta['icon'],
-        'supports'          => array(
-          'align'           => boolval($meta['align']),
-          'mode'            => $meta['mode'] !== 'false',
-          'customClassName' => false,
-          'jsx' 			      => true,
-        ),
-      ));
-    }
-  }
+   // Iterate over and ignore non-block templates
+   foreach ($files as $filename => $filepath) {
+     if (preg_match('#^templates/(block|container)s?/#', $filename, $matches) !== 1) {
+       continue;
+     }
+     // Read the PHP comment meta data for the block
+     $meta = get_file_data($filepath, [
+       'name'        => 'Block Name',
+       'description' => 'Block Description',
+       'post_types'  => 'Post Types',
+       'mode'        => 'Block Mode',
+       'align'       => 'Block Align',
+       'icon'        => 'Block Icon',
+       'jsx'         => 'Allow Inner Blocks',
+     ]);
+     // Skip template if a name is not provided
+     if (empty($meta['name'])) {
+       continue;
+     }
+     // Convert the post types to an array (or use defaults)
+     $post_types = array_filter(
+       array_map('trim', explode(',', $meta['post_types']))
+     );
+     if (empty($post_types)) {
+       $post_types = ['page', 'post'];
+     }
+     // Register the ACF block using the meta data
+     acf_register_block_type([
+       'name'              => "{$matches[1]}_" . sanitize_title($meta['name']),
+       'title'             => $meta['name'],
+       'description'       => $meta['description'],
+       'category'          => "theme_{$matches[1]}s",
+       'post_types'        => $post_types,
+       'render_template'   => $filepath,
+       'icon'              => $meta['icon'],
+       'supports'          => [
+         'align'           => boolval($meta['align']),
+         'mode'            => $meta['mode'] ?? 'edit',
+         'jsx' 			      => $meta['jsx'] !== 'false',
+       ],
+     ]);
+   }
+ }
 }
 add_action('acf/init', __NAMESPACE__ . '\\my_acf_init');
 
