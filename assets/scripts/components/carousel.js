@@ -8,7 +8,7 @@ export default function () {
     sliderDuration = 0;
   }
 
-  var carousels = [];
+  let carousels = [];
 
   let dotsEle = this.querySelector('.carousel__dots');
   let prevEle = this.querySelector('.carousel__control--prev');

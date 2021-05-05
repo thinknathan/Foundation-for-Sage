@@ -2,7 +2,7 @@ import Cookies from 'js-cookie';
 
 export default function () {
   if (!Cookies.get('privacy-is-accepted')) {
-    var acceptButton = this.querySelector('#callout--privacy__close');
+    let acceptButton = this.querySelector('#callout--privacy__close');
     this.classList.remove('callout--privacy--inactive');
     this.setAttribute('role', 'dialog');
     if (acceptButton) acceptButton.focus();

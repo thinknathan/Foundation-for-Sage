@@ -8,7 +8,7 @@ export default function (elem) {
   if (!elem) return;
 
   if (isVisible(elem)) {
-    var children = elem.getElementsByTagName('source');
+    let children = elem.getElementsByTagName('source');
     for (let i = 0; i < children.length; ++i) {
       children[i].src = children[i].getAttribute('data-src');
     }

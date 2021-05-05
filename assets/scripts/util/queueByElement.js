@@ -17,16 +17,16 @@ import makeIdleGetter from 'idle-until-urgent';
 import 'scroll-watcher';
 
 export default function (elemQuery, fn, singular) {
-  var init = function (elem) {
+  let init = function (elem) {
     if (isVisible(elem) && isInViewport(elem)) {
       // Element is in viewport, so activate it
       fn.call(elem);
       //console.log('INSTANT: ' + fn.toString().slice(0, 60) );
     } else {
-      var scroll = new ScrollWatcher().watch(elem);
+      let scroll = new ScrollWatcher().watch(elem);
 
       // Element is off-screen, so add it to the lazy queue
-      var functionInQueue = makeIdleGetter(() => {
+      let functionInQueue = makeIdleGetter(() => {
         // turn off scroll watcher
         scroll.off('enter');
         // run function
@@ -45,7 +45,7 @@ export default function (elemQuery, fn, singular) {
   }
 
   if (singular) {
-    var elem = document.querySelector(elemQuery);
+    let elem = document.querySelector(elemQuery);
     if (elem) {
       init(elem);
     }

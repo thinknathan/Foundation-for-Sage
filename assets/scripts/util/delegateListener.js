@@ -7,7 +7,7 @@
  * @param Function func         Function to run when element clicked.
  */
 export default function(elem, delegate, eventType, fn) {
-  var delegateElem = document.querySelector(delegate);
+  let delegateElem = document.querySelector(delegate);
   if (delegateElem) {
     delegateElem.addEventListener(eventType, function (event) {
       if (event.target.matches(elem)) {

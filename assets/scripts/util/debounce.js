@@ -5,15 +5,15 @@
  * @license MIT
  */
 export default function (func, wait, immediate) {
-  var timeout;
+  let timeout;
   return function () {
-    var context = this,
+    let context = this,
       args = arguments;
-    var later = function () {
+    let later = function () {
       timeout = null;
       if (!immediate) func.apply(context, args);
     };
-    var callNow = immediate && !timeout;
+    let callNow = immediate && !timeout;
     clearTimeout(timeout);
     timeout = setTimeout(later, wait);
     if (callNow) func.apply(context, args);

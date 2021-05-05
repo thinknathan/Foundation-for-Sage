@@ -4,10 +4,10 @@ export default function () {
       event.preventDefault();
       event.stopPropagation();
 
-      var target = event.target;
-      var location = target.getAttribute('href');
-      var randomNumber = Math.random() * (9999 - 1) + 1;
-      var socialWindow;
+      let target = event.target;
+      let location = target.getAttribute('href');
+      let randomNumber = Math.random() * (9999 - 1) + 1;
+      let socialWindow;
 
       // If still no location set, bail out
       if (!location) return;

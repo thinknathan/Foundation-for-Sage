@@ -28,7 +28,7 @@ export default {
      * Hide your header until you need it
      * @link https://wicky.nillia.ms/headroom.js/
      */
-    var headroomElement = '.header--site';
+    let headroomElement = '.header--site';
     queueByElement(headroomElement, function () {
       let headroom = new Headroom(this, {
         offset: 300,
@@ -62,9 +62,9 @@ export default {
      * Dropdown menu
      * @link https://github.com/onokumus/metismenujs
      */
-    var navigationElement = '#menu--primary';
+    let navigationElement = '#menu--primary';
     queueByElement(navigationElement, function () {
-      var mm1 = new MetisMenu(navigationElement).on("shown.metisMenu", function (event) {
+      let mm1 = new MetisMenu(navigationElement).on("shown.metisMenu", function (event) {
         window.addEventListener("click", function mmClick1(e) {
           if (!event.target.contains(e.target)) {
             mm1.hide(event.detail.shownElement);
@@ -74,7 +74,7 @@ export default {
       });
     });
 
-    var navigationOffcanvasElement = '#menu--offcanvas';
+    let navigationOffcanvasElement = '#menu--offcanvas';
     queueByElement(navigationOffcanvasElement, function () {
       new MetisMenu(navigationOffcanvasElement);
     });
@@ -86,13 +86,13 @@ export default {
      * @link https://dollarshaveclub.github.io/stickybits/
      */
     // Stick header to the top
-    var stickyElementTop = '.header--site';
+    let stickyElementTop = '.header--site';
     queueByElement(stickyElementTop, function () {
       stickybits(stickyElementTop);
     });
 
     // Stick navbar to the bottom
-    var stickyElementBottom = '.nav--navbar';
+    let stickyElementBottom = '.nav--navbar';
     queueByElement(stickyElementBottom, function () {
       stickybits(stickyElementBottom, {
         verticalPosition: 'bottom',
@@ -105,7 +105,7 @@ export default {
      * Makes the entirety of the card clickable
      * @link https://inclusive-components.design/cards/
      */
-    var cards = '.card--single-link';
+    let cards = '.card--single-link';
     queueByElement(cards, function () {
       let down, up, link = this.querySelector('h2 a');
       this.onmousedown = () => down = +new Date();
@@ -123,7 +123,7 @@ export default {
      * Toggleable offcanvas panel
      * @link https://frend.co/components/offcanvas/
      */
-    var offCanvasElement = '.offcanvas';
+    let offCanvasElement = '.offcanvas';
     queueByElement(offCanvasElement, function () {
       new Froffcanvas({
         // String - Panel selector, hook for JS init() method
@@ -163,7 +163,7 @@ export default {
      * Parallax effects
      * @link https://github.com/dixonandmoe/rellax
      */
-    var rellaxElement = '.rellax';
+    let rellaxElement = '.rellax';
     queueByElement(rellaxElement, function () {
       import('../components/rellax.js').then(init => init.default.call(this));
     });
@@ -174,7 +174,7 @@ export default {
      * Carousel, fast and accessible
      * @link https://nickpiscitelli.github.io/Glider.js/
      */
-    var carouselElement = '.carousel';
+    let carouselElement = '.carousel';
     queueByElement(carouselElement, function () {
       import('../components/carousel.js').then(init => init.default.call(this));
     });
@@ -185,7 +185,7 @@ export default {
      * Accordion, lightweight and accessible
      * @link https://frend.co/components/accordion/
      */
-    var accordionElement = '.accordion';
+    let accordionElement = '.accordion';
     queueByElement(accordionElement, function () {
       import('../components/accordion.js').then(init => init.default.call(this, accordionElement));
     });
@@ -196,7 +196,7 @@ export default {
      * Lightbox, light-weight and accessible
      * @link https://github.com/rqrauhvmra/Tobi
      */
-    var lightboxElement = '.lightbox';
+    let lightboxElement = '.lightbox';
     queueByElement(lightboxElement, function () {
       import('../components/lightbox.js').then(init => init.default.call(this));
     });
@@ -207,7 +207,7 @@ export default {
      * Dialog or modal
      * @link https://frend.co/components/dialogmodal/
      */
-    var dialogElement = '.dialogmodal';
+    let dialogElement = '.dialogmodal';
     queueByElement(dialogElement, function () {
       import('../components/dialogmodal.js').then(init => init.default.call(this, dialogElement));
     });
@@ -218,7 +218,7 @@ export default {
      * Accessible tab system
      * @link https://frend.co/components/tabs/
      */
-    var tabsElement = '.tabs';
+    let tabsElement = '.tabs';
     queueByElement(tabsElement, function () {
       import('../components/tabs.js').then(init => init.default.call(this, tabsElement));
     });
@@ -229,7 +229,7 @@ export default {
      * A refreshing JavaScript Datepicker
      * @link https://github.com/Pikaday/Pikaday
      */
-    var datePickerElement = '#datepicker';
+    let datePickerElement = '#datepicker';
     queueByElement(datePickerElement, function () {
       import('../components/calendar.js').then(init => init.default.call(this));
     });
@@ -241,7 +241,7 @@ export default {
      * @license MIT
      * @copyright 10up
      */
-    var shareContainer = '.social-share';
+    let shareContainer = '.social-share';
     queueByElement(shareContainer, function () {
       import('../components/social-share.js').then(init => init.default.call(this));
     });

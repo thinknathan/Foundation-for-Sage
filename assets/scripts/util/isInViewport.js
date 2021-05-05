@@ -6,7 +6,7 @@
  */
 export default function(elem) {
   if (!elem) return false;
-  var bounding = elem.getBoundingClientRect();
+  let bounding = elem.getBoundingClientRect();
   return (
     bounding.top >= 0 &&
     bounding.left >= 0 &&
