@@ -27,7 +27,7 @@
     "postcss": "^8.2",
     "resolve-url-loader": "3.1",
     "rimraf": "^3.0",
-    "sass": "^1.32",
+    "sass": "^1.33",
     "sass-loader": "11.*",
     "stylelint": "^13.13",
     "stylelint-config-standard": "^22.0",
