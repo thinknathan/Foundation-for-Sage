@@ -25,7 +25,7 @@
     "laravel-mix-copy-watched": "^2.2.1",
     "npm-run-all": "^4.1",
     "postcss": "^8.2",
-    "resolve-url-loader": "3.1",
+    "resolve-url-loader": "4.0",
     "rimraf": "^3.0",
     "sass": "^1.32",
     "sass-loader": "11.*",
