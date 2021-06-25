@@ -1,5 +1,7 @@
 import Tobi from 'tobii';
 
 export default function () {
-  new Tobi();
+  if (!window.tobiiInstance) {
+    window.tobiiInstance = new Tobi();
+  }
 }
