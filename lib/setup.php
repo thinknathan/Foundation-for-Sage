@@ -181,10 +181,11 @@ function my_acf_init() {
        'post_types'        => $post_types,
        'render_template'   => $filepath,
        'icon'              => $meta['icon'],
+       'mode'              => $meta['mode'] ?? 'edit',
        'supports'          => [
          'align'           => boolval($meta['align']),
-         'mode'            => $meta['mode'] ?? 'edit',
-         'jsx' 			      => $meta['jsx'] !== 'false',
+         'mode'            => $meta['mode'] === 'auto' ? 'true' : 'false',
+         'jsx' 			       => $meta['jsx'] !== 'false',
        ],
      ]);
    }
