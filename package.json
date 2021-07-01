@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
-    "browser-sync": "^2.3",
+    "browser-sync": "^2.27",
     "browser-sync-webpack-plugin": "2.3",
     "cross-env": "^7.0",
     "eslint": "^7.26",
